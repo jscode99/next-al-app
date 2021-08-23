@@ -13,11 +13,7 @@ import {
 //Container
 import StoriesDetailsContainer from "../../app/container/success-stories/storiesDetails";
 
-export default function storiesDetails({
-  storiesDetailsProp,
-  path,
-  projectTitle,
-}) {
+export default function storiesDetails({ storiesDetailsProp, projectTitle }) {
   console.log("storiesArDetailsProp", storiesProps);
   return (
     <>
@@ -45,7 +41,7 @@ export async function getStaticPaths({ locales }) {
       params: {
         title: mapTitleToRoutePath(storiesData),
       },
-      locale: locales[0],
+      // locale: locales[0],
     };
   });
 
@@ -58,11 +54,12 @@ export async function getStaticPaths({ locales }) {
   //   };
   // });
   //, ...successStoriesARPaths
-  const paths = [...storiesPaths];
+  // const paths = [...storiesPaths];
+  const paths = storiesPaths;
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 

@@ -28,7 +28,7 @@ export default function ProjectDetails({
 }
 
 // // Static Path
-export async function getStaticPaths({ locales }) {
+export async function getStaticPaths() {
   let projectDetailsUrl =
     process.env.BASE_URL + process.env.PATH.PROJECT_DATA + `?_limit=-1`;
   const [projectData] = await Promise.all([

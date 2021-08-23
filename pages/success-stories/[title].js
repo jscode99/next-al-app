@@ -13,12 +13,16 @@ import {
 //Container
 import StoriesDetailsContainer from "../../app/container/success-stories/storiesDetails";
 
-export default function storiesDetails({ storiesProps, path, projectTitle }) {
+export default function storiesDetails({
+  storiesDetailsProp,
+  path,
+  projectTitle,
+}) {
   console.log("storiesArDetailsProp", storiesProps);
   return (
     <>
       <StoriesDetailsContainer
-        storiesProps={storiesProps}
+        storiesProps={storiesDetailsProp}
         projectTitle={projectTitle}
       />
     </>
@@ -30,7 +34,8 @@ export async function getStaticPaths({ locales }) {
   let storiesUrl = process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES;
   // let storiesArUrl =
   //   process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
-  const [stories, successStoriesAR] = await Promise.all([
+  //successStoriesAR
+  const [stories] = await Promise.all([
     await fetchService(storiesUrl, CONST.API_METHOD.GET),
     // await fetchService(storiesArUrl, CONST.API_METHOD.GET),
   ]);
@@ -83,7 +88,8 @@ export async function getStaticProps(context) {
   //   storiesData => storiesData.Title === mapRoutePathToTitleAR(path),
   // );
 
-  const storiesProps = storiesDetailsProp || storiesArDetailsProp;
+  // const storiesProps = storiesDetailsProp;
+  //|| storiesArDetailsProp;
 
   // Not path
   if (!storiesProps) {
@@ -101,8 +107,7 @@ export async function getStaticProps(context) {
         ["common"],
         nextI18NextConfig,
       )),
-      storiesProps,
-      path,
+      storiesDetailsProp,
       projectTitle,
     },
     revalidate: 10,

@@ -14,7 +14,7 @@ import {
 import StoriesDetailsContainer from "../../app/container/success-stories/storiesDetails";
 
 export default function storiesDetails({ storiesDetailsProp, projectTitle }) {
-  console.log("storiesArDetailsProp", storiesProps);
+  // console.log("storiesArDetailsProp", storiesProps);
   return (
     <>
       <StoriesDetailsContainer

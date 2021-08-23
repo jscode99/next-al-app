@@ -89,7 +89,7 @@ export async function getStaticProps(context) {
   //|| storiesArDetailsProp;
 
   // Not path
-  if (!storiesProps) {
+  if (!storiesDetailsProp) {
     return {
       redirect: {
         destination: "/success-stories",

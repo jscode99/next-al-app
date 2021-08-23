@@ -1,0 +1,40 @@
+@import '../../../styles/variable'
+
+.app_input_group_sm
+    width: 90%
+
+.app_input
+    background-color: $lite_grey_color $important
+    height: 60px $important
+    border-radius: 8px $important
+    &::placeholder
+        color: $grey_color
+        font-weight: $five_hundred
+
+.app_text_area
+    background-color: $lite_grey_color $important
+    border-radius: 8px $important
+    &::placeholder
+        color: $grey_color
+        font-weight: $five_hundred
+
+.app_label
+    @extend %font_size_14
+    font-weight: $five_hundred
+
+.app_button
+    width: 180px
+    height: 55px
+    border-radius: 8px
+    color: $white_color
+    @extend %font_size_18
+    font-weight: $five_hundred
+    background-image: linear-gradient(74deg, #41AC37 0%, #233671 100%)
+    &:hover,
+    &:active,
+    &:focus
+        color: $white_color
+        background-image: linear-gradient(74deg, #233671 0%, #41AC37 100%)
+
+.visibility
+    visibility: hidden

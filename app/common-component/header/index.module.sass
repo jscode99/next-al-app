@@ -1,0 +1,61 @@
+@import '../../../styles/variable'
+
+.app_header_logo_title
+    @extend %font_size_25
+    font-weight: $five_hundred
+
+.app_header_container
+    @extend %container_padding
+    background-color: $transparent $important
+    height: 120px $important
+    z-index: 100
+
+.app_header_language_section
+    height: 40px
+
+.language_switch_button
+    width: 120px
+
+.route_switch_button
+    width: 10px
+
+.app_header_nav_container
+    border-radius: 4px
+
+.app_header_nav_section
+    height: 80px
+    p
+        line-height: 40px
+        font-weight: 500
+        color: $grey_color
+        @extend %font_size_18
+        margin: 0 15px
+        cursor: pointer
+        &:hover
+            color: $grey_color
+
+.selected
+    font-weight: 900 $important
+    color: $primary_color $important
+    &:hover
+        color: $primary_color $important
+
+.selected>.app_nav_list_hr
+    visibility: visible
+
+.dd_list
+    li
+        &:hover
+            background-color: $primary_color $important
+            color: $white_color $important
+
+.app_nav_list_hr
+    visibility: hidden
+    width: 1px
+    margin: 0 auto
+    border: 3px solid $primary_color $important
+    border-radius: 10px
+    opacity: 1
+
+.language_dd_icon
+    vertical-align: middle $important

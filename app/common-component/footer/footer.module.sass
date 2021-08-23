@@ -1,0 +1,89 @@
+@import '../../../styles/variable'
+
+.navigation_container_bg
+  background-image: url("/images/background/footer/footer-globe.webp"), url("/images/background/footer/footer-left.webp"),linear-gradient(180deg, #37854a 0%, #274769 100%)
+  background-position: right bottom, left top
+  background-repeat: no-repeat, no-repeat
+
+.navigation_container
+
+  @extend %container_padding
+  min-height: 220px
+  max-height: $auto
+
+.navigation_container
+  &> div
+    margin: $auto
+    width: 80%
+
+.footer_list_cursor_pointer
+  cursor: pointer $important
+
+.footer_list
+  list-style-type: none
+  color: $white_color
+  &> li
+    // @extend %font_size_14
+    margin-bottom: 8px
+    opacity: .7
+    // font-family: $roboto
+    cursor: pointer
+    font-weight: $five_hundred
+    &> a
+      color: $white_color $important
+      // @extend %font_size_14
+      margin-bottom: 8px
+      opacity: .7
+      // font-family: $roboto
+      cursor: pointer
+      font-weight: $five_hundred
+
+.footer_list_header
+  font-size: 22px $important
+  opacity: 1 $important
+
+.footer_list_cursor_auto
+  cursor: $auto $important
+
+.footer_list_address
+  // @extend %font_size_14
+
+.rights_reserved
+  background-color: #213053
+  height: 70px
+  &> div
+    color: $white_color
+    opacity: 0.8
+    font-weight: $three_hundred
+
+.p_footer_logo
+  padding: 0 30px 0 30px
+
+// @media only screen and (max-width: $beakpoint_laptop_s)
+//   .navigation_container
+//     &> div
+//       width: 90%
+
+// @media only screen and (max-width: $beakpoint_tablet_l)
+//   .navigation_container
+//     height: auto
+//     &> div
+//       width: $full_width
+
+//   .footer_list_header
+//     @include font_size_18
+//     opacity: $one $important
+
+//   .footer_list
+//     &> li
+//       font-size: 13px
+//       margin-bottom: $six_px
+//       opacity: .7
+//       &> a
+//         font-size: 13px
+//         margin-bottom: $six_px
+//         opacity: .7
+
+// @media only screen and (max-width: $beakpoint_mobile_l)
+//   .navigation_container
+//     height: auto

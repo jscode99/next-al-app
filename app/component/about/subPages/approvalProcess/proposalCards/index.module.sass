@@ -1,0 +1,27 @@
+@import '../../../../../../styles/variable'
+
+.ProposalCard_bg
+    background-image: url("/images/about/approval/bg_4.webp")
+    background-position: 2% 12%
+    background-repeat: no-repeat
+    background-color: rgba(36, 180, 181, 0.08)
+
+.ProposalCard_container
+    @extend %container_padding
+
+.ProposalCard_card_section
+    background-color: $white_color
+    border-radius: 15px
+
+.ProposalCard_card_polygon
+    background-color: $primary_color
+    width: 70px
+    height: 70px
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)
+
+.ProposalCard_card_title
+    @extend %font_size_18
+
+.ProposalCard_des
+    color: #3e3e3e
+    font-weight: $five_hundred

@@ -1,0 +1,26 @@
+@import '../../../../styles/variable'
+
+.container_bg
+    background-color: #0d3c47
+    background-image: url("/images/about/bg/bg_2.webp")
+    background-position: left bottom
+    background-repeat: no-repeat
+
+.container
+    @extend %container_padding
+
+.aboutUsCard_container
+    height: 200px
+    border-radius: 12px
+    background-color: $white_color $important
+    background: url("/images/about/bg/cardBg.webp") top left no-repeat
+
+.card_route
+    cursor: pointer
+    height: 60px
+    width: 60px
+    background-color: #c5f1f2
+
+.aboutCard_nav_arrow
+    @extend %font_size_25
+    color: $theme_sky_blue_color $important

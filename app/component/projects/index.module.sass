@@ -1,0 +1,22 @@
+@import '../../../styles/variable'
+
+.project_layout_container
+    height: 500px
+
+.bg1
+    background-image: url("/images/about/Members/leftBg.webp"),url("/images/about/Members/rightBg.webp"),linear-gradient(to bottom, #fff, #f4f4f4)
+    background-position: left 101%, right top
+    background-repeat: no-repeat, no-repeat
+
+.bg2
+    background-image: url("/images/contribution/arab.webp")
+    background-position: top left
+    background-repeat: no-repeat
+.project_container
+    @extend %container_padding
+
+.bg_theme_sky_blue_color
+    background-color: $theme_sky_blue_color $important
+
+.bg_theme_golden_color
+    background-color: $theme_golden_color $important

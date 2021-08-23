@@ -1,0 +1,40 @@
+@import '../../../../styles/variable'
+
+.resource_bg
+    background-image: url("/images/background/landing/chart.webp")
+    background-position: 0 70
+    background-repeat: no-repeat
+
+.resource_container
+    @extend %container_padding
+
+.resource_selected_title
+    @extend %font_size_25
+    color: $primary_color $important
+    font-weight: $nine_hundred
+
+.resource_subtitle
+    @extend %font_size_25
+    color: $grey_color
+    font-weight: $nine_hundred
+
+.resource_chart_indicator
+    font-size: 21px
+    color: $grey_color
+    font-weight: $five_hundred
+
+.resource_chart_indicator span
+    color: $secondary_color
+
+.chart_container
+    border-radius: 16px
+
+.bar_chart
+    height: 550px
+
+.xAxis_container
+    // width:126px
+
+.horz_scroll
+    overflow: auto
+    white-space: nowrap

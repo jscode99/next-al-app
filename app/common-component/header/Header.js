@@ -178,7 +178,7 @@ export default function AppHeader({ pageName, projectTitle }) {
                     className={`d-flex justify-content-center align-items-center h-100`}
                   >
                     <Image
-                      src={"/images/common/HeadLogo.webp"}
+                      src={"/images/common/head.webp"}
                       alt={`Organization Logo`}
                       height="80px"
                       width="80px"

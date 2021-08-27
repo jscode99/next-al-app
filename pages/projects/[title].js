@@ -38,7 +38,7 @@ export async function getStaticPaths({ locales }) {
     await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
   ]);
   //path
-  const paths = projectData.map((projectD) => {
+  const paths = projectData.map(projectD => {
     return {
       params: {
         title: mapTitleToRoutePath(projectD.projectTitle),
@@ -48,7 +48,7 @@ export async function getStaticPaths({ locales }) {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 // // Static Prop
@@ -74,7 +74,7 @@ export async function getStaticProps(context) {
     ]);
 
   const projectDetailsProp = projectData.filter(
-    (data) => data.projectTitle.toLowerCase() === mapRoutePathToTitle(path)
+    data => data.projectTitle.toLowerCase() === mapRoutePathToTitle(path),
   );
   //   // Not path
   if (!projectDetailsProp) {
@@ -90,7 +90,7 @@ export async function getStaticProps(context) {
       ...(await serverSideTranslations(
         context.locale,
         ["common"],
-        nextI18NextConfig
+        nextI18NextConfig,
       )),
       projectTitleData,
       projectDetailsProp,

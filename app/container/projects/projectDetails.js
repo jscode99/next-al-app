@@ -15,7 +15,7 @@ export default function ProjectDetailsContainer({
       page={"projects"}
       pageName={"projects"}
       projectTitle={projectTitle}
-      title={projectDetailsProp[0].projectTitle}
+      title={"Projects"}
     >
       <ProjectDetails
         projectTitle={projectTitle}

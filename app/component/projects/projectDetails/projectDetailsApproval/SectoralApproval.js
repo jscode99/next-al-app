@@ -42,7 +42,7 @@ export default function SectoralApproval({ sectoralData }) {
             className={`d-flex justify-content-center align-items-center w-25`}
           >
             <PieChart data={data} color={`#326ccc`} />
-            <p className={`ms-1 m-0`} style={{ width: "45px" }}>
+            <p className={`ms-1 m-0 ${style.percentage}`} style={{ width: "45px" }}>
               {data.percent}
             </p>
           </div>

@@ -32,8 +32,8 @@ export default function ShareHolder({ flagData }) {
                     <Image
                       src={data.url}
                       alt={`Flags`}
-                      height="100px"
-                      width="100px"
+                      height="80px"
+                      width="80px"
                     />
                   </div>
                   <p

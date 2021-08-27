@@ -49,7 +49,7 @@ export default function ProjectRouteCard({ finalChartData }) {
                     <div
                       className={`${style.route_card_count} d-flex justify-content-center flex-column ps-3 pt-2`}
                     >
-                      <p className={`m-0`}>
+                      <p className={`m-0 ${style.route_card_approvals_amount}`}>
                         {convertToInternationalCurrencySystem(
                           data.totalApprovedAmount,
                         )}

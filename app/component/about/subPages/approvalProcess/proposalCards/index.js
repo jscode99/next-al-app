@@ -27,7 +27,7 @@ export default function ProposalCard({ cardData }) {
                     {router.locale === "en" ? (
                       <>
                         <div
-                          className={`${style.ProposalCard_card_polygon} ${data.color} d-flex justify-content-center align-items-center`}
+                          className={`${style.ProposalCard_card_polygon} ${style.number} ${data.color} d-flex justify-content-center align-items-center`}
                         >
                           <h4 className={`m-0 text-white`}>{data.no}</h4>
                         </div>
@@ -49,7 +49,7 @@ export default function ProposalCard({ cardData }) {
                         <div
                           className={`${style.ProposalCard_card_polygon} ${data.color} d-flex justify-content-center align-items-center`}
                         >
-                          <h4 className={`m-0 text-white`}>{data.no}</h4>
+                          <h4 className={`m-0 text-white ${style.number}`}>{data.no}</h4>
                         </div>
                       </>
                     )}

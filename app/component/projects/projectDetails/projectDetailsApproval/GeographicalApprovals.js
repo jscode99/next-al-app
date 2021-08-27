@@ -42,7 +42,7 @@ export default function GeographicalApprovals({ geoData }) {
             className={`d-flex justify-content-center align-items-center w-25`}
           >
             <PieChart data={data} color={`#5ca849`} />
-            <p className={`ms-2 m-0`} style={{ width: "45px" }}>
+            <p className={`ms-2 m-0 ${style.percentage}`} style={{ width: "45px" }}>
               {data.percent}
             </p>
           </div>

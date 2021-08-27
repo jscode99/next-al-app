@@ -13,7 +13,7 @@ export default function Publication({
   publication,
   publicationAr,
   projectTitle,
-  bannerImage
+  bannerImage,
 }) {
   let router = useRouter();
 
@@ -36,22 +36,22 @@ export async function getStaticProps({ locale }) {
   let publicationUrl = process.env.BASE_URL + process.env.PATH.PUBLICATION;
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
-
   let publicationArUrl =
     process.env.BASE_URL + process.env.PATH.PUBLICATION + "?_locale=ar-001";
-  const [publication, publicationAr, projectTitle,bannerImage] = await Promise.all([
-    await fetchService(publicationUrl, CONST.API_METHOD.GET),
-    await fetchService(publicationArUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
-  ]);
+  const [publication, publicationAr, projectTitle, bannerImage] =
+    await Promise.all([
+      await fetchService(publicationUrl, CONST.API_METHOD.GET),
+      await fetchService(publicationArUrl, CONST.API_METHOD.GET),
+      await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+      await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
+    ]);
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),
       publication,
       publicationAr,
       projectTitle,
-      bannerImage
+      bannerImage,
     },
     revalidate: 10,
   };

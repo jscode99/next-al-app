@@ -28,7 +28,10 @@ export default function SuccessStories({
 export async function getStaticProps({ locale }) {
   let storiesUrl = process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES;
   let storiesArUrl =
-    process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
+    process.env.BASE_URL +
+    process.env.PATH.SUCCESS_STORIES +
+    "?_locale=ar-001" +
+    `?_limit=-1`;
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 

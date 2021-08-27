@@ -3,16 +3,17 @@ import Chart from "react-google-charts";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-
+import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 import style from "./index.module.sass";
 
 export default function ResourceChart() {
   const router = useRouter();
+  const { t } = useTranslation("common");
 
   const [xAxisWidth, setXAxisWidth] = useState(0);
-  const [activeData, setActiveData] = useState(1);
+  const [activeData, setActiveData] = useState(true);
   const [arabResource, setArabResource] = useState();
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export default function ResourceChart() {
 
   const series = [
     {
-      name: "Aqsa Fund Resources",
+      name: "Aqsa Funds Resources",
       data: [
         318300000, 171800000, 138550000, 61900000, 61596000, 36900000, 29400000,
         17400000, 10400000, 9400000, 7400000, 6400000, 5400000, 4400000,
@@ -49,7 +50,7 @@ export default function ResourceChart() {
 
   const seriesAr = [
     {
-      name: "Arab Fund Resources",
+      name: "Arab Funds Resources",
       data: [
         138550000, 61900000, 61596000, 36900000, 7400000, 6400000, 5400000,
         4400000,
@@ -112,7 +113,7 @@ export default function ResourceChart() {
       },
 
       categories: [
-        "Al Aqsa Fund",
+        "Al Aqsa Funds",
         "Arab Bank For Economic Development In Africa",
         "Arab Monetary Fund",
         "Arab Fund For Economic And Social Development",
@@ -318,7 +319,7 @@ export default function ResourceChart() {
 
   const titleAr = [
     {
-      title: "Al Aqsa Fund",
+      title: "Al Aqsa Funds",
       url: "/images/projects/logo8.webp",
     },
     {
@@ -422,45 +423,41 @@ export default function ResourceChart() {
     },
   ];
   return (
-    <div className={`${style.resource_bg} py-5`}>
+    <div className={`${style.resource_bg} py-3`}>
       <div className={`${style.resource_container}`}>
         <div
           className={`d-flex justify-content-center ${
             router.locale === "ar" ? "flex-row-reverse" : "flex-row"
-          } py-5`}
+          } w-100 py-3`}
         >
           <p
             onClick={() => {
-              setActiveData(1);
+              setActiveData(true);
             }}
             style={{ cursor: "pointer" }}
             className={`${style.resource_subtitle} ${
-              activeData === 1 ? style.resource_selected_title : ``
-            } w-25`}
+              activeData === true ? style.resource_selected_title : ``
+            } px-5 mb-2`}
           >
-            Aqsa Fund Resources
+            {t("Al Aqsa Funds Resources")}
           </p>
           <p
             onClick={() => {
-              setActiveData(2);
+              setActiveData(false);
             }}
             style={{ cursor: "pointer" }}
             className={`${style.resource_subtitle} ${
-              activeData === 2 ? style.resource_selected_title : ``
-            } w-25`}
+              activeData === false ? style.resource_selected_title : ``
+            } px-5 mb-2`}
           >
-            Arab Fund Resources
+            {t("Arab Funds Resources")}
           </p>
           <p
-            onClick={() => {
-              setActiveData(3);
-            }}
+            onClick={() => {}}
             style={{ cursor: "pointer" }}
-            className={`${style.resource_subtitle} ${
-              activeData === 3 ? style.resource_selected_title : ``
-            } w-25`}
+            className={`${style.resource_subtitle} px-5 mb-2`}
           >
-            Yearly Approvals
+            {t("Yearly Approvals")}
           </p>
         </div>
         <div
@@ -474,15 +471,15 @@ export default function ResourceChart() {
             } `}
           >
             <p className={`${style.resource_chart_indicator}`}>
-              Total Amount : <span>$ 876,041,230</span>
+              {t("Total Amount")} : <span>$ 876,041,230</span>
             </p>
           </div>
           {/* <div id="fund_chart"></div> */}
           <div className={`${style.horz_scroll}`}>
             <div className={`${style.bar_chart}`}>
               <ApexCharts
-                options={activeData === 1 ? options : optionsAr}
-                series={activeData === 1 ? series : seriesAr}
+                options={activeData === true ? options : optionsAr}
+                series={activeData === true ? series : seriesAr}
                 type="bar"
                 width={"200%"}
                 height={"550px"}
@@ -494,11 +491,11 @@ export default function ResourceChart() {
                   className={`d-flex justify-content-around align-items-center ms-3`}
                   style={{ width: xAxisWidth }}
                 >
-                  {activeData === 1
+                  {activeData === true
                     ? titleC.map((data, index) => (
                         <div
                           key={index}
-                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100 pb-3`}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
                           style={{ width: xAxisWidth / titleC.length }}
                         >
                           <div className={``}>
@@ -513,7 +510,9 @@ export default function ResourceChart() {
                               />
                             </div>
                           </div>
-                          <div className={`text-center fw-bold  `}>
+                          <div
+                            className={`${style.resource_chart_labels} text-center fw-bold`}
+                          >
                             {data.title}
                           </div>
                         </div>
@@ -521,7 +520,7 @@ export default function ResourceChart() {
                     : titleAr.map((data, index) => (
                         <div
                           key={index}
-                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100 pb-3`}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
                           style={{ width: xAxisWidth / titleAr.length }}
                         >
                           <div className={``}>
@@ -536,7 +535,9 @@ export default function ResourceChart() {
                               />
                             </div>
                           </div>
-                          <div className={`text-center fw-bold mx-2`}>
+                          <div
+                            className={`text-center fw-bold ${style.resource_chart_labels}`}
+                          >
                             {data.title}
                           </div>
                         </div>
@@ -545,7 +546,7 @@ export default function ResourceChart() {
               ) : (
                 <div
                   style={{ width: "100%" }}
-                  className={`d-flex justify-content-center align-items-center`}
+                  className={`${style.resource_chart_labels} d-flex justify-content-center align-items-center`}
                 >
                   Loading...
                 </div>

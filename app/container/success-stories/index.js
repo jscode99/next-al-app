@@ -5,13 +5,15 @@ export default function SuccessStoriesContainer({
   stories,
   successStoriesAR,
   projectTitle,
+  bannerImage,
 }) {
   return (
     <Layout
-      heroImage={"/IsDB-Banner-Image.webp"}
+      heroImage={bannerImage}
       page={"success-stories"}
       pageName={"success stories"}
       projectTitle={projectTitle}
+      title={"Success Stories"}
     >
       <SuccessStories stories={stories} successStoriesAR={successStoriesAR} />
     </Layout>

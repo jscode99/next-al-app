@@ -1,17 +1,24 @@
 @import '../../../../styles/variable'
 
-.banner_card_section
-    @extend %container_padding
-    top: 25%
+.container
+    top: 35%
     z-index: 100
 
+.banner_card_section
+    @extend %container_padding
+
 .banner_card_section_title
-    @extend %font_size_35
+    font-size: 3vw
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
+    letter-spacing: 2px
 
 .banner_card_section_subtitle
-    @extend %font_size_18
+    font-size: 1.2vw
+    font-family: "oswald",roboto
     color: $lite_white_color
-    font-weight: $five_hundred
+    font-weight: $nine_hundred
+    letter-spacing: 1px
 
 .banner_card
     height: 100px
@@ -33,10 +40,15 @@
 
 .banner_card_title
     @extend %font_size_25
+    font-weight: $nine_hundred
+    font-family: "oswald"
+    letter-spacing: 1px
 
 .banner_card_subtitle
-    @extend %font_size_14
+    font-size: 15px
     font-weight: $five_hundred
+    font-family: roboto
+    letter-spacing: .5px
 
 .bg_primary_color
     background-color: $primary_color

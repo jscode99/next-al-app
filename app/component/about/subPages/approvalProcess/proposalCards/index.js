@@ -1,16 +1,18 @@
 import { useRouter } from "next/router";
-
+import { useTranslation } from "next-i18next";
 //Antd
 import { Row, Col } from "antd";
 //Style
 import style from "./index.module.sass";
 export default function ProposalCard({ cardData }) {
   const router = useRouter();
-
+  const { t } = useTranslation("common");
   return (
     <div className={`${style.ProposalCard_bg} pb-5`}>
       <div className={`${style.ProposalCard_container} `}>
-        <h3 className={`text-center py-5`}>Proposal Selection Criteria</h3>
+        <h3 className={`${style.ProposalCard_title} text-center py-4 m-0`}>
+          {t("Proposal Selection Criteria")}
+        </h3>
 
         <Row gutter={[24, 24]}>
           {cardData.map(data => (

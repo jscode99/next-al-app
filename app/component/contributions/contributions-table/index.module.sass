@@ -1,13 +1,28 @@
 @import '../../../../styles/variable'
 
+.bg
+    background-image: url("/images/about/Members/leftBg.webp"),linear-gradient(to bottom, #fff, #f4f4f4)
+    background-position: left 101%
+    background-repeat: no-repeat
+
+.container
+    @extend %container_padding
+
+.donor_title
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
+
 .contribution_table_container
     border-radius: 8px
 
 .table_name
     font-weight: $five_hundred
+    font-family: roboto
     color: #000
 
 .table_title
     font-weight: bold
+    font-family: roboto
     color: #000
     font-size: 16px

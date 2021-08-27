@@ -12,9 +12,9 @@ export default function MembersList({ data }) {
   const { t } = useTranslation("common");
 
   return (
-    <Row>
+    <Row className={`px-3`}>
       {router.locale === "en" ? (
-        <Col span={24} className={`mb-3 mt-4`}>
+        <Col span={24} className={`mt-2`}>
           <div className={`${style.members_list_card} shadow bg-white`}>
             <Row className={`h-100`}>
               {data.url ? (
@@ -31,7 +31,7 @@ export default function MembersList({ data }) {
                       />
                     </div>
                   </Col>
-                  <Col xs={16} sm={16} md={16} lg={16} xl={16}>
+                  <Col xs={15} sm={15} md={15} lg={15} xl={15}>
                     <div
                       className={`d-flex justify-content-center align-items-start h-100 flex-column`}
                     >
@@ -47,7 +47,7 @@ export default function MembersList({ data }) {
                       </p>
                     </div>
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Col xs={7} sm={7} md={7} lg={7} xl={7}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
@@ -100,7 +100,7 @@ export default function MembersList({ data }) {
             <Row className={`h-100`}>
               {data.url ? (
                 <>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Col xs={7} sm={7} md={7} lg={7} xl={7}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
@@ -113,7 +113,7 @@ export default function MembersList({ data }) {
                     </div>
                   </Col>
 
-                  <Col xs={16} sm={16} md={16} lg={16} xl={16}>
+                  <Col xs={15} sm={15} md={15} lg={15} xl={15}>
                     <div
                       className={`d-flex justify-content-center align-items-end h-100 flex-column`}
                     >

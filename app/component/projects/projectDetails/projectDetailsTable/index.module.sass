@@ -1,8 +1,22 @@
 @import '../../../../../styles/variable'
 
+.bg
+    background-image: url("/images/projects/bg/bg_3.webp")
+    background-position: left top
+    background-repeat: round
+
+.container
+    @extend %container_padding
+
 .project_details_table_container
     border-radius: 8px
+
+.project_details_table_title
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
 
 .table_name
     font-weight: $five_hundred
     color: #000
+    font-family: roboto

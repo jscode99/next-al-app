@@ -7,24 +7,34 @@
     background-repeat: no-repeat
 
 .sector_chart_container
-    padding: 0 0 0 100px
+    width: 50%
 
 .chart_percent
     font-size: 28px
     font-weight: $nine_hundred
 
 .sector_title
-    @extend %font_size_35
-    font-weight: $five_hundred
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
+    letter-spacing: 1px
 
 .sector_subtitle
     @extend %font_size_18
+    font-family: "oswald",roboto
     color: rgba(255, 255, 255, 0.87)
+    letter-spacing: .5px
 
 .tooltip
     font-weight: $five_hundred
 
 .sector_chart_title
     @extend %font_size_18
+    font-family: roboto
     font-weight: $five_hundred
     color: #c3c5c6
+    letter-spacing: .5px
+
+@media only screen and (max-width: 1440px)
+    .sector_chart_container
+        width: 75%

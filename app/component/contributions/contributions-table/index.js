@@ -170,31 +170,35 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
   };
 
   return (
-    <Row className={`pb-5`}>
-      <h3 className={`text-center mb-5 w-100`}>
-        {t("Donor Countries Contributions")}
-      </h3>
-      <div
-        className={`${style.contribution_table_container} shadow overflow-hidden w-100`}
-      >
-        {countryContribution && countryContribution.length > 0 && (
-          <>
-            {router.locale === "en" ? (
-              <CommonTable
-                columnData={columnData}
-                data={countryContribution}
-                pagination={false}
-              />
-            ) : (
-              <CommonTable
-                columnData={columnArData}
-                data={countryContribution}
-                pagination={false}
-              />
+    <div className={`${style.bg}`}>
+      <div className={`${style.container} px-5`}>
+        <Row className={`pb-5`}>
+          <h3 className={`${style.donor_title} text-center mb-4 w-100`}>
+            {t("Donor Countries Contributions")}
+          </h3>
+          <div
+            className={`${style.contribution_table_container} shadow overflow-hidden w-100`}
+          >
+            {countryContribution && countryContribution.length > 0 && (
+              <>
+                {router.locale === "en" ? (
+                  <CommonTable
+                    columnData={columnData}
+                    data={countryContribution}
+                    pagination={false}
+                  />
+                ) : (
+                  <CommonTable
+                    columnData={columnArData}
+                    data={countryContribution}
+                    pagination={false}
+                  />
+                )}
+              </>
             )}
-          </>
-        )}
+          </div>
+        </Row>
       </div>
-    </Row>
+    </div>
   );
 }

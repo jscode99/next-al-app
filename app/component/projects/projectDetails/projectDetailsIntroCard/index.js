@@ -10,7 +10,7 @@ export default function ProjectDetailsIntroCard({ cardData }) {
   const { t } = useTranslation("common");
 
   return (
-    <>
+    <div className={`${style.container}`}>
       <div
         className={`w-100 d-flex justify-content-center align-items-center px-5 py-4`}
       >
@@ -20,6 +20,6 @@ export default function ProjectDetailsIntroCard({ cardData }) {
           ))}
         </Row>
       </div>
-    </>
+    </div>
   );
 }

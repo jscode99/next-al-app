@@ -10,6 +10,7 @@ module.exports = {
   env: {
     BASE_URL: "https://z966c6ddc-z1680a652-gtw.qovery.io",
     PATH: {
+      BANNER_IMAGE:"/banner-images",
       ARAB_CONTRIBUTIONS: "/arab-contributions",
       OVERALL_CONTRIBUTIONS: "/overall-contributions",
       PROJECT_TITLE: "/project-titles",

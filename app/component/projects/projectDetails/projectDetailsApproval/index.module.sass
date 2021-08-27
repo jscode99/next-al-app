@@ -1,19 +1,33 @@
 @import '../../../../../styles/variable'
 
+.container
+    @extend %container_padding
+
+.project_details_bg
+    background-image: url("/images/projects/bg/bg_1.webp"),url("/images/projects/bg/bg_2.webp")
+    background-position: right center,left bottom
+    background-repeat: no-repeat,no-repeat
+
 .geographical_approval_title
     color: $secondary_color
-    @extend %font_size_25
-    font-weight: 700
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
 
 .sectoral_approval_title
     color: $primary_color
-    @extend %font_size_25
-    font-weight: 700
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
 
 .common_sectoral_list
+    font-family: roboto
     height: 60px
     width: 520px
     border-radius: 8px
+
+.sector_labels
+    font-family: roboto
 
 .number_of_projects
     font-size: 16px

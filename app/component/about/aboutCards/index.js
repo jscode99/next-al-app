@@ -28,7 +28,7 @@ export default function AboutUsCard() {
 
   return (
     <div className={`${style.container_bg} py-5`}>
-      <div className={`${style.container}`}>
+      <div className={`${style.container} px-5`}>
         <div className={`d-flex justify-content-center align-items-center`}>
           <Row gutter={[24, 24]} className={`w-100`}>
             {cardData.map(data => (
@@ -41,8 +41,10 @@ export default function AboutUsCard() {
                       <div
                         className={`d-flex justify-content-start align-items-center w-100 h-100`}
                       >
-                        <p className={`h4 my-5 mx-4`}>{data.title}</p>
-                        <div className={`d-flex justify-content-end w-50 me-5`}>
+                        <p className={`${style.aboutCard_title} my-5 mx-4`}>
+                          {data.title}
+                        </p>
+                        <div className={`d-flex justify-content-end w-50 me-4`}>
                           <div
                             className={`${style.card_route} d-flex justify-content-center align-items-center rounded-circle`}
                             onClick={() => {
@@ -60,7 +62,7 @@ export default function AboutUsCard() {
                         className={`d-flex justify-content-center align-items-center w-100 h-100`}
                       >
                         <div
-                          className={`d-flex justify-content-start ms-5 w-75`}
+                          className={`d-flex justify-content-start ms-4 w-75`}
                         >
                           <div
                             className={`${style.card_route} d-flex justify-content-center align-items-center rounded-circle`}
@@ -73,7 +75,9 @@ export default function AboutUsCard() {
                             />
                           </div>
                         </div>
-                        <p className={`h4 my-5 mx-4 text-end`}>{data.title}</p>
+                        <p className={`${style.aboutCard_title} my-5 mx-4`}>
+                          {data.title}
+                        </p>
                       </div>
                     )}
                   </div>

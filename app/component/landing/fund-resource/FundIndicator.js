@@ -4,7 +4,7 @@ export default function FundIndicator({ data }) {
   return (
     <div className="mx-5">
       <div
-        className={`${style.fund_indecator} ${data.bg} rounded-circle mb-4 d-flex justify-content-center align-items-center text-white`}
+        className={`${style.fund_indecator} ${data.bg} rounded-circle mb-3 d-flex justify-content-center align-items-center text-white`}
       >
         {data.count}
       </div>

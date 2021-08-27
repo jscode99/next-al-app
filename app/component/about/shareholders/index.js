@@ -14,13 +14,15 @@ export default function ShareHolder({ flagData }) {
   }, []);
   return (
     <div className={`${style.bg} pb-5`}>
-      <h1 className={`text-center fw-bold py-5`}>{t("ShareHolders")}</h1>
-      <div className={`${style.shareHolder_container} overflow-hidden`}>
+      <div className={`${style.shareHolder_container} overflow-hidden px-5`}>
+        <p className={`${style.shareHolder_title} text-center py-4 m-0`}>
+          {t("ShareHolders")}
+        </p>
         <div
           id="scroll"
           className={`${style.shareHolder_scrollable} d-flex align-items-center `}
         >
-          {flagData.map((data) => (
+          {flagData.map(data => (
             <>
               <div>
                 <div
@@ -34,7 +36,11 @@ export default function ShareHolder({ flagData }) {
                       width="100px"
                     />
                   </div>
-                  <p className={`text-center`}>{data.title}</p>
+                  <p
+                    className={`${style.shareHolder_labels} fw-bold text-center`}
+                  >
+                    {data.title}
+                  </p>
                 </div>
               </div>
             </>

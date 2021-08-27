@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { Row, Col } from "antd";
-//Common Components
-import InnerLayout from "../../common-component/inner-layout/InnerLayout";
-import PageCommonSection from "../../common-component/page-common-section/PageCommonSection";
 //Components
 import ContributionsCard from "./contributions-card/index";
 import ContributionsTable from "./contributions-table/index";
@@ -48,36 +44,26 @@ export default function Contributions({
   console.log("cardData", cardData);
   return (
     <>
-      <InnerLayout>
-        <PageCommonSection title={t("Contributions")} />
-        <div className={`${style.contribution_card_container}`}>
-          <ContributionsCard
-            cardData={cardData}
-            grandTotal={summitAmount.grandTotal}
-          />
-        </div>
-      </InnerLayout>
-      <div className={`${style.bg}`}>
-        <div className={`${style.contribution_container_bg}`}>
-          {router.locale === "en" ? (
-            <ContributionsTable
-              tData={overallContributions}
-              setSummitAmount={setSummitAmount}
-            />
-          ) : (
-            <ContributionsTable
-              tData={overallArContributions}
-              setSummitAmount={setSummitAmount}
-            />
-          )}
-        </div>
-      </div>
+      <ContributionsCard
+        cardData={cardData}
+        grandTotal={summitAmount.grandTotal}
+      />
+      {router.locale === "en" ? (
+        <ContributionsTable
+          tData={overallContributions}
+          setSummitAmount={setSummitAmount}
+        />
+      ) : (
+        <ContributionsTable
+          tData={overallArContributions}
+          setSummitAmount={setSummitAmount}
+        />
+      )}
       {router.locale === "en" ? (
         <ContributionsArabFunds arabContributions={arabContributions} />
       ) : (
         <ContributionsArabFunds arabContributions={arabArContributions} />
       )}
-      {/* </div> */}
     </>
   );
 }

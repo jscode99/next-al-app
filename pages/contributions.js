@@ -15,6 +15,7 @@ export default function Contributions({
   overallContributions,
   overallArContributions,
   projectTitle,
+  bannerImage
 }) {
   return (
     <ContributionsContainer
@@ -23,6 +24,7 @@ export default function Contributions({
       overallContributions={overallContributions}
       overallArContributions={overallArContributions}
       projectTitle={projectTitle}
+      bannerImage={bannerImage}
     />
   );
 }
@@ -41,6 +43,7 @@ export async function getStaticProps({ locale }) {
     process.env.PATH.OVERALL_CONTRIBUTIONS +
     "?_locale=ar-001";
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
+  let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
   const [
     arabContributions,
@@ -48,12 +51,14 @@ export async function getStaticProps({ locale }) {
     overallContributions,
     overallArContributions,
     projectTitle,
+    bannerImage
   ] = await Promise.all([
     await fetchService(arabContributionsUrl, CONST.API_METHOD.GET),
     await fetchService(arabArContributionsUrl, CONST.API_METHOD.GET),
     await fetchService(overallContributionsUrl, CONST.API_METHOD.GET),
     await fetchService(overallArContributionsUrl, CONST.API_METHOD.GET),
     await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
   ]);
   return {
     props: {
@@ -63,6 +68,7 @@ export async function getStaticProps({ locale }) {
       overallContributions,
       overallArContributions,
       projectTitle,
+      bannerImage
     },
     revalidate: 10,
   };

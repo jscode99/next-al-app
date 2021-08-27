@@ -7,13 +7,15 @@ export default function ContributionsContainer({
   overallContributions,
   overallArContributions,
   projectTitle,
+  bannerImage,
 }) {
   return (
     <Layout
-      heroImage={"/IsDB-Banner-Image.webp"}
+      heroImage={bannerImage}
       page={"contributions"}
       pageName={"contributions"}
       projectTitle={projectTitle}
+      title={"Contributions"}
     >
       <Contributions
         arabContributions={arabContributions}

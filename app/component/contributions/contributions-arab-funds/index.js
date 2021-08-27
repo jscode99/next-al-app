@@ -15,7 +15,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
   const [arabContribution, setArabContribution] = useState([]);
   const columns = [
     {
-      title: t("Name Of Fund"),
+      title: t("Name Of Funds"),
       dataIndex: "Name",
       render: name => <p className={`${style.table_name} m-1`}>{name}</p>,
     },
@@ -33,7 +33,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
       ),
     },
     {
-      title: t("Name Of Fund"),
+      title: t("Name Of Funds"),
       dataIndex: "Name",
       render: name => (
         <p
@@ -69,25 +69,29 @@ export default function ContributionsArabFunds({ arabContributions }) {
   }, [arabContributions]);
 
   return (
-    <div className={`${style.bg} py-5`}>
-      <h3 className={`text-center mb-5`}>{t("Arab Funds Contributions")}</h3>
-      <div className={`w-100 d-flex justify-content-center`}>
-        <div
-          className={`${style.contribution_table_container} shadow overflow-hidden w-75`}
-        >
-          {router.locale === "en" ? (
-            <CommonTable
-              columnData={columns}
-              data={arabContribution}
-              pagination={false}
-            />
-          ) : (
-            <CommonTable
-              columnData={arColumns}
-              data={arabContribution}
-              pagination={false}
-            />
-          )}
+    <div className={`${style.bg} pt-2 pb-5`}>
+      <div className={`${style.container} px-5`}>
+        <h3 className={`${style.contribution_table_title} text-center mb-4`}>
+          {t("Arab Funds Contributions")}
+        </h3>
+        <div className={`w-100 d-flex justify-content-center`}>
+          <div
+            className={`${style.contribution_table_container} shadow overflow-hidden w-75`}
+          >
+            {router.locale === "en" ? (
+              <CommonTable
+                columnData={columns}
+                data={arabContribution}
+                pagination={false}
+              />
+            ) : (
+              <CommonTable
+                columnData={arColumns}
+                data={arabContribution}
+                pagination={false}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

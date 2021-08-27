@@ -1,5 +1,8 @@
 @import '../../../../../styles/variable'
 
+.container
+    @extend %container_padding
+
 .container_bg
     background-image: url("/images/about/Members/leftBg.webp"),url("/images/about/Members/rightBg.webp"),linear-gradient(#fff 5%, #f4f4f4 70%, #fdfaeb 70%)
     background-position: 0 64%, right center
@@ -9,11 +12,13 @@
     cursor: pointer
 
 .member_intro_button_title
+    font-family: roboto
     color: $grey_color
-    @extend %font_size_18
+    @extend %font_size_22
     font-weight: $five_hundred
 
 .selected
     background-color: rgba(36, 180, 181, 0.2)
     color: $theme_sky_blue_color
     border-radius: 6px
+    box-shadow: 0px 15px 20px rgba(36, 180, 181, 0.1)

@@ -50,7 +50,7 @@ export default function BannerCard({ data }) {
         </div>
       </div>
       <h3
-        className={`${style.banner_card_title} text-center d-flex justify-content-center`}
+        className={`${style.banner_card_title} text-center d-flex justify-content-center m-1`}
       >
         {countUpArray.map(value => {
           if (Number.isNaN(parseFloat(value))) {

@@ -38,22 +38,10 @@ export default function Governance() {
     },
   ];
   return (
-    <>
-      <div className={`${style.continer_bg}`}>
-        <InnerLayout>
-          <PageCommonSection title={t("Governance Structure")} />
-          <IntroStructure />
-          <Row
-            gutter={[24, 24]}
-            className={`justify-content-center pt-5 w-100`}
-          >
-            {data.map((data, index) => (
-              <CardSection data={data} key={index} />
-            ))}
-          </Row>
-        </InnerLayout>
-        <FunctionSection />
-      </div>
-    </>
+    <div className={`${style.continer_bg}`}>
+      <IntroStructure />
+      <CardSection data={data} />
+      <FunctionSection />
+    </div>
   );
 }

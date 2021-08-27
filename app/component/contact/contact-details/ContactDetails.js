@@ -8,10 +8,10 @@ export default function ContactDetails({}) {
   let router = useRouter();
   const { t } = useTranslation("common");
   return (
-    <>
-      <div className={`${style.details_container}`}>
-        <Row className={`py-5`}>
-          <Col xs={24} sm={24} md={24} lg={24} xl={24} className={`mb-4`}>
+    <div className={`${style.details_bg}`}>
+      <div className={`${style.container} px-5`}>
+        <Row className={`py-4`}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24} className={`mb-2`}>
             <h2
               className={`${style.details_title_primary} ${
                 router.locale === "en" ? "" : "text-end"
@@ -27,7 +27,7 @@ export default function ContactDetails({}) {
               {t("Our office hours are Sunday – Thursday, 9am-6pm")}
             </h4>
           </Col>
-          <Col xs={24} sm={24} md={24} lg={24} xl={24} className={`mb-4`}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24} className={`mb-2`}>
             <h2
               className={`${style.details_title_primary} ${
                 router.locale === "en" ? "" : "text-end"
@@ -61,6 +61,6 @@ export default function ContactDetails({}) {
           </Col>
         </Row>
       </div>
-    </>
+    </div>
   );
 }

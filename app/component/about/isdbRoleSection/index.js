@@ -25,18 +25,20 @@ export default function IsdbRoleSection() {
   ];
   return (
     <div className={`${style.role_bg} py-5`}>
-      <div className={`${style.role_container}`}>
-        <div className={`${style.role_details_conatiner} shadow my-5`}>
+      <div className={`${style.role_container} px-5`}>
+        <div className={`${style.role_details_conatiner} shadow`}>
           <div className={`p-5`}>
-            <h3
-              className={`fw-bold mb-4 ${
+            <p
+              className={`${style.role_title} mb-4 ${
                 router.locale === "en" ? `` : `text-end`
               } `}
             >
               {t("Role of IsDB")}
-            </h3>
+            </p>
             <p
-              className={`mb-5 h6 ${router.locale === "en" ? `` : `text-end`}`}
+              className={`${style.role_description} mb-4 ${
+                router.locale === "en" ? `` : `text-end`
+              }`}
             >
               The Council of Arab Finance Ministers has entrusted the Islamic
               Development Bank with the task of managing the two funds in a way
@@ -47,7 +49,11 @@ export default function IsdbRoleSection() {
               Jerusalem and enabling the Palestinian economy to develop its own
               capabilities.
             </p>
-            <p className={`h6 ${router.locale === "en" ? `` : `text-end`}`}>
+            <p
+              className={`${style.role_description} ${
+                router.locale === "en" ? `` : `text-end`
+              }`}
+            >
               From this point of view, the bank’s mission is to:
             </p>
             {listData.map(data => (
@@ -57,11 +63,17 @@ export default function IsdbRoleSection() {
                     <span className={`${style.role_bullet_point} mx-2`}>
                       &#8226;
                     </span>
-                    <p className={`mt-2 mb-0 pt-1 h6`}>{data.des}</p>
+                    <p className={`${style.role_description} mt-2 m-0`}>
+                      {data.des}
+                    </p>
                   </div>
                 ) : (
                   <div className={`d-flex justify-content-end`}>
-                    <p className={`mt-2 mb-0 h6 pt-1 text-end`}>{data.des}</p>
+                    <p
+                      className={`${style.role_description} mt-2 mb-0 text-end`}
+                    >
+                      {data.des}
+                    </p>
                     <span className={`${style.role_bullet_point} mx-2`}>
                       &#8226;
                     </span>

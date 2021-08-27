@@ -97,12 +97,20 @@ export default function ProcedureSection() {
     },
   ];
   return (
-    <div className={`${style.procedure_bg} py-5`}>
-      <div className={`${style.procedure_container}`}>
-        <h3 className={`${router.locale === "en" ? `` : `text-end`}`}>
+    <div className={`${style.procedure_bg} py-4`}>
+      <div className={`${style.procedure_container} px-5`}>
+        <p
+          className={`${style.procedure_title} ${
+            router.locale === "en" ? `` : `text-end`
+          }`}
+        >
           {t("Procedures")}
-        </h3>
-        <p className={`pb-4 h6 ${router.locale === "en" ? `` : `text-end`}`}>
+        </p>
+        <p
+          className={`${style.procedure_description} pb-2 ${
+            router.locale === "en" ? `` : `text-end`
+          }`}
+        >
           Based on the Bank’s practical experience in managing the projects it
           has financed in the Palestinian territories since its inception, as
           well as its experience in managing the generous grant approved by the
@@ -112,7 +120,7 @@ export default function ProcedureSection() {
           the benefit of communities It is proposed to follow the following
           procedures for each of the two funds
         </p>
-        <div className={`my-4`}>
+        <div className={`mb-4`}>
           {collapseDetails.map(data => (
             <AppCollapsible key={Math.random()} data={data} color={`#d32050`} />
           ))}

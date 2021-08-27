@@ -24,13 +24,13 @@ export default function ContactMap() {
   return (
     <>
       <div className={`${style.bg}`}>
-        <Row className={`pt-5`}>
-          <Col xs={24} sm={24} md={24} lg={24} xl={24} className={`mt-5`}>
-            <div className={`${style.container}`}>
+        <Row>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <div className={`${style.container} px-5`}>
               <h3
                 className={`${style.map_title} ${
                   router.locale === "en" ? "" : "text-end"
-                } mb-5`}
+                } my-3`}
               >
                 {t("Head Quarters")}
               </h3>

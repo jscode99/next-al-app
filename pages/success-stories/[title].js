@@ -13,13 +13,19 @@ import {
 //Container
 import StoriesDetailsContainer from "../../app/container/success-stories/storiesDetails";
 
-export default function storiesDetails({ storiesDetailsProp, projectTitle }) {
-  // console.log("storiesArDetailsProp", storiesProps);
+export default function storiesDetails({
+  storiesProps,
+  path,
+  projectTitle,
+  bannerImage,
+}) {
+  console.log("storiesArDetailsProp", storiesProps);
   return (
     <>
       <StoriesDetailsContainer
-        storiesProps={storiesDetailsProp}
+        storiesProps={storiesProps}
         projectTitle={projectTitle}
+        bannerImage={bannerImage}
       />
     </>
   );
@@ -30,18 +36,17 @@ export async function getStaticPaths({ locales }) {
   let storiesUrl = process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES;
   // let storiesArUrl =
   //   process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
-  //successStoriesAR
-  const [stories] = await Promise.all([
+  const [stories, successStoriesAR] = await Promise.all([
     await fetchService(storiesUrl, CONST.API_METHOD.GET),
     // await fetchService(storiesArUrl, CONST.API_METHOD.GET),
   ]);
   //path
-  const storiesPaths = stories.map(storiesData => {
+  const storiesPaths = stories.map((storiesData) => {
     return {
       params: {
         title: mapTitleToRoutePath(storiesData),
       },
-      // locale: locales[0],
+      locale: locales[0],
     };
   });
 
@@ -54,12 +59,11 @@ export async function getStaticPaths({ locales }) {
   //   };
   // });
   //, ...successStoriesARPaths
-  // const paths = [...storiesPaths];
-  const paths = storiesPaths;
+  const paths = [...storiesPaths];
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -70,26 +74,27 @@ export async function getStaticProps(context) {
   //   process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
   // , successStoriesAR
+  let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
-  const [stories, projectTitle] = await Promise.all([
+  const [stories, projectTitle, bannerImage] = await Promise.all([
     await fetchService(storiesUrl, CONST.API_METHOD.GET),
     // await fetchService(storiesArUrl, CONST.API_METHOD.GET),
     await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
   ]);
   const path = context.params.title;
   const storiesDetailsProp = stories.find(
-    storiesData =>
-      storiesData.Title.toLowerCase() === mapRoutePathToTitle(path),
+    (storiesData) =>
+      storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
   );
   // const storiesArDetailsProp = successStoriesAR.find(
   //   storiesData => storiesData.Title === mapRoutePathToTitleAR(path),
   // );
 
-  // const storiesProps = storiesDetailsProp;
-  //|| storiesArDetailsProp;
+  const storiesProps = storiesDetailsProp || storiesArDetailsProp;
 
   // Not path
-  if (!storiesDetailsProp) {
+  if (!storiesProps) {
     return {
       redirect: {
         destination: "/success-stories",
@@ -102,10 +107,12 @@ export async function getStaticProps(context) {
       ...(await serverSideTranslations(
         context.locale,
         ["common"],
-        nextI18NextConfig,
+        nextI18NextConfig
       )),
-      storiesDetailsProp,
+      storiesProps,
+      path,
       projectTitle,
+      bannerImage,
     },
     revalidate: 10,
   };

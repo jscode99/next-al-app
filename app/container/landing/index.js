@@ -12,10 +12,11 @@ export default function Landing({
   projectTitle,
   projectData,
   overallContributions,
+  bannerImage,
 }) {
   return (
     <Layout
-      heroImage={"/IsDB-Banner-Image.webp"}
+      heroImage={bannerImage}
       page={"landing"}
       pageName={"home"}
       projectTitle={projectTitle}

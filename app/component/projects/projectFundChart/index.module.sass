@@ -1,7 +1,20 @@
 @import '../../../../styles/variable'
 
+.bg2
+    background-image: url("/images/contribution/arab.webp")
+    background-position: top left
+    background-repeat: round
+
+.container
+    @extend %container_padding
+
 .chart_container
     border-radius: 16px
+
+.chart_container_title
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
 
 .fund_chart_indicator
     width: 25px
@@ -18,4 +31,8 @@
     height: 150px
 
 .xAxis_container
-    width:118px
+    width: 118px
+
+.xAxis_title
+    text-transform: capitalize
+    font-family: roboto

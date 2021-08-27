@@ -10,8 +10,8 @@ export default function ProjectIntroCard({ cardData }) {
   const { t } = useTranslation("common");
 
   return (
-    <>
-      <h3 className={`text-center pt-5`}>
+    <div className={`${style.container} mb-4`}>
+      <h3 className={`${style.projectIntroCard_title} text-center m-0`}>
         {t("Al Aqsa & Arab Funds Total Approved Projects")}
       </h3>
 
@@ -24,6 +24,6 @@ export default function ProjectIntroCard({ cardData }) {
           ))}
         </Row>
       </div>
-    </>
+    </div>
   );
 }

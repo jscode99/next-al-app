@@ -4,9 +4,6 @@ import { useTranslation } from "next-i18next";
 
 //Components
 import MembersList from "./membersList";
-//Common Components
-import InnerLayout from "../../../../common-component/inner-layout/InnerLayout";
-import PageCommonSection from "../../../../common-component/page-common-section/PageCommonSection";
 //Style
 import style from "./index.module.sass";
 
@@ -168,11 +165,10 @@ export default function Members() {
     },
   ];
   return (
-    <div className={`${style.container_bg}`}>
-      <InnerLayout>
-        <PageCommonSection title={t("Members")} />
+    <div className={`${style.container_bg} pb-4`}>
+      <div className={`${style.container} px-5`}>
         {router.locale === "en" ? (
-          <div className={`d-flex justify-content-center my-5`}>
+          <div className={`d-flex justify-content-center my-3`}>
             <div
               className={`${style.member_intro_button} me-2`}
               onClick={() => {
@@ -241,7 +237,7 @@ export default function Members() {
           : managementMembersList.map((data, index) => (
               <MembersList key={index} data={data} />
             ))}
-      </InnerLayout>
+      </div>
     </div>
   );
 }

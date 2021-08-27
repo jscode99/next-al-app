@@ -18,7 +18,9 @@ export default function AppCollapsible({ data, color }) {
           >
             <Image src={data.url} alt={`Icon`} height="12px" width="12px" />
           </div>
-          <h6 className={`fw-bold m-2 ms-2`}>{data.title}</h6>
+          <h6 className={`${style.collapsible_title} fw-bold m-2 ms-2`}>
+            {data.title}
+          </h6>
         </div>
       ) : (
         <div className={`d-flex justify-content-end aligin-items-center`}>
@@ -34,7 +36,7 @@ export default function AppCollapsible({ data, color }) {
     } else {
       return (
         <h6
-          className={`fw-bold ${
+          className={`${style.collapsible_title} fw-bold ${
             router.locale === "en" ? `text-start` : `text-end`
           }`}
         >
@@ -72,11 +74,17 @@ export default function AppCollapsible({ data, color }) {
                         &#8226;
                       </span>
 
-                      <p className={`mt-2 pt-1 h6`}>{data.des}</p>
+                      <p className={`${style.collapsible_title} mt-2 pt-1 h6`}>
+                        {data.des}
+                      </p>
                     </>
                   ) : (
                     <>
-                      <p className={`mt-2 pt-1 h6 text-end`}>{data.des}</p>
+                      <p
+                        className={`${style.collapsible_title} mt-2 pt-1 h6 text-end`}
+                      >
+                        {data.des}
+                      </p>
 
                       <span
                         className={`${style.role_bullet_point} mx-2`}

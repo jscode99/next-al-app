@@ -10,7 +10,7 @@ import style from "./index.module.sass";
 
 export default function Selection() {
   const router = useRouter();
-
+  const { t } = useTranslation("common");
   let stepperData = [
     {
       title: "Signing of Financing Agreements",
@@ -30,7 +30,7 @@ export default function Selection() {
   ];
   return (
     <div className={`${style.selection_bg}`}>
-      <div className={`${style.selection_container}`}>
+      <div className={`${style.selection_container} px-5`}>
         <Row className={`h-100 pt-5 pb-5`}>
           {router.locale === "en" ? (
             <>
@@ -38,7 +38,7 @@ export default function Selection() {
                 <h4
                   className={`mb-5 ${style.selection_imp} d-flex justify-content-end me-5 pe-3`}
                 >
-                  Implementation
+                  {t("Implementation")}
                 </h4>
                 <div className={`d-flex h-100`}>
                   <AppStep
@@ -73,7 +73,7 @@ export default function Selection() {
               </Col>
               <Col className={`w-50`}>
                 <h4
-                  className={`mb-5 ${style.approval_imp} d-flex justify-content-start ms-5 ps-3`}
+                  className={`mb-5 ${style.selection_imp} d-flex justify-content-start ms-5 ps-3`}
                 >
                   Implementation
                 </h4>

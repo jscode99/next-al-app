@@ -187,62 +187,67 @@ export default function ProjectFundChart({ finalChartData }) {
   }, []);
 
   return (
-    <>
-      <h3 className={`text-center mb-4 pt-5 m-0 text-capitalize`}>
-        {t("al aqsa arab funds – approved vs disbursements")}
-      </h3>
-      <div
-        className={`${style.chart_container} shadow bg-white overflow-hidden`}
-      >
-        <LegendSection legendData={legendData} />
-        {/* <div id="fund_chart"></div> */}
-        <div className={`${style.bar_chart} overflow-hidden px-4`}>
-          <ApexCharts
-            options={option}
-            series={chartSeriesData}
-            type="bar"
-            width={"100%"}
-            height={"435px"}
-          />
-        </div>
-        <div className="d-flex justify-content-end align-items-center px-5">
-          {xAxisWidth ? (
-            <div
-              className={`${style.chart_xAxis} d-flex justify-content-around align-items-center`}
-              style={{ width: xAxisWidth }}
-            >
-              {chartData.map((data, index) => (
-                <div
-                  key={index}
-                  className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100 pt-2`}
-                >
-                  <div className={``}>
-                    <div
-                      className={`d-flex justify-content-center rounded-circle overflow-hidden`}
-                      // style={{ width: "50px", height: "50px" }}
-                    >
-                      <Image
-                        src={base_url + data.url}
-                        alt={`Logo`}
-                        height="45px"
-                        width="45px"
-                      />
+    <div className={`${style.bg2} pb-5`}>
+      <div className={`${style.container} px-5`}>
+        <h3
+          className={`${style.chart_container_title} text-center mb-4 pt-4 m-0 text-capitalize`}
+        >
+          {t("al aqsa arab funds – approved vs disbursements")}
+        </h3>
+        <div
+          className={`${style.chart_container} shadow bg-white overflow-hidden`}
+        >
+          <LegendSection legendData={legendData} />
+          {/* <div id="fund_chart"></div> */}
+          <div className={`${style.bar_chart} overflow-hidden px-4`}>
+            <ApexCharts
+              options={option}
+              series={chartSeriesData}
+              type="bar"
+              width={"100%"}
+              height={"435px"}
+            />
+          </div>
+          <div className="d-flex justify-content-end align-items-center px-5">
+            {xAxisWidth ? (
+              <div
+                className={`${style.chart_xAxis} d-flex justify-content-around align-items-center`}
+                style={{ width: xAxisWidth }}
+              >
+                {chartData.map((data, index) => (
+                  <div
+                    key={index}
+                    className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100 pt-2 px-2`}
+                  >
+                    <div className={``}>
+                      <div
+                        className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                      >
+                        <Image
+                          src={base_url + data.url}
+                          alt={`Logo`}
+                          height="45px"
+                          width="45px"
+                        />
+                      </div>
+                    </div>
+                    <div className={`${style.xAxis_title} text-center fw-bold`}>
+                      {data.title}
                     </div>
                   </div>
-                  <div className={`text-center fw-bold`}>{data.title}</div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div
-              style={{ height: "150px", width: "100%" }}
-              className={`d-flex justify-content-center align-items-center`}
-            >
-              Loading...
-            </div>
-          )}
+                ))}
+              </div>
+            ) : (
+              <div
+                style={{ height: "150px", width: "100%" }}
+                className={`d-flex justify-content-center align-items-center`}
+              >
+                Loading...
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

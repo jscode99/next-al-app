@@ -1,14 +1,25 @@
 @import '../../../../styles/variable'
 
+.stories_card_container
+    @extend %container_padding
+
+.bg
+    background-image: url("/images/projects/bg/bg_1.webp"),url("/images/projects/bg/bg_2.webp")
+    background-position: right center,left bottom
+    background-repeat: no-repeat,no-repeat
+
 .stories_amount_heading
     font-weight: $five_hundred
+    font-family: roboto
     color: $grey_color
 
 .stories_amount_heading,
 .stories_amount
+    font-family: roboto
     @extend %font_size_18
 
 .stories_details_des
+    font-family: roboto
     @extend %font_size_18
     text-align: justify
 

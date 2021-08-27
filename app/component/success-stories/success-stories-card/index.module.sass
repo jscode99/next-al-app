@@ -1,9 +1,12 @@
 @import  '../../../../styles/variable'
 
 .stories_img_card
-    height: 450px
+    height: 400px
     overflow: hidden
     border-radius: 12px
+
+.stories_card_container
+    @extend %container_padding
 
 .stories_img_des_container
     z-index: 100
@@ -11,6 +14,7 @@
 
 .stories_img_des1
     @extend %font_size_18
+    font-family: roboto
     font-weight: $five_hundred
 
 .stories_under_line
@@ -22,4 +26,5 @@
 
 .stories_img_des2
     @extend %font_size_14
+    font-family: roboto
     font-weight: $five_hundred

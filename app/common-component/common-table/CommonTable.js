@@ -7,7 +7,7 @@ import style from "./index.module.sass";
 
 export default function CommonTable({ columnData, data, pagination, scroll }) {
   console.log("columnData", columnData);
-  console.log("scroll", scroll);
+  console.log("data", data);
 
   let router = useRouter();
 

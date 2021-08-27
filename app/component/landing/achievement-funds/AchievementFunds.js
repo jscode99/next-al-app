@@ -54,19 +54,23 @@ export default function AchievementFunds({}) {
     },
   ];
   return (
-    <div className={`${style.achievement_container}`}>
-      <div className="py-5">
-        <h3 className={`${style.fund_resource_title} text-center mb-3`}>
-          {t("Achievements of Al-Aqsa Fund")}
-        </h3>
-        <p className={`${style.achievement_subtitle} text-center mb-5`}>
-          {t("Palestine Trust Funds")}
-        </p>
-        <Row gutter={[32, 32]}>
-          {router.locale === "en"
-            ? cardData.map(data => <AchievementCards data={data} />)
-            : cardData.reverse().map(data => <AchievementCards data={data} />)}
-        </Row>
+    <div className={`${style.achievement_bg}`}>
+      <div className={`${style.achievement_container}`}>
+        <div className="py-4">
+          <h3 className={`${style.achievement_title} text-center mb-3`}>
+            {t("Achievements of Al-Aqsa Funds")}
+          </h3>
+          <p className={`${style.achievement_subtitle} text-center mb-4`}>
+            {t("Palestine Trust Funds")}
+          </p>
+          <Row gutter={[32, 32]}>
+            {router.locale === "en"
+              ? cardData.map(data => <AchievementCards data={data} />)
+              : cardData
+                  .reverse()
+                  .map(data => <AchievementCards data={data} />)}
+          </Row>
+        </div>
       </div>
     </div>
   );

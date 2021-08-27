@@ -14,10 +14,10 @@ export default function IsdbManageCard({ data }) {
           width="95px"
         />
       </div>
-      <p className={`text-center ${style.isdb_manage_card_text}`}>
+      <p className={`text-center ${style.isdb_manage_card_text} mb-2`}>
         {data.text}
       </p>
-      <p className={`text-center ${style.isdb_manage_card_amount}`}>
+      <p className={`text-center ${style.isdb_manage_card_amount} mb-2`}>
         {data.amount}
       </p>
     </div>

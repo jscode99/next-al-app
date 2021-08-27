@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
-import { Row, Col } from "antd";
-//Common components
-import InnerLayout from "../../common-component/inner-layout/InnerLayout";
-import PageCommonSection from "../../common-component/page-common-section/PageCommonSection";
 
 //Components
 import ProjectIntroCard from "./projectIntroCard";
@@ -145,22 +141,11 @@ export default function Projects({ projectTitle, projectData }) {
 
   return (
     <>
-      <InnerLayout>
-        <PageCommonSection title={t("Projects")} />
-        <div className={`${style.project_layout_container}`}>
-          <ProjectIntroCard cardData={cardData} />
-        </div>
-      </InnerLayout>
-      <div className={`${style.bg1}`}>
-        <div className={`${style.project_container}`}>
-          <ProjectRouteCard finalChartData={finalChartData} />
-        </div>
-      </div>
-      <div className={`${style.bg2} pb-5`}>
-        <div className={`${style.project_container}`}>
-          <ProjectFundChart finalChartData={finalChartData} />
-        </div>
-      </div>
+      <ProjectIntroCard cardData={cardData} />
+
+      <ProjectRouteCard finalChartData={finalChartData} />
+
+      <ProjectFundChart finalChartData={finalChartData} />
     </>
   );
 }

@@ -1,17 +1,27 @@
 @import '../../../../styles/variable'
 
-.fund_resource_container
-    @extend %container_padding
+.fund_resource_bg
     background-color: #e4e7ee
     background-image: url("/images/background/landing/resources.webp")
     background-position: right bottom
     background-repeat: no-repeat
+
+.fund_resource_container
+    @extend %container_padding
+
+.fund_resource_title
+    font-family: "oswald",roboto
+    @extend %font_size_32
+    font-weight: $nine_hundred
+    letter-spacing: 1px
 
 .fund_indecator
     height: 135px
     width: 135px
     font-weight: $nine_hundred
     @extend %font_size_25
+    font-family: "oswald",roboto
+    letter-spacing: 1.5px
 
 .primary_bg
     background-color: $primary_color
@@ -27,4 +37,6 @@
 
 .fund_title
     font-weight: $nine_hundred
-    @extend %font_size_18
+    font-family: "oswald",roboto
+    @extend %font_size_22
+    letter-spacing: 1px

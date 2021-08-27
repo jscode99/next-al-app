@@ -1,32 +1,44 @@
 @import '../../../../styles/variable'
 
+.achievement_bg
+    background-image: url("/images/background/landing/achivements.webp")
+    background-position: 4px 2px
+    background-repeat: round
+
 .achievement_container
     @extend %container_padding
-    background-image: url("/images/background/landing/achivements.webp")
-    background-position: 0 0
-    background-repeat: no-repeat
+
+.achievement_title
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
+    letter-spacing: 1px
 
 .achievement_subtitle
-    @extend %font_size_18
+    @extend %font_size_22
     color: $grey_color
+    font-family: "oswald",roboto
+    letter-spacing: .5px
 
 .achievement_card_container
-    height: 300px
+    height: 260px
     border-radius: 15px
     background-color: $white_color
 
 .achievement_card_polygon
-    width: 100px
-    height: 100px
+    width: 80px
+    height: 80px
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)
 
 .achievement_card_count
     font-size: 50px
     font-weight: $nine_hundred
+    font-family: "oswald"
 
 .achievement_card_title
     font-weight: $five_hundred
-    @extend %font_size_18
+    font-size: 20px
+    font-family: roboto
 
 .bg_primary_color
     background-color: $primary_color

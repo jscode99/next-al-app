@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 //Antd
 import { Row, Col } from "antd";
 //Common-components
@@ -7,42 +9,136 @@ import CommonTable from "../../../../common-component/common-table/CommonTable";
 import style from "./index.module.sass";
 
 export default function ProjectDetailsTable({ projectData }) {
+  const router = useRouter();
+  const { t } = useTranslation("common");
   const [tableData, setTableData] = useState(null);
-  let columnData = [
-    {
-      title: `Projects`,
-      dataIndex: "Projects",
-      render: name => <p className={`${style.table_name} m-1`}>{name}</p>,
-      width: "60%",
-    },
+  let columnDataEn = [
     {
       title: `Code`,
       dataIndex: "Code",
+      render: code => (
+        <p className={`${style.table_name} text-center m-1`}>{code}</p>
+      ),
     },
+    {
+      title: `Projects`,
+      dataIndex: "Projects",
+      render: projects => (
+        <p className={`${style.table_name}  text-start m-1`}>{projects}</p>
+      ),
+      width: "60%",
+    },
+
     {
       title: `Sector`,
       dataIndex: "Sector",
-      width: "25%",
+      render: sector => (
+        <p className={`${style.table_name} text-start m-1`}>{sector}</p>
+      ),
+      width: "20%",
     },
     {
       title: `Al-Quds`,
       dataIndex: "Alquds",
+      render: quds => (
+        <p className={`${style.table_name} text-end m-1`}>{quds}</p>
+      ),
+      width: "13%",
     },
     {
       title: `West Bank`,
       dataIndex: "westBank",
+      render: west => (
+        <p className={`${style.table_name} text-end m-1`}>{west}</p>
+      ),
+      width: "13%",
     },
     {
       title: `Gaza`,
       dataIndex: "gazaStrip",
+      render: gaza => (
+        <p className={`${style.table_name} text-end m-1`}>{gaza}</p>
+      ),
+      width: "13%",
     },
     {
       title: `Approved Amount`,
       dataIndex: "approvedAmount",
+      render: approved => (
+        <p className={`${style.table_name} text-end m-1`}>{approved}</p>
+      ),
     },
     {
       title: `Disbursement Amount`,
       dataIndex: "disbursementAmount",
+      render: disbursed => (
+        <p className={`${style.table_name} text-end m-1`}>{disbursed}</p>
+      ),
+    },
+  ];
+
+  let columnDataAr = [
+    {
+      title: `Disbursement Amount`,
+      dataIndex: "disbursementAmount",
+      render: disbursed => (
+        <p className={`${style.table_name} text-end m-1`}>{disbursed}</p>
+      ),
+    },
+    {
+      title: `Approved Amount`,
+      dataIndex: "approvedAmount",
+      render: approved => (
+        <p className={`${style.table_name} text-end m-1`}>{approved}</p>
+      ),
+    },
+    {
+      title: `Gaza`,
+      dataIndex: "gazaStrip",
+      render: gaza => (
+        <p className={`${style.table_name} text-end m-1`}>{gaza}</p>
+      ),
+      width: "13%",
+    },
+    {
+      title: `West Bank`,
+      dataIndex: "westBank",
+      render: west => (
+        <p className={`${style.table_name} text-end m-1`}>{west}</p>
+      ),
+      width: "13%",
+    },
+    {
+      title: `Al-Quds`,
+      dataIndex: "Alquds",
+      render: quds => (
+        <p className={`${style.table_name} text-end m-1`}>{quds}</p>
+      ),
+      width: "13%",
+    },
+    {
+      title: `Sector`,
+      dataIndex: "Sector",
+      render: sector => (
+        <p className={`${style.table_name} text-end m-1`}>{sector}</p>
+      ),
+      width: "20%",
+    },
+    {
+      title: `Projects`,
+      dataIndex: "Projects",
+      render: projects => (
+        <p className={`${style.table_name} text-end m-1`}>{projects}</p>
+      ),
+      width: "60%",
+    },
+
+    {
+      title: `Code`,
+      dataIndex: "Code",
+      render: code => (
+        <p className={`${style.table_name} text-center m-1`}>{code}</p>
+      ),
     },
   ];
 
@@ -75,21 +171,27 @@ export default function ProjectDetailsTable({ projectData }) {
   }, [projectData]);
 
   return (
-    <Row className={`py-5`}>
-      <Col className={`align-items-center mb-5 w-100`}>
-        <h3 className={`text-center`}>Projects</h3>
-      </Col>
+    <div className={`${style.bg}`}>
+      <div className={`${style.container} px-5`}>
+        <Row className={`py-4`}>
+          <Col className={`align-items-center mb-4 w-100`}>
+            <h3 className={`${style.project_details_table_title} text-center`}>
+              {t("Projects")}
+            </h3>
+          </Col>
 
-      <div
-        className={`${style.project_details_table_container} overflow-hidden shadow w-100`}
-      >
-        <CommonTable
-          columnData={columnData}
-          data={tableData}
-          pagination={true}
-          scroll={{ x: 1500 }}
-        />
+          <div
+            className={`${style.project_details_table_container} overflow-hidden shadow w-100`}
+          >
+            <CommonTable
+              columnData={router.locale === "en" ? columnDataEn : columnDataAr}
+              data={tableData}
+              pagination={true}
+              scroll={{ x: 1500 }}
+            />
+          </div>
+        </Row>
       </div>
-    </Row>
+    </div>
   );
 }

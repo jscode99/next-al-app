@@ -2,9 +2,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { Empty } from "antd";
-//Common Components
-import InnerLayout from "../../common-component/inner-layout/InnerLayout";
-import PageCommonSection from "../../common-component/page-common-section/PageCommonSection";
 import PaginationSection from "../../common-component/pagination/Pagination";
 //Page components
 import PublicationList from "./publication-list/PublicationList";
@@ -18,28 +15,25 @@ export default function Publications({ pubListData }) {
   return (
     <>
       <div className={`${style.bg}`}>
-        <InnerLayout>
-          <PageCommonSection title={t("Publications")} />
-          <div className={`${style.publication_list_container}`}>
-            {pubListData && pubListData.length > 0 ? (
-              <>
-                <PublicationList
-                  listData={pubListData}
-                  listSize={listSize}
-                  pageNumber={pageNumber}
-                />
-              </>
-            ) : (
-              <Empty className={`mb-4`} />
-            )}
-          </div>
+        <div className={`${style.publication_list_container} px-5`}>
+          {pubListData && pubListData.length > 0 ? (
+            <>
+              <PublicationList
+                listData={pubListData}
+                listSize={listSize}
+                pageNumber={pageNumber}
+              />
+            </>
+          ) : (
+            <Empty className={`mb-4`} />
+          )}
           <PaginationSection
             listData={pubListData}
             listSize={listSize}
             pageNumber={pageNumber}
             setPageNumber={setPageNumber}
           />
-        </InnerLayout>
+        </div>
       </div>
     </>
   );

@@ -2,8 +2,8 @@
 
 .resource_bg
     background-image: url("/images/background/landing/chart.webp")
-    background-position: 0 70
-    background-repeat: no-repeat
+    background-position: -80px -1px
+    background-repeat: repeat-y
 
 .resource_container
     @extend %container_padding
@@ -14,17 +14,25 @@
     font-weight: $nine_hundred
 
 .resource_subtitle
-    @extend %font_size_25
+    font-family: "oswald",roboto
+    @extend %font_size_32
     color: $grey_color
     font-weight: $nine_hundred
+    letter-spacing: 1px
 
 .resource_chart_indicator
-    font-size: 21px
+    font-family: "oswald",roboto
+    @extend %font_size_22
     color: $grey_color
     font-weight: $five_hundred
+    letter-spacing: .5px
 
 .resource_chart_indicator span
     color: $secondary_color
+
+.resource_chart_labels
+    font-family: roboto
+    letter-spacing: .3px
 
 .chart_container
     border-radius: 16px

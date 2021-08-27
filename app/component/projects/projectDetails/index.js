@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
-//Common components
-import InnerLayout from "../../../common-component/inner-layout/InnerLayout";
-import PageCommonSection from "../../../common-component/page-common-section/PageCommonSection";
 //Components
 import ProjectDetailsIntroCard from "./projectDetailsIntroCard";
 import ProjectDetailsApproval from "./projectDetailsApproval";
@@ -14,6 +11,8 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
   console.log("sector", sector);
   console.log("projectData", projectData);
   const [finalChartData, setFinalChartData] = useState([]);
+  const [sectorData, setSectorData] = useState([]);
+
   const { t } = useTranslation("common");
 
   const cardData = [
@@ -62,11 +61,6 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       ] = 0;
 
       console.log("SectorCheck", chartData);
-
-      // chartData[projectData[0].projectTitle.toLowerCase()] = {
-      //   ...chartData[projectData[0].projectTitle.toLowerCase()],
-
-      // }
 
       for (let innerIndex = 0; innerIndex < projectData.length; innerIndex++) {
         // debugger;
@@ -140,7 +134,8 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
           chartData[projectData[0].projectTitle.toLowerCase()].totalGaza,
       };
     }
-    console.log("chartData==================>", chartData);
+    setSectorData(chartData);
+    console.log("chartData1==================>", chartData);
 
     let chartDataPriority = [];
     for (let index in chartData) {
@@ -170,16 +165,11 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
 
   return (
     <>
-      <div className={`${style.project_details_bg}`}>
-        <InnerLayout>
-          <PageCommonSection title={projectData[0].projectTitle} />
-          <ProjectDetailsIntroCard cardData={cardData} />
-          <ProjectDetailsApproval projectData={projectData} />
-        </InnerLayout>
-      </div>
-      <div className={`${style.project_details_container} `}>
-        <ProjectDetailsTable projectData={projectData} />
-      </div>
+      <ProjectDetailsIntroCard cardData={cardData} />
+
+      <ProjectDetailsApproval projectData={sectorData} />
+
+      <ProjectDetailsTable projectData={projectData} />
     </>
   );
 }

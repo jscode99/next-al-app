@@ -9,7 +9,7 @@ import style from "./index.module.sass";
 
 export default function Approval() {
   const router = useRouter();
-
+  const { t } = useTranslation("common");
   let stepperData = [
     {
       title: "Project Identification",
@@ -28,63 +28,69 @@ export default function Approval() {
     },
   ];
   return (
-    <Row className={`h-100`}>
-      <div className={`d-flex w-100 justify-content-center my-5`}>
-        <h3>Projects Approval Process</h3>
+    <div className={`${style.approval_bg}`}>
+      <div className={`${style.container} px-5`}>
+        <Row className={`h-100 px-3`}>
+          <div className={`d-flex w-100 justify-content-center my-5`}>
+            <h3 className={`${style.approval_title}`}>
+              {t("Project Approval and Implementation Process")}
+            </h3>
+          </div>
+          {router.locale === "en" ? (
+            <>
+              <Col className={`w-50`}>
+                <div className={`d-flex h-100 justify-content-end`}>
+                  <Image
+                    src={"/images/about/approval/approval_ini.webp"}
+                    alt={`Process`}
+                    height="500px"
+                    width="560px"
+                  />
+                </div>
+              </Col>
+              <Col className={`w-50`}>
+                <h4 className={`${style.approval_initiation} mb-5 ms-5 ps-3`}>
+                  {t("Initiation")}
+                </h4>
+                <div className={`d-flex h-100`}>
+                  <AppStep
+                    textAlign={"right"}
+                    step={stepperData}
+                    defaultActiveStep={3}
+                  />
+                </div>
+              </Col>
+            </>
+          ) : (
+            <>
+              <Col className={`w-50`}>
+                <h4
+                  className={`${style.approval_initiation} d-flex justify-content-end me-5 pe-3 mb-5`}
+                >
+                  {t("Initiation")}
+                </h4>
+                <div className={`d-flex h-100`}>
+                  <AppStep
+                    textAlign={"left"}
+                    step={stepperData}
+                    defaultActiveStep={3}
+                  />
+                </div>
+              </Col>
+              <Col className={`w-50`}>
+                <div className={`d-flex h-100 justify-content-end`}>
+                  <Image
+                    src={"/images/about/approval/approval_ini.webp"}
+                    alt={`Process`}
+                    height="500px"
+                    width="560px"
+                  />
+                </div>
+              </Col>
+            </>
+          )}
+        </Row>
       </div>
-      {router.locale === "en" ? (
-        <>
-          <Col className={`w-50`}>
-            <div className={`d-flex h-100 justify-content-end`}>
-              <Image
-                src={"/images/about/approval/approval_ini.webp"}
-                alt={`Process`}
-                height="500px"
-                width="560px"
-              />
-            </div>
-          </Col>
-          <Col className={`w-50`}>
-            <h4 className={`${style.approval_initiation} mb-5 ms-5 ps-3`}>
-              Initiation
-            </h4>
-            <div className={`d-flex h-100`}>
-              <AppStep
-                textAlign={"right"}
-                step={stepperData}
-                defaultActiveStep={3}
-              />
-            </div>
-          </Col>
-        </>
-      ) : (
-        <>
-          <Col className={`w-50`}>
-            <h4
-              className={`${style.approval_initiation} d-flex justify-content-end me-5 pe-3 mb-5`}
-            >
-              Initiation
-            </h4>
-            <div className={`d-flex h-100`}>
-              <AppStep
-                textAlign={"left"}
-                step={stepperData}
-                defaultActiveStep={3}
-              />
-            </div>
-          </Col>
-          <Col className={`w-50`}>
-            <div className={`d-flex h-100 justify-content-end`}>
-              <Image
-                src={"/images/about/approval/approval_ini.webp"}
-                alt={`Process`}
-                height="500px"
-                width="560px"
-              />
-            </div>
-          </Col>
-        </>
-      )}
-    </Row>
+    </div>
   );
 }

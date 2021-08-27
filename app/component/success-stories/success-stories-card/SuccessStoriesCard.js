@@ -27,8 +27,8 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
   }, [listSize, pageNumber, listData]);
 
   return (
-    <>
-      <Row gutter={[16, 16]}>
+    <div className={`${styles.stories_card_container} px-5`}>
+      <Row gutter={[16, 16]} className={`px-3 pt-3`}>
         {paginatedListData &&
           paginatedListData.length > 0 &&
           paginatedListData.map(data => (
@@ -76,6 +76,6 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
             </>
           ))}
       </Row>
-    </>
+    </div>
   );
 }

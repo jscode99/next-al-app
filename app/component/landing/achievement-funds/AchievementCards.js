@@ -7,10 +7,10 @@ export default function AchievementCards({ data }) {
   const router = useRouter();
   return (
     <Col xs={0} sm={0} md={0} lg={8} xl={8}>
-      <div className={`${style.achievement_card_container} p-5 shadow`}>
+      <div className={`${style.achievement_card_container} px-4 py-5 shadow`}>
         {router.locale === "en" ? (
           <div
-            className={`d-flex justify-content-start align-items-center mb-5`}
+            className={`d-flex justify-content-center align-items-center mb-4`}
           >
             <div
               className={`${style.achievement_card_polygon} ${data.bgColor} d-flex justify-content-center align-items-center`}
@@ -18,8 +18,8 @@ export default function AchievementCards({ data }) {
               <Image
                 src={data.image}
                 alt={`Achievement-Logos`}
-                height="50"
-                width="50"
+                height="35"
+                width="35"
               />
             </div>
             <div

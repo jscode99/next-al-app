@@ -2,8 +2,11 @@ import { Row, Col } from "antd";
 //Component
 import SectoralApproval from "./SectoralApproval";
 import GeographicalApprovals from "./GeographicalApprovals";
+//style
+import style from "./index.module.sass";
 
 export default function ProjectDetailsApproval({ projectData }) {
+  console.log("projectData", projectData);
   const sectoralData = [
     {
       title: "Infrastructure & Housing",
@@ -56,15 +59,17 @@ export default function ProjectDetailsApproval({ projectData }) {
   ];
 
   return (
-    <>
-      <Row gutter={[34, 34]} className={`h-100 my-5 align-items-end`}>
-        <Col span={12}>
-          <SectoralApproval sectoralData={sectoralData} />
-        </Col>
-        <Col span={12}>
-          <GeographicalApprovals geoData={geoData} />
-        </Col>
-      </Row>
-    </>
+    <div className={`${style.project_details_bg}`}>
+      <div className={`${style.container} px-5`}>
+        <Row gutter={[34, 34]} className={`h-100 my-4 align-items-end`}>
+          <Col span={12}>
+            <SectoralApproval sectoralData={sectoralData} />
+          </Col>
+          <Col span={12}>
+            <GeographicalApprovals geoData={geoData} />
+          </Col>
+        </Row>
+      </div>
+    </div>
   );
 }

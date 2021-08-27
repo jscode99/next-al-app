@@ -12,12 +12,16 @@ export default function ContributionsCard({ cardData, grandTotal }) {
   const router = useRouter();
   const { t } = useTranslation("common");
   return (
-    <>
-      <div className={`d-flex justify-content-center `}>
+    <div className={`${style.container}`}>
+      <div
+        className={`d-flex justify-content-center ${
+          router.locale === "ar" && `flex-row-reverse`
+        }`}
+      >
         <span className={`${style.contribution_total_title}`}>
-          {t("Overall Contribution")} :
+          {t("Overall Contribution")}
         </span>
-
+        <span className={`${style.contribution_total_title} px-1`}>:</span>
         <span className={`${style.contribution_total_amount} ps-1`}>
           {"$" + `${new Intl.NumberFormat().format(grandTotal)}`}
         </span>
@@ -31,6 +35,6 @@ export default function ContributionsCard({ cardData, grandTotal }) {
           ))}
         </Row>
       </div>
-    </>
+    </div>
   );
 }

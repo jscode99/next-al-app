@@ -13,13 +13,14 @@ export default function SuccessStories({
   stories,
   successStoriesAR,
   projectTitle,
+  bannerImage,
 }) {
-  console.log("stories", stories);
   return (
     <SuccessStoriesContainer
       stories={stories}
       successStoriesAR={successStoriesAR}
       projectTitle={projectTitle}
+      bannerImage={bannerImage}
     />
   );
 }
@@ -29,18 +30,22 @@ export async function getStaticProps({ locale }) {
   let storiesArUrl =
     process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
+  let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
-  const [stories, successStoriesAR, projectTitle] = await Promise.all([
-    await fetchService(storiesUrl, CONST.API_METHOD.GET),
-    await fetchService(storiesArUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-  ]);
+  const [stories, successStoriesAR, projectTitle, bannerImage] =
+    await Promise.all([
+      await fetchService(storiesUrl, CONST.API_METHOD.GET),
+      await fetchService(storiesArUrl, CONST.API_METHOD.GET),
+      await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+      await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
+    ]);
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),
       stories,
       successStoriesAR,
       projectTitle,
+      bannerImage,
     },
     revalidate: 60,
   };

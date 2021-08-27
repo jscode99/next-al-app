@@ -131,8 +131,8 @@ export default function AppHeader({ pageName, projectTitle }) {
             locale={value.code === "en" ? "en" : "ar"}
           >
             <div className={`d-flex justify-content-around align-items-center`}>
-              <Image src={value.flag} height="20" width="20" alt="Flag Image" />
-              <span>{value.language}</span>
+              {/* <Image src={value.flag} height="20" width="20" alt="Flag Image" /> */}
+              <span className={`${style.language_text}`}>{value.language}</span>
             </div>
           </Link>
         </Menu.Item>
@@ -140,147 +140,149 @@ export default function AppHeader({ pageName, projectTitle }) {
     </Menu>
   );
   return (
-    <Header
-      className={`${style.app_header_container} position-absolute w-100 top-0`}
-    >
-      <Row>
-        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <div
-            className={`${style.app_header_language_section} d-flex ${
-              router.locale === "en"
-                ? "justify-content-end"
-                : "justify-content-start"
-            } align-items-center`}
-          >
-            <Dropdown overlay={menu} placement="bottomCenter">
-              <Button
-                type="text"
-                className={`${style.language_switch_button} text-white d-flex justify-content-between align-items-center`}
-              >
-                <Image
+    <div className={`${style.container} position-absolute w-100 top-0`}>
+      <Header className={`${style.app_header_container} p-0`}>
+        <Row>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <div
+              className={`${style.app_header_language_section} d-flex ${
+                router.locale === "en"
+                  ? "justify-content-end"
+                  : "justify-content-start"
+              } align-items-center`}
+            >
+              <Dropdown overlay={menu} placement="bottomCenter">
+                <Button
+                  type="text"
+                  className={`${style.language_switch_button} text-white d-flex justify-content-between align-items-center`}
+                >
+                  {/* <Image
                   src={getLanguageDataFromCode(router.locale).flag}
                   height="20"
                   width="20"
                   alt="Flag Image"
-                />
-                <span>{getLanguageDataFromCode(router.locale).language}</span>
-                <DownOutlined className={`${style.language_dd_icon}`} />
-              </Button>
-            </Dropdown>
-          </div>
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <div className={`bg-white ${style.app_header_nav_container}`}>
-            {router.locale === "en" ? (
-              <Row>
-                <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                  <div
-                    className={`d-flex justify-content-center align-items-center h-100`}
-                  >
-                    <Image
-                      src={"/images/common/head.webp"}
-                      alt={`Organization Logo`}
-                      height="80px"
-                      width="80px"
-                    />
-                    <div className={`d-flex align-items-center`}>
-                      <p className={`${style.app_header_logo_title} m-0`}>
-                        {t("Al Aqsa Fund")}
-                      </p>
-                    </div>
-                  </div>
-                </Col>
-                <Col xs={18} sm={18} md={18} lg={18} xl={18}>
-                  <div
-                    className={`${style.app_header_nav_section} d-flex justify-content-end align-items-center`}
-                  >
-                    {routePath.map((route, index) => (
-                      <Dropdown
-                        key={index}
-                        overlay={route.name === "About" ? nav : navProject}
-                        placement={"bottomLeft"}
-                        disabled={route.navigation ? false : true}
-                      >
-                        <p
-                          className={`${
-                            route.name.toLowerCase() === pageName &&
-                            style.selected
-                          }`}
-                          onClick={() => {
-                            router.push(route.path);
-                          }}
-                        >
-                          {route.name}
-                          {route.navigation && (
-                            <DownOutlined
-                              className={`${style.language_dd_icon} ps-1`}
-                              style={{ fontSize: "10px" }}
-                            />
-                          )}
-                          <hr className={`${style.app_nav_list_hr}`} />
+                /> */}
+                  <span className={`${style.language_text}`}>
+                    {getLanguageDataFromCode(router.locale).language}
+                  </span>
+                  <DownOutlined className={`${style.language_dd_icon}`} />
+                </Button>
+              </Dropdown>
+            </div>
+          </Col>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <div className={`bg-white ${style.app_header_nav_container}`}>
+              {router.locale === "en" ? (
+                <Row>
+                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                    <div
+                      className={`d-flex justify-content-center align-items-center h-100`}
+                    >
+                      <Image
+                        src={"/images/common/HeadLogo.webp"}
+                        alt={`Organization Logo`}
+                        height="80px"
+                        width="80px"
+                      />
+                      <div className={`d-flex align-items-center`}>
+                        <p className={`${style.app_header_logo_title} m-0`}>
+                          {t("Al Aqsa Funds")}
                         </p>
-                      </Dropdown>
-                    ))}
-                  </div>
-                </Col>
-              </Row>
-            ) : (
-              <Row>
-                <Col xs={18} sm={18} md={18} lg={18} xl={18}>
-                  <div
-                    className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
-                  >
-                    {routePath.map((route, index) => (
-                      <Dropdown
-                        key={index}
-                        overlay={route.name === "About" ? nav : navProject}
-                        placement={"bottomRight"}
-                        disabled={route.navigation ? false : true}
-                      >
-                        <p
-                          className={`${
-                            route.name.toLowerCase() === pageName &&
-                            style.selected
-                          }`}
-                          onClick={() => {
-                            router.push(route.path);
-                          }}
-                        >
-                          {t(route.name)}
-                          {route.navigation && (
-                            <DownOutlined
-                              className={`${style.language_dd_icon} ps-1`}
-                              style={{ fontSize: "10px" }}
-                            />
-                          )}
-                          <hr className={`${style.app_nav_list_hr}`} />
-                        </p>
-                      </Dropdown>
-                    ))}
-                  </div>
-                </Col>
-                <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                  <div
-                    className={`d-flex justify-content-center align-items-center h-100`}
-                  >
-                    <div className={`d-flex align-items-center`}>
-                      <p className={`${style.app_header_logo_title} m-0`}>
-                        {t("Al Aqsa Fund")}
-                      </p>
+                      </div>
                     </div>
-                    <Image
-                      src={"/images/common/head.webp"}
-                      alt={`Organization Logo`}
-                      height="80px"
-                      width="80px"
-                    />
-                  </div>
-                </Col>
-              </Row>
-            )}
-          </div>
-        </Col>
-      </Row>
-    </Header>
+                  </Col>
+                  <Col xs={18} sm={18} md={18} lg={18} xl={18}>
+                    <div
+                      className={`${style.app_header_nav_section} d-flex justify-content-end align-items-center`}
+                    >
+                      {routePath.map((route, index) => (
+                        <Dropdown
+                          key={index}
+                          overlay={route.name === "About" ? nav : navProject}
+                          placement={"bottomLeft"}
+                          disabled={route.navigation ? false : true}
+                        >
+                          <p
+                            className={`${
+                              route.name.toLowerCase() === pageName &&
+                              style.selected
+                            }`}
+                            onClick={() => {
+                              router.push(route.path);
+                            }}
+                          >
+                            {route.name}
+                            {route.navigation && (
+                              <DownOutlined
+                                className={`${style.language_dd_icon} ps-1`}
+                                style={{ fontSize: "10px" }}
+                              />
+                            )}
+                            <hr className={`${style.app_nav_list_hr}`} />
+                          </p>
+                        </Dropdown>
+                      ))}
+                    </div>
+                  </Col>
+                </Row>
+              ) : (
+                <Row>
+                  <Col xs={18} sm={18} md={18} lg={18} xl={18}>
+                    <div
+                      className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
+                    >
+                      {routePath.map((route, index) => (
+                        <Dropdown
+                          key={index}
+                          overlay={route.name === "About" ? nav : navProject}
+                          placement={"bottomRight"}
+                          disabled={route.navigation ? false : true}
+                        >
+                          <p
+                            className={`${
+                              route.name.toLowerCase() === pageName &&
+                              style.selected
+                            }`}
+                            onClick={() => {
+                              router.push(route.path);
+                            }}
+                          >
+                            {t(route.name)}
+                            {route.navigation && (
+                              <DownOutlined
+                                className={`${style.language_dd_icon} ps-1`}
+                                style={{ fontSize: "10px" }}
+                              />
+                            )}
+                            <hr className={`${style.app_nav_list_hr}`} />
+                          </p>
+                        </Dropdown>
+                      ))}
+                    </div>
+                  </Col>
+                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                    <div
+                      className={`d-flex justify-content-center align-items-center h-100`}
+                    >
+                      <div className={`d-flex align-items-center`}>
+                        <p className={`${style.app_header_logo_title} m-0`}>
+                          {t("Al Aqsa Funds")}
+                        </p>
+                      </div>
+                      <Image
+                        src={"/images/common/HeadLogo.webp"}
+                        alt={`Organization Logo`}
+                        height="80px"
+                        width="80px"
+                      />
+                    </div>
+                  </Col>
+                </Row>
+              )}
+            </div>
+          </Col>
+        </Row>
+      </Header>
+    </div>
   );
 }

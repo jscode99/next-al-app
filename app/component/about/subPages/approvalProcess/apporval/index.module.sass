@@ -1,6 +1,20 @@
 @import '../../../../../../styles/variable'
 
+.container
+    @extend %container_padding
+
+.approval_bg
+    background-image: url("/images/about/approval/bg_1.webp"),url("/images/about/approval/bg_2.webp")
+    background-position: 0px 101%, right 25%
+    background-repeat: no-repeat,no-repeat
+
+.approval_title
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
+
 .approval_initiation
+    font-family: "oswald",roboto
     color: $primary_color
     font-weight: $nine_hundred
     @extend %font_size_25

@@ -29,14 +29,14 @@ export default function AppStep({ textAlign, step, defaultActiveStep }) {
           )}
           <div className={`d-flex flex-column w-75`}>
             <h5
-              className={`${
+              className={`${style.step_title} ${
                 textAlign === "right" ? "text-start" : "text-end"
               } ${defaultActive === index ? `fw-bold` : ``} cursor-pointer`}
             >
               {data.title}
             </h5>
             <h6
-              className={`${
+              className={` ${
                 textAlign === "right" ? "text-start" : "text-end"
               } ${style.description} mb-5 cursor-pointer`}
             >

@@ -5,13 +5,15 @@ import StoriesDetailsComponent from "../../component/success-stories/StoriesDeta
 export default function StoriesDetailsContainer({
   storiesProps,
   projectTitle,
+  bannerImage,
 }) {
   return (
     <Layout
-      heroImage={"/IsDB-Banner-Image.webp"}
+      heroImage={bannerImage}
       page={"success-stories"}
       pageName={"success stories"}
       projectTitle={projectTitle}
+      title={storiesProps.Title}
     >
       <StoriesDetailsComponent storiesProps={storiesProps} />
     </Layout>

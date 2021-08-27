@@ -1,15 +1,23 @@
 @import '../../../styles/variable'
 
-.page_common_section_title,
-.page_common_section_social_media_icon
-    height: 100px
+.container
+    height: 135px
+    bottom: 0%
+    z-index: 100
 
-.page_common_section_breadcrum
-    height: 50px
+.card
+    @extend %container_padding
+    border-radius: 20px 20px 0 0
+    height: 135px
+
+// .page_common_section_title,
+// .page_common_section_social_media_icon
+//     height: 75px
 
 .page_common_section_title
-    @extend %font_size_35
-    font-weight: $five_hundred
+    font-family: "oswald",roboto
+    @extend %font_size_32
+    font-weight: $nine_hundred
 
 .primary_color
     color: $primary_color
@@ -20,6 +28,7 @@
 .breadcrumb_item
     text-transform: capitalize
     font-weight: $five_hundred
+    font-family: roboto
     @extend %font_size_18
 
 .social_media_container

@@ -30,7 +30,7 @@ export default function IntroCard({ data }) {
             {convertToInternationalCurrencySystem(Number(data.amount))}
           </p>
           <p
-            className={`${style.contribution_amount_suubtitle} d-flex justify-content-end mb-4`}
+            className={`${style.contribution_amount_subtitle} d-flex justify-content-end mb-4`}
           >
             {data.subTitle}
           </p>

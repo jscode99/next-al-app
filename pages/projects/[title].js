@@ -17,25 +17,28 @@ export default function ProjectDetails({
   projectTitleData,
   projectDetailsProp,
   sector,
+  bannerImage,
 }) {
   return (
     <ProjectDetailsContainer
       projectTitle={projectTitleData}
       projectDetailsProp={projectDetailsProp}
       sector={sector}
+      bannerImage={bannerImage}
     />
   );
 }
 
 // // Static Path
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   let projectDetailsUrl =
     process.env.BASE_URL + process.env.PATH.PROJECT_DATA + `?_limit=-1`;
+
   const [projectData] = await Promise.all([
     await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
   ]);
   //path
-  const paths = projectData.map(projectD => {
+  const paths = projectData.map((projectD) => {
     return {
       params: {
         title: mapTitleToRoutePath(projectD.projectTitle),
@@ -45,7 +48,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 // // Static Prop
@@ -60,15 +63,18 @@ export async function getStaticProps(context) {
     `?_limit=-1`;
   // `?projectTitle=Al Aqsa Fund&_limit=-1`;
   let sectorUrl = process.env.BASE_URL + process.env.PATH.SECTOR_ALLOCATION;
+  let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
-  const [projectTitleData, projectData, sector] = await Promise.all([
-    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-    await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
-    await fetchService(sectorUrl, CONST.API_METHOD.GET),
-  ]);
+  const [projectTitleData, projectData, sector, bannerImage] =
+    await Promise.all([
+      await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+      await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
+      await fetchService(sectorUrl, CONST.API_METHOD.GET),
+      await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
+    ]);
 
   const projectDetailsProp = projectData.filter(
-    data => data.projectTitle.toLowerCase() === mapRoutePathToTitle(path),
+    (data) => data.projectTitle.toLowerCase() === mapRoutePathToTitle(path)
   );
   //   // Not path
   if (!projectDetailsProp) {
@@ -84,11 +90,12 @@ export async function getStaticProps(context) {
       ...(await serverSideTranslations(
         context.locale,
         ["common"],
-        nextI18NextConfig,
+        nextI18NextConfig
       )),
       projectTitleData,
       projectDetailsProp,
       sector,
+      bannerImage,
     },
     revalidate: 10,
   };

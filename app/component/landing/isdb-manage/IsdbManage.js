@@ -41,15 +41,17 @@ export default function IsdbManage({}) {
     },
   ];
   return (
-    <div className={`${style.isdb_manage_container}`}>
-      <div className="py-5">
-        <h3 className={`${style.isdb_manage_title} text-center mb-5`}>
-          {t("IsDB also manages")}
-        </h3>
-        <div className="w-100 d-flex justify-content-center align-items-center">
-          {router.locale === "en"
-            ? cardData.map(data => <IsdbManageCard data={data} />)
-            : cardArData.map(data => <IsdbManageCard data={data} />)}
+    <div className={`${style.isdb_manage_bg}`}>
+      <div className={`${style.isdb_manage_container}`}>
+        <div className="py-4">
+          <h3 className={`${style.isdb_manage_title} text-center mb-4`}>
+            {t("IsDB also manages")}
+          </h3>
+          <div className="w-100 d-flex justify-content-center align-items-center">
+            {router.locale === "en"
+              ? cardData.map(data => <IsdbManageCard data={data} />)
+              : cardArData.map(data => <IsdbManageCard data={data} />)}
+          </div>
         </div>
       </div>
     </div>

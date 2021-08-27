@@ -1,13 +1,14 @@
 import Layout from "../layout";
 import Contact from "../../component/contact";
 
-export default function ContactContainer({ projectTitle }) {
+export default function ContactContainer({ projectTitle, bannerImage }) {
   return (
     <Layout
-      heroImage={"/IsDB-Banner-Image.webp"}
+      heroImage={bannerImage}
       page={"contact"}
       pageName={"contact"}
       projectTitle={projectTitle}
+      title={"Get in Touch"}
     >
       <Contact />
     </Layout>

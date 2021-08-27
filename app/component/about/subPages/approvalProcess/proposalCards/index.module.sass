@@ -2,12 +2,17 @@
 
 .ProposalCard_bg
     background-image: url("/images/about/approval/bg_4.webp")
-    background-position: 2% 12%
+    background-position: 20% 12%
     background-repeat: no-repeat
     background-color: rgba(36, 180, 181, 0.08)
 
 .ProposalCard_container
     @extend %container_padding
+
+.ProposalCard_title
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
 
 .ProposalCard_card_section
     background-color: $white_color
@@ -21,7 +26,9 @@
 
 .ProposalCard_card_title
     @extend %font_size_18
+    font-family: roboto
 
 .ProposalCard_des
+    font-family: roboto
     color: #3e3e3e
     font-weight: $five_hundred

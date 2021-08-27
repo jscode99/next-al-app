@@ -22,11 +22,11 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
   }, [listSize, pageNumber, listData]);
 
   return router.locale === "en" ? (
-    <Row>
+    <Row className={`px-3`}>
       {paginatedListData && paginatedListData.length > 0 ? (
         paginatedListData.map((listData, i) => (
           <>
-            <Col span={24} className={`mb-3 mt-4`}>
+            <Col span={24} className={`my-2`}>
               <div className={`${style.publication_list_card} bg-white`}>
                 <Row className={`h-100`}>
                   <Col xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -106,7 +106,7 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
       )}
     </Row>
   ) : (
-    <Row>
+    <Row className={`px-3`}>
       {paginatedListData && paginatedListData.length > 0 ? (
         paginatedListData.map((listData, i) => (
           <>

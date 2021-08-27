@@ -5,14 +5,24 @@
     background-position: top left
     background-repeat: no-repeat
 
+.container
+    @extend %container_padding
+
 .contribution_table_container
     border-radius: 8px
 
+.contribution_table_title
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
+
 .table_name
     font-weight: $five_hundred
+    font-family: roboto
     color: #000
 
 .table_title
     font-weight: bold
+    font-family: roboto
     color: #000
     font-size: 16px

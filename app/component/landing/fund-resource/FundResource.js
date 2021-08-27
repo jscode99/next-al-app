@@ -10,27 +10,29 @@ export default function FundResource({}) {
   let fundData = [
     {
       count: "$1.028B",
-      text: t("Aqsa Fund"),
+      text: t("Aqsa Funds"),
       bg: style.primary_bg,
       font: style.primary_font,
     },
     {
       count: "$705M",
-      text: t("Arab Fund"),
+      text: t("Arab Funds"),
       bg: style.secondary_bg,
       font: style.secondary_font,
     },
   ];
   return (
-    <div className={`${style.fund_resource_container}`}>
-      <div className="py-5">
-        <h3 className={`${style.fund_resource_title} text-center mb-5`}>
-          {t("Al Aqsa Fund Resources")}
-        </h3>
-        <div className="w-100 d-flex justify-content-center align-items-center">
-          {router.locale === "en"
-            ? fundData.map(data => <FundIndicator data={data} />)
-            : fundData.reverse().map(data => <FundIndicator data={data} />)}
+    <div className={`${style.fund_resource_bg}`}>
+      <div className={`${style.fund_resource_container}`}>
+        <div className="py-4">
+          <h3 className={`${style.fund_resource_title} text-center mb-4 `}>
+            {t("Al Aqsa Funds Resources")}
+          </h3>
+          <div className="w-100 d-flex justify-content-center align-items-center">
+            {router.locale === "en"
+              ? fundData.map(data => <FundIndicator data={data} />)
+              : fundData.reverse().map(data => <FundIndicator data={data} />)}
+          </div>
         </div>
       </div>
     </div>

@@ -1,10 +1,3 @@
-import { useTranslation } from "next-i18next";
-
-//Antd
-import { Row, Col } from "antd";
-//Common Components
-import InnerLayout from "../../../../common-component/inner-layout/InnerLayout";
-import PageCommonSection from "../../../../common-component/page-common-section/PageCommonSection";
 //Components
 import Approval from "./apporval";
 import Selection from "./selection";
@@ -15,8 +8,6 @@ import ProposalCard from "./proposalCards";
 import style from "./index.module.sass";
 
 export default function ApprovalProcess() {
-  const { t } = useTranslation("common");
-
   const cardData = [
     {
       no: "1",
@@ -58,17 +49,10 @@ export default function ApprovalProcess() {
 
   return (
     <>
-      <div className={`${style.container_bg}`}>
-        <InnerLayout>
-          <PageCommonSection
-            title={t("Approval Process and Selection Criteria")}
-          />
-          <Approval />
-        </InnerLayout>
-        <Selection />
-        <ProposalSection />
-        <ProposalCard cardData={cardData} />
-      </div>
+      <Approval />
+      <Selection />
+      <ProposalSection />
+      <ProposalCard cardData={cardData} />
     </>
   );
 }

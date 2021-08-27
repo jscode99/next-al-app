@@ -84,11 +84,8 @@ export default function About({}) {
 
   return (
     <>
-      <InnerLayout>
-        <PageCommonSection title={t("Al Aqsa Fund")} />
-        <IntroSection />
-        <MissionSection />
-      </InnerLayout>
+      <IntroSection />
+      <MissionSection />
       <ShareHolder flagData={flagData} />
       <AboutUsCard />
       <IsdbRoleSection />

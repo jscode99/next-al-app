@@ -7,13 +7,15 @@ export default function ProjectDetailsContainer({
   projectTitle,
   projectDetailsProp,
   sector,
+  bannerImage,
 }) {
   return (
     <Layout
-      heroImage={"/IsDB-Banner-Image.webp"}
+      heroImage={bannerImage}
       page={"projects"}
       pageName={"projects"}
       projectTitle={projectTitle}
+      title={projectDetailsProp[0].projectTitle}
     >
       <ProjectDetails
         projectTitle={projectTitle}

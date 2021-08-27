@@ -1,5 +1,18 @@
 @import '../../../../styles/variable'
 
+.bg1
+    background-image: url("/images/about/Members/leftBg.webp"),url("/images/about/Members/rightBg.webp"),linear-gradient(to bottom, #fff, #f4f4f4)
+    background-position: left 101%, right top
+    background-repeat: no-repeat, no-repeat
+
+.container
+    @extend %container_padding
+
+.route_card_main_title
+    @extend %font_size_32
+    font-family: "oswald",roboto
+    font-weight: $nine_hundred
+
 .route_card_container
     cursor: pointer
     height: 200px
@@ -11,10 +24,12 @@
     font-weight: $nine_hundred
 
 .route_card_title
+    font-family: roboto
     font-weight: $five_hundred
     @extend %font_size_14
     text-transform: capitalize
 
 .route_card_approvals
+    font-family: roboto
     color: $primary_color
     font-size: 10px

@@ -16,7 +16,7 @@ export default function FunctionSection() {
       title: t("Supreme Council"),
       url: "/images/about/Governance/Star.webp",
       iconBg: style.secondary_color,
-      color:'#5ca849',
+      color: "#5ca849",
       des: [
         { des: "Approves the policies of the Fund." },
         { des: "Approves Investment polices and growth" },
@@ -29,7 +29,7 @@ export default function FunctionSection() {
       title: t("Management Committee"),
       url: "/images/about/Governance/People.webp",
       iconBg: style.theme_golden_color,
-      color:'#dabd2c',
+      color: "#dabd2c",
       des: [
         { des: "Approves the policies of the Fund." },
         { des: "Approves Investment polices and growth" },
@@ -42,7 +42,7 @@ export default function FunctionSection() {
       title: t("Islamic Development Bank"),
       url: "/images/about/Governance/Bank.webp",
       iconBg: style.primary_color,
-      color:'#0E3890',
+      color: "#0E3890",
       des: [
         { des: "Approves the policies of the Fund." },
         { des: "Approves Investment polices and growth" },
@@ -53,20 +53,22 @@ export default function FunctionSection() {
     },
   ];
   return (
-    <div className={`${style.function_container}`}>
-      <div className={`p-5`}>
-        <h4
-          className={`mx-4 my-4 ${
-            router.locale === "en" ? `text-start` : `text-end`
-          } fw-bold`}
-        >
-          {t("Functions")}
-        </h4>
-        {listData.map((data) => (
-          <div className={`ms-5`} key={Math.random()}>
-            <AppCollapsible data={data} color={`#64ac52`} />
-          </div>
-        ))}
+    <div className={`${style.function_bg}`}>
+      <div className={`${style.function_container}`}>
+        <div className={`px-5 py-3`}>
+          <h4
+            className={`${style.function_title} mx-4 my-4 ${
+              router.locale === "en" ? `text-start` : `text-end`
+            } fw-bold`}
+          >
+            {t("Functions")}
+          </h4>
+          {listData.map(data => (
+            <div className={`ms-5`} key={Math.random()}>
+              <AppCollapsible data={data} color={`#64ac52`} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,13 +1,18 @@
 import Layout from "../layout";
 import Publications from "../../component/publications";
 
-export default function PublicationsContainer({ publication, projectTitle }) {
+export default function PublicationsContainer({
+  publication,
+  projectTitle,
+  bannerImage,
+}) {
   return (
     <Layout
-      heroImage={"/IsDB-Banner-Image.webp"}
       page={"publications"}
       pageName={"publications"}
       projectTitle={projectTitle}
+      title={"Publications"}
+      heroImage={bannerImage}
     >
       <Publications pubListData={publication} />
     </Layout>

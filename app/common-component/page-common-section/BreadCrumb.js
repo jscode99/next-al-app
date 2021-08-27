@@ -6,7 +6,7 @@ import style from "./index.module.sass";
 
 export default function BreadCrumb({ breadcrumList }) {
   const { t } = useTranslation("common");
-  console.log("lllll", breadcrumList);
+  // console.log("lllll", breadcrumList);
   let router = useRouter();
   return router.locale === "en" ? (
     <Breadcrumb separator="">
@@ -30,7 +30,9 @@ export default function BreadCrumb({ breadcrumList }) {
               <Breadcrumb.Item
                 className={`${style.breadcrumb_item} ${style.primary_color}`}
               >
-                {t(data)}
+                {t(data).length > 30
+                  ? t(data).substring(0, 30).concat("...")
+                  : t(data)}
               </Breadcrumb.Item>
             );
           } else {
@@ -40,7 +42,9 @@ export default function BreadCrumb({ breadcrumList }) {
                   className={`${style.breadcrumb_item}`}
                   href={`/${mapTitleToRoutePath({ Title: data })}`}
                 >
-                  {t(data)}
+                  {t(data).length > 30
+                    ? t(data).substring(0, 30).concat("...")
+                    : t(data)}
                 </Breadcrumb.Item>
                 <Breadcrumb.Separator>
                   <span className={`${style.primary_color} ${style.separator}`}>
@@ -75,7 +79,9 @@ export default function BreadCrumb({ breadcrumList }) {
               <Breadcrumb.Item
                 className={`${style.breadcrumb_item} ${style.primary_color}`}
               >
-                {t(data)}
+                {t(data).length > 30
+                  ? "...".concat(t(data).substring(0, 30))
+                  : t(data)}
               </Breadcrumb.Item>
             );
           } else {
@@ -90,7 +96,9 @@ export default function BreadCrumb({ breadcrumList }) {
                   className={`${style.breadcrumb_item}`}
                   href={`/${mapTitleToRoutePath({ Title: data })}`}
                 >
-                  {t(data)}
+                  {t(data).length > 30
+                    ? "...".concat(t(data).substring(0, 30))
+                    : t(data)}
                 </Breadcrumb.Item>
               </>
             );

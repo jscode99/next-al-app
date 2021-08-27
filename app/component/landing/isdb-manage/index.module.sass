@@ -1,8 +1,17 @@
 @import '../../../../styles/variable'
 
-.isdb_manage_container
+.isdb_manage_bg
     background: url("/images/background/landing/Isdb-manages.webp") bottom left no-repeat
+
+.isdb_manage_container
     @extend %container_padding
+
+.isdb_manage_title
+    font-family: "oswald",roboto
+    @extend %font_size_32
+    font-weight: $nine_hundred
+    letter-spacing: 1px
+
 .isdb_manage_card
     height: 200px
     width: 250px
@@ -14,9 +23,12 @@
 
 .isdb_manage_card_text
     @extend %font_size_14
-    font-weight: $five_hundred
+    font-family: roboto
+    font-weight: $nine_hundred
+    letter-spacing: 0.5px
 
 .isdb_manage_card_amount
     font-weight: $nine_hundred
     @extend %font_size_18
     color: $primary_color
+    letter-spacing: 0.5px

@@ -1,15 +1,19 @@
+import { useTranslation } from "next-i18next";
 //Style
 import style from "./index.module.sass";
 
 export default function ProposalSection() {
+  const { t } = useTranslation("common");
   return (
     <>
       <div className={`${style.container}`}>
-        <div className={`${style.proposal_container} shadow my-5`}>
-          <div className={`p-5`}>
-            <h3 className={`text-center w-100`}>Proposal Selection Criteria</h3>
+        <div className={`${style.proposal_container} shadow mb-5`}>
+          <div className={`p-4`}>
+            <h3 className={`${style.proposal_title} text-center w-100`}>
+              {t("Proposal Selection Criteria")}
+            </h3>
             <hr className={`${style.proposal_under_line} my-3`} />
-            <p>
+            <p className={`${style.proposal_des}`}>
               The criteria for evaluating project proposals were developed in a
               way that ensures the financing of projects that are consistent
               with the Palestinian national development plans that are highly

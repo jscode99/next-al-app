@@ -10,7 +10,7 @@ module.exports = {
   env: {
     BASE_URL: "https://z966c6ddc-z1680a652-gtw.qovery.io",
     PATH: {
-      BANNER_IMAGE:"/banner-images",
+      BANNER_IMAGE: "/banner-images",
       ARAB_CONTRIBUTIONS: "/arab-contributions",
       OVERALL_CONTRIBUTIONS: "/overall-contributions",
       PROJECT_TITLE: "/project-titles",
@@ -19,6 +19,11 @@ module.exports = {
       PUBLICATION: "/publications",
       SUCCESS_STORIES: "/success-stories",
       CONTACT_US: "/contact-uses",
+      MEMBERS: "/members",
+      FLAG: "/flags",
+      AL_AQSA_FUND: "/aqsa-funds",
+      ARAB_FUND: "/arab-funds",
+      YEARLY_APPROVAL: "/yearly-approvals",
     },
   },
   reactStrictMode: true,

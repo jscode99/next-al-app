@@ -12,17 +12,31 @@ import AppContext from "../app/AppContext";
 export default function Home({
   sector,
   projectTitle,
-  projectData,
-  overallContributions,
-  bannerImage
+  projectAr,
+  alAqsa,
+  alAqsaAr,
+  arab,
+  arabAr,
+  yearly,
+  yearlyAr,
+  bannerImage,
+  flag,
+  flagAr,
 }) {
   return (
     <Landing
       sector={sector}
       projectTitle={projectTitle}
-      projectData={projectData}
-      overallContributions={overallContributions}
+      projectAr={projectAr}
+      alAqsa={alAqsa}
+      alAqsaAr={alAqsaAr}
+      arab={arab}
+      arabAr={arabAr}
+      yearly={yearly}
+      yearlyAr={yearlyAr}
       bannerImage={bannerImage}
+      flag={flag}
+      flagAr={flagAr}
     />
   );
 }
@@ -32,29 +46,67 @@ export async function getStaticProps({ locale }) {
     process.env.BASE_URL + process.env.PATH.SECTOR_ALLOCATION + `?_limit=-1`;
   let projectTitleUrl =
     process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + `?_limit=-1`;
-  let projectDetailsUrl =
-    process.env.BASE_URL + process.env.PATH.PROJECT_DATA + `?_limit=-1`;
-  let overallContributionsUrl =
-    process.env.BASE_URL +
-    process.env.PATH.OVERALL_CONTRIBUTIONS +
-    `?_limit=-1`;
+  let projectTitleArUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
+  let alAqsaFundUrl =
+    process.env.BASE_URL + process.env.PATH.AL_AQSA_FUND + `?_limit=-1`;
+  let alAqsaFundArUrl =
+    process.env.BASE_URL + process.env.PATH.AL_AQSA_FUND + "?_locale=ar-001";
+  let arabFundUrl =
+    process.env.BASE_URL + process.env.PATH.ARAB_FUND + `?_limit=-1`;
+  let arabFundArUrl =
+    process.env.BASE_URL + process.env.PATH.ARAB_FUND + "?_locale=ar-001";
+  let yearlyApprovalUrl =
+    process.env.BASE_URL + process.env.PATH.YEARLY_APPROVAL + `?_limit=-1`;
+  let yearlyApprovalArUrl =
+    process.env.BASE_URL + process.env.PATH.YEARLY_APPROVAL + "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
-  const [sector, projectTitle, projectData, overallContributions,bannerImage] =
-    await Promise.all([
-      await fetchService(sectorUrl, CONST.API_METHOD.GET),
-      await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-      await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
-      await fetchService(overallContributionsUrl, CONST.API_METHOD.GET),
-      await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
-    ]);
+  let flagUrl = process.env.BASE_URL + process.env.PATH.FLAG;
+  let flagArUrl =
+    process.env.BASE_URL + process.env.PATH.FLAG + "?_locale=ar-001";
+
+  const [
+    sector,
+    projectTitle,
+    projectAr,
+    alAqsa,
+    alAqsaAr,
+    arab,
+    arabAr,
+    yearly,
+    yearlyAr,
+    bannerImage,
+    flag,
+    flagAr,
+  ] = await Promise.all([
+    await fetchService(sectorUrl, CONST.API_METHOD.GET),
+    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+    await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
+    await fetchService(alAqsaFundUrl, CONST.API_METHOD.GET),
+    await fetchService(alAqsaFundArUrl, CONST.API_METHOD.GET),
+    await fetchService(arabFundUrl, CONST.API_METHOD.GET),
+    await fetchService(arabFundArUrl, CONST.API_METHOD.GET),
+    await fetchService(yearlyApprovalUrl, CONST.API_METHOD.GET),
+    await fetchService(yearlyApprovalArUrl, CONST.API_METHOD.GET),
+    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
+    await fetchService(flagUrl, CONST.API_METHOD.GET),
+    await fetchService(flagArUrl, CONST.API_METHOD.GET),
+  ]);
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),
       sector,
       projectTitle,
-      projectData,
-      overallContributions,
-      bannerImage
+      projectAr,
+      alAqsa,
+      alAqsaAr,
+      arab,
+      arabAr,
+      yearly,
+      yearlyAr,
+      bannerImage,
+      flag,
+      flagAr,
     },
     revalidate: 10,
   };

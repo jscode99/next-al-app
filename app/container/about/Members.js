@@ -1,7 +1,12 @@
 import Layout from "../layout";
 import Members from "../../component/about/subPages/members";
 
-export default function MembersContainer({ projectTitle, bannerImage }) {
+export default function MembersContainer({
+  projectTitle,
+  bannerImage,
+  members,
+  flag,
+}) {
   return (
     <Layout
       heroImage={bannerImage}
@@ -10,7 +15,7 @@ export default function MembersContainer({ projectTitle, bannerImage }) {
       projectTitle={projectTitle}
       title={"Members"}
     >
-      <Members />
+      <Members members={members} flag={flag} />
     </Layout>
   );
 }

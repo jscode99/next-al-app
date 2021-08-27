@@ -10,9 +10,16 @@ import IsdbManage from "../../component/landing/isdb-manage/IsdbManage";
 export default function Landing({
   sector,
   projectTitle,
-  projectData,
-  overallContributions,
+  projectAr,
+  alAqsa,
+  alAqsaAr,
+  arab,
+  arabAr,
+  yearly,
+  yearlyAr,
   bannerImage,
+  flag,
+  flagAr,
 }) {
   return (
     <Layout
@@ -22,7 +29,18 @@ export default function Landing({
       projectTitle={projectTitle}
     >
       <FundResource />
-      <ResourceChart />
+      <ResourceChart
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        alAqsa={alAqsa}
+        alAqsaAr={alAqsaAr}
+        arab={arab}
+        arabAr={arabAr}
+        yearly={yearly}
+        yearlyAr={yearlyAr}
+        flag={flag}
+        flagAr={flagAr}
+      />
       <SectorAllocations sectorData={sector} />
       <AchievementFunds />
       <IsdbManage />

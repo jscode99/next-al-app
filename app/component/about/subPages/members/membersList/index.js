@@ -24,14 +24,14 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-center h-100 rounded-circle`}
                     >
                       <Image
-                        src={data.url}
+                        src={process.env.BASE_URL + data.url}
                         alt={`Flags`}
                         height="50px"
                         width="50px"
                       />
                     </div>
                   </Col>
-                  <Col xs={15} sm={15} md={15} lg={15} xl={15}>
+                  <Col xs={14} sm={14} md={14} lg={14} xl={14}>
                     <div
                       className={`d-flex justify-content-center align-items-start h-100 flex-column`}
                     >
@@ -47,13 +47,13 @@ export default function MembersList({ data }) {
                       </p>
                     </div>
                   </Col>
-                  <Col xs={7} sm={7} md={7} lg={7} xl={7}>
+                  <Col xs={8} sm={8} md={8} lg={8} xl={8}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center`}
-                        style={{ width: "240px" }}
+                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
+                        // style={{ width: "240px" }}
                       >
                         {data.reputation}
                       </div>
@@ -62,7 +62,7 @@ export default function MembersList({ data }) {
                 </>
               ) : (
                 <>
-                  <Col xs={18} sm={18} md={18} lg={18} xl={18}>
+                  <Col xs={16} sm={16} md={16} lg={16} xl={16}>
                     <div
                       className={`d-flex justify-content-center align-items-start h-100 flex-column px-4`}
                     >
@@ -78,12 +78,12 @@ export default function MembersList({ data }) {
                       </p>
                     </div>
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Col xs={8} sm={8} md={8} lg={8} xl={8}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center`}
+                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
                       >
                         {data.reputation}
                       </div>
@@ -100,20 +100,20 @@ export default function MembersList({ data }) {
             <Row className={`h-100`}>
               {data.url ? (
                 <>
-                  <Col xs={7} sm={7} md={7} lg={7} xl={7}>
+                  <Col xs={8} sm={8} md={8} lg={8} xl={8}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center`}
-                        style={{ width: "240px" }}
+                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
+                        // style={{ width: "240px" }}
                       >
                         {data.reputation}
                       </div>
                     </div>
                   </Col>
 
-                  <Col xs={15} sm={15} md={15} lg={15} xl={15}>
+                  <Col xs={14} sm={14} md={14} lg={14} xl={14}>
                     <div
                       className={`d-flex justify-content-center align-items-end h-100 flex-column`}
                     >
@@ -134,7 +134,7 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-center h-100 rounded-circle`}
                     >
                       <Image
-                        src={data.url}
+                        src={process.env.BASE_URL + data.url}
                         alt={`Flags`}
                         height="50px"
                         width="50px"
@@ -144,20 +144,19 @@ export default function MembersList({ data }) {
                 </>
               ) : (
                 <>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Col xs={8} sm={8} md={8} lg={8} xl={8}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
-                      <Button
-                        type="text"
-                        shape="round"
-                        className={`${style.members_list_button}`}
+                      <div
+                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
+                        // style={{ width: "240px" }}
                       >
                         {data.reputation}
-                      </Button>
+                      </div>
                     </div>
                   </Col>
-                  <Col xs={18} sm={18} md={18} lg={18} xl={18}>
+                  <Col xs={16} sm={16} md={16} lg={16} xl={16}>
                     <div
                       className={`d-flex justify-content-center align-items-end h-100 flex-column px-4`}
                     >

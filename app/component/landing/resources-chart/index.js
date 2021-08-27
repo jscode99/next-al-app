@@ -7,14 +7,48 @@ import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 import style from "./index.module.sass";
+import convertToInternationalCurrencySystem from "../../../services/internationalCurrency";
 
-export default function ResourceChart() {
+export default function ResourceChart({
+  projectTitle,
+  projectAr,
+  alAqsa,
+  alAqsaAr,
+  arab,
+  arabAr,
+  yearly,
+  yearlyAr,
+  flag,
+  flagAr,
+}) {
+  // console.log("projectTitle", projectTitle);
+  // console.log("projectAr", projectAr);
+  // console.log("alAqsa", alAqsa);
+  // console.log("alAqsaAr", alAqsaAr);
+  // console.log("arab", arab);
+  // console.log("arabAr", arabAr);
+  // console.log("yearly", yearly);
+  // console.log("yearlyAr", yearlyAr);
+  console.log("flag", flag);
+  // console.log("flagAr", flagAr);
+
   const router = useRouter();
   const { t } = useTranslation("common");
 
   const [xAxisWidth, setXAxisWidth] = useState(0);
-  const [activeData, setActiveData] = useState(true);
-  const [arabResource, setArabResource] = useState();
+  const [activeData, setActiveData] = useState("aqsa");
+  const [arabResource, setArabResource] = useState([]);
+  const [totalArab, settotalArab] = useState([]);
+  const [totalAqsa, settotalAqsa] = useState([]);
+  const [totalYearly, settotalYearly] = useState([]);
+  const [arabOption, setArabOption] = useState([]);
+  const [aqsaResource, setAqsaResource] = useState([]);
+  const [aqsaOption, setAqsaOption] = useState([]);
+  const [yearlyApproval, setYearlyApproval] = useState([]);
+  const [yearlyOption, setYearlyOption] = useState([]);
+  const [xDataYr, setXdataYr] = useState(null);
+  const [xDataAr, setXdataAr] = useState(null);
+  const [xDataAl, setXdataAl] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -35,393 +69,441 @@ export default function ResourceChart() {
         apexChart.getBoundingClientRect().width || apexChart.getBBox().width,
       );
     }, 5000);
-  }, []);
+    //YearlyData
+    let seriesYr = [
+      {
+        name: "Approved Amount",
+        data: [],
+      },
 
-  const series = [
-    {
-      name: "Aqsa Funds Resources",
-      data: [
-        318300000, 171800000, 138550000, 61900000, 61596000, 36900000, 29400000,
-        17400000, 10400000, 9400000, 7400000, 6400000, 5400000, 4400000,
-        3400000, 2400000, 1400000,
-      ],
-    },
-  ];
-
-  const seriesAr = [
-    {
-      name: "Arab Funds Resources",
-      data: [
-        138550000, 61900000, 61596000, 36900000, 7400000, 6400000, 5400000,
-        4400000,
-      ],
-    },
-  ];
-
-  const optionsAr = {
-    chart: {
-      //   height: 350,
-      type: "bar",
-    },
-    // annotations: {
-    //     position: "front",
-    //     points: [
-    //       {
-    //         x: "Arab Monetary Fund",
-    //         // y: null,
-    //         seriesIndex: 0,
-    //         label: {
-    //           borderColor: "#775DD0",
-    //           offsetY: 0,
-    //           style: {
-    //             color: "#fff",
-    //             background: "#775DD0",
-    //           },
-    //           text: "Bananas are good",
-    //         },
-    //       },
-    //     ],
-    // },
-    plotOptions: {
-      bar: {
-        borderRadius: 0,
-        columnWidth: "15%",
-        dataLabels: {
-          position: "top", // top, center, bottom
+      {
+        name: "Disbursement Amount",
+        data: [],
+      },
+    ];
+    const optionsYr = {
+      chart: {
+        type: "bar",
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 0,
+          columnWidth: "90%",
+          dataLabels: {
+            position: "top", // top, center, bottom
+          },
         },
       },
-    },
-    // stroke: {
-    //   show: true,
-    //   width: 30,
-    //   colors: ["transparent"],
-    // },
+      stroke: {
+        show: true,
+        width: 30,
+        colors: ["transparent"],
+      },
 
-    grid: {
-      strokeDashArray: 7,
-      //   row: {
-      //     colors: ["#fff", "#f2f2f2"],
-      //   },
-    },
-    xaxis: {
-      labels: {
+      grid: {
+        strokeDashArray: 7,
+        //   row: {
+        //     colors: ["#fff", "#f2f2f2"],
+        //   },
+      },
+      xaxis: {
+        labels: {
+          show: false,
+          rotate: -45,
+          formatter: function (value, timestamp, opts) {
+            return value;
+          },
+        },
+
+        categories: [],
+        // tickPlacement: "on",
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: ["#a8a8a8"],
+            fontSize: "8px",
+            fontWeight: 400,
+          },
+          formatter: value => {
+            return value / 1000 + "K";
+          },
+        },
+      },
+      tooltip: {
+        enabled: false,
+        y: {
+          formatter: function (
+            value,
+            { series, seriesIndex, dataPointIndex, w },
+          ) {
+            return "$" + value;
+          },
+          title: {
+            formatter: seriesName => seriesName + " :",
+          },
+        },
+      },
+      legend: {
         show: false,
-        rotate: -45,
-        formatter: function (value, timestamp, opts) {
-          return value;
-        },
+        //   position: "top",
+        //   horizontalAlign: "right",
+        // //   width: 100,
+        //   height: 50,
       },
-
-      categories: [
-        "Al Aqsa Funds",
-        "Arab Bank For Economic Development In Africa",
-        "Arab Monetary Fund",
-        "Arab Fund For Economic And Social Development",
-        "Saudi Fund For Development",
-        "Arab Authority For Agricultural Investment And Development",
-        "The Opec Fund For International Development",
-        "The Arab Investment Guarantee Corporation",
-      ],
-      // tickPlacement: "on",
-    },
-    yaxis: {
-      labels: {
+      dataLabels: {
+        enabled: true,
+        formatter: function (val) {
+          return "$" + convertToInternationalCurrencySystem(Number(val));
+        },
+        offsetY: -20,
         style: {
-          colors: ["#a8a8a8"],
-          fontSize: "8px",
-          fontWeight: 400,
-        },
-        formatter: value => {
-          return value / 1000 + "K";
+          fontSize: "12px",
+          colors: ["#304758"],
         },
       },
-    },
-    tooltip: {
-      enabled: false,
-      y: {
-        formatter: function (
-          value,
-          { series, seriesIndex, dataPointIndex, w },
-        ) {
-          return "$" + value;
-        },
-        title: {
-          formatter: seriesName => seriesName + " :",
-        },
-      },
-    },
-    legend: {
-      show: false,
-      //   position: "top",
-      //   horizontalAlign: "right",
-      // //   width: 100,
-      //   height: 50,
-    },
-    dataLabels: {
-      enabled: true,
-      formatter: function (val) {
-        return "$" + val;
-      },
-      offsetY: -20,
-      style: {
-        fontSize: "12px",
-        colors: ["#304758"],
-      },
-    },
-    fill: {
-      type: "gradient",
-      colors: ["#12ab97"],
-      gradient: {
-        shade: "light",
-        type: "vertical",
-        shadeIntensity: 0.75,
-        gradientToColors: ["#a7e05f"],
-        inverseColors: true,
-        opacityFrom: 1,
-        opacityTo: 1,
-        stops: [10],
-      },
-    },
-  };
-  const options = {
-    chart: {
-      //   height: 350,
-      type: "bar",
-    },
-    // annotations: {
-    //     position: "front",
-    //     points: [
-    //       {
-    //         x: "Arab Monetary Fund",
-    //         // y: null,
-    //         seriesIndex: 0,
-    //         label: {
-    //           borderColor: "#775DD0",
-    //           offsetY: 0,
-    //           style: {
-    //             color: "#fff",
-    //             background: "#775DD0",
-    //           },
-    //           text: "Bananas are good",
-    //         },
-    //       },
-    //     ],
-    // },
-    plotOptions: {
-      bar: {
-        borderRadius: 0,
-        columnWidth: "30%",
-        dataLabels: {
-          position: "top", // top, center, bottom
+      fill: {
+        type: "gradient",
+        colors: ["#ed6961", "#12ab97"],
+        gradient: {
+          shade: "light",
+          type: "vertical",
+          shadeIntensity: 0.75,
+          gradientToColors: ["#ffb28e", "#a7e05f"],
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [10],
         },
       },
-    },
-    // stroke: {
-    //   show: true,
-    //   width: 30,
-    //   colors: ["transparent"],
-    // },
+    };
+    //Arab Resource
+    let seriesAr = [
+      {
+        name: "Disbursement Amount",
+        data: [],
+      },
 
-    grid: {
-      strokeDashArray: 7,
-      //   row: {
-      //     colors: ["#fff", "#f2f2f2"],
-      //   },
-    },
-    xaxis: {
-      labels: {
+      {
+        name: "Grants",
+        data: [],
+      },
+    ];
+
+    const optionsAR = {
+      chart: {
+        type: "bar",
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 0,
+          columnWidth: "70%",
+          dataLabels: {
+            position: "top", // top, center, bottom
+          },
+        },
+      },
+      stroke: {
+        show: true,
+        width: 30,
+        colors: ["transparent"],
+      },
+
+      grid: {
+        strokeDashArray: 7,
+        //   row: {
+        //     colors: ["#fff", "#f2f2f2"],
+        //   },
+      },
+      xaxis: {
+        labels: {
+          show: false,
+          rotate: -45,
+          formatter: function (value, timestamp, opts) {
+            return value;
+          },
+        },
+
+        categories: [],
+        // tickPlacement: "on",
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: ["#a8a8a8"],
+            fontSize: "8px",
+            fontWeight: 400,
+          },
+          formatter: value => {
+            return value / 1000 + "K";
+          },
+        },
+      },
+      tooltip: {
+        enabled: false,
+        y: {
+          formatter: function (
+            value,
+            { series, seriesIndex, dataPointIndex, w },
+          ) {
+            return "$" + value;
+          },
+          title: {
+            formatter: seriesName => seriesName + " :",
+          },
+        },
+      },
+      legend: {
         show: false,
-        rotate: -45,
-        formatter: function (value, timestamp, opts) {
-          return value;
-        },
+        //   position: "top",
+        //   horizontalAlign: "right",
+        // //   width: 100,
+        //   height: 50,
       },
-      categories: [
-        "Jordan",
-        "UAE",
-        "Bahrain",
-        "Algeria",
-        "Saudi Arabia",
-        "Sudan",
-        "Syria",
-        "Oman",
-        "Qatar",
-        "Kuwait",
-        "Egypt",
-        "Morocco",
-        "Yemen",
-        "Iraq",
-        "Lebanon",
-        "Mali",
-        "Pakistan",
-      ],
-      // tickPlacement: "on",
-    },
-    yaxis: {
-      labels: {
+      dataLabels: {
+        enabled: true,
+        formatter: function (val) {
+          return "$" + convertToInternationalCurrencySystem(Number(val));
+        },
+        offsetY: -20,
         style: {
-          colors: ["#a8a8a8"],
-          fontSize: "8px",
-          fontWeight: 400,
-        },
-        formatter: value => {
-          return value / 1000 + "K";
+          fontSize: "12px",
+          colors: ["#304758"],
         },
       },
-    },
-    tooltip: {
-      enabled: false,
-      y: {
-        formatter: function (
-          value,
-          { series, seriesIndex, dataPointIndex, w },
+      fill: {
+        type: "gradient",
+        colors: ["#ed6961", "#12ab97"],
+        gradient: {
+          shade: "light",
+          type: "vertical",
+          shadeIntensity: 0.75,
+          gradientToColors: ["#ffb28e", "#a7e05f"],
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [10],
+        },
+      },
+    };
+
+    //Aqsa
+    let seriesAq = [
+      {
+        name: "Total Contribution",
+        data: [],
+      },
+    ];
+
+    const optionsAq = {
+      chart: {
+        type: "bar",
+      },
+      plotOptions: {
+        bar: {
+          borderRadius: 0,
+          columnWidth: "25%",
+          dataLabels: {
+            position: "top", // top, center, bottom
+          },
+        },
+      },
+      // stroke: {
+      //   show: true,
+      //   width: 30,
+      //   colors: ["transparent"],
+      // },
+
+      grid: {
+        strokeDashArray: 7,
+        //   row: {
+        //     colors: ["#fff", "#f2f2f2"],
+        //   },
+      },
+      xaxis: {
+        labels: {
+          show: false,
+          rotate: -45,
+          formatter: function (value, timestamp, opts) {
+            return value;
+          },
+        },
+
+        categories: [],
+        // tickPlacement: "on",
+      },
+      yaxis: {
+        labels: {
+          style: {
+            colors: ["#a8a8a8"],
+            fontSize: "8px",
+            fontWeight: 400,
+          },
+          formatter: value => {
+            return value / 1000 + "K";
+          },
+        },
+      },
+      tooltip: {
+        enabled: false,
+        y: {
+          formatter: function (
+            value,
+            { series, seriesIndex, dataPointIndex, w },
+          ) {
+            return "$" + value;
+          },
+          title: {
+            formatter: seriesName => seriesName + " :",
+          },
+        },
+      },
+      legend: {
+        show: false,
+        //   position: "top",
+        //   horizontalAlign: "right",
+        // //   width: 100,
+        //   height: 50,
+      },
+      dataLabels: {
+        enabled: true,
+        formatter: function (val) {
+          return "$" + convertToInternationalCurrencySystem(Number(val));
+        },
+        offsetY: -20,
+        style: {
+          fontSize: "12px",
+          colors: ["#304758"],
+        },
+      },
+      fill: {
+        type: "gradient",
+        colors: ["#12ab97"],
+        gradient: {
+          shade: "light",
+          type: "vertical",
+          shadeIntensity: 0.75,
+          gradientToColors: ["#a7e05f"],
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [10],
+        },
+      },
+    };
+
+    let AqsaSorted = [
+      ...alAqsa.sort(function (x, y) {
+        return y.TotalContribution - x.TotalContribution;
+      }),
+    ];
+
+    let XAxisDataAq = [];
+    let totalAq = 0;
+
+    if (AqsaSorted.length > 0 && flag.length > 0) {
+      let XAxisDataAqLocal = [];
+      for (let index = 0; index < AqsaSorted.length; index++) {
+        seriesAq[0].data.push(
+          Math.round(parseFloat(AqsaSorted[index].TotalContribution)),
+        );
+        totalAq += Math.round(parseFloat(AqsaSorted[index].TotalContribution));
+        optionsAq.xaxis.categories.push(AqsaSorted[index].Country);
+        XAxisDataAqLocal.push(AqsaSorted[index].Country);
+      }
+      for (let index = 0; index < XAxisDataAqLocal.length; index++) {
+        let data = null;
+        for (let innerIndex = 0; innerIndex < flag.length; innerIndex++) {
+          if (
+            flag[innerIndex].Country.toLowerCase() ===
+            XAxisDataAqLocal[index].toLowerCase()
+          ) {
+            data = {
+              url: flag[innerIndex].Flag[0].url,
+              title: XAxisDataAqLocal[index],
+            };
+          }
+        }
+        XAxisDataAq.push(data);
+      }
+      console.log("totalAq", totalAq);
+      setAqsaResource(seriesAq);
+      setAqsaOption(optionsAq);
+      setXdataAl(XAxisDataAq);
+      settotalAqsa(totalAq);
+    }
+
+    let ArabSorted = [
+      ...arab.sort(function (x, y) {
+        return y.Grants - x.Grants;
+      }),
+    ];
+
+    let XAxisDataAr = [];
+    let totalAr = 0;
+    if (ArabSorted.length > 0 && projectTitle.length > 0) {
+      let XAxisDataAqLocal = [];
+      for (let index = 0; index < ArabSorted.length; index++) {
+        seriesAr[0].data.push(Math.round(parseFloat(ArabSorted[index].Grants)));
+        seriesAr[1].data.push(
+          Math.round(parseFloat(ArabSorted[index].DisbursementAmount)),
+        );
+        totalAr += Math.round(parseFloat(ArabSorted[index].Grants));
+        optionsAR.xaxis.categories.push(ArabSorted[index].Fund);
+        XAxisDataAqLocal.push(ArabSorted[index].Fund);
+      }
+      for (let index = 0; index < XAxisDataAqLocal.length; index++) {
+        let data = null;
+        for (
+          let innerIndex = 0;
+          innerIndex < projectTitle.length;
+          innerIndex++
         ) {
-          return "$" + value;
-        },
-        title: {
-          formatter: seriesName => seriesName + " :",
-        },
-      },
-    },
-    legend: {
-      show: false,
-      //   position: "top",
-      //   horizontalAlign: "right",
-      // //   width: 100,
-      //   height: 50,
-    },
-    dataLabels: {
-      enabled: true,
-      formatter: function (val) {
-        return "$" + val;
-      },
-      offsetY: -20,
-      style: {
-        fontSize: "12px",
-        colors: ["#304758"],
-      },
-    },
-    fill: {
-      type: "gradient",
-      colors: ["#12ab97"],
-      gradient: {
-        shade: "light",
-        type: "vertical",
-        shadeIntensity: 0.75,
-        gradientToColors: ["#a7e05f"],
-        inverseColors: true,
-        opacityFrom: 1,
-        opacityTo: 1,
-        stops: [10],
-      },
-    },
-  };
+          if (
+            projectTitle[innerIndex].title.toLowerCase() ===
+            XAxisDataAqLocal[index].toLowerCase()
+          ) {
+            data = {
+              url: projectTitle[innerIndex].logo[0].url,
+              title: XAxisDataAqLocal[index],
+            };
+          }
+        }
+        XAxisDataAr.push(data);
+      }
+      setArabResource(seriesAr);
+      setArabOption(optionsAR);
+      setXdataAr(XAxisDataAr);
+      settotalArab(totalAr);
+    }
 
-  const titleAr = [
-    {
-      title: "Al Aqsa Funds",
-      url: "/images/projects/logo8.webp",
-    },
-    {
-      title: "Arab Bank For Economic Development In Africa",
-      url: "/images/projects/logo3.webp",
-    },
-    {
-      title: "Arab Monetary Fund",
-      url: "/images/projects/logo2.webp",
-    },
-    {
-      title: "Arab Fund For Economic And Social Development",
-      url: "/images/projects/logo1.webp",
-    },
-    {
-      title: "Saudi Fund For Development",
-      url: "/images/projects/logo4.webp",
-    },
-    {
-      title: "Arab Authority For Agricultural Investment And Development",
-      url: "/images/projects/logo5.webp",
-    },
-    {
-      title: "The Opec Fund For International Development",
-      url: "/images/projects/logo8.webp",
-    },
-    {
-      title: "The Arab Investment Guarantee Corporation",
-      url: "/images/projects/logo6.webp",
-    },
-  ];
+    let yearlySorted = [
+      ...yearly.sort(function (x, y) {
+        return y.ApprovedAmount - x.ApprovedAmount;
+      }),
+    ];
+    let XAxisDataYr = [];
+    let totalYr = 0;
+    if (yearlySorted.length > 0) {
+      for (let index = 0; index < yearlySorted.length; index++) {
+        seriesYr[0].data.push(
+          Math.round(parseFloat(yearlySorted[index].ApprovedAmount)),
+        );
+        seriesYr[1].data.push(
+          Math.round(parseFloat(yearlySorted[index].DisbursementAmount)),
+        );
+        totalYr += Math.round(parseFloat(yearlySorted[index].ApprovedAmount));
+        optionsYr.xaxis.categories.push(yearlySorted[index].Year);
+        XAxisDataYr.push(yearlySorted[index].Year);
+      }
+      // console.log("seriesYr", seriesYr);
+      setXdataYr(XAxisDataYr);
+      setYearlyApproval(seriesYr);
+      setYearlyOption(optionsYr);
+      settotalYearly(totalYr);
+    }
+  }, [yearly, arab]);
 
-  const titleC = [
-    {
-      title: "Jordan",
-      url: "/images/about/flags/Jordan.webp",
-    },
-    {
-      title: "UAE",
-      url: "/images/about/flags/Uae.webp",
-    },
-    {
-      title: "Bahrain",
-      url: "/images/about/flags/Baharain.webp",
-    },
-    {
-      title: "Algeria",
-      url: "/images/about/flags/Algeria.webp",
-    },
-    {
-      title: "Saudi Arabia",
-      url: "/images/about/flags/Saudi.webp",
-    },
-    {
-      title: "Sudan",
-      url: "/images/about/flags/Sudan.webp",
-    },
-    {
-      title: "Syria",
-      url: "/images/about/flags/Syria.webp",
-    },
-    {
-      title: "Oman",
-      url: "/images/about/flags/Oman.webp",
-    },
-    {
-      title: "Qatar",
-      url: "/images/about/flags/Qatar.webp",
-    },
-    {
-      title: "Kuwait",
-      url: "/images/about/flags/Kuwait.webp",
-    },
-    {
-      title: "Egypt",
-      url: "/images/about/flags/Egypt.webp",
-    },
-    {
-      title: "Morocco",
-      url: "/images/about/flags/Morocco.webp",
-    },
-    {
-      title: "Yemen",
-      url: "/images/about/flags/Yemen.webp",
-    },
-    {
-      title: "Iraq",
-      url: "/images/about/flags/Iraq.webp",
-    },
-    {
-      title: "Lebanon",
-      url: "/images/about/flags/Lebanon.webp",
-    },
-    {
-      title: "Mali",
-      url: "/images/about/flags/Mali.webp",
-    },
-    {
-      title: "Pakistan",
-      url: "/images/about/flags/Pak.webp",
-    },
-  ];
   return (
     <div className={`${style.resource_bg} py-3`}>
       <div className={`${style.resource_container}`}>
@@ -432,30 +514,34 @@ export default function ResourceChart() {
         >
           <p
             onClick={() => {
-              setActiveData(true);
+              setActiveData("aqsa");
             }}
             style={{ cursor: "pointer" }}
             className={`${style.resource_subtitle} ${
-              activeData === true ? style.resource_selected_title : ``
+              activeData === "aqsa" ? style.resource_selected_title : ``
             } px-5 mb-2`}
           >
             {t("Al Aqsa Funds Resources")}
           </p>
           <p
             onClick={() => {
-              setActiveData(false);
+              setActiveData("arab");
             }}
             style={{ cursor: "pointer" }}
             className={`${style.resource_subtitle} ${
-              activeData === false ? style.resource_selected_title : ``
+              activeData === "arab" ? style.resource_selected_title : ``
             } px-5 mb-2`}
           >
             {t("Arab Funds Resources")}
           </p>
           <p
-            onClick={() => {}}
+            onClick={() => {
+              setActiveData("yearly");
+            }}
             style={{ cursor: "pointer" }}
-            className={`${style.resource_subtitle} px-5 mb-2`}
+            className={`${style.resource_subtitle} ${
+              activeData === "yearly" ? style.resource_selected_title : ``
+            } px-5 mb-2`}
           >
             {t("Yearly Approvals")}
           </p>
@@ -471,83 +557,156 @@ export default function ResourceChart() {
             } `}
           >
             <p className={`${style.resource_chart_indicator}`}>
-              {t("Total Amount")} : <span>$ 876,041,230</span>
+              {t("Total Amount")} :{" "}
+              <span>{`$${
+                activeData === "aqsa"
+                  ? new Intl.NumberFormat().format(totalAqsa)
+                  : ""
+              }${
+                activeData === "arab"
+                  ? new Intl.NumberFormat().format(totalArab)
+                  : ""
+              }${
+                activeData === "yearly"
+                  ? new Intl.NumberFormat().format(totalYearly)
+                  : ""
+              }`}</span>
             </p>
           </div>
           {/* <div id="fund_chart"></div> */}
           <div className={`${style.horz_scroll}`}>
             <div className={`${style.bar_chart}`}>
-              <ApexCharts
-                options={activeData === true ? options : optionsAr}
-                series={activeData === true ? series : seriesAr}
-                type="bar"
-                width={"200%"}
-                height={"550px"}
-              />
+              {activeData === "aqsa" && (
+                <ApexCharts
+                  options={aqsaOption}
+                  series={aqsaResource}
+                  type="bar"
+                  width={"200%"}
+                  height={"550px"}
+                />
+              )}
+              {activeData === "arab" && (
+                <ApexCharts
+                  options={arabOption}
+                  series={arabResource}
+                  type="bar"
+                  width={"200%"}
+                  height={"550px"}
+                />
+              )}
+              {activeData === "yearly" && (
+                <ApexCharts
+                  options={yearlyOption}
+                  series={yearlyApproval}
+                  type="bar"
+                  width={"200%"}
+                  height={"550px"}
+                />
+              )}
             </div>
             <div className="d-flex justify-content-start align-items-center px-5">
-              {xAxisWidth ? (
+              {activeData === "yearly" && xAxisWidth && (
                 <div
                   className={`d-flex justify-content-around align-items-start ms-3`}
                   style={{ width: xAxisWidth }}
                 >
-                  {activeData === true
-                    ? titleC.map((data, index) => (
-                        <div
-                          key={index}
-                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
-                          style={{ width: xAxisWidth / titleC.length }}
+                  {xDataYr.map((data, index) => (
+                    <div
+                      key={index}
+                      className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                      style={{ width: xAxisWidth / xDataYr.length }}
+                    >
+                      <div className={`${style.xAxis_label}`}>
+                        {/* <div
+                          className={`d-flex justify-content-center rounded-circle overflow-hidden`}
                         >
-                          <div className={`${style.xAxis_label}`}>
-                            <div
-                              className={`d-flex justify-content-center rounded-circle overflow-hidden`}
-                            >
-                              <Image
-                                src={data.url}
-                                alt={`Logo`}
-                                height="50px"
-                                width="50px"
-                              />
-                            </div>
+                          <Image
+                            src={data.url}
+                            alt={`Logo`}
+                            height="50px"
+                            width="50px"
+                          />
+                        </div> */}
 
-                            <div
-                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
-                            >
-                              {data.title}
-                            </div>
-                          </div>
-                        </div>
-                      ))
-                    : titleAr.map((data, index) => (
                         <div
-                          key={index}
-                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
-                          style={{ width: xAxisWidth / titleAr.length }}
+                          className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
                         >
-                          <div
-                            className={`d-flex flex-column ${style.xAxis_label}`}
-                          >
-                            <div
-                              className={`d-flex justify-content-center rounded-circle overflow-hidden`}
-                            >
-                              <Image
-                                src={data.url}
-                                alt={`Logo`}
-                                height="50px"
-                                width="50px"
-                              />
-                            </div>
-
-                            <div
-                              className={`text-center fw-bold text-wrap ${style.resource_chart_labels}`}
-                            >
-                              {data.title}
-                            </div>
-                          </div>
+                          {data}
                         </div>
-                      ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ) : (
+              )}
+              {activeData === "arab" && xAxisWidth && (
+                <div
+                  className={`d-flex justify-content-around align-items-start ms-3`}
+                  style={{ width: xAxisWidth }}
+                >
+                  {xDataAr.map((data, index) => (
+                    <div
+                      key={index}
+                      className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                      style={{ width: xAxisWidth / xDataAr.length }}
+                    >
+                      <div className={`${style.xAxis_label}`}>
+                        <div
+                          className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                        >
+                          <Image
+                            src={process.env.BASE_URL + data.url}
+                            alt={`Logo`}
+                            height="50px"
+                            width="50px"
+                          />
+                        </div>
+
+                        <div
+                          className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                        >
+                          {data.title}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {activeData === "aqsa" && xAxisWidth && (
+                <div
+                  className={`d-flex justify-content-around align-items-start ms-3`}
+                  style={{ width: xAxisWidth }}
+                >
+                  {xDataAl.map((data, index) => (
+                    <div
+                      key={index}
+                      className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                      style={{ width: xAxisWidth / xDataAl.length }}
+                    >
+                      <div className={`${style.xAxis_label}`}>
+                        <div
+                          className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                        >
+                          <Image
+                            src={process.env.BASE_URL + data.url}
+                            alt={`Logo`}
+                            height="50px"
+                            width="50px"
+                          />
+                        </div>
+
+                        <div
+                          className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                        >
+                          {data.title}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {!xAxisWidth && (
                 <div
                   style={{ width: "100%" }}
                   className={`${style.resource_chart_labels} d-flex justify-content-center align-items-center`}

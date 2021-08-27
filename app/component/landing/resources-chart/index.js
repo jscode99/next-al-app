@@ -12,7 +12,7 @@ export default function ResourceChart() {
   const router = useRouter();
 
   const [xAxisWidth, setXAxisWidth] = useState(0);
-  const [activeData, setActiveData] = useState(true);
+  const [activeData, setActiveData] = useState(1);
   const [arabResource, setArabResource] = useState();
 
   useEffect(() => {
@@ -431,30 +431,34 @@ export default function ResourceChart() {
         >
           <p
             onClick={() => {
-              setActiveData(true);
+              setActiveData(1);
             }}
             style={{ cursor: "pointer" }}
             className={`${style.resource_subtitle} ${
-              activeData === true ? style.resource_selected_title : ``
+              activeData === 1 ? style.resource_selected_title : ``
             } w-25`}
           >
             Aqsa Fund Resources
           </p>
           <p
             onClick={() => {
-              setActiveData(false);
+              setActiveData(2);
             }}
             style={{ cursor: "pointer" }}
             className={`${style.resource_subtitle} ${
-              activeData === false ? style.resource_selected_title : ``
+              activeData === 2 ? style.resource_selected_title : ``
             } w-25`}
           >
             Arab Fund Resources
           </p>
           <p
-            onClick={() => {}}
+            onClick={() => {
+              setActiveData(3);
+            }}
             style={{ cursor: "pointer" }}
-            className={`${style.resource_subtitle} w-25`}
+            className={`${style.resource_subtitle} ${
+              activeData === 3 ? style.resource_selected_title : ``
+            } w-25`}
           >
             Yearly Approvals
           </p>
@@ -477,8 +481,8 @@ export default function ResourceChart() {
           <div className={`${style.horz_scroll}`}>
             <div className={`${style.bar_chart}`}>
               <ApexCharts
-                options={activeData === true ? options : optionsAr}
-                series={activeData === true ? series : seriesAr}
+                options={activeData === 1 ? options : optionsAr}
+                series={activeData === 1 ? series : seriesAr}
                 type="bar"
                 width={"200%"}
                 height={"550px"}
@@ -490,11 +494,11 @@ export default function ResourceChart() {
                   className={`d-flex justify-content-around align-items-center ms-3`}
                   style={{ width: xAxisWidth }}
                 >
-                  {activeData === true
+                  {activeData === 1
                     ? titleC.map((data, index) => (
                         <div
                           key={index}
-                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100 pb-3`}
                           style={{ width: xAxisWidth / titleC.length }}
                         >
                           <div className={``}>
@@ -517,7 +521,7 @@ export default function ResourceChart() {
                     : titleAr.map((data, index) => (
                         <div
                           key={index}
-                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100 pb-3`}
                           style={{ width: xAxisWidth / titleAr.length }}
                         >
                           <div className={``}>
@@ -532,7 +536,7 @@ export default function ResourceChart() {
                               />
                             </div>
                           </div>
-                          <div className={`text-center fw-bold`}>
+                          <div className={`text-center fw-bold mx-2`}>
                             {data.title}
                           </div>
                         </div>

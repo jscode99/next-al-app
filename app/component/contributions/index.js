@@ -66,7 +66,7 @@ export default function Contributions({
             />
           ) : (
             <ContributionsTable
-              tData={overallContributions}
+              tData={overallArContributions}
               setSummitAmount={setSummitAmount}
             />
           )}
@@ -75,7 +75,7 @@ export default function Contributions({
       {router.locale === "en" ? (
         <ContributionsArabFunds arabContributions={arabContributions} />
       ) : (
-        <ContributionsArabFunds arabContributions={arabContributions} />
+        <ContributionsArabFunds arabContributions={arabArContributions} />
       )}
       {/* </div> */}
     </>

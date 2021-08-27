@@ -488,7 +488,7 @@ export default function ResourceChart() {
             <div className="d-flex justify-content-start align-items-center px-5">
               {xAxisWidth ? (
                 <div
-                  className={`d-flex justify-content-around align-items-center ms-3`}
+                  className={`d-flex justify-content-around align-items-start ms-3`}
                   style={{ width: xAxisWidth }}
                 >
                   {activeData === true
@@ -498,7 +498,7 @@ export default function ResourceChart() {
                           className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
                           style={{ width: xAxisWidth / titleC.length }}
                         >
-                          <div className={``}>
+                          <div className={`${style.xAxis_label}`}>
                             <div
                               className={`d-flex justify-content-center rounded-circle overflow-hidden`}
                             >
@@ -509,11 +509,12 @@ export default function ResourceChart() {
                                 width="50px"
                               />
                             </div>
-                          </div>
-                          <div
-                            className={`${style.resource_chart_labels} text-center fw-bold`}
-                          >
-                            {data.title}
+
+                            <div
+                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                            >
+                              {data.title}
+                            </div>
                           </div>
                         </div>
                       ))
@@ -523,7 +524,9 @@ export default function ResourceChart() {
                           className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
                           style={{ width: xAxisWidth / titleAr.length }}
                         >
-                          <div className={``}>
+                          <div
+                            className={`d-flex flex-column ${style.xAxis_label}`}
+                          >
                             <div
                               className={`d-flex justify-content-center rounded-circle overflow-hidden`}
                             >
@@ -534,11 +537,12 @@ export default function ResourceChart() {
                                 width="50px"
                               />
                             </div>
-                          </div>
-                          <div
-                            className={`text-center fw-bold ${style.resource_chart_labels}`}
-                          >
-                            {data.title}
+
+                            <div
+                              className={`text-center fw-bold text-wrap ${style.resource_chart_labels}`}
+                            >
+                              {data.title}
+                            </div>
                           </div>
                         </div>
                       ))}

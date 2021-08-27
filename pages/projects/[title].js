@@ -48,7 +48,7 @@ export async function getStaticPaths({ locales }) {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 // // Static Prop

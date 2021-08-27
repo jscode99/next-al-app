@@ -30,7 +30,10 @@ export default function ProjectRouteCard({ finalChartData }) {
                 <div
                   className={`${style.route_card_container} shadow pt-4`}
                   onClick={() => {
-                    router.push(`/projects/${mapTitleToRoutePath(data.title)}`);
+                    router.push({
+                      pathname: `/projects/${mapTitleToRoutePath(data.title)}`,
+                      query: { ...router.query },
+                    });
                   }}
                 >
                   <div

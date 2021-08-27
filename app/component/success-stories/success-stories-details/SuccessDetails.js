@@ -192,7 +192,11 @@ export default function SuccessStoriesDetails({ storiesProps }) {
         </Row>
         <Row>
           <Col xs={0} sm={0} md={0} lg={24} xl={24}>
-            <p className={`${styles.stories_details_des} px-5 mt-5 text-end`}>
+            <p
+              className={`${styles.stories_details_des} px-5 mt-5 ${
+                router.locale === "en" ? `text-start` : `text-end`
+              }`}
+            >
               {storiesProps.Description}
             </p>
           </Col>

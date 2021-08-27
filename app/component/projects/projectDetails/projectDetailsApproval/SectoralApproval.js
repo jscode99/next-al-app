@@ -13,7 +13,7 @@ export default function SectoralApproval({ sectoralData }) {
       </h4>
 
       <div
-        className={`d-flex justify-content-center align-items-center mt-4 mb-3 w-100`}
+        className={`d-flex justify-content-center align-items-center my-2 w-100`}
       >
         <p className={`${style.sector_labels} w-50 text-secondary ms-3 m-0`}>
           {t("Sector Name")}
@@ -32,7 +32,7 @@ export default function SectoralApproval({ sectoralData }) {
       {sectoralData.map((data, index) => (
         <div
           key={index}
-          className={`${style.common_sectoral_list} d-flex justify-content-center align-items-center shadow bg-white my-3 w-100`}
+          className={`${style.common_sectoral_list} d-flex justify-content-center align-items-center shadow bg-white my-1 w-100`}
         >
           <p className={`w-50 ms-3 fw-bold m-0`}>{t(data.title)}</p>
           <p className={`${style.number_of_projects} w-25 text-center m-0`}>

@@ -150,10 +150,16 @@ export default function SuccessStoriesDetails({ storiesProps }) {
                   >
                     ${storiesProps.TotalApproved}
                   </Col>
-                  <Col span={1} className={`${styles.stories_amount_heading}`}>
+                  <Col
+                    span={1}
+                    className={`${styles.stories_amount_heading} ps-2`}
+                  >
                     {`:`}
                   </Col>
-                  <Col span={7} className={`${styles.stories_amount_heading}`}>
+                  <Col
+                    span={7}
+                    className={`${styles.stories_amount_heading} text-end`}
+                  >
                     {t("Total Approved")}
                   </Col>
                 </Row>
@@ -164,16 +170,20 @@ export default function SuccessStoriesDetails({ storiesProps }) {
                   >
                     {storiesProps.FundSource}
                   </Col>
-                  <Col span={1} className={`${styles.stories_amount_heading}`}>
+                  <Col
+                    span={1}
+                    className={`${styles.stories_amount_heading} ps-2`}
+                  >
                     {`:`}
                   </Col>
-                  <Col span={7} className={`${styles.stories_amount_heading}`}>
-                    {t("Source of Fund")}
+                  <Col
+                    span={7}
+                    className={`${styles.stories_amount_heading} text-end`}
+                  >
+                    {t("Source of Funds")}
                   </Col>
                 </Row>
-                <p
-                  className={`${styles.stories_details_des} text-justify pr-4`}
-                >
+                <p className={`${styles.stories_details_des} text-end pr-4`}>
                   {storiesProps.Overview}
                 </p>
               </Col>
@@ -182,9 +192,7 @@ export default function SuccessStoriesDetails({ storiesProps }) {
         </Row>
         <Row>
           <Col xs={0} sm={0} md={0} lg={24} xl={24}>
-            <p
-              className={`${styles.stories_details_des} px-5 mt-5 text-justify`}
-            >
+            <p className={`${styles.stories_details_des} px-5 mt-5 text-end`}>
               {storiesProps.Description}
             </p>
           </Col>

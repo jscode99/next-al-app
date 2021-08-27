@@ -24,7 +24,7 @@ export default function SuccessStories({ stories, successStoriesAR }) {
         successStoriesAR &&
         successStoriesAR.length > 0 && (
           <SuccessStoriesCard
-            listData={stories}
+            listData={successStoriesAR}
             listSize={listSize}
             pageNumber={pageNumber}
           />

@@ -110,7 +110,7 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
       {paginatedListData && paginatedListData.length > 0 ? (
         paginatedListData.map((listData, i) => (
           <>
-            <Col span={24} className={`mb-3 mt-4`}>
+            <Col span={24} className={`my-2`}>
               <div className={`${style.publication_list_card} bg-white`}>
                 <Row className={`h-100`}>
                   <Col xs={6} sm={6} md={6} lg={6} xl={6}>

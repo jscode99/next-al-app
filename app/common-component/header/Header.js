@@ -120,7 +120,7 @@ export default function AppHeader({ pageName, projectTitle }) {
   );
 
   const menu = (
-    <Menu>
+    <Menu className={`${style.dd_list}`}>
       {language.map((value, index) => (
         <Menu.Item key={index}>
           <Link

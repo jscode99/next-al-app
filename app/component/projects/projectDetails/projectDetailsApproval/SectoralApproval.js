@@ -8,7 +8,7 @@ export default function SectoralApproval({ sectoralData }) {
   const { t } = useTranslation("common");
   return (
     <div className={`d-flex align-items-center w-100 flex-column`}>
-      <h4 className={`${style.sectoral_approval_title} text-end w-100`}>
+      <h4 className={`${style.sectoral_approval_title} w-100`}>
         {t("Sectoral Distribution of Approvals")}
       </h4>
 

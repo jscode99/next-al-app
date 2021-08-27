@@ -17,11 +17,16 @@ export default function ContributionsArabFunds({ arabContributions }) {
     {
       title: t("Name Of Funds"),
       dataIndex: "Name",
-      render: name => <p className={`${style.table_name} m-1`}>{name}</p>,
+      render: name => (
+        <p className={`${style.table_name} text-start m-1`}>{name}</p>
+      ),
     },
     {
       title: t("Allocation (in 000)"),
       dataIndex: "Allocation",
+      render: name => (
+        <p className={`${style.table_name} text-center m-1`}>{name}</p>
+      ),
     },
   ];
   const arColumns = [
@@ -29,7 +34,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
       title: t("Allocation (in 000)"),
       dataIndex: "Allocation",
       render: name => (
-        <p className={`d-flex justify-content-end m-1 pe-3`}>{name}</p>
+        <p className={`d-flex justify-content-center m-1 pe-3`}>{name}</p>
       ),
     },
     {
@@ -37,7 +42,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
       dataIndex: "Name",
       render: name => (
         <p
-          className={`${style.table_name} d-flex justify-content-end m-1 pe-3`}
+          className={`${style.table_name} d-flex justify-content-center m-1 pe-3`}
         >
           {name}
         </p>

@@ -21,7 +21,7 @@ export default function CommonTable({ columnData, data, pagination, scroll }) {
             className={`${style.table_title} ${
               router.locale === "en"
                 ? `m-0`
-                : `d-flex justify-content-end m-0 pe-3`
+                : `d-flex justify-content-center m-0 pe-3`
             }`}
           >
             {cData.title}

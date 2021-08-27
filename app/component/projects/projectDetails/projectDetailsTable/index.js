@@ -41,7 +41,7 @@ export default function ProjectDetailsTable({ projectData }) {
       title: `Al-Quds`,
       dataIndex: "Alquds",
       render: quds => (
-        <p className={`${style.table_name} text-end m-1`}>{quds}</p>
+        <p className={`${style.table_name} text-center m-1`}>{quds}</p>
       ),
       width: "13%",
     },
@@ -49,7 +49,7 @@ export default function ProjectDetailsTable({ projectData }) {
       title: `West Bank`,
       dataIndex: "westBank",
       render: west => (
-        <p className={`${style.table_name} text-end m-1`}>{west}</p>
+        <p className={`${style.table_name} text-center m-1`}>{west}</p>
       ),
       width: "13%",
     },
@@ -57,7 +57,7 @@ export default function ProjectDetailsTable({ projectData }) {
       title: `Gaza`,
       dataIndex: "gazaStrip",
       render: gaza => (
-        <p className={`${style.table_name} text-end m-1`}>{gaza}</p>
+        <p className={`${style.table_name} text-center m-1`}>{gaza}</p>
       ),
       width: "13%",
     },
@@ -65,14 +65,14 @@ export default function ProjectDetailsTable({ projectData }) {
       title: `Approved Amount`,
       dataIndex: "approvedAmount",
       render: approved => (
-        <p className={`${style.table_name} text-end m-1`}>{approved}</p>
+        <p className={`${style.table_name} text-center m-1`}>{approved}</p>
       ),
     },
     {
       title: `Disbursement Amount`,
       dataIndex: "disbursementAmount",
       render: disbursed => (
-        <p className={`${style.table_name} text-end m-1`}>{disbursed}</p>
+        <p className={`${style.table_name} text-center m-1`}>{disbursed}</p>
       ),
     },
   ];
@@ -82,21 +82,21 @@ export default function ProjectDetailsTable({ projectData }) {
       title: `Disbursement Amount`,
       dataIndex: "disbursementAmount",
       render: disbursed => (
-        <p className={`${style.table_name} text-end m-1`}>{disbursed}</p>
+        <p className={`${style.table_name} text-center m-1`}>{disbursed}</p>
       ),
     },
     {
       title: `Approved Amount`,
       dataIndex: "approvedAmount",
       render: approved => (
-        <p className={`${style.table_name} text-end m-1`}>{approved}</p>
+        <p className={`${style.table_name} text-center m-1`}>{approved}</p>
       ),
     },
     {
       title: `Gaza`,
       dataIndex: "gazaStrip",
       render: gaza => (
-        <p className={`${style.table_name} text-end m-1`}>{gaza}</p>
+        <p className={`${style.table_name} text-center m-1`}>{gaza}</p>
       ),
       width: "13%",
     },
@@ -104,7 +104,7 @@ export default function ProjectDetailsTable({ projectData }) {
       title: `West Bank`,
       dataIndex: "westBank",
       render: west => (
-        <p className={`${style.table_name} text-end m-1`}>{west}</p>
+        <p className={`${style.table_name} text-center m-1`}>{west}</p>
       ),
       width: "13%",
     },
@@ -112,7 +112,7 @@ export default function ProjectDetailsTable({ projectData }) {
       title: `Al-Quds`,
       dataIndex: "Alquds",
       render: quds => (
-        <p className={`${style.table_name} text-end m-1`}>{quds}</p>
+        <p className={`${style.table_name} text-center m-1`}>{quds}</p>
       ),
       width: "13%",
     },
@@ -120,7 +120,7 @@ export default function ProjectDetailsTable({ projectData }) {
       title: `Sector`,
       dataIndex: "Sector",
       render: sector => (
-        <p className={`${style.table_name} text-end m-1`}>{sector}</p>
+        <p className={`${style.table_name} text-center m-1`}>{sector}</p>
       ),
       width: "20%",
     },
@@ -128,7 +128,7 @@ export default function ProjectDetailsTable({ projectData }) {
       title: `Projects`,
       dataIndex: "Projects",
       render: projects => (
-        <p className={`${style.table_name} text-end m-1`}>{projects}</p>
+        <p className={`${style.table_name} text-center m-1`}>{projects}</p>
       ),
       width: "60%",
     },

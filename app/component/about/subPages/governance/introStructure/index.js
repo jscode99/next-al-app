@@ -29,7 +29,6 @@ export default function IntroStructure() {
                 <Image
                   src={"/images/about/Governance/gs.webp"}
                   alt={`Governance Structure`}
-                  // layout={`fill`}
                   height="323px"
                   width="911px"
                 />
@@ -41,9 +40,8 @@ export default function IntroStructure() {
             <Col>
               <div id="image-height">
                 <Image
-                  src={"/images/about/Governance/gs.webp"}
+                  src={"/images/about/Governance/gsar.png"}
                   alt={`Governance Structure`}
-                  // layout={`fill`}
                   height="323px"
                   width="911px"
                 />

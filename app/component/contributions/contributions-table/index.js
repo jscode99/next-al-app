@@ -15,23 +15,37 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: `Country`,
       dataIndex: "Country",
-      render: name => <p className={`${style.table_name}`}>{name}</p>,
+      render: Country => (
+        <p className={`${style.table_name} text-start`}>{Country}</p>
+      ),
     },
     {
       title: `Cairo Summit`,
       dataIndex: "CairoSummitContribution",
+      render: Cairo => (
+        <p className={`${style.table_name} text-center m-1`}>{Cairo}</p>
+      ),
     },
     {
       title: `Beirut & Sirte Summit`,
       dataIndex: "BeirutSirteSummitContribution",
+      render: Beirut => (
+        <p className={`${style.table_name} text-center m-1`}>{Beirut}</p>
+      ),
     },
     {
       title: `Dead Sea Summit`,
       dataIndex: "DeadSeaSummitContribution",
+      render: Beirut => (
+        <p className={`${style.table_name} text-center m-1`}>{Beirut}</p>
+      ),
     },
     {
       title: `Total Payed`,
       dataIndex: "totalPayed",
+      render: Beirut => (
+        <p className={`${style.table_name} text-center m-1`}>{Beirut}</p>
+      ),
     },
   ];
 
@@ -40,28 +54,28 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
       title: ` اجمالي المدفوعات`,
       dataIndex: "totalPayed",
       render: name => (
-        <p className={`d-flex justify-content-end m-0 pe-3`}>{name}</p>
+        <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
     {
       title: `قمة البحر الميت`,
       dataIndex: "DeadSeaSummitContribution",
       render: name => (
-        <p className={`d-flex justify-content-end m-0 pe-3`}>{name}</p>
+        <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
     {
       title: `قمة بيروت  وسرت`,
       dataIndex: "BeirutSirteSummitContribution",
       render: name => (
-        <p className={`d-flex justify-content-end m-0 pe-3`}>{name}</p>
+        <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
     {
       title: `قمة القاهرة`,
       dataIndex: "CairoSummitContribution",
       render: name => (
-        <p className={`d-flex justify-content-end m-0 pe-3`}>{name}</p>
+        <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
     {
@@ -69,7 +83,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
       dataIndex: "Country",
       render: name => (
         <p
-          className={`${style.table_name} d-flex justify-content-end m-0 pe-3`}
+          className={`${style.table_name} d-flex justify-content-center m-0 pe-3`}
         >
           {name}
         </p>

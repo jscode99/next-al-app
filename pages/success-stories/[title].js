@@ -34,15 +34,12 @@ export default function storiesDetails({
 // Static Path
 export async function getStaticPaths({ locales }) {
   let storiesUrl = process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES;
-  // let storiesArUrl =
-  //   process.env.BASE_URL +
-  //   process.env.PATH.SUCCESS_STORIES +
-  //   "?_locale=ar-001" +
-  //   `?_limit=-1`;
-  //, successStoriesAR
-  const [stories] = await Promise.all([
+  let storiesArUrl =
+    process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
+
+  const [stories, successStoriesAR] = await Promise.all([
     await fetchService(storiesUrl, CONST.API_METHOD.GET),
-    // await fetchService(storiesArUrl, CONST.API_METHOD.GET),
+    await fetchService(storiesArUrl, CONST.API_METHOD.GET),
   ]);
   //path
   const storiesPaths = stories.map(storiesData => {
@@ -54,17 +51,17 @@ export async function getStaticPaths({ locales }) {
     };
   });
 
-  // const successStoriesARPaths = successStoriesAR.map(storiesData => {
-  //   return {
-  //     params: {
-  //       title: mapTitleToRoutePath(storiesData),
-  //     },
-  //     locale: locales[1],
-  //   };
-  // });
+  const successStoriesARPaths = successStoriesAR.map(storiesData => {
+    return {
+      params: {
+        title: mapTitleToRoutePath(storiesData),
+      },
+      locale: locales[1],
+    };
+  });
+
   //
-  //, ...successStoriesARPaths
-  const paths = [...storiesPaths];
+  const paths = [...storiesPaths, ...successStoriesARPaths];
 
   return {
     paths,
@@ -75,29 +72,27 @@ export async function getStaticPaths({ locales }) {
 // Static Prop
 export async function getStaticProps(context) {
   let storiesUrl = process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES;
-  // let storiesArUrl =
-  //   process.env.BASE_URL +
-  //   process.env.PATH.SUCCESS_STORIES +
-  //   "?_locale=ar-001" +
-  //   `?_limit=-1`;
+  let storiesArUrl =
+    process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
   // , successStoriesAR
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
-  const [stories, projectTitle, bannerImage] = await Promise.all([
-    await fetchService(storiesUrl, CONST.API_METHOD.GET),
-    await fetchService(storiesArUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
-  ]);
+  const [stories, successStoriesAR, projectTitle, bannerImage] =
+    await Promise.all([
+      await fetchService(storiesUrl, CONST.API_METHOD.GET),
+      await fetchService(storiesArUrl, CONST.API_METHOD.GET),
+      await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+      await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
+    ]);
   const path = context.params.title;
   const storiesDetailsProp = stories.find(
     storiesData =>
       storiesData.Title.toLowerCase() === mapRoutePathToTitle(path),
   );
-  // const storiesArDetailsProp = successStoriesAR.find(
-  //   storiesData => storiesData.Title === mapRoutePathToTitleAR(path),
-  // );
+  const storiesArDetailsProp = successStoriesAR.find(
+    storiesData => storiesData.Title === mapRoutePathToTitleAR(path),
+  );
 
   const storiesProps = storiesDetailsProp || storiesArDetailsProp;
 

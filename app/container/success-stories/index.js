@@ -7,6 +7,7 @@ export default function SuccessStoriesContainer({
   projectTitle,
   bannerImage,
 }) {
+  console.log("successStoriesAR", successStoriesAR);
   return (
     <Layout
       heroImage={bannerImage}

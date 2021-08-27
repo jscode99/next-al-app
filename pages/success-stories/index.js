@@ -15,6 +15,7 @@ export default function SuccessStories({
   projectTitle,
   bannerImage,
 }) {
+  console.log("successStoriesAR", successStoriesAR);
   return (
     <SuccessStoriesContainer
       stories={stories}
@@ -28,10 +29,7 @@ export default function SuccessStories({
 export async function getStaticProps({ locale }) {
   let storiesUrl = process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES;
   let storiesArUrl =
-    process.env.BASE_URL +
-    process.env.PATH.SUCCESS_STORIES +
-    "?_locale=ar-001" +
-    `?_limit=-1`;
+    process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
@@ -42,6 +40,7 @@ export async function getStaticProps({ locale }) {
       await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
       await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
     ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),

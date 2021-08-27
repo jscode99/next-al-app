@@ -7,6 +7,7 @@ export default function StoriesDetailsContainer({
   projectTitle,
   bannerImage,
 }) {
+  console.log("storiesProps", storiesProps);
   return (
     <Layout
       heroImage={bannerImage}

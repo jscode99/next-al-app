@@ -14,7 +14,7 @@ export default function IsdbManage({}) {
     },
     {
       logo: "/images/trust/Palastine.webp",
-      text: "Palestine Trust Funds",
+      text: "Gulf Cooperation Council for the reconstruction of Gaza (GCC)",
       amount: "$100 mn",
     },
     {

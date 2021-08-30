@@ -1,5 +1,10 @@
 @import '../../../../styles/variable'
 
+.bg
+    background-image: url("/images/background/landing/sector.webp")
+    background-position: bottom left
+    background-repeat: no-repeat
+
 .form_container
     @extend %container_padding
 
@@ -10,7 +15,6 @@
 @media only screen and (max-width: 768px)
     .form_container
         @include container_padding_tabScreen
-
 
 @media only screen and (max-width: 500px)
     .form_container

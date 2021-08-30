@@ -84,7 +84,9 @@ export default function ResponsiveView({ view, logo }) {
                   height="100px"
                   width="100px"
                 />
-                <p className={`${style.logo_title} text-white`}>{t("Al Aqsa Funds")}</p>
+                <p className={`${style.logo_title} text-white`}>
+                  {t("Al Aqsa Funds")}
+                </p>
                 {/* <div
                 className={`mt-4 d-flex justify-content-center w-100 flex-wrap px-2`}
               >
@@ -122,8 +124,6 @@ export default function ResponsiveView({ view, logo }) {
                   <li
                     className={`${style.footer_list_address} ${style.footer_list_cursor_auto}`}
                   >
-                    {`IsDB Group Staff Social Club`}
-                    <br />
                     {`8111 King Khalid St.Al Nuzlah Al yamania Dist.`}
                     <br />
                     {`Unit No.1, Jeddah 22332 - 2444 `}
@@ -209,16 +209,16 @@ export default function ResponsiveView({ view, logo }) {
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto}
                    `}
                   >
-                    مصادر أخرى
+                    {t("Other Resources")}
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Terms and Conditions</a>
+                    <a /* href={data.Link} */>{t("Terms and Conditions")}</a>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Privacy Policy</a>
+                    <a /* href={data.Link} */>{t("Privacy Policy")}</a>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Sitemap</a>
+                    <a /* href={data.Link} */>{t("Sitemap")}</a>
                   </li>
                 </ul>
               </Col>
@@ -228,22 +228,22 @@ export default function ResponsiveView({ view, logo }) {
                   <li
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
                   >
-                    روابط سريعة
-                  </li>
-                  <li class>
-                    <Link href={"/about"}>من نحن </Link>
+                    {t("Quick Links")}
                   </li>
                   <li>
-                    <a /* href={data.Link} */>المشاريع</a>
+                    <Link href={"/about"}>{t("About")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>قصص النجاح</a>
+                    <a /* href={data.Link} */>{t("Projects")}</a>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>المنشورات</a>
+                    <a /* href={data.Link} */>{t("Success Stories")}</a>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>اتصل بنا</a>
+                    <a /* href={data.Link} */>{t("Publications")}</a>
+                  </li>
+                  <li>
+                    <a /* href={data.Link} */>{t("Contact")}</a>
                   </li>
                   {/* {fLinks && fLinks.length > 0
                   ? fLinks.map((data) => (
@@ -259,22 +259,21 @@ export default function ResponsiveView({ view, logo }) {
                   <li
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
                   >
-                    مجموعة البنك الإسلامي للتنمية
+                    {`مجموعة البنك الإسلامي للتنمية`}
                   </li>
                   <li
                     className={`${style.footer_list_address} ${style.footer_list_cursor_auto} `}
                   >
-                    {`IsDB Group Staff Social Club`}
+                    {`8111 شارع الملك خالد، حي النزلة اليمانية`}
                     <br />
-                    {`8111 King Khalid St.Al Nuzlah Al yamania Dist.`}
+                    {`الوحدة رقم 1
+جدة 22332-2444`}
                     <br />
-                    {`Unit No.1, Jeddah 22332 - 2444 `}
-                    <br />
-                    {`Kingdom of Saudi Arabia`}
+                    {`المملكة العربية السعودية`}
                     <br />
                   </li>
                   <li className={`${style.footer_list_cursor_auto} `}>
-                    Tel: +966 (12) 636 1264
+                    التليفون: 1400 636 (12) 966 + الفاكس: 6366871- 12- 966+
                   </li>
                   {/* <li className={`${style.footer_list_cursor_auto}`}>
                   Fax: +966 (12) 636 1264
@@ -297,7 +296,9 @@ export default function ResponsiveView({ view, logo }) {
                   height="100px"
                   width="100px"
                 />
-                <p className={`${style.logo_title} text-white`}>{t("Al Aqsa Funds")}</p>
+                <p className={`${style.logo_title} text-white`}>
+                  {t("Al Aqsa Funds")}
+                </p>
               </Col>
             </Row>
             <Row>
@@ -306,22 +307,21 @@ export default function ResponsiveView({ view, logo }) {
                   <li
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
                   >
-                    مجموعة البنك الإسلامي للتنمية
+                    {`مجموعة البنك الإسلامي للتنمية`}
                   </li>
                   <li
                     className={`${style.footer_list_address} ${style.footer_list_cursor_auto} `}
                   >
-                    {`IsDB Group Staff Social Club`}
+                    {`8111 شارع الملك خالد، حي النزلة اليمانية`}
                     <br />
-                    {`8111 King Khalid St.Al Nuzlah Al yamania Dist.`}
+                    {`الوحدة رقم 1
+جدة 22332-2444`}
                     <br />
-                    {`Unit No.1, Jeddah 22332 - 2444 `}
-                    <br />
-                    {`Kingdom of Saudi Arabia`}
+                    {`المملكة العربية السعودية`}
                     <br />
                   </li>
                   <li className={`${style.footer_list_cursor_auto} `}>
-                    Tel: +966 (12) 636 1264
+                    التليفون: 1400 636 (12) 966 + الفاكس: 6366871- 12- 966+
                   </li>
                   {/* <li className={`${style.footer_list_cursor_auto}`}>
                   Fax: +966 (12) 636 1264
@@ -334,22 +334,22 @@ export default function ResponsiveView({ view, logo }) {
                   <li
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
                   >
-                    روابط سريعة
-                  </li>
-                  <li class>
-                    <Link href={"/about"}>من نحن </Link>
+                    {t("Quick Links")}
                   </li>
                   <li>
-                    <a /* href={data.Link} */>المشاريع</a>
+                    <Link href={"/about"}>{t("About")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>قصص النجاح</a>
+                    <a /* href={data.Link} */>{t("Projects")}</a>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>المنشورات</a>
+                    <a /* href={data.Link} */>{t("Success Stories")}</a>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>اتصل بنا</a>
+                    <a /* href={data.Link} */>{t("Publications")}</a>
+                  </li>
+                  <li>
+                    <a /* href={data.Link} */>{t("Contact")}</a>
                   </li>
                   {/* {fLinks && fLinks.length > 0
                   ? fLinks.map((data) => (
@@ -367,16 +367,16 @@ export default function ResponsiveView({ view, logo }) {
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto}
                    `}
                   >
-                    مصادر أخرى
+                    {t("Other Resources")}
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Terms and Conditions</a>
+                    <a /* href={data.Link} */>{t("Terms and Conditions")}</a>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Privacy Policy</a>
+                    <a /* href={data.Link} */>{t("Privacy Policy")}</a>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Sitemap</a>
+                    <a /* href={data.Link} */>{t("Sitemap")}</a>
                   </li>
                 </ul>
               </Col>

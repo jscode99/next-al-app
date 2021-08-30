@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 //Common-Components
 import Layout from "../layout";
 //Components
@@ -21,6 +22,8 @@ export default function Landing({
   flag,
   flagAr,
 }) {
+  const router = useRouter();
+
   return (
     <Layout
       heroImage={bannerImage}
@@ -29,18 +32,23 @@ export default function Landing({
       projectTitle={projectTitle}
     >
       <FundResource />
-      <ResourceChart
-        projectTitle={projectTitle}
-        projectAr={projectAr}
-        alAqsa={alAqsa}
-        alAqsaAr={alAqsaAr}
-        arab={arab}
-        arabAr={arabAr}
-        yearly={yearly}
-        yearlyAr={yearlyAr}
-        flag={flag}
-        flagAr={flagAr}
-      />
+      {router.locale === "en" ? (
+        <ResourceChart
+          projectTitle={projectTitle}
+          alAqsa={alAqsa}
+          arab={arab}
+          yearly={yearly}
+          flag={flag}
+        />
+      ) : (
+        <ResourceChart
+          projectTitle={projectAr}
+          alAqsa={alAqsaAr}
+          arab={arabAr}
+          yearly={yearlyAr}
+          flag={flagAr}
+        />
+      )}
       <SectorAllocations sectorData={sector} />
       <AchievementFunds />
       <IsdbManage />

@@ -101,8 +101,20 @@
     "fax": "fax",
     "phone": "phone",
     "email": "email",
-    "website": "website"
-
+    "website": "website",
+    "Terms and Conditions":"Terms and Conditions",
+    "Privacy Policy":"Privacy Policy",
+    "Sitemap":"Sitemap",
+    "Quick Links":"Quick Links",
+    "Other Resources":"Other Resources",
+    "Project Approval and Implementation Process":"Project Approval and Implementation Process",
+    "Initiation":"Initiation",
+    "Implementation":"Implementation",
+    "Proposal Selection Criteria":"Proposal Selection Criteria",
+    "bn": "bn",
+    "mn":"mn",
+    "B":"B",
+    "M":"M"
 }
 
 

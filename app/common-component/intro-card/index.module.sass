@@ -1,6 +1,7 @@
 @import '../../../styles/variable'
 
 .contribution_card_container
+    width: 100%
     height: 180px
     border-radius: 12px
     background: url("/images/contribution/cardBg.webp") bottom left no-repeat
@@ -23,3 +24,11 @@
 .contribution_card_logo
     height: 60px
     width: 60px
+
+@media only screen and (max-width: 768px)
+    .contribution_card_container
+        height: 140px
+
+@media only screen and (max-width: 500px)
+    .contribution_card_container
+        width: 80%

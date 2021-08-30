@@ -34,3 +34,31 @@
 
 .thumbnail_container
     height: 84px
+
+@media only screen and (max-width: 1024px)
+    .stories_card_container
+        @include container_padding_lapScreen
+
+    .stories_amount_heading,
+    .stories_amount
+        @include font_size_14
+
+@media only screen and (max-width: 768px)
+    .stories_card_container
+        @include container_padding_tabScreen
+
+    .stories_amount_heading,
+    .stories_amount
+        @include font_size_14
+
+@media only screen and (max-width: 500px)
+    .stories_card_container
+        @include container_padding_smScreen
+
+    .stories_amount_heading,
+    .stories_amount
+        @include font_size_14
+
+    .stories_details_image_box
+        width: 100%
+        height: auto

@@ -47,7 +47,7 @@ export default function IsdbManage({}) {
           <h3 className={`${style.isdb_manage_title} text-center mb-4`}>
             {t("IsDB also manages")}
           </h3>
-          <div className="w-100 d-flex justify-content-center align-items-center">
+          <div className="w-100 d-flex justify-content-center flex-wrap align-items-center">
             {router.locale === "en"
               ? cardData.map(data => <IsdbManageCard data={data} />)
               : cardArData.map(data => <IsdbManageCard data={data} />)}

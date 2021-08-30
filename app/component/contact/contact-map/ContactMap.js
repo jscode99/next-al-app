@@ -34,20 +34,28 @@ export default function ContactMap() {
               >
                 {t("Head Quarters")}
               </h3>
-              <div className={`${style.map_container} shadow mb-5`}>
-                <GoogleMapReact
-                  bootstrapURLKeys={{
-                    key: `AIzaSyDSLbXVrXqjCnTtNWh1BbrH-B04EFJdqNg`,
-                  }}
-                  defaultCenter={location}
-                  defaultZoom={17}
+              <div
+                className={`${style.map_container} d-flex justify-content-center align-items-center mb-3`}
+              >
+                <span
+                  className={`${style.map_container_span} d-flex justify-content-center align-items-center`}
                 >
-                  <LocationPin
-                    lat={location.lat}
-                    lng={location.lng}
-                    text={location.address}
-                  />
-                </GoogleMapReact>
+                  <div className={`${style.map_inner_container} w-100 h-100`}>
+                    <GoogleMapReact
+                      bootstrapURLKeys={{
+                        key: `AIzaSyDSLbXVrXqjCnTtNWh1BbrH-B04EFJdqNg`,
+                      }}
+                      defaultCenter={location}
+                      defaultZoom={17}
+                    >
+                      <LocationPin
+                        lat={location.lat}
+                        lng={location.lng}
+                        text={location.address}
+                      />
+                    </GoogleMapReact>
+                  </div>
+                </span>
               </div>
             </div>
           </Col>

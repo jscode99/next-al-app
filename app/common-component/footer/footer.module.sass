@@ -6,7 +6,6 @@
   background-repeat: no-repeat, no-repeat
 
 .navigation_container
-
   @extend %container_padding
   min-height: 220px
   max-height: $auto
@@ -65,31 +64,47 @@
 .p_footer_logo
   padding: 0 30px 0 30px
 
-// @media only screen and (max-width: $beakpoint_laptop_s)
-//   .navigation_container
-//     &> div
-//       width: 90%
+.logo_title
+  @extend %font_size_22
+  font-family: "oswald",roboto
+  font-weight: $nine_hundred
+  letter-spacing: 1.5px
 
-// @media only screen and (max-width: $beakpoint_tablet_l)
-//   .navigation_container
-//     height: auto
-//     &> div
-//       width: $full_width
+@media only screen and (max-width: 1024px)
+  .navigation_container
+    @include container_padding_lapScreen
+    &> div
+      width: 90%
 
-//   .footer_list_header
-//     @include font_size_18
-//     opacity: $one $important
+@media only screen and (max-width: 768px)
+  .navigation_container
+    @include container_padding_tabScreen
+    height: $auto
+    &> div
+      width: 100%
 
-//   .footer_list
-//     &> li
-//       font-size: 13px
-//       margin-bottom: $six_px
-//       opacity: .7
-//       &> a
-//         font-size: 13px
-//         margin-bottom: $six_px
-//         opacity: .7
+  .footer_list_header
+    @include font_size_18
+    opacity: 1 $important
 
-// @media only screen and (max-width: $beakpoint_mobile_l)
-//   .navigation_container
-//     height: auto
+  .footer_list
+    &> li
+      font-size: 13px
+      margin-bottom: 6px
+      opacity: .7
+      &> a
+        font-size: 13px
+        margin-bottom: 6px
+        opacity: .7
+
+@media only screen and (max-width: 500px)
+  .footer_list
+    padding: 0px
+
+  .logo
+    margin-bottom: 15px
+
+  .navigation_container
+    @include container_padding_smScreen
+    height: auto
+    text-align: center $important

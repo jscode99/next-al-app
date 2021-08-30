@@ -18,19 +18,42 @@ $nine_hundred: 900
 %container_padding
     width: 1080px $important
     margin: 0 $auto
-    // padding: 0 100px $important
+
+@mixin container_padding_lapScreen
+    width: 1000px $important
+    margin: 0 $auto
+
+@mixin container_padding_tabScreen
+    width: 750px $important
+    margin: 0 $auto
+
+@mixin container_padding_smScreen
+    width: 400px $important
+    margin: 0 $auto
 
 // Font size
 %font_size_14
     font-size: 14px $important
 
+@mixin font_size_14
+    font-size: 14px $important
+
+@mixin font_size_18
+    font-size: 18px $important
+
 %font_size_18
+    font-size: 18px $important
+
+@mixin font_size_18
     font-size: 18px $important
 
 %font_size_22
     font-size: 22px $important
 
 %font_size_25
+    font-size: 25px $important
+
+@mixin font_size_25
     font-size: 25px $important
 
 %font_size_32

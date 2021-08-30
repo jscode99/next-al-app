@@ -3,9 +3,13 @@
 .container
     top: 35%
     z-index: 100
+    position: absolute
 
 .banner_card_section
     @extend %container_padding
+
+.inner_container
+    width: 100%
 
 .banner_card_section_title
     font-size: 4vw
@@ -75,3 +79,26 @@
     color: $theme_sky_blue_color
 .ft_theme_golden_color
     color: $theme_golden_color
+
+@media only screen and (max-width: 1024px)
+    .banner_card_section
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .container
+        bottom: 0px
+        position: relative
+
+    .banner_card_section
+        @include container_padding_tabScreen
+
+    .inner_container
+        width: 90%
+
+@media only screen and (max-width: 500px)
+    .banner_card_section
+        @include container_padding_smScreen
+    .banner_card_section_title,
+    .banner_card_section_subtitle
+        text-align: center
+

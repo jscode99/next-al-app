@@ -30,9 +30,9 @@ export default function ContributionsCard({ cardData, grandTotal }) {
         className={`w-100 d-flex justify-content-center align-items-center px-5 py-5`}
       >
         <Row gutter={[16, 16]} className={`w-100`}>
-          {cardData.map(data => (
-            <IntroCard data={data} />
-          ))}
+          {router.locale === "en"
+            ? cardData.map((data) => <IntroCard data={data} />)
+            : new Array(...cardData).reverse().map((data) => <IntroCard data={data} />)}
         </Row>
       </div>
     </div>

@@ -68,7 +68,7 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       )}
                     </div>
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Col xs={0} sm={0} md={6} lg={6} xl={6}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
@@ -85,6 +85,30 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                             className={`${style.publication_list_button}`}
                           >
                             Download
+                          </Button>
+                        </a>
+                      ) : (
+                        <Skeleton.Button active />
+                      )}
+                    </div>
+                  </Col>
+                  <Col xs={6} sm={6} md={0} lg={0} xl={0}>
+                    <div
+                      className={`d-flex justify-content-center align-items-center h-100 flex-column`}
+                    >
+                      {listData && listData.Title ? (
+                        <a
+                          href={listData.Document[0].url}
+                          download
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Button
+                            type="text"
+                            shape="round"
+                            className={`${style.publication_list_button}`}
+                          >
+                            <i className="fas fa-download"></i>
                           </Button>
                         </a>
                       ) : (
@@ -113,7 +137,7 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
             <Col span={24} className={`my-2`}>
               <div className={`${style.publication_list_card} bg-white`}>
                 <Row className={`h-100`}>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Col xs={0} sm={0} md={6} lg={6} xl={6}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
@@ -130,6 +154,30 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                             className={`${style.publication_list_button}`}
                           >
                             {t("Download")}
+                          </Button>
+                        </a>
+                      ) : (
+                        <Skeleton.Button active />
+                      )}
+                    </div>
+                  </Col>
+                  <Col xs={6} sm={6} md={0} lg={0} xl={0}>
+                    <div
+                      className={`d-flex justify-content-center align-items-center h-100 flex-column`}
+                    >
+                      {listData && listData.Title ? (
+                        <a
+                          href={listData.Document[0].url}
+                          download
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Button
+                            type="text"
+                            shape="round"
+                            className={`${style.publication_list_button}`}
+                          >
+                            <i className="fas fa-download"></i>
                           </Button>
                         </a>
                       ) : (

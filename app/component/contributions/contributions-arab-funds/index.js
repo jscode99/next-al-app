@@ -42,7 +42,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
       dataIndex: "Name",
       render: name => (
         <p
-          className={`${style.table_name} d-flex justify-content-center m-1 pe-3`}
+          className={`${style.table_name} d-flex justify-content-end m-1 pe-3`}
         >
           {name}
         </p>
@@ -88,12 +88,14 @@ export default function ContributionsArabFunds({ arabContributions }) {
                 columnData={columns}
                 data={arabContribution}
                 pagination={false}
+                scroll={{ x: 600 }}
               />
             ) : (
               <CommonTable
                 columnData={arColumns}
                 data={arabContribution}
                 pagination={false}
+                scroll={{ x: 600 }}
               />
             )}
           </div>

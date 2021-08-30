@@ -18,7 +18,7 @@ export default function SuccessStoriesDetails({ storiesProps }) {
         <Row className={`px-5 pt-4`}>
           {router.locale === "en" ? (
             <>
-              <Col xs={0} sm={0} md={0} lg={10} xl={12}>
+              <Col xs={24} sm={24} md={24} lg={10} xl={12}>
                 <Row className={`my-4`}>
                   <Col span={7} className={`${styles.stories_amount_heading}`}>
                     Total Approved
@@ -142,7 +142,7 @@ export default function SuccessStoriesDetails({ storiesProps }) {
                     ))}
                 </div>
               </Col>
-              <Col xs={0} sm={0} md={0} lg={10} xl={12}>
+              <Col xs={24} sm={24} md={24} lg={10} xl={12}>
                 <Row className={`my-4`}>
                   <Col
                     span={16}
@@ -191,7 +191,7 @@ export default function SuccessStoriesDetails({ storiesProps }) {
           )}
         </Row>
         <Row>
-          <Col xs={0} sm={0} md={0} lg={24} xl={24}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <p
               className={`${styles.stories_details_des} px-5 mt-5 ${
                 router.locale === "en" ? `text-start` : `text-end`

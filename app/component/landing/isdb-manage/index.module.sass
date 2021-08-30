@@ -32,3 +32,15 @@
     @extend %font_size_18
     color: $primary_color
     letter-spacing: 0.5px
+
+@media only screen and (max-width: 1024px)
+    .isdb_manage_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .isdb_manage_container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .isdb_manage_container
+        @include container_padding_smScreen

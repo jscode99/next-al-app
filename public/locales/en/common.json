@@ -97,7 +97,11 @@
     "Location":"Location",
     "Al-Quds":"Al-Quds",
     "West Bank":"West Bank",
-    "Gaza":"Gaza"
+    "Gaza":"Gaza",
+    "fax": "fax",
+    "phone": "phone",
+    "email": "email",
+    "website": "website"
 
 }
 

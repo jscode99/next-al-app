@@ -48,3 +48,19 @@
 .horz_scroll
     overflow: auto
     white-space: nowrap
+
+@media only screen and (max-width: 1024px)
+    .resource_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .resource_container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .resource_container
+        @include container_padding_smScreen
+
+    .resource_subtitle
+        text-align: center
+        @include font_size_18

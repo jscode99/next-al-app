@@ -66,7 +66,7 @@ export default function AchievementFunds({}) {
           <Row gutter={[32, 32]}>
             {router.locale === "en"
               ? cardData.map(data => <AchievementCards data={data} />)
-              : cardData
+              : new Array(...cardData)
                   .reverse()
                   .map(data => <AchievementCards data={data} />)}
           </Row>

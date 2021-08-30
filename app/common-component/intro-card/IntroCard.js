@@ -8,7 +8,7 @@ import convertToInternationalCurrencySystem from "../../services/internationalCu
 
 export default function IntroCard({ data }) {
   return (
-    <Col xs={0} sm={0} md={0} lg={8} xl={8}>
+    <Col xs={24} sm={24} md={8} lg={8} xl={8} className={`d-flex justify-content-center`}>
       <div
         className={`${style.contribution_card_container} ${data.bg} shadow overflow-hidden`}
       >

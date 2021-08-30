@@ -23,14 +23,15 @@ export default function Layout({
     <>
       <AppHead />
       <AppLoader />
-      <div className={`position-relative `} /* ${style.hero_image_container} */>
+      <div className={`position-relative`}>
+        <div className={`position-absolute w-100 h-100 ${style.hero_image_gradient}`}></div>
         <AppHeader pageName={pageName} projectTitle={projectTitle} />
+        <HeroImage image={heroImage} pageName={pageName} />
         {page === "landing" ? (
           <BannerCardSection />
         ) : (
           <PageCommonSection title={t(title)} />
         )}
-        <HeroImage image={heroImage} pageName={pageName} />
       </div>
       {children}
       <Footer />

@@ -55,7 +55,7 @@ export default function ResourceChart({
       // let fundChartElement1 = document.getElementsByTagName("rect")[0];
       let apexChart =
         document.getElementsByClassName(
-          "apexcharts-xaxis",
+          "apexcharts-xaxis"
         )[0]; /* .getElementsByTagName("line")[0] */
       console.log(
         "chartElement==========>",
@@ -63,10 +63,10 @@ export default function ResourceChart({
         // fundChartElement1.width.animVal.value
         apexChart,
         apexChart.getBoundingClientRect().width,
-        apexChart.getBBox().width,
+        apexChart.getBBox().width
       );
       setXAxisWidth(
-        apexChart.getBoundingClientRect().width || apexChart.getBBox().width,
+        apexChart.getBoundingClientRect().width || apexChart.getBBox().width
       );
     }, 5000);
     //YearlyData
@@ -125,7 +125,7 @@ export default function ResourceChart({
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: value => {
+          formatter: (value) => {
             return value / 1000 + "K";
           },
         },
@@ -135,12 +135,12 @@ export default function ResourceChart({
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w },
+            { series, seriesIndex, dataPointIndex, w }
           ) {
             return "$" + value;
           },
           title: {
-            formatter: seriesName => seriesName + " :",
+            formatter: (seriesName) => seriesName + " :",
           },
         },
       },
@@ -234,7 +234,7 @@ export default function ResourceChart({
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: value => {
+          formatter: (value) => {
             return value / 1000 + "K";
           },
         },
@@ -244,12 +244,12 @@ export default function ResourceChart({
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w },
+            { series, seriesIndex, dataPointIndex, w }
           ) {
             return "$" + value;
           },
           title: {
-            formatter: seriesName => seriesName + " :",
+            formatter: (seriesName) => seriesName + " :",
           },
         },
       },
@@ -339,7 +339,7 @@ export default function ResourceChart({
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: value => {
+          formatter: (value) => {
             return value / 1000 + "K";
           },
         },
@@ -349,12 +349,12 @@ export default function ResourceChart({
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w },
+            { series, seriesIndex, dataPointIndex, w }
           ) {
             return "$" + value;
           },
           title: {
-            formatter: seriesName => seriesName + " :",
+            formatter: (seriesName) => seriesName + " :",
           },
         },
       },
@@ -405,7 +405,7 @@ export default function ResourceChart({
       let XAxisDataAqLocal = [];
       for (let index = 0; index < AqsaSorted.length; index++) {
         seriesAq[0].data.push(
-          Math.round(parseFloat(AqsaSorted[index].TotalContribution)),
+          Math.round(parseFloat(AqsaSorted[index].TotalContribution))
         );
         totalAq += Math.round(parseFloat(AqsaSorted[index].TotalContribution));
         optionsAq.xaxis.categories.push(AqsaSorted[index].Country);
@@ -446,7 +446,7 @@ export default function ResourceChart({
       for (let index = 0; index < ArabSorted.length; index++) {
         seriesAr[0].data.push(Math.round(parseFloat(ArabSorted[index].Grants)));
         seriesAr[1].data.push(
-          Math.round(parseFloat(ArabSorted[index].DisbursementAmount)),
+          Math.round(parseFloat(ArabSorted[index].DisbursementAmount))
         );
         totalAr += Math.round(parseFloat(ArabSorted[index].Grants));
         optionsAR.xaxis.categories.push(ArabSorted[index].Fund);
@@ -487,10 +487,10 @@ export default function ResourceChart({
     if (yearlySorted.length > 0) {
       for (let index = 0; index < yearlySorted.length; index++) {
         seriesYr[0].data.push(
-          Math.round(parseFloat(yearlySorted[index].ApprovedAmount)),
+          Math.round(parseFloat(yearlySorted[index].ApprovedAmount))
         );
         seriesYr[1].data.push(
-          Math.round(parseFloat(yearlySorted[index].DisbursementAmount)),
+          Math.round(parseFloat(yearlySorted[index].DisbursementAmount))
         );
         totalYr += Math.round(parseFloat(yearlySorted[index].ApprovedAmount));
         optionsYr.xaxis.categories.push(yearlySorted[index].Year);
@@ -508,7 +508,7 @@ export default function ResourceChart({
     <div className={`${style.resource_bg} py-3`}>
       <div className={`${style.resource_container}`}>
         <div
-          className={`d-flex justify-content-center ${
+          className={`d-flex justify-content-center overflow-auto ${
             router.locale === "ar" ? "flex-row-reverse" : "flex-row"
           } w-100 py-3`}
         >
@@ -518,8 +518,10 @@ export default function ResourceChart({
             }}
             style={{ cursor: "pointer" }}
             className={`${style.resource_subtitle} ${
+              router.locale === "ar" ? "text-end" : "text-start"
+            } ${
               activeData === "aqsa" ? style.resource_selected_title : ``
-            } px-5 mb-2`}
+            } px-4 mb-2`}
           >
             {t("Al Aqsa Funds Resources")}
           </p>
@@ -529,8 +531,10 @@ export default function ResourceChart({
             }}
             style={{ cursor: "pointer" }}
             className={`${style.resource_subtitle} ${
+              router.locale === "ar" ? "text-end" : "text-start"
+            }  ${
               activeData === "arab" ? style.resource_selected_title : ``
-            } px-5 mb-2`}
+            } px-4 mb-2`}
           >
             {t("Arab Funds Resources")}
           </p>
@@ -540,8 +544,10 @@ export default function ResourceChart({
             }}
             style={{ cursor: "pointer" }}
             className={`${style.resource_subtitle} ${
+              router.locale === "ar" ? "text-end" : "text-start"
+            } ${
               activeData === "yearly" ? style.resource_selected_title : ``
-            } px-5 mb-2`}
+            } px-4 mb-2`}
           >
             {t("Yearly Approvals")}
           </p>
@@ -558,7 +564,7 @@ export default function ResourceChart({
           >
             <p className={`${style.resource_chart_indicator}`}>
               {t("Total Amount")} :{" "}
-              <span>{`$${
+              <span>{`${router.locale === "en" ? "$" : ""}${
                 activeData === "aqsa"
                   ? new Intl.NumberFormat().format(totalAqsa)
                   : ""
@@ -570,7 +576,7 @@ export default function ResourceChart({
                 activeData === "yearly"
                   ? new Intl.NumberFormat().format(totalYearly)
                   : ""
-              }`}</span>
+              }`}</span>{/* {router.locale === "ar" ? <span>$</span>:''} */}
             </p>
           </div>
           {/* <div id="fund_chart"></div> */}

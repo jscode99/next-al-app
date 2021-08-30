@@ -46,13 +46,13 @@ export default function AppHeader({ pageName, projectTitle }) {
     else setRoutePath(ROUTE_PATHS.reverse());
   }, [router.locale]);
 
-  const getLanguageDataFromCode = code => {
-    return language.find(data => data.code === code);
+  const getLanguageDataFromCode = (code) => {
+    return language.find((data) => data.code === code);
   };
 
   const navProject = (
     <Menu className={`${style.dd_list}`}>
-      {projectTitle.map(data => (
+      {projectTitle.map((data) => (
         <Menu.Item key={data.id}>
           {/* <Link href={`/projects/${mapTitleToRoutePath(data.title)}`}> */}
           <div
@@ -170,11 +170,11 @@ export default function AppHeader({ pageName, projectTitle }) {
               </Dropdown>
             </div>
           </Col>
-          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <div className={`bg-white ${style.app_header_nav_container}`}>
+          <Col xs={0} sm={0} md={0} lg={24} xl={24}>
+            <div className={`bg-white ${style.app_header_nav_container} px-2`}>
               {router.locale === "en" ? (
                 <Row>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Col xs={16} sm={16} md={10} lg={6} xl={6}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100`}
                     >
@@ -191,7 +191,7 @@ export default function AppHeader({ pageName, projectTitle }) {
                       </div>
                     </div>
                   </Col>
-                  <Col xs={18} sm={18} md={18} lg={18} xl={18}>
+                  <Col xs={0} sm={0} md={0} lg={18} xl={18}>
                     <div
                       className={`${style.app_header_nav_section} d-flex justify-content-end align-items-center`}
                     >
@@ -227,7 +227,7 @@ export default function AppHeader({ pageName, projectTitle }) {
                 </Row>
               ) : (
                 <Row>
-                  <Col xs={18} sm={18} md={18} lg={18} xl={18}>
+                  <Col xs={0} sm={0} md={0} lg={18} xl={18}>
                     <div
                       className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
                     >
@@ -260,7 +260,40 @@ export default function AppHeader({ pageName, projectTitle }) {
                       ))}
                     </div>
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <Col xs={8} sm={8} md={14} lg={0} xl={0}>
+                    {/* <div
+                      className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
+                    >
+                      {routePath.map((route, index) => (
+                        <Dropdown
+                          key={index}
+                          overlay={route.name === "About" ? nav : navProject}
+                          placement={"bottomRight"}
+                          disabled={route.navigation ? false : true}
+                        >
+                          <p
+                            className={`${
+                              route.name.toLowerCase() === pageName &&
+                              style.selected
+                            }`}
+                            onClick={() => {
+                              router.push(route.path);
+                            }}
+                          >
+                            {t(route.name)}
+                            {route.navigation && (
+                              <DownOutlined
+                                className={`${style.language_dd_icon} ps-1`}
+                                style={{ fontSize: "10px" }}
+                              />
+                            )}
+                            <hr className={`${style.app_nav_list_hr}`} />
+                          </p>
+                        </Dropdown>
+                      ))}
+                    </div> */}
+                  </Col>
+                  <Col xs={16} sm={16} md={10} lg={6} xl={6}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100`}
                     >
@@ -271,6 +304,150 @@ export default function AppHeader({ pageName, projectTitle }) {
                       </div>
                       <Image
                         src={"/images/common/head.webp"}
+                        alt={`Organization Logo`}
+                        height="80px"
+                        width="80px"
+                      />
+                    </div>
+                  </Col>
+                </Row>
+              )}
+            </div>
+          </Col>
+          <Col xs={24} sm={24} md={24} lg={0} xl={0}>
+            <div className={`${style.app_header_nav_container} px-2`}>
+              {router.locale === "en" ? (
+                <Row>
+                  <Col xs={16} sm={16} md={10} lg={6} xl={6}>
+                    <div
+                      className={`d-flex justify-content-center align-items-center h-100`}
+                    >
+                      <Image
+                        src={"/images/projects/logo8.webp"}
+                        alt={`Organization Logo`}
+                        height="80px"
+                        width="80px"
+                      />
+                      <div className={`d-flex align-items-center`}>
+                        <p className={`${style.app_header_logo_title} text-white m-0`}>
+                          {t("Al Aqsa Funds")}
+                        </p>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col xs={0} sm={0} md={0} lg={18} xl={18}>
+                    <div
+                      className={`${style.app_header_nav_section} d-flex justify-content-end align-items-center`}
+                    >
+                      {routePath.map((route, index) => (
+                        <Dropdown
+                          key={index}
+                          overlay={route.name === "About" ? nav : navProject}
+                          placement={"bottomLeft"}
+                          disabled={route.navigation ? false : true}
+                        >
+                          <p
+                            className={`${
+                              route.name.toLowerCase() === pageName &&
+                              style.selected
+                            }`}
+                            onClick={() => {
+                              router.push(route.path);
+                            }}
+                          >
+                            {route.name}
+                            {route.navigation && (
+                              <DownOutlined
+                                className={`${style.language_dd_icon} ps-1`}
+                                style={{ fontSize: "10px" }}
+                              />
+                            )}
+                            <hr className={`${style.app_nav_list_hr}`} />
+                          </p>
+                        </Dropdown>
+                      ))}
+                    </div>
+                  </Col>
+                </Row>
+              ) : (
+                <Row>
+                  <Col xs={0} sm={0} md={0} lg={18} xl={18}>
+                    <div
+                      className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
+                    >
+                      {routePath.map((route, index) => (
+                        <Dropdown
+                          key={index}
+                          overlay={route.name === "About" ? nav : navProject}
+                          placement={"bottomRight"}
+                          disabled={route.navigation ? false : true}
+                        >
+                          <p
+                            className={`${
+                              route.name.toLowerCase() === pageName &&
+                              style.selected
+                            }`}
+                            onClick={() => {
+                              router.push(route.path);
+                            }}
+                          >
+                            {t(route.name)}
+                            {route.navigation && (
+                              <DownOutlined
+                                className={`${style.language_dd_icon} ps-1`}
+                                style={{ fontSize: "10px" }}
+                              />
+                            )}
+                            <hr className={`${style.app_nav_list_hr}`} />
+                          </p>
+                        </Dropdown>
+                      ))}
+                    </div>
+                  </Col>
+                  <Col xs={8} sm={8} md={14} lg={0} xl={0}>
+                    {/* <div
+                      className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
+                    >
+                      {routePath.map((route, index) => (
+                        <Dropdown
+                          key={index}
+                          overlay={route.name === "About" ? nav : navProject}
+                          placement={"bottomRight"}
+                          disabled={route.navigation ? false : true}
+                        >
+                          <p
+                            className={`${
+                              route.name.toLowerCase() === pageName &&
+                              style.selected
+                            }`}
+                            onClick={() => {
+                              router.push(route.path);
+                            }}
+                          >
+                            {t(route.name)}
+                            {route.navigation && (
+                              <DownOutlined
+                                className={`${style.language_dd_icon} ps-1`}
+                                style={{ fontSize: "10px" }}
+                              />
+                            )}
+                            <hr className={`${style.app_nav_list_hr}`} />
+                          </p>
+                        </Dropdown>
+                      ))}
+                    </div> */}
+                  </Col>
+                  <Col xs={16} sm={16} md={10} lg={6} xl={6}>
+                    <div
+                      className={`d-flex justify-content-center align-items-center h-100`}
+                    >
+                      <div className={`d-flex align-items-center`}>
+                        <p className={`${style.app_header_logo_title} text-white m-0`}>
+                          {t("Al Aqsa Funds")}
+                        </p>
+                      </div>
+                      <Image
+                        src={"/images/projects/logo8.webp"}
                         alt={`Organization Logo`}
                         height="80px"
                         width="80px"

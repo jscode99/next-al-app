@@ -33,3 +33,21 @@
     &:focus
         background-color: #12328E4D
         color: $primary_color
+
+@media only screen and (max-width: 1024px)
+    .publication_list_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .publication_list_container
+        @include container_padding_tabScreen
+    .publication_list_button
+        width: 150px
+
+@media only screen and (max-width: 500px)
+    .publication_list_container
+        @include container_padding_smScreen
+    .publication_list_button
+        width: 55px
+    .publication_list_title
+        font-size: 12px

@@ -4,6 +4,7 @@
     height: 135px
     bottom: 0%
     z-index: 100
+    position: absolute
 
 .card
     @extend %container_padding
@@ -36,3 +37,28 @@
     background-color: $primary_color
     height: 40px
     width: 40px
+    &:hover
+        box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
+
+@media only screen and (max-width: 1024px)
+    .card
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .container,
+    .card
+        height: auto
+
+    .container
+        position: relative
+    .card
+        width: 100% $important
+        border-radius: 0
+
+@media only screen and (max-width: 500px)
+    .container,
+    .card
+        height: auto
+    .page_common_section_title
+        @include font_size_25
+        margin-bottom: 5px

@@ -180,7 +180,7 @@ export default function Demo() {
     //   width={"100%"}
     //   height={"500px"}
     // />
-    <div style={{ paddingTop: "100vh", paddingBottom: "100vh" }}>
+    <div style={{paddingBottom: "300vh" }}>
       <div
         style={{
           overflow: "hidden",
@@ -192,7 +192,7 @@ export default function Demo() {
           color: "black",
         }}
       >
-        <OverPack>
+        <OverPack style={{ overflow: 'hidden', height: 200 }} >
           <TweenOne
             animation={{
               Children: {

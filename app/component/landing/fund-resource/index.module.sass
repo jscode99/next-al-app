@@ -40,3 +40,16 @@
     font-family: "oswald",roboto
     @extend %font_size_22
     letter-spacing: 1px
+
+
+@media only screen and (max-width: 1024px)
+    .fund_resource_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .fund_resource_container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .fund_resource_container
+        @include container_padding_smScreen

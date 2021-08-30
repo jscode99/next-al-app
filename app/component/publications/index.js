@@ -15,7 +15,7 @@ export default function Publications({ pubListData }) {
   return (
     <>
       <div className={`${style.bg}`}>
-        <div className={`${style.publication_list_container} px-5`}>
+        <div className={`${style.publication_list_container} px-4`}>
           {pubListData && pubListData.length > 0 ? (
             <>
               <PublicationList

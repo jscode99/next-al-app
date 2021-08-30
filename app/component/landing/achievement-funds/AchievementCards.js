@@ -6,7 +6,7 @@ import style from "./index.module.sass";
 export default function AchievementCards({ data }) {
   const router = useRouter();
   return (
-    <Col xs={0} sm={0} md={0} lg={8} xl={8}>
+    <Col xs={24} sm={24} md={12} lg={8} xl={8}>
       <div className={`${style.achievement_card_container} px-4 py-5 shadow`}>
         {router.locale === "en" ? (
           <div
@@ -31,7 +31,7 @@ export default function AchievementCards({ data }) {
         ) : (
           <>
             <div
-              className={`d-flex justify-content-end align-items-center mb-5`}
+              className={`d-flex justify-content-center align-items-center mb-5`}
             >
               <div
                 className={`${style.achievement_card_count} ${data.ftColor}  pe-4`}

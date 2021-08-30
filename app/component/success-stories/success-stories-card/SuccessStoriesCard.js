@@ -34,7 +34,7 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
           paginatedListData.map(data => (
             <>
               {console.log("data", data)}
-              <Col xs={24} sm={24} md={8} lg={8} xl={8} className={`px-2 mt-3`}>
+              <Col xs={24} sm={24} md={12} lg={8} xl={8} className={`px-2 mt-3`}>
                 <div
                   className={`d-flex justify-content-start align-items-start w-100`}
                   style={{ cursor: "pointer" }}

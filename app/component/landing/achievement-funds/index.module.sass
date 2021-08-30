@@ -65,3 +65,15 @@
     color: $theme_sky_blue_color
 .ft_theme_golden_color
     color: $theme_golden_color
+
+@media only screen and (max-width: 1024px)
+    .achievement_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .achievement_container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .achievement_container
+        @include container_padding_smScreen

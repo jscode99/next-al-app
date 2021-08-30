@@ -17,7 +17,7 @@ export default function AppInput({
     <div
       className={`${
         sm ? style.app_input_group_sm : "w-100"
-      } d-flex justify-content-center align-items-center flex-column mb-4`}
+      } d-flex justify-content-center align-items-center flex-column mb-1`}
     >
       <div
         className={`d-flex ${
@@ -42,7 +42,7 @@ export default function AppInput({
       <div
         className={`d-flex justify-content-start align-items-center mt-1 w-100`}
       >
-        <p className={`text-danger mb-0 ${errorCheck ? "" : style.visibility}`}>
+        <p className={`text-danger mb-0 ${style.error} ${errorCheck ? "" : style.visibility}`}>
           {errorText}
         </p>
       </div>

@@ -41,7 +41,7 @@ export default function BannerCard({ data }) {
   let countUpArray = splitLetterNumberService(data.title);
   console.log("countUpArray", countUpArray);
   return (
-    <div className={`${style.banner_card} bg-white`}>
+    <div className={`${style.banner_card} bg-white mb-5`}>
       <div className={`${style.banner_card_logo_container}`}>
         <div
           className={`${style.banner_card_logo_section} ${data.bgColor} d-flex justify-content-center align-items-center position-relative rounded-circle m-auto`}

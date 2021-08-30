@@ -83,7 +83,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
       dataIndex: "Country",
       render: name => (
         <p
-          className={`${style.table_name} d-flex justify-content-center m-0 pe-3`}
+          className={`${style.table_name} d-flex justify-content-end m-0 pe-3`}
         >
           {name}
         </p>
@@ -200,12 +200,14 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
                     columnData={columnData}
                     data={countryContribution}
                     pagination={false}
+                    scroll={{ x: 1030 }}
                   />
                 ) : (
                   <CommonTable
                     columnData={columnArData}
                     data={countryContribution}
                     pagination={false}
+                    scroll={{ x: 1030 }}
                   />
                 )}
               </>

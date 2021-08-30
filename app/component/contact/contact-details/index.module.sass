@@ -1,7 +1,7 @@
 @import '../../../../styles/variable'
 
 .details_bg
-    background-image: url("/images/contact/pattern.webp"),linear-gradient(#0E3890)
+    // background-image: url("/images/contact/pattern.webp"),linear-gradient(#0E3890)
 
 .container
     @extend %container_padding
@@ -17,3 +17,79 @@
     font-family: roboto
     font-weight: $five_hundred
     letter-spacing: 0.8px
+
+.detail_container
+    height: 250px
+    border-width: 1px $important
+    border-color: #11643470 $important
+    &:hover
+        background-color: #5ca84970
+        border-radius: 50px $important
+        box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
+
+.key
+    @extend %font_size_18
+    font-weight: $nine_hundred
+    font-family: roboto
+    letter-spacing: 0.8px
+
+.value
+    @extend %font_size_22
+    font-weight: $five_hundred
+    font-family: "oswald"
+    letter-spacing: 0.5px
+
+.icon
+    color: $primary_color
+
+.envelope_icon_stroke
+    -webkit-text-stroke: 2px white
+
+.fax_icon_stroke
+    color: white
+    -webkit-text-stroke: 1.5px $primary_color
+
+.phone_icon_stroke
+    color: white
+    -webkit-text-stroke: 1.5px $primary_color
+
+.globe_icon_stroke
+    color: white
+    -webkit-text-stroke: 1.5px $primary_color
+    animation: rotateY 1.5s infinite
+
+@-webkit-keyframes rotateY
+  0%
+    transform: rotateY( 33deg)
+  10%
+    transform: rotateY( 66deg)
+  20%
+    transform: rotateY( 99deg)
+  30%
+    transform: rotateY( 132deg)
+  40%
+    transform: rotateY( 165deg)
+  50%
+    transform: rotateY( 198deg)
+  60%
+    transform: rotateY( 231deg)
+  70%
+    transform: rotateY( 264deg)
+  80%
+    transform: rotateY( 297deg)
+  90%
+    transform: rotateY( 330deg)
+  100%
+    transform: rotateY( 360deg)
+
+@media only screen and (max-width: 1024px)
+    .container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .container
+        @include container_padding_smScreen

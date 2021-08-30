@@ -6,7 +6,7 @@ export default function SocialMedia({ className, link }) {
   return (
     <div
       className={`${style.social_media_container} rounded-circle d-flex justify-content-center align-items-center mx-2 cursor-pointer`}
-      onClick={() => router.push(link)}
+      onClick={() => window.open(link)}
     >
       <i class={`${className} fa-lg text-white`}></i>
     </div>

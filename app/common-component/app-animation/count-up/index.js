@@ -14,7 +14,7 @@ export default function CountUp({ value, floatLength, scroll }) {
             floatLength: floatLength,
             formatMoney: 1000,
           },
-          duration: 1000,
+          duration: 1500,
         }}
       >
         0
@@ -28,7 +28,7 @@ export default function CountUp({ value, floatLength, scroll }) {
           floatLength: floatLength,
           formatMoney: 1000,
         },
-        duration: 1000,
+        duration: 1500,
       }}
     >
       0

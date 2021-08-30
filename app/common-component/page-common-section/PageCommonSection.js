@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Button } from "antd";
 import BreadCrumb from "./BreadCrumb";
 import SocialMedia from "./SocialMedia";
 import { getBreadcrumData } from "../../services/commonService";
@@ -56,18 +56,24 @@ export default function PageCommonSection({ title }) {
                           )}
                         </div>
                       </Col>
-                      <Col xs={0} sm={0} md={10} lg={8} xl={8}>
+                      <Col xs={4} sm={4} md={10} lg={8} xl={8}>
                         <div
                           className={`${style.page_common_section_social_media_icon} d-flex justify-content-center align-items-center h-100`}
                         >
-                          {socialMediaList &&
+                          <Button
+                            type="text"
+                            className={`${style.social_dd_button} d-flex justify-content-between align-items-center`}
+                          >
+                            <i clasName="fas fa-paper-plane"></i>
+                          </Button>
+                          {/* {socialMediaList &&
                             socialMediaList.length &&
                             socialMediaList.map((data) => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
                               />
-                            ))}
+                            ))} */}
                         </div>
                       </Col>
                     </Row>
@@ -77,14 +83,20 @@ export default function PageCommonSection({ title }) {
                         <div
                           className={`${style.page_common_section_social_media_icon} d-flex justify-content-center align-items-center h-100`}
                         >
-                          {socialMediaList &&
+                          <Button
+                            type="text"
+                            className={`${style.social_dd_button} d-flex justify-content-between align-items-center`}
+                          >
+                            <i clasName="fas fa-paper-plane"></i>
+                          </Button>
+                          {/* {socialMediaList &&
                             socialMediaList.length &&
                             socialMediaList.map((data) => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
                               />
-                            ))}
+                            ))} */}
                         </div>
                       </Col>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>

@@ -2,6 +2,7 @@
 import Chart from "react-google-charts";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { Row, Col } from "antd";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
@@ -29,7 +30,7 @@ export default function ResourceChart({
   // console.log("arabAr", arabAr);
   // console.log("yearly", yearly);
   // console.log("yearlyAr", yearlyAr);
-  // console.log("flag", flag);
+  console.log("flag", flag);
   // console.log("flagAr", flagAr);
 
   const router = useRouter();
@@ -55,7 +56,7 @@ export default function ResourceChart({
       // let fundChartElement1 = document.getElementsByTagName("rect")[0];
       let apexChart =
         document.getElementsByClassName(
-          "apexcharts-xaxis",
+          "apexcharts-xaxis"
         )[0]; /* .getElementsByTagName("line")[0] */
       console.log(
         "chartElement==========>",
@@ -63,10 +64,10 @@ export default function ResourceChart({
         // fundChartElement1.width.animVal.value
         apexChart,
         apexChart.getBoundingClientRect().width,
-        apexChart.getBBox().width,
+        apexChart.getBBox().width
       );
       setXAxisWidth(
-        apexChart.getBoundingClientRect().width || apexChart.getBBox().width,
+        apexChart.getBoundingClientRect().width || apexChart.getBBox().width
       );
     }, 5000);
     //YearlyData
@@ -125,7 +126,7 @@ export default function ResourceChart({
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: value => {
+          formatter: (value) => {
             return value / 1000 + "K";
           },
         },
@@ -135,12 +136,12 @@ export default function ResourceChart({
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w },
+            { series, seriesIndex, dataPointIndex, w }
           ) {
             return "$" + value;
           },
           title: {
-            formatter: seriesName => seriesName + " :",
+            formatter: (seriesName) => seriesName + " :",
           },
         },
       },
@@ -234,7 +235,7 @@ export default function ResourceChart({
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: value => {
+          formatter: (value) => {
             return value / 1000 + "K";
           },
         },
@@ -244,12 +245,12 @@ export default function ResourceChart({
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w },
+            { series, seriesIndex, dataPointIndex, w }
           ) {
             return "$" + value;
           },
           title: {
-            formatter: seriesName => seriesName + " :",
+            formatter: (seriesName) => seriesName + " :",
           },
         },
       },
@@ -339,7 +340,7 @@ export default function ResourceChart({
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: value => {
+          formatter: (value) => {
             return value / 1000 + "K";
           },
         },
@@ -349,12 +350,12 @@ export default function ResourceChart({
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w },
+            { series, seriesIndex, dataPointIndex, w }
           ) {
             return "$" + value;
           },
           title: {
-            formatter: seriesName => seriesName + " :",
+            formatter: (seriesName) => seriesName + " :",
           },
         },
       },
@@ -405,7 +406,7 @@ export default function ResourceChart({
       let XAxisDataAqLocal = [];
       for (let index = 0; index < AqsaSorted.length; index++) {
         seriesAq[0].data.push(
-          Math.round(parseFloat(AqsaSorted[index].TotalContribution)),
+          Math.round(parseFloat(AqsaSorted[index].TotalContribution))
         );
         totalAq += Math.round(parseFloat(AqsaSorted[index].TotalContribution));
         optionsAq.xaxis.categories.push(AqsaSorted[index].Country);
@@ -446,7 +447,7 @@ export default function ResourceChart({
       for (let index = 0; index < ArabSorted.length; index++) {
         seriesAr[0].data.push(Math.round(parseFloat(ArabSorted[index].Grants)));
         seriesAr[1].data.push(
-          Math.round(parseFloat(ArabSorted[index].DisbursementAmount)),
+          Math.round(parseFloat(ArabSorted[index].DisbursementAmount))
         );
         totalAr += Math.round(parseFloat(ArabSorted[index].Grants));
         optionsAR.xaxis.categories.push(ArabSorted[index].Fund);
@@ -487,10 +488,10 @@ export default function ResourceChart({
     if (yearlySorted.length > 0) {
       for (let index = 0; index < yearlySorted.length; index++) {
         seriesYr[0].data.push(
-          Math.round(parseFloat(yearlySorted[index].ApprovedAmount)),
+          Math.round(parseFloat(yearlySorted[index].ApprovedAmount))
         );
         seriesYr[1].data.push(
-          Math.round(parseFloat(yearlySorted[index].DisbursementAmount)),
+          Math.round(parseFloat(yearlySorted[index].DisbursementAmount))
         );
         totalYr += Math.round(parseFloat(yearlySorted[index].ApprovedAmount));
         optionsYr.xaxis.categories.push(yearlySorted[index].Year);
@@ -507,51 +508,102 @@ export default function ResourceChart({
   return (
     <div className={`${style.resource_bg} py-3`}>
       <div className={`${style.resource_container}`}>
-        <div
-          className={`d-flex justify-content-center overflow-auto ${
-            router.locale === "ar" ? "flex-row-reverse" : "flex-row"
-          } w-100 py-3`}
-        >
-          <p
-            onClick={() => {
-              setActiveData("aqsa");
-            }}
-            style={{ cursor: "pointer" }}
-            className={`${style.resource_subtitle} ${
-              router.locale === "ar" ? "text-end" : "text-start"
-            } ${
-              activeData === "aqsa" ? style.resource_selected_title : ``
-            } px-4 mb-2`}
-          >
-            {t("Al Aqsa Funds Resources")}
-          </p>
-          <p
-            onClick={() => {
-              setActiveData("arab");
-            }}
-            style={{ cursor: "pointer" }}
-            className={`${style.resource_subtitle} ${
-              router.locale === "ar" ? "text-end" : "text-start"
-            }  ${
-              activeData === "arab" ? style.resource_selected_title : ``
-            } px-4 mb-2`}
-          >
-            {t("Arab Funds Resources")}
-          </p>
-          <p
-            onClick={() => {
-              setActiveData("yearly");
-            }}
-            style={{ cursor: "pointer" }}
-            className={`${style.resource_subtitle} ${
-              router.locale === "ar" ? "text-end" : "text-start"
-            } ${
-              activeData === "yearly" ? style.resource_selected_title : ``
-            } px-4 mb-2`}
-          >
-            {t("Yearly Approvals")}
-          </p>
-        </div>
+        <Row>
+          <Col xs={0} sm={0} md={0} lg={24} xl={24}>
+            <div
+              className={`d-flex justify-content-center overflow-auto ${
+                router.locale === "ar" ? "flex-row-reverse" : "flex-row"
+              } py-3`}
+            >
+              <p
+                onClick={() => {
+                  setActiveData("aqsa");
+                }}
+                style={{ cursor: "pointer" }}
+                className={`${style.resource_subtitle} text-nowrap ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                } ${
+                  activeData === "aqsa" ? style.resource_selected_title : ``
+                } px-4 mb-2`}
+              >
+                {t("Al Aqsa Funds Resources")}
+              </p>
+              <p
+                onClick={() => {
+                  setActiveData("arab");
+                }}
+                style={{ cursor: "pointer" }}
+                className={`${style.resource_subtitle} text-nowrap ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                }  ${
+                  activeData === "arab" ? style.resource_selected_title : ``
+                } px-4 mb-2`}
+              >
+                {t("Arab Funds Resources")}
+              </p>
+              <p
+                onClick={() => {
+                  setActiveData("yearly");
+                }}
+                style={{ cursor: "pointer" }}
+                className={`${style.resource_subtitle} text-nowrap ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                } ${
+                  activeData === "yearly" ? style.resource_selected_title : ``
+                } px-4 mb-2`}
+              >
+                {t("Yearly Approvals")}
+              </p>
+            </div>
+          </Col>
+          <Col xs={24} sm={24} md={24} lg={0} xl={0}>
+            <div
+              className={`d-flex justify-content-start overflow-auto ${
+                router.locale === "ar" ? "flex-row-reverse" : "flex-row"
+              } py-3`}
+            >
+              <p
+                onClick={() => {
+                  setActiveData("aqsa");
+                }}
+                style={{ cursor: "pointer" }}
+                className={`${style.resource_subtitle} text-nowrap ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                } ${
+                  activeData === "aqsa" ? style.resource_selected_title : ``
+                } px-4 mb-2`}
+              >
+                {t("Al Aqsa Funds Resources")}
+              </p>
+              <p
+                onClick={() => {
+                  setActiveData("arab");
+                }}
+                style={{ cursor: "pointer" }}
+                className={`${style.resource_subtitle} text-nowrap ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                }  ${
+                  activeData === "arab" ? style.resource_selected_title : ``
+                } px-4 mb-2`}
+              >
+                {t("Arab Funds Resources")}
+              </p>
+              <p
+                onClick={() => {
+                  setActiveData("yearly");
+                }}
+                style={{ cursor: "pointer" }}
+                className={`${style.resource_subtitle} text-nowrap ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                } ${
+                  activeData === "yearly" ? style.resource_selected_title : ``
+                } px-4 mb-2`}
+              >
+                {t("Yearly Approvals")}
+              </p>
+            </div>
+          </Col>
+        </Row>
         <div
           className={`${style.chart_container} shadow bg-white overflow-hidden p-4`}
         >

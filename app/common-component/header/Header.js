@@ -140,7 +140,7 @@ export default function AppHeader({ pageName, projectTitle }) {
     </Menu>
   );
   return (
-    <div className={`${style.container} position-absolute w-100 top-0`}>
+    <div className={`${style.container} w-100 top-0`}>
       <Header className={`${style.app_header_container} p-0`}>
         <Row>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
@@ -329,17 +329,23 @@ export default function AppHeader({ pageName, projectTitle }) {
                         width="80px"
                       />
                       <div className={`d-flex align-items-center`}>
-                        <p className={`${style.app_header_logo_title} text-white m-0`}>
+                        <p className={`${style.app_header_logo_title} m-0`}>
                           {t("Al Aqsa Funds")}
                         </p>
                       </div>
                     </div>
                   </Col>
-                  <Col xs={0} sm={0} md={0} lg={18} xl={18}>
+                  <Col xs={8} sm={8} md={14} lg={18} xl={18}>
                     <div
                       className={`${style.app_header_nav_section} d-flex justify-content-end align-items-center`}
                     >
-                      {routePath.map((route, index) => (
+                      <Button
+                        type="text"
+                        className={`${style.menu_button} d-flex justify-content-between align-items-center`}
+                      >
+                        <i className="fas fa-bars"></i>
+                      </Button>
+                      {/* {routePath.map((route, index) => (
                         <Dropdown
                           key={index}
                           overlay={route.name === "About" ? nav : navProject}
@@ -365,7 +371,7 @@ export default function AppHeader({ pageName, projectTitle }) {
                             <hr className={`${style.app_nav_list_hr}`} />
                           </p>
                         </Dropdown>
-                      ))}
+                      ))} */}
                     </div>
                   </Col>
                 </Row>
@@ -405,10 +411,16 @@ export default function AppHeader({ pageName, projectTitle }) {
                     </div>
                   </Col>
                   <Col xs={8} sm={8} md={14} lg={0} xl={0}>
-                    {/* <div
+                    <div
                       className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
                     >
-                      {routePath.map((route, index) => (
+                      <Button
+                        type="text"
+                        className={`${style.menu_button} d-flex justify-content-between align-items-center`}
+                      >
+                        <i className="fas fa-bars"></i>
+                      </Button>
+                      {/* {routePath.map((route, index) => (
                         <Dropdown
                           key={index}
                           overlay={route.name === "About" ? nav : navProject}
@@ -434,15 +446,17 @@ export default function AppHeader({ pageName, projectTitle }) {
                             <hr className={`${style.app_nav_list_hr}`} />
                           </p>
                         </Dropdown>
-                      ))}
-                    </div> */}
+                      ))} */}
+                    </div>
                   </Col>
                   <Col xs={16} sm={16} md={10} lg={6} xl={6}>
                     <div
                       className={`d-flex justify-content-center align-items-center h-100`}
                     >
                       <div className={`d-flex align-items-center`}>
-                        <p className={`${style.app_header_logo_title} text-white m-0`}>
+                        <p
+                          className={`${style.app_header_logo_title} text-white m-0`}
+                        >
                           {t("Al Aqsa Funds")}
                         </p>
                       </div>

@@ -48,7 +48,7 @@ export default function BannerCardSection() {
                   className={`${style.banner_card_section_title} ${
                     router.locale === "en" ? "" : `d-flex justify-content-end`
                   } text-white mb-2`}
-                  animation={{ y: 30, opacity: 0, type: "from", delay: 50 }}
+                  animation={{ y: -30, opacity: 0, type: "from", delay: 50 }}
                 >
                   {router.locale === "en" ? `Al Aqsa Funds` : `صندوق الأقصى`}
                 </TweenOne>

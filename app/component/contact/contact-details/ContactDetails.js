@@ -20,7 +20,7 @@ export default function ContactDetails({}) {
       <div className={`${style.container} px-5`}>
         <Row className={`py-2`}>
           {Object.keys(data[0]).map((keys, index) => (
-            <Col xs={0} sm={0} md={0} lg={6} xl={6} key={index}>
+            <Col xs={0} sm={0} md={0} lg={6} xl={6}>
               <div
                 className={`${style.detail_container} ${
                   index !== Object.keys(data[0]).length - 1 && "border-end"
@@ -46,9 +46,7 @@ export default function ContactDetails({}) {
                 >
                   {t(keys)}
                 </p>
-                <p
-                  className={`text-center text-white text-uppercase ${style.value} mb-1`}
-                >
+                <p className={`text-center text-white text-uppercase ${style.value} mb-1`}>
                   {data[0][keys]}
                 </p>
               </div>
@@ -59,7 +57,9 @@ export default function ContactDetails({}) {
               <div
                 className={`${style.detail_container} ${
                   index === 0 && "border-end border-bottom"
-                } ${index === 1 && "border-start border-bottom"} ${
+                } ${
+                  index === 1 && "border-start border-bottom"
+                } ${
                   index === 2 && "border-end border-top"
                 } ${
                   index === 3 && "border-start border-top"

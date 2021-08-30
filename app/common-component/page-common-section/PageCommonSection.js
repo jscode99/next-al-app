@@ -60,20 +60,20 @@ export default function PageCommonSection({ title }) {
                         <div
                           className={`${style.page_common_section_social_media_icon} d-flex justify-content-center align-items-center h-100`}
                         >
-                          <Button
+                          {/* <Button
                             type="text"
                             className={`${style.social_dd_button} d-flex justify-content-between align-items-center`}
                           >
                             <i clasName="fas fa-paper-plane"></i>
-                          </Button>
-                          {/* {socialMediaList &&
+                          </Button> */}
+                          {socialMediaList &&
                             socialMediaList.length &&
                             socialMediaList.map((data) => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
                               />
-                            ))} */}
+                            ))}
                         </div>
                       </Col>
                     </Row>
@@ -83,20 +83,20 @@ export default function PageCommonSection({ title }) {
                         <div
                           className={`${style.page_common_section_social_media_icon} d-flex justify-content-center align-items-center h-100`}
                         >
-                          <Button
+                          {/* <Button
                             type="text"
                             className={`${style.social_dd_button} d-flex justify-content-between align-items-center`}
                           >
                             <i clasName="fas fa-paper-plane"></i>
-                          </Button>
-                          {/* {socialMediaList &&
+                          </Button> */}
+                          {socialMediaList &&
                             socialMediaList.length &&
                             socialMediaList.map((data) => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
                               />
-                            ))} */}
+                            ))}
                         </div>
                       </Col>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>

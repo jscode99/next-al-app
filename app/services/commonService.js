@@ -1,10 +1,10 @@
 export function getBreadcrumData(router) {
   let path = router.pathname.split("/");
-  let resultPathName = path.map((data) => {
+  let resultPathName = path.map(data => {
     if (data.split("")[0] === "[") {
       let dataSplit = data.split("");
       let splitQueryName = dataSplit.filter(
-        (value, index) => index !== 0 && index !== dataSplit.length - 1
+        (value, index) => index !== 0 && index !== dataSplit.length - 1,
       );
       let queryName = splitQueryName.join("");
       let query = router["query"];
@@ -22,4 +22,10 @@ export function paginationService(listData, listSize, pageNumber) {
 
 export function splitLetterNumberService(data) {
   return data.match(/[a-zA-Z$]+|[0-9]+(?:\.[0-9]+|)/g);
+}
+
+export function stringToNumberConverter(data) {
+  return data && parseFloat(data.match(/\d+/g))
+    ? parseFloat(data.match(/\d+/g).join(""))
+    : data;
 }

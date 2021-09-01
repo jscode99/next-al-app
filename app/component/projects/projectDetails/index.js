@@ -40,7 +40,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       }, 0),
       subTitle: t("total projects"),
       bg: style.bg_primary_color,
-      url: "/images/card/book.webp",
+      url: "/images/card/projects.webp",
     },
   ];
 

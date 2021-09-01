@@ -22,6 +22,7 @@
 
 .resource_chart_indicator
     font-family: "oswald",roboto
+    font-size: 20px $important
     @extend %font_size_22
     color: $grey_color
     font-weight: $five_hundred
@@ -32,13 +33,23 @@
 
 .resource_chart_labels
     font-family: roboto
+    font-size: 10px
     letter-spacing: .3px
+
+.fund_chart_indicator
+    width: 25px
+    height: 20px
+
+.indicator_text
+    @extend %font_size_18
+    font-weight: $five_hundred
+    letter-spacing: .5px
 
 .chart_container
     border-radius: 16px
 
 .bar_chart
-    height: 550px
+    height: 400px
 
 .xAxis_container
     // width:126px
@@ -48,6 +59,9 @@
 .horz_scroll
     overflow: auto
     white-space: nowrap
+
+.legend_container
+    width: 155px !important
 
 @media only screen and (max-width: 1024px)
     .resource_container
@@ -62,6 +76,8 @@
         @include font_size_22
 
 @media only screen and (max-width: 500px)
+    .resource_chart_indicator
+        font-size: 15px $important
     .resource_container
         @include container_padding_smScreen
 

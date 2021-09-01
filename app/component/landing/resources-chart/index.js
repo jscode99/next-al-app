@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 import style from "./index.module.sass";
 import convertToInternationalCurrencySystem from "../../../services/internationalCurrency";
+import LegendSection from "./LegendSection";
 
 export default function ResourceChart({
   projectTitle,
@@ -40,8 +41,10 @@ export default function ResourceChart({
   const [activeData, setActiveData] = useState("aqsa");
   const [arabResource, setArabResource] = useState([]);
   const [totalArab, settotalArab] = useState([]);
+  const [totalArDisbursed, setTotalArDisbursed] = useState("");
   const [totalAqsa, settotalAqsa] = useState([]);
   const [totalYearly, settotalYearly] = useState([]);
+  const [totalYrDisbursed, setTotalYrDisbursed] = useState("");
   const [arabOption, setArabOption] = useState([]);
   const [aqsaResource, setAqsaResource] = useState([]);
   const [aqsaOption, setAqsaOption] = useState([]);
@@ -393,11 +396,20 @@ export default function ResourceChart({
       },
     };
 
-    let AqsaSorted = [
-      ...alAqsa.sort(function (x, y) {
-        return y.TotalContribution - x.TotalContribution;
-      }),
-    ];
+    let AqsaSorted =
+      router.locale === "en"
+        ? [
+            ...alAqsa.sort(function (x, y) {
+              return y.TotalContribution - x.TotalContribution;
+            }),
+          ]
+        : [
+            ...alAqsa
+              .sort(function (x, y) {
+                return y.TotalContribution - x.TotalContribution;
+              })
+              .reverse(),
+          ];
 
     let XAxisDataAq = [];
     let totalAq = 0;
@@ -427,21 +439,31 @@ export default function ResourceChart({
         }
         XAxisDataAq.push(data);
       }
-      console.log("totalAq", totalAq);
+      // console.log("totalAq", totalAq);
       setAqsaResource(seriesAq);
       setAqsaOption(optionsAq);
       setXdataAl(XAxisDataAq);
       settotalAqsa(totalAq);
     }
 
-    let ArabSorted = [
-      ...arab.sort(function (x, y) {
-        return y.Grants - x.Grants;
-      }),
-    ];
+    let ArabSorted =
+      router.locale === "en"
+        ? [
+            ...arab.sort(function (x, y) {
+              return y.Grants - x.Grants;
+            }),
+          ]
+        : [
+            ...arab
+              .sort(function (x, y) {
+                return y.Grants - x.Grants;
+              })
+              .reverse(),
+          ];
 
     let XAxisDataAr = [];
     let totalAr = 0;
+    let totalArDis = 0;
     if (ArabSorted.length > 0 && projectTitle.length > 0) {
       let XAxisDataAqLocal = [];
       for (let index = 0; index < ArabSorted.length; index++) {
@@ -450,6 +472,9 @@ export default function ResourceChart({
           Math.round(parseFloat(ArabSorted[index].DisbursementAmount)),
         );
         totalAr += Math.round(parseFloat(ArabSorted[index].Grants));
+        totalArDis += Math.round(
+          parseFloat(ArabSorted[index].DisbursementAmount),
+        );
         optionsAR.xaxis.categories.push(ArabSorted[index].Fund);
         XAxisDataAqLocal.push(ArabSorted[index].Fund);
       }
@@ -476,15 +501,26 @@ export default function ResourceChart({
       setArabOption(optionsAR);
       setXdataAr(XAxisDataAr);
       settotalArab(totalAr);
+      setTotalArDisbursed(totalArDis);
     }
 
-    let yearlySorted = [
-      ...yearly.sort(function (x, y) {
-        return x.id - y.id;
-      }),
-    ];
+    let yearlySorted =
+      router.locale === "en"
+        ? [
+            ...yearly.sort(function (x, y) {
+              return x.id - y.id;
+            }),
+          ]
+        : [
+            ...yearly
+              .sort(function (x, y) {
+                return x.id - y.id;
+              })
+              .reverse(),
+          ];
     let XAxisDataYr = [];
     let totalYr = 0;
+    let totalYrDis = 0;
     if (yearlySorted.length > 0) {
       for (let index = 0; index < yearlySorted.length; index++) {
         seriesYr[0].data.push(
@@ -494,6 +530,9 @@ export default function ResourceChart({
           Math.round(parseFloat(yearlySorted[index].DisbursementAmount)),
         );
         totalYr += Math.round(parseFloat(yearlySorted[index].ApprovedAmount));
+        totalYrDis += Math.round(
+          parseFloat(yearlySorted[index].DisbursementAmount),
+        );
         optionsYr.xaxis.categories.push(yearlySorted[index].Year);
         XAxisDataYr.push(yearlySorted[index].Year);
       }
@@ -502,8 +541,36 @@ export default function ResourceChart({
       setYearlyApproval(seriesYr);
       setYearlyOption(optionsYr);
       settotalYearly(totalYr);
+      setTotalYrDisbursed(totalYrDis);
     }
   }, [yearly, arab]);
+
+  const legendDataAq = [
+    {
+      color: `linear-gradient(to bottom, #a7e05f, #12ab97)`,
+      text: t("approved"),
+    },
+  ];
+  const legendDataAr = [
+    {
+      color: `linear-gradient(to bottom, #ffb28e, #ed6961)`,
+      text: t("approved"),
+    },
+    {
+      color: `linear-gradient(to bottom, #a7e05f, #12ab97)`,
+      text: t("disburesed"),
+    },
+  ];
+  const legendDataYr = [
+    {
+      color: `linear-gradient(to bottom, #ffb28e, #ed6961)`,
+      text: t("approved"),
+    },
+    {
+      color: `linear-gradient(to bottom, #a7e05f, #12ab97)`,
+      text: t("disburesed"),
+    },
+  ];
 
   return (
     <div className={`${style.resource_bg} py-3`}>
@@ -616,104 +683,320 @@ export default function ResourceChart({
             </div>
           </Col>
         </Row>
-        <div
-          className={`${style.chart_container} shadow bg-white overflow-hidden p-4`}
-        >
-          {/* $
-          {router.locale === "ar"
-            ? `justify-content-start flex-row-reverse`
-            : `justify-content-end flex-row`} */}
-          {router.locale === "en" ? (
-            <div className={`d-flex justify-content-end`}>
-              <p
-                className={`${style.resource_chart_indicator} text-capitalize`}
-              >
-                {t("total Amount")} :{" "}
-                <span>{`$${
-                  activeData === "aqsa"
-                    ? new Intl.NumberFormat().format(totalAqsa)
-                    : ""
-                }${
-                  activeData === "arab"
-                    ? new Intl.NumberFormat().format(totalArab)
-                    : ""
-                }${
-                  activeData === "yearly"
-                    ? new Intl.NumberFormat().format(totalYearly)
-                    : ""
-                }`}</span>
-                {/* {router.locale === "ar" ? <span>$</span>:''} */}
-              </p>
-            </div>
-          ) : (
-            <div className={`d-flex justify-content-end`}>
-              <p
-                className={`${style.resource_chart_indicator} text-capitalize`}
-              >
-                <span>
-                  {`$${
-                    activeData === "aqsa"
-                      ? new Intl.NumberFormat().format(totalAqsa)
-                      : ""
-                  }${
-                    activeData === "arab"
-                      ? new Intl.NumberFormat().format(totalArab)
-                      : ""
-                  }${
-                    activeData === "yearly"
-                      ? new Intl.NumberFormat().format(totalYearly)
-                      : ""
-                  }`}
-                </span>{" "}
-                : {t("total Amount")}
-              </p>
-            </div>
-          )}
-          {/* <div id="fund_chart"></div> */}
-          <div className={`${style.horz_scroll}`}>
-            <div className={`${style.bar_chart}`}>
-              {activeData === "aqsa" && (
-                <ApexCharts
-                  options={aqsaOption}
-                  series={aqsaResource}
-                  type="bar"
-                  width={"200%"}
-                  height={"550px"}
-                />
+        <Row>
+          <Col xs={0} sm={0} md={0} lg={24} xl={24}>
+            <div
+              className={`${style.chart_container} shadow bg-white overflow-hidden p-4`}
+            >
+              {router.locale === "en" ? (
+                <>
+                  {activeData === "aqsa" ? (
+                    <>
+                      <div className={`d-flex justify-content-end w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                        >
+                          {t("total Amount")} :{" "}
+                          <span>{`$${
+                            activeData === "aqsa"
+                              ? new Intl.NumberFormat().format(totalAqsa)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataAq} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {activeData === "arab" ? (
+                    <>
+                      <div className={`d-flex justify-content-end w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          {t("total disbursement")} :{" "}
+                          <span>{`$${
+                            activeData === "arab"
+                              ? new Intl.NumberFormat().format(totalArDisbursed)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          {t("total granted")} :{" "}
+                          <span>{`$${
+                            activeData === "arab"
+                              ? new Intl.NumberFormat().format(totalArab)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataAr} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {activeData === "yearly" ? (
+                    <>
+                      <div className={`d-flex justify-content-end w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          {t("total disbursed")} :{" "}
+                          <span>{`$${
+                            activeData === "yearly"
+                              ? new Intl.NumberFormat().format(totalYrDisbursed)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                        {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          {t("total Approved")} :{" "}
+                          <span>{`$${
+                            activeData === "yearly"
+                              ? new Intl.NumberFormat().format(totalYearly)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataYr} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </>
+              ) : (
+                <>
+                  {activeData === "aqsa" ? (
+                    <>
+                      <div className={`d-flex justify-content-start w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
+                        {router.locale === "en" ? (
+                          <p
+                            className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                          >
+                            {t("total Amount")} :{" "}
+                            <span>{`$${
+                              activeData === "aqsa"
+                                ? new Intl.NumberFormat().format(totalAqsa)
+                                : ""
+                            }`}</span>
+                            {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                          </p>
+                        ) : (
+                          <p
+                            className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                          >
+                            <span>{`$${
+                              activeData === "aqsa"
+                                ? new Intl.NumberFormat().format(totalAqsa)
+                                : ""
+                            }`}</span>{" "}
+                            : {t("total Amount")}
+                            {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                          </p>
+                        )}
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataAq} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {activeData === "arab" ? (
+                    <>
+                      <div className={`d-flex justify-content-start w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
+                        {router.locale === "en" ? (
+                          <>
+                            <p
+                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                            >
+                              {t("total disbursed")} :{" "}
+                              <span>{`$${
+                                activeData === "arab"
+                                  ? new Intl.NumberFormat().format(
+                                      totalArDisbursed,
+                                    )
+                                  : ""
+                              }`}</span>
+                              {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                            </p>
+                            <p
+                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                            >
+                              {t("total granted")} :{" "}
+                              <span>{`$${
+                                activeData === "arab"
+                                  ? new Intl.NumberFormat().format(totalArab)
+                                  : ""
+                              }`}</span>
+                              {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p
+                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                            >
+                              <span>{`$${
+                                activeData === "arab"
+                                  ? new Intl.NumberFormat().format(
+                                      totalArDisbursed,
+                                    )
+                                  : ""
+                              }`}</span>{" "}
+                              : {t("total disbursed")}
+                              {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                            </p>
+                            <p
+                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                            >
+                              <span>{`$${
+                                activeData === "arab"
+                                  ? new Intl.NumberFormat().format(totalArab)
+                                  : ""
+                              }`}</span>{" "}
+                              :{t("total granted")}
+                              {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                            </p>
+                          </>
+                        )}
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataAr} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {activeData === "yearly" ? (
+                    <>
+                      <div className={`d-flex justify-content-start w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
+                        {router.locale === "en" ? (
+                          <>
+                            <p
+                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                            >
+                              {t("total disbursed")} :{" "}
+                              <span>{`$${
+                                activeData === "yearly"
+                                  ? new Intl.NumberFormat().format(
+                                      totalYrDisbursed,
+                                    )
+                                  : ""
+                              }`}</span>
+                              {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                            </p>
+
+                            <p
+                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                            >
+                              {t("total Approved")} :{" "}
+                              <span>{`$${
+                                activeData === "yearly"
+                                  ? new Intl.NumberFormat().format(totalYearly)
+                                  : ""
+                              }`}</span>
+                            </p>
+                          </>
+                        ) : (
+                          <>
+                            <p
+                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                            >
+                              <span>{`$${
+                                activeData === "yearly"
+                                  ? new Intl.NumberFormat().format(
+                                      totalYrDisbursed,
+                                    )
+                                  : ""
+                              }`}</span>{" "}
+                              : {t("total disbursed")}
+                            </p>
+                            <p
+                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                            >
+                              <span>{`$${
+                                activeData === "yearly"
+                                  ? new Intl.NumberFormat().format(totalYearly)
+                                  : ""
+                              }`}</span>{" "}
+                              : {t("total Approved")}
+                              {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                            </p>
+                          </>
+                        )}
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataYr} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </>
               )}
-              {activeData === "arab" && (
-                <ApexCharts
-                  options={arabOption}
-                  series={arabResource}
-                  type="bar"
-                  width={"200%"}
-                  height={"550px"}
-                />
-              )}
-              {activeData === "yearly" && (
-                <ApexCharts
-                  options={yearlyOption}
-                  series={yearlyApproval}
-                  type="bar"
-                  width={"200%"}
-                  height={"550px"}
-                />
-              )}
-            </div>
-            <div className="d-flex justify-content-start align-items-center px-5">
-              {activeData === "yearly" && xAxisWidth && (
-                <div
-                  className={`d-flex justify-content-around align-items-start ms-3`}
-                  style={{ width: xAxisWidth }}
-                >
-                  {xDataYr.map((data, index) => (
+              {/* <div id="fund_chart"></div> */}
+              <div className={`${style.horz_scroll}`}>
+                <div className={`${style.bar_chart}`}>
+                  {activeData === "aqsa" && (
+                    <ApexCharts
+                      options={aqsaOption}
+                      series={aqsaResource}
+                      type="bar"
+                      width={"200%"}
+                      height={"400px"}
+                    />
+                  )}
+                  {activeData === "arab" && (
+                    <ApexCharts
+                      options={arabOption}
+                      series={arabResource}
+                      type="bar"
+                      width={"200%"}
+                      height={"400px"}
+                    />
+                  )}
+                  {activeData === "yearly" && (
+                    <ApexCharts
+                      options={yearlyOption}
+                      series={yearlyApproval}
+                      type="bar"
+                      width={"200%"}
+                      height={"400px"}
+                    />
+                  )}
+                </div>
+                <div className="d-flex justify-content-start align-items-center px-5">
+                  {activeData === "yearly" && xAxisWidth && (
                     <div
-                      key={index}
-                      className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
-                      style={{ width: xAxisWidth / xDataYr.length }}
+                      className={`d-flex justify-content-around align-items-start`}
+                      style={{ width: xAxisWidth }}
                     >
-                      <div className={`${style.xAxis_label}`}>
-                        {/* <div
+                      {xDataYr.map((data, index) => (
+                        <div
+                          key={index}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                          style={{ width: xAxisWidth / xDataYr.length }}
+                        >
+                          <div className={`${style.xAxis_label}`}>
+                            {/* <div
                           className={`d-flex justify-content-center rounded-circle overflow-hidden`}
                         >
                           <Image
@@ -724,95 +1007,437 @@ export default function ResourceChart({
                           />
                         </div> */}
 
-                        <div
-                          className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
-                        >
-                          {data}
+                            <div
+                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                            >
+                              {data}
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
-              {activeData === "arab" && xAxisWidth && (
-                <div
-                  className={`d-flex justify-content-around align-items-start ms-3`}
-                  style={{ width: xAxisWidth }}
-                >
-                  {xDataAr.map((data, index) => (
+                  )}
+                  {activeData === "arab" && xAxisWidth && (
                     <div
-                      key={index}
-                      className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
-                      style={{ width: xAxisWidth / xDataAr.length }}
+                      className={`d-flex justify-content-around align-items-start`}
+                      style={{ width: xAxisWidth }}
                     >
-                      <div className={`${style.xAxis_label}`}>
+                      {xDataAr.map((data, index) => (
                         <div
-                          className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                          key={index}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                          style={{ width: xAxisWidth / xDataAr.length }}
                         >
-                          <Image
-                            src={process.env.BASE_URL + data.url}
-                            alt={`Logo`}
-                            height="50px"
-                            width="50px"
-                          />
-                        </div>
+                          <div className={`${style.xAxis_label}`}>
+                            <div
+                              className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                            >
+                              <Image
+                                src={process.env.BASE_URL + data.url}
+                                alt={`Logo`}
+                                height="50px"
+                                width="50px"
+                              />
+                            </div>
 
-                        <div
-                          className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
-                        >
-                          {data.title}
+                            <div
+                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                            >
+                              {data.title}
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
+                  )}
 
-              {activeData === "aqsa" && xAxisWidth && (
-                <div
-                  className={`d-flex justify-content-around align-items-start ms-3`}
-                  style={{ width: xAxisWidth }}
-                >
-                  {xDataAl.map((data, index) => (
+                  {activeData === "aqsa" && xAxisWidth && (
                     <div
-                      key={index}
-                      className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
-                      style={{ width: xAxisWidth / xDataAl.length }}
+                      className={`d-flex justify-content-around align-items-start`}
+                      style={{ width: xAxisWidth, marginLeft: "12px" }}
                     >
-                      <div className={`${style.xAxis_label}`}>
+                      {xDataAl.map((data, index) => (
                         <div
-                          className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                          key={index}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                          style={{
+                            width: xAxisWidth / xDataAl.length,
+                          }}
                         >
-                          <Image
-                            src={process.env.BASE_URL + data.url}
-                            alt={`Logo`}
-                            height="50px"
-                            width="50px"
-                          />
-                        </div>
+                          <div className={`${style.xAxis_label}`}>
+                            <div
+                              className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                            >
+                              <Image
+                                src={process.env.BASE_URL + data.url}
+                                alt={`Logo`}
+                                height="50px"
+                                width="50px"
+                              />
+                            </div>
 
-                        <div
-                          className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
-                        >
-                          {data.title}
+                            <div
+                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                            >
+                              {data.title}
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
+                  )}
 
-              {!xAxisWidth && (
-                <div
-                  style={{ width: "100%" }}
-                  className={`${style.resource_chart_labels} d-flex justify-content-center align-items-center`}
-                >
-                  Loading...
+                  {!xAxisWidth && (
+                    <div
+                      style={{ width: "100%" }}
+                      className={`${style.resource_chart_labels} d-flex justify-content-center align-items-center`}
+                    >
+                      Loading...
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
             </div>
-          </div>
-        </div>
+          </Col>
+          <Col xs={24} sm={24} md={24} lg={0} xl={0}>
+            <div
+              className={`${style.chart_container} shadow bg-white overflow-hidden p-4`}
+            >
+              {router.locale === "en" ? (
+                <>
+                  {activeData === "aqsa" ? (
+                    <>
+                      <div className={`d-flex justify-content-end w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                        >
+                          {t("total Amount")} :{" "}
+                          <span>{`$${
+                            activeData === "aqsa"
+                              ? new Intl.NumberFormat().format(totalAqsa)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataAq} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {activeData === "arab" ? (
+                    <>
+                      <div className={`d-flex justify-content-end w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          {t("total disbursement")} :{" "}
+                          <span>{`$${
+                            activeData === "arab"
+                              ? new Intl.NumberFormat().format(totalArDisbursed)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          {t("total granted")} :{" "}
+                          <span>{`$${
+                            activeData === "arab"
+                              ? new Intl.NumberFormat().format(totalArab)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataAr} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {activeData === "yearly" ? (
+                    <>
+                      <div className={`d-flex justify-content-end w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          {t("total disbursed")} :{" "}
+                          <span>{`$${
+                            activeData === "yearly"
+                              ? new Intl.NumberFormat().format(totalYrDisbursed)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                        {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          {t("total Approved")} :{" "}
+                          <span>{`$${
+                            activeData === "yearly"
+                              ? new Intl.NumberFormat().format(totalYearly)
+                              : ""
+                          }`}</span>
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataYr} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </>
+              ) : (
+                <>
+                  {activeData === "aqsa" ? (
+                    <>
+                      <div className={`d-flex justify-content-start w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                        >
+                          <span>{`$${
+                            activeData === "aqsa"
+                              ? new Intl.NumberFormat().format(totalAqsa)
+                              : ""
+                          }`}</span>{" "}
+                          : {t("total Amount")}
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataAq} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {activeData === "arab" ? (
+                    <>
+                      <div className={`d-flex justify-content-end w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          <span>{`$${
+                            activeData === "arab"
+                              ? new Intl.NumberFormat().format(totalArDisbursed)
+                              : ""
+                          }`}</span>{" "}
+                          : {t("total disbursement")}
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          <span>{`$${
+                            activeData === "arab"
+                              ? new Intl.NumberFormat().format(totalArab)
+                              : ""
+                          }`}</span>{" "}
+                          : {t("total granted")}
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataAr} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {activeData === "yearly" ? (
+                    <>
+                      <div className={`d-flex justify-content-end w-100`}>
+                        {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          <span>{`$${
+                            activeData === "yearly"
+                              ? new Intl.NumberFormat().format(totalYrDisbursed)
+                              : ""
+                          }`}</span>{" "}
+                          :{t("total disbursed")}
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                        {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
+                        <p
+                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                        >
+                          <span>{`$${
+                            activeData === "yearly"
+                              ? new Intl.NumberFormat().format(totalYearly)
+                              : ""
+                          }`}</span>{" "}
+                          : {t("total Approved")}
+                          {/* {router.locale === "ar" ? <span>$</span>:''} */}
+                        </p>
+                        {/* </Col> */}
+                      </div>
+                      <LegendSection legendData={legendDataYr} />
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </>
+              )}
+              {/* <div id="fund_chart"></div> */}
+              <div className={`${style.horz_scroll}`}>
+                <div className={`${style.bar_chart}`}>
+                  {activeData === "aqsa" && (
+                    <ApexCharts
+                      options={aqsaOption}
+                      series={aqsaResource}
+                      type="bar"
+                      width={"600%"}
+                      height={"400px"}
+                    />
+                  )}
+                  {activeData === "arab" && (
+                    <ApexCharts
+                      options={arabOption}
+                      series={arabResource}
+                      type="bar"
+                      width={"600%"}
+                      height={"400px"}
+                    />
+                  )}
+                  {activeData === "yearly" && (
+                    <ApexCharts
+                      options={yearlyOption}
+                      series={yearlyApproval}
+                      type="bar"
+                      width={"600%"}
+                      height={"400px"}
+                    />
+                  )}
+                </div>
+                <div className="d-flex justify-content-start align-items-center px-5">
+                  {activeData === "yearly" && xAxisWidth && (
+                    <div
+                      className={`d-flex justify-content-around align-items-start`}
+                      style={{ width: xAxisWidth }}
+                    >
+                      {xDataYr.map((data, index) => (
+                        <div
+                          key={index}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                          style={{ width: xAxisWidth / xDataYr.length }}
+                        >
+                          <div className={`${style.xAxis_label}`}>
+                            {/* <div
+                          className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                        >
+                          <Image
+                            src={data.url}
+                            alt={`Logo`}
+                            height="50px"
+                            width="50px"
+                          />
+                        </div> */}
+
+                            <div
+                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                            >
+                              {data}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {activeData === "arab" && xAxisWidth && (
+                    <div
+                      className={`d-flex justify-content-around align-items-start`}
+                      style={{ width: xAxisWidth }}
+                    >
+                      {xDataAr.map((data, index) => (
+                        <div
+                          key={index}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                          style={{ width: xAxisWidth / xDataAr.length }}
+                        >
+                          <div className={`${style.xAxis_label}`}>
+                            <div
+                              className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                            >
+                              <Image
+                                src={process.env.BASE_URL + data.url}
+                                alt={`Logo`}
+                                height="50px"
+                                width="50px"
+                              />
+                            </div>
+
+                            <div
+                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                            >
+                              {data.title}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {activeData === "aqsa" && xAxisWidth && (
+                    <div
+                      className={`d-flex justify-content-around align-items-start`}
+                      style={{ width: xAxisWidth, marginLeft: "12px" }}
+                    >
+                      {xDataAl.map((data, index) => (
+                        <div
+                          key={index}
+                          className={`${style.xAxis_container} d-flex justify-content-start align-items-center flex-column h-100`}
+                          style={{
+                            width: xAxisWidth / xDataAl.length,
+                          }}
+                        >
+                          <div className={`${style.xAxis_label}`}>
+                            <div
+                              className={`d-flex justify-content-center rounded-circle overflow-hidden`}
+                            >
+                              <Image
+                                src={process.env.BASE_URL + data.url}
+                                alt={`Logo`}
+                                height="50px"
+                                width="50px"
+                              />
+                            </div>
+
+                            <div
+                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                            >
+                              {data.title}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {!xAxisWidth && (
+                    <div
+                      style={{ width: "100%" }}
+                      className={`${style.resource_chart_labels} d-flex justify-content-center align-items-center`}
+                    >
+                      Loading...
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </Col>
+        </Row>
       </div>
     </div>
   );

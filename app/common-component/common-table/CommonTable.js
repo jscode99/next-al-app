@@ -20,9 +20,9 @@ export default function CommonTable({ columnData, data, pagination, scroll }) {
         width: cData.width,
         dataIndex: cData.dataIndex,
         render: cData.render ? cData.render : ``,
-        sorter: {
-          compare: (a, b) => a.dataIndex - b.dataIndex,
-        },
+        // sorter: {
+        //   compare: (a, b) => a.dataIndex - b.dataIndex,
+        // },
       };
     });
 

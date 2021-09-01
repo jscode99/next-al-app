@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { Row, Table } from "antd";
+import { stringToNumberConverter } from "../../../services/commonService";
 //Common Component
 import CommonTable from "../../../common-component/common-table/CommonTable";
 //Style
@@ -203,9 +204,9 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         deadSeaSummitTotal = new Intl.NumberFormat().format(deadSeaSummitTotal);
 
       tData.push({
-        CairoSummitContribution: <b>{cairoSummitTotal}</b>,
-        DeadSeaSummitContribution: <b>{deadSeaSummitTotal}</b>,
-        BeirutSirteSummitContribution: <b>{beirutSirteSummitTotal}</b>,
+        CairoSummitContribution: <b>{"$" + cairoSummitTotal}</b>,
+        DeadSeaSummitContribution: <b>{"$" + deadSeaSummitTotal}</b>,
+        BeirutSirteSummitContribution: <b>{"$" + beirutSirteSummitTotal}</b>,
         Country: <b>{t("total")}</b>,
       });
     }
@@ -219,23 +220,53 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     // );
     let mapedData = tData.map((value, index) => {
       let beirut = getNumericValue(
-        value.BeirutSirteSummitContribution &&
-          value.BeirutSirteSummitContribution.props
-          ? value.BeirutSirteSummitContribution.props.children
-          : value.BeirutSirteSummitContribution,
+        stringToNumberConverter(
+          value.BeirutSirteSummitContribution &&
+            value.BeirutSirteSummitContribution.props
+            ? value.BeirutSirteSummitContribution.props.children
+            : value.BeirutSirteSummitContribution,
+        ),
       );
       let cairo = getNumericValue(
-        value.CairoSummitContribution && value.CairoSummitContribution.props
-          ? value.CairoSummitContribution.props.children
-          : value.CairoSummitContribution,
+        stringToNumberConverter(
+          value.CairoSummitContribution && value.CairoSummitContribution.props
+            ? value.CairoSummitContribution.props.children
+            : value.CairoSummitContribution,
+        ),
       );
       let dead = getNumericValue(
-        value.DeadSeaSummitContribution && value.DeadSeaSummitContribution.props
-          ? value.DeadSeaSummitContribution.props.children
-          : value.DeadSeaSummitContribution,
+        stringToNumberConverter(
+          value.DeadSeaSummitContribution &&
+            value.DeadSeaSummitContribution.props
+            ? value.DeadSeaSummitContribution.props.children
+            : value.DeadSeaSummitContribution,
+        ),
       );
-      console.log("beirut", value.BeirutSirteSummitContribution);
-      rowTotal = beirut + cairo + dead;
+      console.log("beirut", beirut);
+      // console.log(
+      //   "total",
+      //   beirut &&
+      //     beirut.props &&
+      //     beirut.props.children &&
+      //     cairo &&
+      //     cairo.props &&
+      //     cairo.props.children &&
+      //     dead &&
+      //     dead.props &&
+      //     dead.props.children
+      //     ? beirut.props.children
+      //     : // stringToNumberConverter(beirut.props.children)
+      //       // +
+      //       //     stringToNumberConverter(cairo.props.children) +
+      //       //     stringToNumberConverter(dead.props.children)
+      //       beirut + cairo + dead,
+      // );
+      rowTotal =
+        beirut && beirut.props && cairo && cairo.props && dead && dead.props
+          ? stringToNumberConverter(beirut.props.children) +
+            stringToNumberConverter(cairo.props.children) +
+            stringToNumberConverter(dead.props.children)
+          : beirut + cairo + dead;
 
       if (index === tData.length - 1)
         setSummitAmount({

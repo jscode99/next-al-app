@@ -11,7 +11,7 @@ import convertToInternationalCurrencySystem from "../../../services/internationa
 import style from "./index.module.sass";
 
 export default function ProjectRouteCard({ finalChartData }) {
-  console.log("finalChartData", finalChartData.reverse());
+  // console.log("finalChartData", finalChartData.reverse());
   const router = useRouter();
   const base_url = process.env.BASE_URL;
 
@@ -72,7 +72,9 @@ export default function ProjectRouteCard({ finalChartData }) {
                     className={`${
                       style.route_card_title
                     } d-flex p-4 m-0 w-100 ${
-                      router.locale === "en" ? `text-start` : `text-end`
+                      router.locale === "en"
+                        ? `text-start`
+                        : `text-end justify-content-end`
                     } `}
                   >
                     {t(data.title)}

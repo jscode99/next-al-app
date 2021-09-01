@@ -147,12 +147,23 @@ export default function Projects({ projectTitle, projectData }) {
       {router.locale === "en" ? (
         <ProjectIntroCard cardData={cardData} />
       ) : (
-        <ProjectIntroCard cardData={cardData.reverse()} />
+        <ProjectIntroCard cardData={new Array(...cardData).reverse()} />
       )}
 
-      <ProjectRouteCard finalChartData={finalChartData} />
-
-      <ProjectFundChart finalChartData={finalChartData} />
+      {router.locale === "en" ? (
+        <ProjectRouteCard finalChartData={finalChartData} />
+      ) : (
+        <ProjectRouteCard
+          finalChartData={new Array(...finalChartData).reverse()}
+        />
+      )}
+      {router.locale === "en" ? (
+        <ProjectFundChart finalChartData={finalChartData} />
+      ) : (
+        <ProjectFundChart
+          finalChartData={new Array(...finalChartData).reverse()}
+        />
+      )}
     </>
   );
 }

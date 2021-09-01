@@ -43,7 +43,7 @@ export default function AppTextArea({
       </div>
       <div className={`d-flex justify-content-start align-items-center w-100`}>
         <p
-          className={`text-capitalize text-danger mb-0 ${
+          className={`text-capitalize text-danger mb-0 ${style.error} ${
             errorCheck ? "" : style.visibility
           }`}
         >

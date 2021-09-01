@@ -81,9 +81,9 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "totalPayed",
-      render: Beirut => (
+      render: total => (
         <p className={`${style.table_name} text-capitalize text-center m-1`}>
-          {Beirut}
+          {total}
         </p>
       ),
     },
@@ -263,9 +263,9 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
           value.DeadSeaSummitContribution.props &&
           value.CairoSummitContribution &&
           value.CairoSummitContribution.props ? (
-            <b>{new Intl.NumberFormat().format(rowTotal)}</b>
+            <b>{"$" + new Intl.NumberFormat().format(rowTotal)}</b>
           ) : (
-            new Intl.NumberFormat().format(rowTotal)
+            "$" + new Intl.NumberFormat().format(rowTotal)
           ),
       };
     });
@@ -283,7 +283,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     return !Number.isNaN(parseInt(value))
       ? Number.isNaN(parseInt(new Intl.NumberFormat().format(value)))
         ? value
-        : new Intl.NumberFormat().format(value)
+        : "$" + new Intl.NumberFormat().format(value)
       : value;
   };
 

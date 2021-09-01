@@ -83,9 +83,11 @@ export default function ContributionsArabFunds({ arabContributions }) {
     let data = arabContributions.map(value => {
       totalValue += parseInt(value.Allocation.split(",").join(""));
       return {
-        Allocation: new Intl.NumberFormat().format(
-          parseInt(value.Allocation.split(",").join("")),
-        ),
+        Allocation:
+          "$" +
+          new Intl.NumberFormat().format(
+            parseInt(value.Allocation.split(",").join("")),
+          ),
         Name: value.Name,
       };
     });
@@ -93,7 +95,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
     if (data[data.length - 1].Name.toLowerCase() !== "total") {
       totalValue = new Intl.NumberFormat().format(totalValue);
       data.push({
-        Allocation: <b>{totalValue}</b>,
+        Allocation: <b>{"$" + totalValue}</b>,
         Name: <b>{t("total")}</b>,
       });
     }

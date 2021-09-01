@@ -158,9 +158,9 @@ export default function SuccessStoriesDetails({ storiesProps }) {
                   </Col>
                   <Col
                     span={7}
-                    className={`${styles.stories_amount_heading} text-end`}
+                    className={`${styles.stories_amount_heading} text-capitalize text-end`}
                   >
-                    {t("Total Approved")}
+                    {t("total approved")}
                   </Col>
                 </Row>
                 <Row className={`mb-5`}>
@@ -178,9 +178,9 @@ export default function SuccessStoriesDetails({ storiesProps }) {
                   </Col>
                   <Col
                     span={7}
-                    className={`${styles.stories_amount_heading} text-end`}
+                    className={`${styles.stories_amount_heading} text-capitalize text-end`}
                   >
-                    {t("Source of Funds")}
+                    {t("source of funds")}
                   </Col>
                 </Row>
                 <p className={`${styles.stories_details_des} text-end pr-4`}>

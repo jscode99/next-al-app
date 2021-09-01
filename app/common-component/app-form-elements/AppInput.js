@@ -17,32 +17,34 @@ export default function AppInput({
     <div
       className={`${
         sm ? style.app_input_group_sm : "w-100"
-      } d-flex justify-content-center align-items-center flex-column mb-1`}
+      } d-flex justify-content-center align-items-center flex-column`}
     >
       <div
         className={`d-flex ${
           router.locale === "en"
             ? "justify-content-start"
             : "justify-content-end"
-        } align-items-center w-100 mb-2`}
+        } align-items-center w-100`}
       >
-        <span className={`${style.app_label}`}>{label}</span>
+        <span className={`${style.app_label} text-capitalize`}>{label}</span>
       </div>
       <div className={`d-flex justify-content-center align-items-center w-100`}>
         <Input
           placeholder={`${placeholder}`}
-          className={`${errorCheck ? "border border-danger" : ""}  ${
-            style.app_input
-          }`}
+          className={`text-capitalize ${
+            errorCheck ? "border border-danger" : ""
+          }  ${style.app_input}`}
           name={name}
           value={value}
           onChange={onChange}
         />
       </div>
-      <div
-        className={`d-flex justify-content-start align-items-center mt-1 w-100`}
-      >
-        <p className={`text-danger mb-0 ${style.error} ${errorCheck ? "" : style.visibility}`}>
+      <div className={`d-flex justify-content-start align-items-center w-100`}>
+        <p
+          className={`text-capitalize text-danger mb-0 ${style.error} ${
+            errorCheck ? "" : style.visibility
+          }`}
+        >
           {errorText}
         </p>
       </div>

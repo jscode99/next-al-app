@@ -8,25 +8,27 @@ export default function SectoralApproval({ sectoralData }) {
   const { t } = useTranslation("common");
   return (
     <div className={`d-flex align-items-center w-100 flex-column`}>
-      <h4 className={`${style.sectoral_approval_title} w-100`}>
-        {t("Sectoral Distribution of Approvals")}
+      <h4 className={`${style.sectoral_approval_title} w-100 text-capitalize`}>
+        {t("sectoral distribution of approvals")}
       </h4>
 
       <div
         className={`d-flex justify-content-center align-items-center my-2 w-100`}
       >
-        <p className={`${style.sector_labels} w-50 text-secondary ms-3 m-0`}>
-          {t("Sector Name")}
+        <p
+          className={`${style.sector_labels} w-50 text-capitalize text-secondary ms-3 m-0`}
+        >
+          {t("sector name")}
         </p>
         <p
-          className={`${style.sector_labels} w-25 text-secondary text-center m-0`}
+          className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}
         >
-          {t("Projects")}
+          {t("projects")}
         </p>
         <p
-          className={`${style.sector_labels} w-25 text-secondary text-center m-0`}
+          className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}
         >
-          {t("% Total Portfolio")}
+          {t("% total portfolio")}
         </p>
       </div>
       {sectoralData.map((data, index) => (
@@ -42,7 +44,10 @@ export default function SectoralApproval({ sectoralData }) {
             className={`d-flex justify-content-center align-items-center w-25`}
           >
             <PieChart data={data} color={`#326ccc`} />
-            <p className={`ms-1 m-0 ${style.percentage}`} style={{ width: "45px" }}>
+            <p
+              className={`ms-1 m-0 ${style.percentage}`}
+              style={{ width: "45px" }}
+            >
               {data.percent}
             </p>
           </div>

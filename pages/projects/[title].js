@@ -16,6 +16,7 @@ import ProjectDetailsContainer from "../../app/container/projects/projectDetails
 export default function ProjectDetails({
   projectTitleData,
   projectDetailsProp,
+  projectPageTitle,
   sector,
   bannerImage,
 }) {
@@ -23,6 +24,7 @@ export default function ProjectDetails({
     <ProjectDetailsContainer
       projectTitle={projectTitleData}
       projectDetailsProp={projectDetailsProp}
+      projectPageTitle={projectPageTitle}
       sector={sector}
       bannerImage={bannerImage}
     />
@@ -76,6 +78,9 @@ export async function getStaticProps(context) {
   const projectDetailsProp = projectData.filter(
     data => data.projectTitle.toLowerCase() === mapRoutePathToTitle(path),
   );
+  const projectPageTitle = projectTitleData.filter(
+    data => data.title.toLowerCase() === mapRoutePathToTitle(path),
+  );
   //   // Not path
   if (!projectDetailsProp) {
     return {
@@ -94,6 +99,7 @@ export async function getStaticProps(context) {
       )),
       projectTitleData,
       projectDetailsProp,
+      projectPageTitle,
       sector,
       bannerImage,
     },

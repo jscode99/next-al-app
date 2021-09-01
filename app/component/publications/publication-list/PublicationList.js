@@ -151,9 +151,9 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                           <Button
                             type="text"
                             shape="round"
-                            className={`${style.publication_list_button}`}
+                            className={`${style.publication_list_button} text-capitalize`}
                           >
-                            {t("Download")}
+                            {t("download")}
                           </Button>
                         </a>
                       ) : (
@@ -192,9 +192,9 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       {listData && listData.Date ? (
                         <>
                           <p
-                            className={`${style.publication_list_label} d-flex justify-content-end align-items-center mb-2 w-100`}
+                            className={`${style.publication_list_label} d-flex justify-content-end align-items-center mb-2 w-100 text-capitalize`}
                           >
-                            {t("Date")}
+                            {t("date")}
                           </p>
                           <p
                             className={`${style.publication_list_title} d-flex justify-content-center align-items-center text-end m-0 w-100`}

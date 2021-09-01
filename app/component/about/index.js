@@ -1,5 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+
 //Components
 import ShareHolder from "./shareholders";
 import AboutUsCard from "./aboutCards";
@@ -11,6 +12,7 @@ import MissionSection from "./missionSection";
 export default function About({}) {
   const { t } = useTranslation("common");
   const router = useRouter();
+
   const flagData = [
     {
       title: "Jordan",
@@ -84,15 +86,15 @@ export default function About({}) {
 
   const cardData = [
     {
-      title: t("Governance Structure"),
+      title: t("governance structure"),
       route: "/about/governance-structure",
     },
     {
-      title: t("Members"),
+      title: t("members"),
       route: "/about/members",
     },
     {
-      title: t("Approval Process and Selection Criteria"),
+      title: t("approval process and selection criteria"),
       route: "/about/approval-process-and-selection-criteria",
     },
   ];

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+
 //Components
 import ProjectDetailsIntroCard from "./projectDetailsIntroCard";
 import ProjectDetailsApproval from "./projectDetailsApproval";
@@ -12,7 +14,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
   console.log("projectData", projectData);
   const [finalChartData, setFinalChartData] = useState([]);
   const [sectorData, setSectorData] = useState([]);
-
+  let router = useRouter();
   const { t } = useTranslation("common");
 
   const cardData = [
@@ -20,7 +22,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       amount: finalChartData.reduce(function (accumulator, item) {
         return accumulator + item.totalApprovedAmount;
       }, 0),
-      subTitle: t("Total Approvals"),
+      subTitle: t("total approvals"),
       bg: style.bg_theme_sky_blue_color,
       url: "/images/card/pen.webp",
     },
@@ -28,7 +30,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       amount: finalChartData.reduce(function (accumulator, item) {
         return accumulator + item.totalApprovedAmount;
       }, 0),
-      subTitle: t("Total Disbursed"),
+      subTitle: t("total disbursed"),
       bg: style.bg_theme_golden_color,
       url: "/images/card/hand.webp",
     },
@@ -36,7 +38,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       amount: finalChartData.reduce(function (accumulator, item) {
         return accumulator + item.totalProjects;
       }, 0),
-      subTitle: t("Total Projects"),
+      subTitle: t("total projects"),
       bg: style.bg_primary_color,
       url: "/images/card/book.webp",
     },
@@ -165,7 +167,11 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
 
   return (
     <>
-      <ProjectDetailsIntroCard cardData={cardData} />
+      {router.locale === "en" ? (
+        <ProjectDetailsIntroCard cardData={cardData} />
+      ) : (
+        <ProjectDetailsIntroCard cardData={cardData.reverse()} />
+      )}
 
       <ProjectDetailsApproval projectData={sectorData} />
 

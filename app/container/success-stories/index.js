@@ -14,7 +14,7 @@ export default function SuccessStoriesContainer({
       page={"success-stories"}
       pageName={"success stories"}
       projectTitle={projectTitle}
-      title={"Success Stories"}
+      title={"success stories"}
     >
       <SuccessStories stories={stories} successStoriesAR={successStoriesAR} />
     </Layout>

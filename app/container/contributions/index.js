@@ -15,7 +15,7 @@ export default function ContributionsContainer({
       page={"contributions"}
       pageName={"contributions"}
       projectTitle={projectTitle}
-      title={"Contributions"}
+      title={"contributions"}
     >
       <Contributions
         arabContributions={arabContributions}

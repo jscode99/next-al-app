@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+//Antd
+import { Row, Col } from "antd";
 
 //Common-Components
 import AppCollapsible from "../../../../../common-component/app-collapsible";
@@ -13,7 +15,7 @@ export default function FunctionSection() {
 
   const listData = [
     {
-      title: t("Supreme Council"),
+      title: t("supreme council"),
       url: "/images/about/Governance/Star.webp",
       iconBg: style.secondary_color,
       color: "#5ca849",
@@ -26,7 +28,7 @@ export default function FunctionSection() {
       ],
     },
     {
-      title: t("Management Committee"),
+      title: t("management committee"),
       url: "/images/about/Governance/People.webp",
       iconBg: style.theme_golden_color,
       color: "#dabd2c",
@@ -39,7 +41,7 @@ export default function FunctionSection() {
       ],
     },
     {
-      title: t("Islamic Development Bank"),
+      title: t("islamic development bank"),
       url: "/images/about/Governance/Bank.webp",
       iconBg: style.primary_color,
       color: "#0E3890",
@@ -54,22 +56,44 @@ export default function FunctionSection() {
   ];
   return (
     <div className={`${style.function_bg}`}>
-      <div className={`${style.function_container}`}>
-        <div className={`px-5 py-3`}>
-          <h4
-            className={`${style.function_title} mx-4 my-4 ${
-              router.locale === "en" ? `text-start` : `text-end`
-            } fw-bold`}
-          >
-            {t("Functions")}
-          </h4>
-          {listData.map(data => (
-            <div className={`ms-5`} key={Math.random()}>
-              <AppCollapsible data={data} color={`#64ac52`} />
+      <Row>
+        <Col xs={0} sm={0} md={24} lg={24} xl={24}>
+          <div className={`${style.function_container}`}>
+            <div className={`px-5 py-3`}>
+              <h4
+                className={`${style.function_title} text-capitalize mx-4 my-4 ${
+                  router.locale === "en" ? `text-start` : `text-end`
+                } fw-bold`}
+              >
+                {t("functions")}
+              </h4>
+              {listData.map(data => (
+                <div className={`ms-5`} key={Math.random()}>
+                  <AppCollapsible data={data} color={`#64ac52`} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </Col>
+        <Col xs={24} sm={24} md={0} lg={0} xl={0}>
+          <div className={`${style.function_container}`}>
+            <div className={`p-3`}>
+              <h4
+                className={`${style.function_title} text-capitalize mx-4 my-4 ${
+                  router.locale === "en" ? `text-start` : `text-end`
+                } fw-bold`}
+              >
+                {t("Functions")}
+              </h4>
+              {listData.map(data => (
+                <div className={`ms-3`} key={Math.random()}>
+                  <AppCollapsible data={data} color={`#64ac52`} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 }

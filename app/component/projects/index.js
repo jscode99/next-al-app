@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 //Components
 import ProjectIntroCard from "./projectIntroCard";
@@ -9,6 +10,8 @@ import ProjectFundChart from "./projectFundChart";
 import style from "./index.module.sass";
 
 export default function Projects({ projectTitle, projectData }) {
+  const router = useRouter();
+
   console.log("projectTitle", projectTitle);
   const [finalChartData, setFinalChartData] = useState([]);
   const { t } = useTranslation("common");
@@ -18,7 +21,7 @@ export default function Projects({ projectTitle, projectData }) {
       amount: finalChartData.reduce(function (accumulator, item) {
         return accumulator + item.totalApprovedAmount;
       }, 0),
-      subTitle: t("Total Approvals"),
+      subTitle: t("total approvals"),
       bg: style.bg_theme_sky_blue_color,
       url: "/images/card/pen.webp",
     },
@@ -26,7 +29,7 @@ export default function Projects({ projectTitle, projectData }) {
       amount: finalChartData.reduce(function (accumulator, item) {
         return accumulator + item.totalProjects;
       }, 0),
-      subTitle: t("Total Projects"),
+      subTitle: t("total projects"),
       bg: style.bg_theme_golden_color,
       url: "/images/card/book.webp",
     },
@@ -141,7 +144,11 @@ export default function Projects({ projectTitle, projectData }) {
 
   return (
     <>
-      <ProjectIntroCard cardData={cardData} />
+      {router.locale === "en" ? (
+        <ProjectIntroCard cardData={cardData} />
+      ) : (
+        <ProjectIntroCard cardData={cardData.reverse()} />
+      )}
 
       <ProjectRouteCard finalChartData={finalChartData} />
 

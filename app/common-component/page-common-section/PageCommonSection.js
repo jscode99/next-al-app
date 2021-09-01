@@ -28,7 +28,7 @@ export default function PageCommonSection({ title }) {
   }, [router.locale]);
   return (
     <div className={`${style.container} w-100`}>
-      <Row>
+      <Row className="h-100">
         <Col xs={0} sm={0} md={24} lg={24} xl={24}>
           <div
             className={`${style.card} d-flex align-items-center bg-white px-5 pt-3`}
@@ -39,7 +39,9 @@ export default function PageCommonSection({ title }) {
                   {router.locale === "en" ? (
                     <Row>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>
-                        <h1 className={`${style.page_common_section_title}`}>
+                        <h1
+                          className={`${style.page_common_section_title} text-capitalize`}
+                        >
                           {title}
                         </h1>
                         <div
@@ -68,7 +70,7 @@ export default function PageCommonSection({ title }) {
                           </Button> */}
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map((data) => (
+                            socialMediaList.map(data => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
@@ -91,7 +93,7 @@ export default function PageCommonSection({ title }) {
                           </Button> */}
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map((data) => (
+                            socialMediaList.map(data => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
@@ -101,7 +103,7 @@ export default function PageCommonSection({ title }) {
                       </Col>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>
                         <h1
-                          className={`${style.page_common_section_title} text-end`}
+                          className={`${style.page_common_section_title} text-end text-capitalize`}
                         >
                           {title}
                         </h1>
@@ -136,7 +138,9 @@ export default function PageCommonSection({ title }) {
                   {router.locale === "en" ? (
                     <Row>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>
-                        <h1 className={`${style.page_common_section_title}`}>
+                        <h1
+                          className={`${style.page_common_section_title} text-capitalize`}
+                        >
                           {title}
                         </h1>
                         <div
@@ -159,7 +163,7 @@ export default function PageCommonSection({ title }) {
                         >
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map((data) => (
+                            socialMediaList.map(data => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
@@ -176,7 +180,7 @@ export default function PageCommonSection({ title }) {
                         >
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map((data) => (
+                            socialMediaList.map(data => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
@@ -200,7 +204,7 @@ export default function PageCommonSection({ title }) {
                       </Col>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>
                         <h1
-                          className={`${style.page_common_section_title} text-end`}
+                          className={`${style.page_common_section_title} text-end text-capitalize`}
                         >
                           {title}
                         </h1>

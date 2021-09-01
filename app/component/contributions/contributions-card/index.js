@@ -14,12 +14,12 @@ export default function ContributionsCard({ cardData, grandTotal }) {
   return (
     <div className={`${style.container}`}>
       <div
-        className={`d-flex justify-content-center ${
+        className={`d-flex text-capitalize justify-content-center ${
           router.locale === "ar" && `flex-row-reverse`
         }`}
       >
         <span className={`${style.contribution_total_title}`}>
-          {t("Overall Contribution")}
+          {t("overall contribution")}
         </span>
         <span className={`${style.contribution_total_title} px-1`}>:</span>
         <span className={`${style.contribution_total_amount} ps-1`}>
@@ -31,8 +31,10 @@ export default function ContributionsCard({ cardData, grandTotal }) {
       >
         <Row gutter={[16, 16]} className={`w-100`}>
           {router.locale === "en"
-            ? cardData.map((data) => <IntroCard data={data} />)
-            : new Array(...cardData).reverse().map((data) => <IntroCard data={data} />)}
+            ? cardData.map(data => <IntroCard data={data} />)
+            : new Array(...cardData)
+                .reverse()
+                .map(data => <IntroCard data={data} />)}
         </Row>
       </div>
     </div>

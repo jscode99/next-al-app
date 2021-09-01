@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 
-import { Breadcrumb } from "antd";
+import { Row, Col } from "antd";
 //Style
 import style from "./index.module.sass";
 
@@ -25,65 +25,191 @@ export default function IsdbRoleSection() {
   ];
   return (
     <div className={`${style.role_bg} py-5`}>
-      <div className={`${style.role_container} px-5`}>
-        <div className={`${style.role_details_conatiner} shadow`}>
-          <div className={`p-5`}>
-            <p
-              className={`${style.role_title} mb-4 ${
-                router.locale === "en" ? `` : `text-end`
-              } `}
-            >
-              {t("Role of IsDB")}
-            </p>
-            <p
-              className={`${style.role_description} mb-4 ${
-                router.locale === "en" ? `` : `text-end`
-              }`}
-            >
-              The Council of Arab Finance Ministers has entrusted the Islamic
-              Development Bank with the task of managing the two funds in a way
-              that ensures the proper use and development of its resources and
-              in a manner that achieves the goals for which the two funds were
-              established, namely supporting the steadfastness of the
-              Palestinian people, preserving the Arab and Islamic identity of
-              Jerusalem and enabling the Palestinian economy to develop its own
-              capabilities.
-            </p>
-            <p
-              className={`${style.role_description} ${
-                router.locale === "en" ? `` : `text-end`
-              }`}
-            >
-              From this point of view, the bank’s mission is to:
-            </p>
-            {listData.map(data => (
-              <>
-                {router.locale === "en" ? (
-                  <div className={`d-flex align-item-start`}>
-                    <span className={`${style.role_bullet_point} mx-2`}>
-                      &#8226;
-                    </span>
-                    <p className={`${style.role_description} mt-2 m-0`}>
-                      {data.des}
-                    </p>
-                  </div>
-                ) : (
-                  <div className={`d-flex justify-content-end`}>
-                    <p
-                      className={`${style.role_description} mt-2 mb-0 text-end`}
-                    >
-                      {data.des}
-                    </p>
-                    <span className={`${style.role_bullet_point} mx-2`}>
-                      &#8226;
-                    </span>
-                  </div>
-                )}
-              </>
-            ))}
+      <Row>
+        <Col xs={0} sm={0} md={0} lg={24} xl={24}>
+          <div className={`${style.role_container} px-5`}>
+            <div className={`${style.role_details_conatiner} shadow`}>
+              <div className={`p-5`}>
+                <p
+                  className={`${style.role_title} text-capitalize mb-4 ${
+                    router.locale === "en" ? `` : `text-end`
+                  } `}
+                >
+                  {t("role of isdb")}
+                </p>
+                <p
+                  className={`${style.role_description} mb-4 ${
+                    router.locale === "en" ? `` : `text-end`
+                  }`}
+                >
+                  The Council of Arab Finance Ministers has entrusted the
+                  Islamic Development Bank with the task of managing the two
+                  funds in a way that ensures the proper use and development of
+                  its resources and in a manner that achieves the goals for
+                  which the two funds were established, namely supporting the
+                  steadfastness of the Palestinian people, preserving the Arab
+                  and Islamic identity of Jerusalem and enabling the Palestinian
+                  economy to develop its own capabilities.
+                </p>
+                <p
+                  className={`${style.role_description} ${
+                    router.locale === "en" ? `` : `text-end`
+                  }`}
+                >
+                  From this point of view, the bank’s mission is to:
+                </p>
+                {listData.map(data => (
+                  <>
+                    {router.locale === "en" ? (
+                      <div className={`d-flex align-item-start`}>
+                        <span className={`${style.role_bullet_point} mx-2`}>
+                          &#8226;
+                        </span>
+                        <p className={`${style.role_description} mt-2 m-0`}>
+                          {data.des}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className={`d-flex justify-content-end`}>
+                        <p
+                          className={`${style.role_description} mt-2 mb-0 text-end`}
+                        >
+                          {data.des}
+                        </p>
+                        <span className={`${style.role_bullet_point} mx-2`}>
+                          &#8226;
+                        </span>
+                      </div>
+                    )}
+                  </>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </Col>
+        <Col xs={0} sm={0} md={24} lg={0} xl={0}>
+          <div className={`${style.role_container} px-4`}>
+            <div className={`${style.role_details_conatiner} shadow`}>
+              <div className={`p-5`}>
+                <p
+                  className={`${style.role_title} text-capitalize mb-4 ${
+                    router.locale === "en" ? `` : `text-end`
+                  } `}
+                >
+                  {t("role of isdb")}
+                </p>
+                <p
+                  className={`${style.role_description} mb-4 ${
+                    router.locale === "en" ? `` : `text-end`
+                  }`}
+                >
+                  The Council of Arab Finance Ministers has entrusted the
+                  Islamic Development Bank with the task of managing the two
+                  funds in a way that ensures the proper use and development of
+                  its resources and in a manner that achieves the goals for
+                  which the two funds were established, namely supporting the
+                  steadfastness of the Palestinian people, preserving the Arab
+                  and Islamic identity of Jerusalem and enabling the Palestinian
+                  economy to develop its own capabilities.
+                </p>
+                <p
+                  className={`${style.role_description} ${
+                    router.locale === "en" ? `` : `text-end`
+                  }`}
+                >
+                  From this point of view, the bank’s mission is to:
+                </p>
+                {listData.map(data => (
+                  <>
+                    {router.locale === "en" ? (
+                      <div className={`d-flex align-item-start`}>
+                        <span className={`${style.role_bullet_point} mx-2`}>
+                          &#8226;
+                        </span>
+                        <p className={`${style.role_description} mt-2 m-0`}>
+                          {data.des}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className={`d-flex justify-content-end`}>
+                        <p
+                          className={`${style.role_description} mt-2 mb-0 text-end`}
+                        >
+                          {data.des}
+                        </p>
+                        <span className={`${style.role_bullet_point} mx-2`}>
+                          &#8226;
+                        </span>
+                      </div>
+                    )}
+                  </>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Col>
+        <Col xs={24} sm={24} md={0} lg={0} xl={0}>
+          <div className={`${style.role_container} px-4`}>
+            <div className={`${style.role_details_conatiner} shadow`}>
+              <div className={`p-3`}>
+                <p
+                  className={`${style.role_title} text-capitalize mb-4 ${
+                    router.locale === "en" ? `` : `text-end`
+                  } `}
+                >
+                  {t("role of isdb")}
+                </p>
+                <p
+                  className={`${style.role_description} mb-4 ${
+                    router.locale === "en" ? `` : `text-end`
+                  }`}
+                >
+                  The Council of Arab Finance Ministers has entrusted the
+                  Islamic Development Bank with the task of managing the two
+                  funds in a way that ensures the proper use and development of
+                  its resources and in a manner that achieves the goals for
+                  which the two funds were established, namely supporting the
+                  steadfastness of the Palestinian people, preserving the Arab
+                  and Islamic identity of Jerusalem and enabling the Palestinian
+                  economy to develop its own capabilities.
+                </p>
+                <p
+                  className={`${style.role_description} ${
+                    router.locale === "en" ? `` : `text-end`
+                  }`}
+                >
+                  From this point of view, the bank’s mission is to:
+                </p>
+                {listData.map(data => (
+                  <>
+                    {router.locale === "en" ? (
+                      <div className={`d-flex align-item-start`}>
+                        <span className={`${style.role_bullet_point} mx-2`}>
+                          &#8226;
+                        </span>
+                        <p className={`${style.role_description} mt-2 m-0`}>
+                          {data.des}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className={`d-flex justify-content-end`}>
+                        <p
+                          className={`${style.role_description} mt-2 mb-0 text-end`}
+                        >
+                          {data.des}
+                        </p>
+                        <span className={`${style.role_bullet_point} mx-2`}>
+                          &#8226;
+                        </span>
+                      </div>
+                    )}
+                  </>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 }

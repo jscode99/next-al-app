@@ -1,13 +1,15 @@
+import { useRouter } from "next/router";
 //Components
 import Approval from "./apporval";
 import Selection from "./selection";
 import ProposalSection from "./proposalSection";
 import ProposalCard from "./proposalCards";
-
 //Style
 import style from "./index.module.sass";
+import router from "next/router";
 
 export default function ApprovalProcess() {
+  const router = useRouter();
   const cardData = [
     {
       no: "1",
@@ -52,7 +54,11 @@ export default function ApprovalProcess() {
       <Approval />
       <Selection />
       <ProposalSection />
-      <ProposalCard cardData={cardData} />
+      {router.locale === "en" ? (
+        <ProposalCard cardData={cardData} />
+      ) : (
+        <ProposalCard cardData={cardData.reverse()} />
+      )}
     </>
   );
 }

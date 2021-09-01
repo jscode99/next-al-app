@@ -8,68 +8,155 @@ import { Row, Col } from "antd";
 import style from "./index.module.sass";
 
 export default function AboutUsCard({ cardData }) {
-  console.log("cardData", cardData);
   const router = useRouter();
   const { t } = useTranslation("common");
+
+  // const cardData = [
+  //   {
+  //     title: t("Governance Structure"),
+  //     route: "/about/governance-structure",
+  //   },
+  //   {
+  //     title: t("Members"),
+  //     route: "/about/members",
+  //   },
+  //   {
+  //     title: t("Approval Process and Selection Criteria"),
+  //     route: "/about/approval-process-and-selection-criteria",
+  //   },
+  // ];
 
   return (
     <div className={`${style.container_bg} py-5`}>
       <div className={`${style.container} px-5`}>
         <div className={`d-flex justify-content-center align-items-center`}>
-          <Row gutter={[24, 24]} className={`w-100`}>
-            {cardData.map(data => (
-              <>
-                <Col xs={0} sm={0} md={0} lg={8} xl={8}>
-                  <div
-                    className={`${style.aboutUsCard_container} shadow overflow-hidden`}
-                  >
-                    {router.locale === "en" ? (
+          <Row className={"w-100"}>
+            <Col xs={0} sm={0} md={0} lg={24} xl={24}>
+              <Row gutter={[24, 24]}>
+                {cardData.map(data => (
+                  <>
+                    <Col xs={0} sm={0} md={0} lg={8} xl={8}>
                       <div
-                        className={`d-flex justify-content-start align-items-center w-100 h-100`}
+                        className={`${style.aboutUsCard_container} shadow overflow-hidden`}
                       >
-                        <p className={`${style.aboutCard_title} my-5 mx-4`}>
-                          {data.title}
-                        </p>
-                        <div className={`d-flex justify-content-end w-50 me-4`}>
+                        {router.locale === "en" ? (
                           <div
-                            className={`${style.card_route} d-flex justify-content-center align-items-center rounded-circle`}
-                            onClick={() => {
-                              router.push(data.route);
-                            }}
+                            className={`d-flex justify-content-start align-items-center w-100 h-100`}
                           >
-                            <RightOutlined
-                              className={`${style.aboutCard_nav_arrow}`}
-                            />
+                            <p
+                              className={`${style.aboutCard_title} w-75 mb-0 ms-4 text-capitalize`}
+                            >
+                              {data.title}
+                            </p>
+                            <div
+                              className={`d-flex justify-content-end w-25 me-4`}
+                            >
+                              <div
+                                className={`${style.card_route} d-flex justify-content-center align-items-center rounded-circle`}
+                                onClick={() => {
+                                  router.push(data.route);
+                                }}
+                              >
+                                <RightOutlined
+                                  className={`${style.aboutCard_nav_arrow}`}
+                                />
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        ) : (
+                          <div
+                            className={`d-flex justify-content-center align-items-center w-100 h-100`}
+                          >
+                            <div
+                              className={`d-flex justify-content-start ms-4 w-25`}
+                            >
+                              <div
+                                className={`${style.card_route} d-flex justify-content-center align-items-center rounded-circle`}
+                                onClick={() => {
+                                  router.push(data.route);
+                                }}
+                              >
+                                <LeftOutlined
+                                  className={`${style.aboutCard_nav_arrow}`}
+                                />
+                              </div>
+                            </div>
+                            <p
+                              className={`${style.aboutCard_title} text-end w-75 mb-0 me-4 text-capitalize`}
+                            >
+                              {data.title}
+                            </p>
+                          </div>
+                        )}
                       </div>
-                    ) : (
+                    </Col>
+                  </>
+                ))}
+              </Row>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={0} xl={0}>
+              <Row gutter={[12, 12]}>
+                {cardData.map(data => (
+                  <>
+                    <Col xs={24} sm={24} md={8} lg={0} xl={0}>
                       <div
-                        className={`d-flex justify-content-center align-items-center w-100 h-100`}
+                        className={`${style.aboutUsCard_container} shadow overflow-hidden`}
                       >
-                        <div
-                          className={`d-flex justify-content-start ms-4 w-75`}
-                        >
+                        {router.locale === "en" ? (
                           <div
-                            className={`${style.card_route} d-flex justify-content-center align-items-center rounded-circle`}
-                            onClick={() => {
-                              router.push(data.route);
-                            }}
+                            className={`d-flex justify-content-start align-items-center w-100 h-100`}
                           >
-                            <LeftOutlined
-                              className={`${style.aboutCard_nav_arrow}`}
-                            />
+                            <p
+                              className={`${style.aboutCard_title} mb-0 w-75 ms-3`}
+                            >
+                              {data.title}
+                            </p>
+                            <div
+                              className={`d-flex justify-content-end w-25 me-4`}
+                            >
+                              <div
+                                className={`${style.card_route} d-flex justify-content-center align-items-center rounded-circle`}
+                                onClick={() => {
+                                  router.push(data.route);
+                                }}
+                              >
+                                <RightOutlined
+                                  className={`${style.aboutCard_nav_arrow}`}
+                                />
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <p className={`${style.aboutCard_title} my-5 mx-4`}>
-                          {data.title}
-                        </p>
+                        ) : (
+                          <div
+                            className={`d-flex justify-content-center align-items-center w-100 h-100`}
+                          >
+                            <div
+                              className={`d-flex justify-content-start align-items-center ms-4 w-25`}
+                            >
+                              <div
+                                className={`${style.card_route} d-flex justify-content-center align-items-center rounded-circle`}
+                                onClick={() => {
+                                  router.push(data.route);
+                                }}
+                              >
+                                <LeftOutlined
+                                  className={`${style.aboutCard_nav_arrow}`}
+                                />
+                              </div>
+                            </div>
+                            <p
+                              className={`${style.aboutCard_title} text-end w-75 mb-0 me-3`}
+                            >
+                              {data.title}
+                            </p>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                </Col>
-              </>
-            ))}
+                    </Col>
+                  </>
+                ))}
+              </Row>
+            </Col>
           </Row>
         </div>
       </div>

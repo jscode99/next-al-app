@@ -13,6 +13,7 @@ export default function ProcedureSection() {
   const collapseDetails = [
     {
       title: "Areas of finance",
+      color: "#d32050",
       des: [
         {
           des: "Projects and programs that preserve the Arab and Islamic identity of Jerusalem and prevent its obliteration, and enable the Palestinian economy to develop its own capabilities and disengage from the Israeli economy and to confront the policy of isolation and siege. This can be translated into the implementation of projects in the housing and historical buildings sectors in the Old City of Jerusalem in particular, in addition to projects In the housing, education, health and tourism sectors in the Jerusalem area in general.",
@@ -27,6 +28,7 @@ export default function ProcedureSection() {
     },
     {
       title: "Get to know the projects",
+      color: "#d32050",
       des: [
         {
           des: "Projects and programs that preserve the Arab and Islamic identity of Jerusalem and prevent its obliteration, and enable the Palestinian economy to develop its own capabilities and disengage from the Israeli economy and to confront the policy of isolation and siege. This can be translated into the implementation of projects in the housing and historical buildings sectors in the Old City of Jerusalem in particular, in addition to projects In the housing, education, health and tourism sectors in the Jerusalem area in general.",
@@ -41,6 +43,7 @@ export default function ProcedureSection() {
     },
     {
       title: "Submission of requests",
+      color: "#d32050",
       des: [
         {
           des: "Projects and programs that preserve the Arab and Islamic identity of Jerusalem and prevent its obliteration, and enable the Palestinian economy to develop its own capabilities and disengage from the Israeli economy and to confront the policy of isolation and siege. This can be translated into the implementation of projects in the housing and historical buildings sectors in the Old City of Jerusalem in particular, in addition to projects In the housing, education, health and tourism sectors in the Jerusalem area in general.",
@@ -55,6 +58,7 @@ export default function ProcedureSection() {
     },
     {
       title: "Procedures for studying applications",
+      color: "#d32050",
       des: [
         {
           des: "Projects and programs that preserve the Arab and Islamic identity of Jerusalem and prevent its obliteration, and enable the Palestinian economy to develop its own capabilities and disengage from the Israeli economy and to confront the policy of isolation and siege. This can be translated into the implementation of projects in the housing and historical buildings sectors in the Old City of Jerusalem in particular, in addition to projects In the housing, education, health and tourism sectors in the Jerusalem area in general.",
@@ -69,6 +73,7 @@ export default function ProcedureSection() {
     },
     {
       title: "Methods and conditions of financing",
+      color: "#d32050",
       des: [
         {
           des: "Projects and programs that preserve the Arab and Islamic identity of Jerusalem and prevent its obliteration, and enable the Palestinian economy to develop its own capabilities and disengage from the Israeli economy and to confront the policy of isolation and siege. This can be translated into the implementation of projects in the housing and historical buildings sectors in the Old City of Jerusalem in particular, in addition to projects In the housing, education, health and tourism sectors in the Jerusalem area in general.",
@@ -83,6 +88,7 @@ export default function ProcedureSection() {
     },
     {
       title: "Withdrawal procedures",
+      color: "#d32050",
       des: [
         {
           des: "Projects and programs that preserve the Arab and Islamic identity of Jerusalem and prevent its obliteration, and enable the Palestinian economy to develop its own capabilities and disengage from the Israeli economy and to confront the policy of isolation and siege. This can be translated into the implementation of projects in the housing and historical buildings sectors in the Old City of Jerusalem in particular, in addition to projects In the housing, education, health and tourism sectors in the Jerusalem area in general.",
@@ -100,11 +106,11 @@ export default function ProcedureSection() {
     <div className={`${style.procedure_bg} py-4`}>
       <div className={`${style.procedure_container} px-5`}>
         <p
-          className={`${style.procedure_title} ${
+          className={`${style.procedure_title} text-capitalize ${
             router.locale === "en" ? `` : `text-end`
           }`}
         >
-          {t("Procedures")}
+          {t("procedures")}
         </p>
         <p
           className={`${style.procedure_description} pb-2 ${
@@ -122,7 +128,7 @@ export default function ProcedureSection() {
         </p>
         <div className={`mb-4`}>
           {collapseDetails.map(data => (
-            <AppCollapsible key={Math.random()} data={data} color={`#d32050`} />
+            <AppCollapsible key={Math.random()} data={data} />
           ))}
         </div>
       </div>

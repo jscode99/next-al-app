@@ -28,9 +28,9 @@ export default function ResourceChart({
   // console.log("alAqsaAr", alAqsaAr);
   // console.log("arab", arab);
   // console.log("arabAr", arabAr);
-  // console.log("yearly", yearly);
+  // console.log("yearly direct", yearly);
   // console.log("yearlyAr", yearlyAr);
-  console.log("flag", flag);
+  // console.log("flag", flag);
   // console.log("flagAr", flagAr);
 
   const router = useRouter();
@@ -56,7 +56,7 @@ export default function ResourceChart({
       // let fundChartElement1 = document.getElementsByTagName("rect")[0];
       let apexChart =
         document.getElementsByClassName(
-          "apexcharts-xaxis"
+          "apexcharts-xaxis",
         )[0]; /* .getElementsByTagName("line")[0] */
       console.log(
         "chartElement==========>",
@@ -64,10 +64,10 @@ export default function ResourceChart({
         // fundChartElement1.width.animVal.value
         apexChart,
         apexChart.getBoundingClientRect().width,
-        apexChart.getBBox().width
+        apexChart.getBBox().width,
       );
       setXAxisWidth(
-        apexChart.getBoundingClientRect().width || apexChart.getBBox().width
+        apexChart.getBoundingClientRect().width || apexChart.getBBox().width,
       );
     }, 5000);
     //YearlyData
@@ -126,7 +126,7 @@ export default function ResourceChart({
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: (value) => {
+          formatter: value => {
             return value / 1000 + "K";
           },
         },
@@ -136,12 +136,12 @@ export default function ResourceChart({
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w }
+            { series, seriesIndex, dataPointIndex, w },
           ) {
             return "$" + value;
           },
           title: {
-            formatter: (seriesName) => seriesName + " :",
+            formatter: seriesName => seriesName + " :",
           },
         },
       },
@@ -235,7 +235,7 @@ export default function ResourceChart({
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: (value) => {
+          formatter: value => {
             return value / 1000 + "K";
           },
         },
@@ -245,12 +245,12 @@ export default function ResourceChart({
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w }
+            { series, seriesIndex, dataPointIndex, w },
           ) {
             return "$" + value;
           },
           title: {
-            formatter: (seriesName) => seriesName + " :",
+            formatter: seriesName => seriesName + " :",
           },
         },
       },
@@ -340,7 +340,7 @@ export default function ResourceChart({
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: (value) => {
+          formatter: value => {
             return value / 1000 + "K";
           },
         },
@@ -350,12 +350,12 @@ export default function ResourceChart({
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w }
+            { series, seriesIndex, dataPointIndex, w },
           ) {
             return "$" + value;
           },
           title: {
-            formatter: (seriesName) => seriesName + " :",
+            formatter: seriesName => seriesName + " :",
           },
         },
       },
@@ -406,7 +406,7 @@ export default function ResourceChart({
       let XAxisDataAqLocal = [];
       for (let index = 0; index < AqsaSorted.length; index++) {
         seriesAq[0].data.push(
-          Math.round(parseFloat(AqsaSorted[index].TotalContribution))
+          Math.round(parseFloat(AqsaSorted[index].TotalContribution)),
         );
         totalAq += Math.round(parseFloat(AqsaSorted[index].TotalContribution));
         optionsAq.xaxis.categories.push(AqsaSorted[index].Country);
@@ -447,7 +447,7 @@ export default function ResourceChart({
       for (let index = 0; index < ArabSorted.length; index++) {
         seriesAr[0].data.push(Math.round(parseFloat(ArabSorted[index].Grants)));
         seriesAr[1].data.push(
-          Math.round(parseFloat(ArabSorted[index].DisbursementAmount))
+          Math.round(parseFloat(ArabSorted[index].DisbursementAmount)),
         );
         totalAr += Math.round(parseFloat(ArabSorted[index].Grants));
         optionsAR.xaxis.categories.push(ArabSorted[index].Fund);
@@ -480,7 +480,7 @@ export default function ResourceChart({
 
     let yearlySorted = [
       ...yearly.sort(function (x, y) {
-        return y.ApprovedAmount - x.ApprovedAmount;
+        return x.id - y.id;
       }),
     ];
     let XAxisDataYr = [];
@@ -488,16 +488,16 @@ export default function ResourceChart({
     if (yearlySorted.length > 0) {
       for (let index = 0; index < yearlySorted.length; index++) {
         seriesYr[0].data.push(
-          Math.round(parseFloat(yearlySorted[index].ApprovedAmount))
+          Math.round(parseFloat(yearlySorted[index].ApprovedAmount)),
         );
         seriesYr[1].data.push(
-          Math.round(parseFloat(yearlySorted[index].DisbursementAmount))
+          Math.round(parseFloat(yearlySorted[index].DisbursementAmount)),
         );
         totalYr += Math.round(parseFloat(yearlySorted[index].ApprovedAmount));
         optionsYr.xaxis.categories.push(yearlySorted[index].Year);
         XAxisDataYr.push(yearlySorted[index].Year);
       }
-      // console.log("seriesYr", seriesYr);
+      console.log("seriesYr", seriesYr);
       setXdataYr(XAxisDataYr);
       setYearlyApproval(seriesYr);
       setYearlyOption(optionsYr);
@@ -520,39 +520,45 @@ export default function ResourceChart({
                   setActiveData("aqsa");
                 }}
                 style={{ cursor: "pointer" }}
-                className={`${style.resource_subtitle} text-nowrap ${
+                className={`${
+                  style.resource_subtitle
+                } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 } ${
                   activeData === "aqsa" ? style.resource_selected_title : ``
                 } px-4 mb-2`}
               >
-                {t("Al Aqsa Funds Resources")}
+                {t("al aqsa fund resources")}
               </p>
               <p
                 onClick={() => {
                   setActiveData("arab");
                 }}
                 style={{ cursor: "pointer" }}
-                className={`${style.resource_subtitle} text-nowrap ${
+                className={`${
+                  style.resource_subtitle
+                } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 }  ${
                   activeData === "arab" ? style.resource_selected_title : ``
                 } px-4 mb-2`}
               >
-                {t("Arab Funds Resources")}
+                {t("arab funds resources")}
               </p>
               <p
                 onClick={() => {
                   setActiveData("yearly");
                 }}
                 style={{ cursor: "pointer" }}
-                className={`${style.resource_subtitle} text-nowrap ${
+                className={`${
+                  style.resource_subtitle
+                } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 } ${
                   activeData === "yearly" ? style.resource_selected_title : ``
                 } px-4 mb-2`}
               >
-                {t("Yearly Approvals")}
+                {t("yearly approvals")}
               </p>
             </div>
           </Col>
@@ -567,39 +573,45 @@ export default function ResourceChart({
                   setActiveData("aqsa");
                 }}
                 style={{ cursor: "pointer" }}
-                className={`${style.resource_subtitle} text-nowrap ${
+                className={`${
+                  style.resource_subtitle
+                } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 } ${
                   activeData === "aqsa" ? style.resource_selected_title : ``
                 } px-4 mb-2`}
               >
-                {t("Al Aqsa Funds Resources")}
+                {t("al aqsa fund resources")}
               </p>
               <p
                 onClick={() => {
                   setActiveData("arab");
                 }}
                 style={{ cursor: "pointer" }}
-                className={`${style.resource_subtitle} text-nowrap ${
+                className={`${
+                  style.resource_subtitle
+                } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 }  ${
                   activeData === "arab" ? style.resource_selected_title : ``
                 } px-4 mb-2`}
               >
-                {t("Arab Funds Resources")}
+                {t("arab funds resources")}
               </p>
               <p
                 onClick={() => {
                   setActiveData("yearly");
                 }}
                 style={{ cursor: "pointer" }}
-                className={`${style.resource_subtitle} text-nowrap ${
+                className={`${
+                  style.resource_subtitle
+                } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 } ${
                   activeData === "yearly" ? style.resource_selected_title : ``
                 } px-4 mb-2`}
               >
-                {t("Yearly Approvals")}
+                {t("yearly approvals")}
               </p>
             </div>
           </Col>
@@ -607,31 +619,56 @@ export default function ResourceChart({
         <div
           className={`${style.chart_container} shadow bg-white overflow-hidden p-4`}
         >
-          <div
-            className={`d-flex ${
-              router.locale === "ar"
-                ? `justify-content-start flex-row-reverse`
-                : `justify-content-end flex-row`
-            } `}
-          >
-            <p className={`${style.resource_chart_indicator}`}>
-              {t("Total Amount")} :{" "}
-              <span>{`${router.locale === "en" ? "$" : ""}${
-                activeData === "aqsa"
-                  ? new Intl.NumberFormat().format(totalAqsa)
-                  : ""
-              }${
-                activeData === "arab"
-                  ? new Intl.NumberFormat().format(totalArab)
-                  : ""
-              }${
-                activeData === "yearly"
-                  ? new Intl.NumberFormat().format(totalYearly)
-                  : ""
-              }`}</span>
-              {/* {router.locale === "ar" ? <span>$</span>:''} */}
-            </p>
-          </div>
+          {/* $
+          {router.locale === "ar"
+            ? `justify-content-start flex-row-reverse`
+            : `justify-content-end flex-row`} */}
+          {router.locale === "en" ? (
+            <div className={`d-flex justify-content-end`}>
+              <p
+                className={`${style.resource_chart_indicator} text-capitalize`}
+              >
+                {t("total Amount")} :{" "}
+                <span>{`$${
+                  activeData === "aqsa"
+                    ? new Intl.NumberFormat().format(totalAqsa)
+                    : ""
+                }${
+                  activeData === "arab"
+                    ? new Intl.NumberFormat().format(totalArab)
+                    : ""
+                }${
+                  activeData === "yearly"
+                    ? new Intl.NumberFormat().format(totalYearly)
+                    : ""
+                }`}</span>
+                {/* {router.locale === "ar" ? <span>$</span>:''} */}
+              </p>
+            </div>
+          ) : (
+            <div className={`d-flex justify-content-end`}>
+              <p
+                className={`${style.resource_chart_indicator} text-capitalize`}
+              >
+                <span>
+                  {`$${
+                    activeData === "aqsa"
+                      ? new Intl.NumberFormat().format(totalAqsa)
+                      : ""
+                  }${
+                    activeData === "arab"
+                      ? new Intl.NumberFormat().format(totalArab)
+                      : ""
+                  }${
+                    activeData === "yearly"
+                      ? new Intl.NumberFormat().format(totalYearly)
+                      : ""
+                  }`}
+                </span>{" "}
+                : {t("total Amount")}
+              </p>
+            </div>
+          )}
           {/* <div id="fund_chart"></div> */}
           <div className={`${style.horz_scroll}`}>
             <div className={`${style.bar_chart}`}>

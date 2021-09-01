@@ -8,7 +8,7 @@ export default function GovernanceContainer({ projectTitle, bannerImage }) {
       page={"about"}
       pageName={"about"}
       projectTitle={projectTitle}
-      title={"Governance Structure"}
+      title={"governance structure"}
     >
       <Governance />
     </Layout>

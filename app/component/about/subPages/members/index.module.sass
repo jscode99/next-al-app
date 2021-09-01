@@ -12,6 +12,10 @@
     cursor: pointer
 
 .member_intro_button_title
+    width: 300px
+    display: flex
+    justify-content: center
+    align-items-center: center
     font-family: roboto
     color: $grey_color
     @extend %font_size_22
@@ -23,3 +27,17 @@
     color: $theme_sky_blue_color
     border-radius: 6px
     box-shadow: 0px 15px 20px rgba(36, 180, 181, 0.1)
+
+@media only screen and (max-width: 1024px)
+    .container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .container
+        @include container_padding_smScreen
+    .member_intro_button_title
+        @include font_size_18

@@ -19,19 +19,19 @@ export default function Governance() {
 
   const data = [
     {
-      title: t("Supreme Council"),
+      title: t("supreme council"),
       des: "Council comprises the Finance ministers of the donor countries, the Secretary General of the LAS, and a representative of the PNA.",
       bg: style.secondary_color,
       url: "/images/about/Governance/Star.webp",
     },
     {
-      title: t("Management Committee"),
+      title: t("management committee"),
       des: "Committee composed of senior Government officials of the major donor countries (UAE, Algeria, Qatar, Kuwait, Egypt and Kingdom of Saudi Arabia) a representative of the League of Arab States (LAS), and a representative of the Palestinian National Authority (PNA).",
       bg: style.theme_golden_color,
       url: "/images/about/Governance/People.webp",
     },
     {
-      title: t("Islamic Development Bank"),
+      title: t("islamic development bank"),
       des: "Managed and Administered by the Palestine Trust Funds",
       bg: style.primary_color,
       url: "/images/about/Governance/Bank.webp",
@@ -40,7 +40,11 @@ export default function Governance() {
   return (
     <div className={`${style.continer_bg}`}>
       <IntroStructure />
-      <CardSection data={data} />
+      {router.locale === "en" ? (
+        <CardSection data={data} />
+      ) : (
+        <CardSection data={data.reverse()} />
+      )}
       <FunctionSection />
     </div>
   );

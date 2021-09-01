@@ -31,7 +31,7 @@ export default function Landing({
       projectTitle={projectTitle}
     >
       <FundResource />
-      {router.lcoale === "en" ? (
+      {router.locale === "en" ? (
         <ResourceChart
           projectTitle={projectTitle}
           alAqsa={alAqsa}

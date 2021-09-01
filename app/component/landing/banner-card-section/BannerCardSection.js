@@ -1,16 +1,19 @@
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+
 import { Row, Col } from "antd";
 import BannerCard from "./BannerCard";
 import TweenOne from "rc-tween-one";
 import style from "./index.module.sass";
 
 export default function BannerCardSection() {
+  const { t } = useTranslation("common");
   const router = useRouter();
   let bannerCardData = [
     {
       title: "$1.734 bn",
       floatLength: 3,
-      subTitle: router.locale === "en" ? `Total Resources` : `اجمالي الموارد`,
+      subTitle: t("total resources"),
       bgColor: style.bg_secondary_color,
       ftColor: style.ft_secondary_color,
       logo: "/images/banner-logos/Icon-Resources.webp",
@@ -19,8 +22,7 @@ export default function BannerCardSection() {
     {
       title: "$1.604 bn",
       floatLength: 3,
-      subTitle:
-        router.locale === "en" ? `Total Approvals` : `اجمالي الاعتمادات`,
+      subTitle: t("total approvals"),
       bgColor: style.bg_theme_sky_blue_color,
       ftColor: style.ft_theme_sky_blue_color,
       logo: "/images/banner-logos/Icon-Approvals.webp",
@@ -29,7 +31,7 @@ export default function BannerCardSection() {
     {
       title: "397",
       floatLength: 0,
-      subTitle: router.locale === "en" ? `Total Projects` : `اجمالي المشاريع`,
+      subTitle: t("total projects"),
       bgColor: style.bg_primary_color,
       ftColor: style.ft_primary_color,
       logo: "/images/banner-logos/Icon-Projects.webp",
@@ -43,34 +45,31 @@ export default function BannerCardSection() {
           <Col xs={0} sm={0} md={0} lg={9} xl={10}></Col>
           <Col xs={0} sm={0} md={24} lg={15} xl={14}>
             <div className={`d-flex justify-content-center align-items-center`}>
-              <div className={`${style.inner_container} h-100 py-5`}>
+              <div className={`${style.inner_container} h-100 py-5 `}>
                 <TweenOne
                   className={`${style.banner_card_section_title} ${
                     router.locale === "en" ? "" : `d-flex justify-content-end`
-                  } text-white mb-2`}
+                  } text-white mb-2 text-capitalize`}
                   animation={{ y: -30, opacity: 0, type: "from", delay: 50 }}
                 >
-                  {router.locale === "en" ? `Al Aqsa Funds` : `صندوق الأقصى`}
+                  {t("al aqsa fund")}
                 </TweenOne>
                 <TweenOne
                   className={`${style.banner_card_section_subtitle} ${
                     router.locale === "en" ? "" : `d-flex justify-content-end`
-                  } mb-5`}
+                  } mb-5 text-capitalize`}
                   animation={{ y: 30, opacity: 0, type: "from", delay: 150 }}
                 >
-                  {router.locale === "en"
-                    ? `Managed by the Islamic Development Bank`
-                    : `تدار من قبل البنك
-              الإسلامي للتنمية`}
+                  {t("managed by the islamic development bank")}
                 </TweenOne>
                 <div
                   className={`d-flex flex-wrap justify-content-between align-items-center`}
                 >
                   {router.locale === "en"
-                    ? bannerCardData.map((data) => <BannerCard data={data} />)
+                    ? bannerCardData.map(data => <BannerCard data={data} />)
                     : bannerCardData
                         .reverse()
-                        .map((data) => <BannerCard data={data} />)}
+                        .map(data => <BannerCard data={data} />)}
                 </div>
               </div>
             </div>
@@ -81,30 +80,27 @@ export default function BannerCardSection() {
                 <TweenOne
                   className={`${style.banner_card_section_title} ${
                     router.locale === "en" ? "" : `d-flex justify-content-end`
-                  } text-white mb-2`}
+                  } text-white mb-2 text-capitalize`}
                   animation={{ y: 30, opacity: 0, type: "from", delay: 50 }}
                 >
-                  {router.locale === "en" ? `Al Aqsa Funds` : `صندوق الأقصى`}
+                  {t("al aqsa fund")}
                 </TweenOne>
                 <TweenOne
                   className={`${style.banner_card_section_subtitle} ${
                     router.locale === "en" ? "" : `d-flex justify-content-end`
-                  } mb-5`}
+                  } mb-5 text-capitalize`}
                   animation={{ y: 30, opacity: 0, type: "from", delay: 150 }}
                 >
-                  {router.locale === "en"
-                    ? `Managed by the Islamic Development Bank`
-                    : `تدار من قبل البنك
-              الإسلامي للتنمية`}
+                  {t("managed by the islamic development bank")}
                 </TweenOne>
                 <div
                   className={`d-flex flex-wrap justify-content-center align-items-center`}
                 >
                   {router.locale === "en"
-                    ? bannerCardData.map((data) => <BannerCard data={data} />)
+                    ? bannerCardData.map(data => <BannerCard data={data} />)
                     : bannerCardData
                         .reverse()
-                        .map((data) => <BannerCard data={data} />)}
+                        .map(data => <BannerCard data={data} />)}
                 </div>
               </div>
             </div>

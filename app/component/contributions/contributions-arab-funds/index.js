@@ -15,34 +15,62 @@ export default function ContributionsArabFunds({ arabContributions }) {
   const [arabContribution, setArabContribution] = useState([]);
   const columns = [
     {
-      title: t("Name Of Funds"),
+      title: (
+        <p
+          className={`${style.table_name} fw-bold d-flex justify-content-start m-0 text-capitalize`}
+        >
+          {t("name Of funds")}
+        </p>
+      ),
       dataIndex: "Name",
       render: name => (
-        <p className={`${style.table_name} text-start m-1`}>{name}</p>
+        <p className={`${style.table_name} text-capitalize text-start m-1`}>
+          {name}
+        </p>
       ),
     },
     {
-      title: t("Allocation (in 000)"),
+      title: (
+        <p
+          className={`${style.table_name} fw-bold d-flex justify-content-center m-0 text-capitalize`}
+        >
+          {t("allocation (in 000)")}
+        </p>
+      ),
       dataIndex: "Allocation",
       render: name => (
-        <p className={`${style.table_name} text-center m-1`}>{name}</p>
+        <p className={`${style.table_name} text-capitalize text-center m-1`}>
+          {name}
+        </p>
       ),
     },
   ];
   const arColumns = [
     {
-      title: t("Allocation (in 000)"),
+      title: (
+        <p
+          className={`${style.table_name} fw-bold d-flex justify-content-center m-1 pe-3`}
+        >
+          {t("allocation (in 000)")}
+        </p>
+      ),
       dataIndex: "Allocation",
       render: name => (
         <p className={`d-flex justify-content-center m-1 pe-3`}>{name}</p>
       ),
     },
     {
-      title: t("Name Of Funds"),
+      title: (
+        <p
+          className={`${style.table_name} fw-bold d-flex justify-content-end m-1 pe-3`}
+        >
+          {t("name Of funds")}
+        </p>
+      ),
       dataIndex: "Name",
       render: name => (
         <p
-          className={`${style.table_name} d-flex justify-content-end m-1 pe-3`}
+          className={`${style.table_name} fw-bold d-flex justify-content-end m-1 pe-3`}
         >
           {name}
         </p>
@@ -66,7 +94,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
       totalValue = new Intl.NumberFormat().format(totalValue);
       data.push({
         Allocation: <b>{totalValue}</b>,
-        Name: t("Total"),
+        Name: <b>{t("Total")}</b>,
       });
     }
 
@@ -76,8 +104,10 @@ export default function ContributionsArabFunds({ arabContributions }) {
   return (
     <div className={`${style.bg} pt-2 pb-5`}>
       <div className={`${style.container} px-5`}>
-        <h3 className={`${style.contribution_table_title} text-center mb-4`}>
-          {t("Arab Funds Contributions")}
+        <h3
+          className={`${style.contribution_table_title} text-center text-capitalize mb-4`}
+        >
+          {t("arab funds contributions")}
         </h3>
         <div className={`w-100 d-flex justify-content-center`}>
           <div

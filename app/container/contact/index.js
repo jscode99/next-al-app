@@ -8,7 +8,7 @@ export default function ContactContainer({ projectTitle, bannerImage }) {
       page={"contact"}
       pageName={"contact"}
       projectTitle={projectTitle}
-      title={"Get in Touch"}
+      title={"get in touch"}
     >
       <Contact />
     </Layout>

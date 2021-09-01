@@ -24,19 +24,19 @@ export default function Contributions({
       {
         // amount: `$${summitAmount.cairoSummitTotal}`,
         amount: 542400000,
-        subTitle: t("Cairo Summit"),
+        subTitle: t("cairo summit"),
         bg: style.bg_theme_sky_blue_color,
       },
       {
         // amount: `$${summitAmount.beirutSirteSummitTotal}`,
         amount: 222220230,
-        subTitle: t("Beirut & Sirte Summit"),
+        subTitle: t("beirut & sirte summit"),
         bg: style.bg_theme_golden_color,
       },
       {
         // amount: `$${summitAmount.deadSeaSummitTotal}`,
         amount: 111421000,
-        subTitle: t("Dead Sea Summit"),
+        subTitle: t("dead sea summit"),
         bg: style.bg_primary_color,
       },
     ]);

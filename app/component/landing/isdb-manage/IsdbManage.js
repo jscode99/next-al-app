@@ -45,7 +45,7 @@ export default function IsdbManage({}) {
       <div className={`${style.isdb_manage_container}`}>
         <div className="py-4">
           <h3 className={`${style.isdb_manage_title} text-center mb-4`}>
-            {t("IsDB also manages")}
+            {t("isdb also manages")}
           </h3>
           <div className="w-100 d-flex justify-content-center flex-wrap align-items-center">
             {router.locale === "en"

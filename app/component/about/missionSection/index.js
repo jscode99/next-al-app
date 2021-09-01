@@ -12,7 +12,7 @@ export default function MissionSection() {
       <Row className={`mb-4`}>
         {router.locale === "en" ? (
           <>
-            <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <div
                 className={`d-flex ${
                   router.locale === "en"
@@ -20,7 +20,9 @@ export default function MissionSection() {
                     : `justify-content-end`
                 } py-3`}
               >
-                <h3 className={`${style.mission_title}`}>{t("Mission")}</h3>
+                <h3 className={`${style.mission_title} text-capitalize`}>
+                  {t("mission")}
+                </h3>
               </div>
               <p className={`${style.mission_description}`}>
                 The Al Aqsa Fund finances projects aimed at strengthening the
@@ -32,8 +34,10 @@ export default function MissionSection() {
                 sectors of the economy.
               </p>
             </Col>
-            <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-              <div className={`d-flex justify-content-center`}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+              <div
+                className={`d-flex justify-content-center align-items-center  h-100`}
+              >
                 <Image
                   src={"/images/about/mission.webp"}
                   alt={`Organization-Img`}
@@ -45,8 +49,10 @@ export default function MissionSection() {
           </>
         ) : (
           <>
-            <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-              <div className={`d-flex justify-content-center pt-4`}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+              <div
+                className={`d-flex justify-content-center  align-items-center pt-4 h-100`}
+              >
                 <Image
                   src={"/images/about/mission.webp"}
                   alt={`Organization-Img`}
@@ -55,7 +61,7 @@ export default function MissionSection() {
                 />
               </div>
             </Col>
-            <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <div
                 className={`d-flex ${
                   router.locale === "en"
@@ -63,7 +69,7 @@ export default function MissionSection() {
                     : `justify-content-end`
                 } py-3`}
               >
-                <h3 className={`fw-bold`}>{t("Mission")}</h3>
+                <h3 className={`fw-bold text-capitalize`}>{t("mission")}</h3>
               </div>
               <p className={`h6 text-end`}>
                 The Al Aqsa Fund finances projects aimed at strengthening the

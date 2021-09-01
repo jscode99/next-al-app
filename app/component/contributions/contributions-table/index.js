@@ -13,79 +13,149 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
   const { t } = useTranslation("common");
   let columnData = [
     {
-      title: `Country`,
+      title: (
+        <p
+          className={`${style.table_name} fw-bold d-flex justify-content-start m-0 text-capitalize`}
+        >
+          {t("country")}
+        </p>
+      ),
       dataIndex: "Country",
       render: Country => (
-        <p className={`${style.table_name} text-start`}>{Country}</p>
+        <p className={`${style.table_name} fw-bold text-start text-capitalize`}>
+          {Country}
+        </p>
       ),
     },
     {
-      title: `Cairo Summit`,
+      title: (
+        <p
+          className={`${style.table_name} fw-bold d-flex justify-content-start m-0 text-capitalize`}
+        >
+          {t("cairo summit")}
+        </p>
+      ),
       dataIndex: "CairoSummitContribution",
       render: Cairo => (
-        <p className={`${style.table_name} text-center m-1`}>{Cairo}</p>
+        <p className={`${style.table_name} text-center m-1 text-capitalize`}>
+          {Cairo}
+        </p>
       ),
     },
     {
-      title: `Beirut & Sirte Summit`,
+      title: (
+        <p
+          className={`${style.table_name} text-capitalize fw-bold d-flex justify-content-start m-0`}
+        >
+          {t("beirut & sirte summit")}
+        </p>
+      ),
       dataIndex: "BeirutSirteSummitContribution",
       render: Beirut => (
-        <p className={`${style.table_name} text-center m-1`}>{Beirut}</p>
+        <p className={`${style.table_name} text-center m-1 text-capitalize`}>
+          {Beirut}
+        </p>
       ),
     },
     {
-      title: `Dead Sea Summit`,
+      title: (
+        <p
+          className={`${style.table_name} text-capitalize fw-bold d-flex justify-content-start m-0`}
+        >
+          {t("dead sea summit")}
+        </p>
+      ),
       dataIndex: "DeadSeaSummitContribution",
       render: Beirut => (
-        <p className={`${style.table_name} text-center m-1`}>{Beirut}</p>
+        <p className={`${style.table_name} text-center m-1 text-capitalize`}>
+          {Beirut}
+        </p>
       ),
     },
     {
-      title: `Total Payed`,
+      title: (
+        <p
+          className={`${style.table_name} fw-bold d-flex justify-content-start m-0 text-capitalize`}
+        >
+          {t("total payed")}
+        </p>
+      ),
       dataIndex: "totalPayed",
       render: Beirut => (
-        <p className={`${style.table_name} text-center m-1`}>{Beirut}</p>
+        <p className={`${style.table_name} text-capitalize text-center m-1`}>
+          {Beirut}
+        </p>
       ),
     },
   ];
 
   let columnArData = [
     {
-      title: ` اجمالي المدفوعات`,
+      title: (
+        <p
+          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
+        >
+          {t("total payed")}
+        </p>
+      ),
       dataIndex: "totalPayed",
       render: name => (
         <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
     {
-      title: `قمة البحر الميت`,
+      title: (
+        <p
+          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
+        >
+          {t("dead sea summit")}
+        </p>
+      ),
       dataIndex: "DeadSeaSummitContribution",
       render: name => (
         <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
     {
-      title: `قمة بيروت  وسرت`,
+      title: (
+        <p
+          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
+        >
+          {t("beirut & sirte summit")}
+        </p>
+      ),
       dataIndex: "BeirutSirteSummitContribution",
       render: name => (
         <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
     {
-      title: `قمة القاهرة`,
+      title: (
+        <p
+          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
+        >
+          {t("cairo summit")}
+        </p>
+      ),
       dataIndex: "CairoSummitContribution",
       render: name => (
         <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
     {
-      title: `الدولة`,
-      dataIndex: "Country",
-      render: name => (
+      title: (
         <p
-          className={`${style.table_name} d-flex justify-content-end m-0 pe-3`}
+          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
         >
-          {name}
+          {t("country")}
+        </p>
+      ),
+      dataIndex: "Country",
+      render: Country => (
+        <p
+          className={`${style.table_name} fw-bold d-flex justify-content-end m-0 pe-3`}
+        >
+          {Country}
         </p>
       ),
     },
@@ -112,7 +182,17 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
           value.DeadSeaSummitContribution.split(",").join(""),
         );
     });
-    if (tData[tData.length - 1].Country.toLowerCase() !== "total") {
+    // console.log("testing", tData[tData.length - 1].Country.props.children);
+    if (
+      tData[tData.length - 1].Country &&
+      !tData[tData.length - 1].Country.props
+      // &&
+      // !tData[tData.length - 1].Country.props.children &&
+      // (tData[tData.length - 1].Country.props.children.toLowerCase() !==
+      //   "total" ||
+      //   tData[tData.length - 1].Country.props.children.toLowerCase() !==
+      //     "مجموع")
+    ) {
       if (cairoSummitTotal)
         cairoSummitTotal = new Intl.NumberFormat().format(cairoSummitTotal);
       if (beirutSirteSummitTotal)
@@ -123,10 +203,10 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         deadSeaSummitTotal = new Intl.NumberFormat().format(deadSeaSummitTotal);
 
       tData.push({
-        CairoSummitContribution: cairoSummitTotal,
-        DeadSeaSummitContribution: deadSeaSummitTotal,
-        BeirutSirteSummitContribution: beirutSirteSummitTotal,
-        Country: t("Total"),
+        CairoSummitContribution: <b>{cairoSummitTotal}</b>,
+        DeadSeaSummitContribution: <b>{deadSeaSummitTotal}</b>,
+        BeirutSirteSummitContribution: <b>{beirutSirteSummitTotal}</b>,
+        Country: <b>{t("Total")}</b>,
       });
     }
 
@@ -138,11 +218,25 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     //   tData
     // );
     let mapedData = tData.map((value, index) => {
-      let beirut = getNumericValue(value.BeirutSirteSummitContribution);
-      let cairo = getNumericValue(value.CairoSummitContribution);
-      let dead = getNumericValue(value.DeadSeaSummitContribution);
-
+      let beirut = getNumericValue(
+        value.BeirutSirteSummitContribution &&
+          value.BeirutSirteSummitContribution.props
+          ? value.BeirutSirteSummitContribution.props.children
+          : value.BeirutSirteSummitContribution,
+      );
+      let cairo = getNumericValue(
+        value.CairoSummitContribution && value.CairoSummitContribution.props
+          ? value.CairoSummitContribution.props.children
+          : value.CairoSummitContribution,
+      );
+      let dead = getNumericValue(
+        value.DeadSeaSummitContribution && value.DeadSeaSummitContribution.props
+          ? value.DeadSeaSummitContribution.props.children
+          : value.DeadSeaSummitContribution,
+      );
+      console.log("beirut", value.BeirutSirteSummitContribution);
       rowTotal = beirut + cairo + dead;
+
       if (index === tData.length - 1)
         setSummitAmount({
           cairoSummitTotal,
@@ -162,7 +256,17 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         DeadSeaSummitContribution: getInternationalSeparator(
           value.DeadSeaSummitContribution,
         ),
-        totalPayed: new Intl.NumberFormat().format(rowTotal),
+        totalPayed:
+          value.BeirutSirteSummitContribution &&
+          value.BeirutSirteSummitContribution.props &&
+          value.DeadSeaSummitContribution &&
+          value.DeadSeaSummitContribution.props &&
+          value.CairoSummitContribution &&
+          value.CairoSummitContribution.props ? (
+            <b>{new Intl.NumberFormat().format(rowTotal)}</b>
+          ) : (
+            new Intl.NumberFormat().format(rowTotal)
+          ),
       };
     });
     console.log("mapedData", mapedData);
@@ -187,8 +291,10 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     <div className={`${style.bg}`}>
       <div className={`${style.container} px-5`}>
         <Row className={`pb-5`}>
-          <h3 className={`${style.donor_title} text-center mb-4 w-100`}>
-            {t("Donor Countries Contributions")}
+          <h3
+            className={`${style.donor_title} text-center mb-4 w-100 text-capitalize`}
+          >
+            {t("donor countries contributions")}
           </h3>
           <div
             className={`${style.contribution_table_container} shadow overflow-hidden w-100`}
@@ -200,14 +306,14 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
                     columnData={columnData}
                     data={countryContribution}
                     pagination={false}
-                    scroll={{ x: 1030 }}
+                    scroll={{ x: 700 }}
                   />
                 ) : (
                   <CommonTable
                     columnData={columnArData}
                     data={countryContribution}
                     pagination={false}
-                    scroll={{ x: 1030 }}
+                    scroll={{ x: 700 }}
                   />
                 )}
               </>

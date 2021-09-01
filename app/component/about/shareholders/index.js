@@ -15,8 +15,10 @@ export default function ShareHolder({ flagData }) {
   return (
     <div className={`${style.bg} pb-5`}>
       <div className={`${style.shareHolder_container} overflow-hidden px-5`}>
-        <p className={`${style.shareHolder_title} text-center py-4 m-0`}>
-          {t("ShareHolders")}
+        <p
+          className={`${style.shareHolder_title} text-capitalize text-center py-4 m-0`}
+        >
+          {t("shareHolders")}
         </p>
         <div
           id="scroll"

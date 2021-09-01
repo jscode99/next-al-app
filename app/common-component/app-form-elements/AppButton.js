@@ -6,7 +6,7 @@ export default function AppButton({ text, OnClickHandler }) {
     <Button
       type="text"
       onClick={OnClickHandler}
-      className={`${style.app_button}`}
+      className={`${style.app_button} text-capitalize`}
     >
       {text}
     </Button>

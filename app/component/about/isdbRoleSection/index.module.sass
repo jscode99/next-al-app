@@ -23,10 +23,23 @@
     line-height: 22px
 
 .role_details_conatiner
-    height: 520px
+    height: auto
     border-radius: 15px
     background-color: #ffffff
 
 .role_bullet_point
     color: #d32050
     @extend %font_size_25
+
+
+@media only screen and (max-width: 1024px)
+    .role_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .role_container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .role_container
+        @include container_padding_smScreen

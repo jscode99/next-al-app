@@ -1,9 +1,11 @@
 @import '../../../styles/variable'
 
 .container
-    height: 120px $important
-    z-index: 100
-    position: absolute
+    @include container_padding_smScreen
+
+.app_header_language_section,
+.app_header_nav_container
+    @extend %container_padding
 
 .app_header_logo_title
     @extend %font_size_22
@@ -12,7 +14,9 @@
     letter-spacing: 1.5px
 
 .app_header_container
-    @extend %container_padding
+    height: 120px $important
+    z-index: 100
+    position: absolute
     background-color: $transparent $important
 
 .app_header_language_section
@@ -78,7 +82,10 @@
     color: $primary_color
 
 @media only screen and (max-width: 1024px)
-    .app_header_container
+    .container
+        @include container_padding_smScreen
+    .app_header_language_section,
+    .app_header_nav_container
         @include container_padding_lapScreen
 
     .app_header_nav_section
@@ -86,15 +93,21 @@
             @include font_size_14
 
 @media only screen and (max-width: 768px)
-    .app_header_container
-        @include container_padding_tabScreen
     .container
-        position: relative
+        @include container_padding_smScreen
         background-color: $white_color
+    .app_header_container
+        position: relative
     .language_text,
     .language_dd_icon
         color: #000 $important
 
+    .app_header_language_section,
+    .app_header_nav_container
+        width: 100% $important
+
 @media only screen and (max-width: 500px)
-    .app_header_container
+    .container
         @include container_padding_smScreen
+    .app_header_logo_title
+        @include font_size_18

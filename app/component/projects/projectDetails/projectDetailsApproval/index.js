@@ -1,4 +1,6 @@
 import { Row, Col } from "antd";
+import { useRouter } from "next/router";
+
 //Component
 import SectoralApproval from "./SectoralApproval";
 import GeographicalApprovals from "./GeographicalApprovals";
@@ -7,6 +9,8 @@ import style from "./index.module.sass";
 
 export default function ProjectDetailsApproval({ projectData }) {
   console.log("projectData", projectData);
+  let router = useRouter();
+
   const sectoralData = [
     {
       title: "Infrastructure & Housing",
@@ -62,12 +66,25 @@ export default function ProjectDetailsApproval({ projectData }) {
     <div className={`${style.project_details_bg}`}>
       <div className={`${style.container} px-5`}>
         <Row gutter={[34, 34]} className={`h-100 my-4 align-items-end`}>
-          <Col span={12}>
-            <SectoralApproval sectoralData={sectoralData} />
-          </Col>
-          <Col span={12}>
-            <GeographicalApprovals geoData={geoData} />
-          </Col>
+          {router.locale === "en" ? (
+            <>
+              <Col span={12}>
+                <SectoralApproval sectoralData={sectoralData} />
+              </Col>
+              <Col span={12}>
+                <GeographicalApprovals geoData={geoData} />
+              </Col>
+            </>
+          ) : (
+            <>
+              <Col span={12}>
+                <GeographicalApprovals geoData={geoData} />
+              </Col>
+              <Col span={12}>
+                <SectoralApproval sectoralData={sectoralData} />
+              </Col>
+            </>
+          )}
         </Row>
       </div>
     </div>

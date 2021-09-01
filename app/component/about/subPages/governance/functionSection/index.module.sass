@@ -19,3 +19,15 @@
 
 .primary_color
     background-color: $primary_color $important
+
+@media only screen and (max-width: 1024px)
+    .function_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .function_container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .function_container
+        @include container_padding_smScreen

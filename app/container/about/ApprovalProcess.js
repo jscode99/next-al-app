@@ -12,7 +12,7 @@ export default function ApprovalProcessContainer({
       page={"about"}
       pageName={"about"}
       projectTitle={projectTitle}
-      title={"Approval Process and Selection Criteria"}
+      title={"approval process and selection criteria"}
     >
       <ApprovalProcess />
     </Layout>

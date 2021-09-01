@@ -13,7 +13,7 @@ export default function MembersContainer({
       page={"about"}
       pageName={"about"}
       projectTitle={projectTitle}
-      title={"Members"}
+      title={"members"}
     >
       <Members members={members} flag={flag} />
     </Layout>

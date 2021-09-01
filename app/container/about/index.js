@@ -8,7 +8,7 @@ export default function AboutContainer({ projectTitle, bannerImage }) {
       page={"about"}
       pageName={"about"}
       projectTitle={projectTitle}
-      title={"Al Aqsa Funds"}
+      title={"al aqsa fund"}
     >
       <About />
     </Layout>

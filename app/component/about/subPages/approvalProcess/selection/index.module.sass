@@ -14,3 +14,15 @@
     font-family: "oswald",roboto
     @extend %font_size_25
     letter-spacing: 1px
+
+@media only screen and (max-width: 1024px)
+    .selection_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .selection_container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .selection_container
+        @include container_padding_smScreen

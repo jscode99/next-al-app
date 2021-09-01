@@ -39,3 +39,15 @@
 
 .number
     font-family: "oswald"
+
+@media only screen and (max-width: 1024px)
+    .ProposalCard_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .ProposalCard_container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .ProposalCard_container
+        @include container_padding_smScreen

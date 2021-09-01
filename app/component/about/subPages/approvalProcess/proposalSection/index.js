@@ -1,19 +1,27 @@
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 //Style
 import style from "./index.module.sass";
 
 export default function ProposalSection() {
   const { t } = useTranslation("common");
+  const router = useRouter();
   return (
     <>
       <div className={`${style.container}`}>
         <div className={`${style.proposal_container} shadow mb-5`}>
           <div className={`p-4`}>
-            <h3 className={`${style.proposal_title} text-center w-100`}>
-              {t("Proposal Selection Criteria")}
+            <h3
+              className={`${style.proposal_title} text-center w-100 text-capitalize`}
+            >
+              {t("proposal selection criteria")}
             </h3>
             <hr className={`${style.proposal_under_line} my-3`} />
-            <p className={`${style.proposal_des}`}>
+            <p
+              className={`${style.proposal_des} ${
+                router.locale === "en" ? "text-start" : "text-end"
+              }`}
+            >
               The criteria for evaluating project proposals were developed in a
               way that ensures the financing of projects that are consistent
               with the Palestinian national development plans that are highly

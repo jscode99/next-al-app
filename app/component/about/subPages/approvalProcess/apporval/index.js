@@ -32,25 +32,27 @@ export default function Approval() {
       <div className={`${style.container} px-5`}>
         <Row className={`h-100 px-3`}>
           <div className={`d-flex w-100 justify-content-center my-5`}>
-            <h3 className={`${style.approval_title}`}>
-              {t("Project Approval and Implementation Process")}
+            <h3 className={`${style.approval_title} text-capitalize`}>
+              {t("project approval and implementation process")}
             </h3>
           </div>
           {router.locale === "en" ? (
             <>
-              <Col className={`w-50`}>
+              <Col xs={0} sm={0} md={0} lg={12} xl={12}>
                 <div className={`d-flex h-100 justify-content-end`}>
                   <Image
                     src={"/images/about/approval/approval_ini.webp"}
                     alt={`Process`}
-                    height="500px"
-                    width="560px"
+                    width={"556"}
+                    height={"400"}
                   />
                 </div>
               </Col>
-              <Col className={`w-50`}>
-                <h4 className={`${style.approval_initiation} mb-5 ms-5 ps-3`}>
-                  {t("Initiation")}
+              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
+                <h4
+                  className={`${style.approval_initiation} text-capitalize mb-5 ms-5 ps-3`}
+                >
+                  {t("initiation")}
                 </h4>
                 <div className={`d-flex h-100`}>
                   <AppStep
@@ -63,11 +65,11 @@ export default function Approval() {
             </>
           ) : (
             <>
-              <Col className={`w-50`}>
+              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                 <h4
-                  className={`${style.approval_initiation} d-flex justify-content-end me-5 pe-3 mb-5`}
+                  className={`${style.approval_initiation} d-flex justify-content-end me-5 pe-3 mb-5 text-capitalize`}
                 >
-                  {t("Initiation")}
+                  {t("initiation")}
                 </h4>
                 <div className={`d-flex h-100`}>
                   <AppStep
@@ -77,13 +79,13 @@ export default function Approval() {
                   />
                 </div>
               </Col>
-              <Col className={`w-50`}>
+              <Col xs={0} sm={0} md={0} lg={12} xl={12}>
                 <div className={`d-flex h-100 justify-content-end`}>
                   <Image
                     src={"/images/about/approval/approval_ini.webp"}
                     alt={`Process`}
-                    height="500px"
-                    width="560px"
+                    width="556px"
+                    height="498px"
                   />
                 </div>
               </Col>

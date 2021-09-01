@@ -16,17 +16,7 @@ export default function CommonTable({ columnData, data, pagination, scroll }) {
   useEffect(() => {
     let columns = columnData.map(cData => {
       return {
-        title: (
-          <p
-            className={`${style.table_title} ${
-              router.locale === "en"
-                ? `m-0`
-                : `d-flex justify-content-center m-0 pe-3`
-            }`}
-          >
-            {cData.title}
-          </p>
-        ),
+        title: cData.title,
         width: cData.width,
         dataIndex: cData.dataIndex,
         render: cData.render ? cData.render : ``,

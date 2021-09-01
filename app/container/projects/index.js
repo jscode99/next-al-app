@@ -12,7 +12,7 @@ export default function ProjectsContainer({
       page={"projects"}
       pageName={"projects"}
       projectTitle={projectTitle}
-      title={"Projects"}
+      title={"projects"}
     >
       <Projects projectTitle={projectTitle} projectData={projectData} />
     </Layout>

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { Collapse, Space } from "antd";
@@ -7,41 +8,65 @@ import style from "./index.module.sass";
 const { Panel } = Collapse;
 
 export default function AppCollapsible({ data, color }) {
+  const [bulletColor, setBulletColor] = useState("");
+  console.log("data", data);
   let router = useRouter();
+
+  useEffect(() => {
+    setBulletColor(data.color);
+  }, [data]);
   const Icon = () => {
     if (data.url) {
       return router.locale === "en" ? (
-        <div className={`d-flex aligin-items-center`}>
+        <span className={`${style.pannel_container}`}>
           <div
-            className={`${data.iconBg} d-flex justify-content-center align-items-center rounded-circle`}
-            style={{ width: "32px", height: "32px" }}
+            className={`d-flex justify-content-center align-items-center w-100`}
           >
-            <Image src={data.url} alt={`Icon`} height="12px" width="12px" />
+            <div
+              className={`${data.iconBg} d-flex justify-content-center align-items-center rounded-circle`}
+              style={{ width: "32px", height: "32px" }}
+            >
+              <Image src={data.url} alt={`Icon`} height="12px" width="12px" />
+            </div>
+            <h6
+              className={`${style.collapsible_title} text-capitalize ${
+                router.locale === "en" ? `text-start` : `text-end`
+              } fw-bold m-2 ms-2`}
+            >
+              {data.title}
+            </h6>
           </div>
-          <h6 className={`${style.collapsible_title} fw-bold m-2 ms-2`}>
-            {data.title}
-          </h6>
-        </div>
+        </span>
       ) : (
-        <div className={`d-flex justify-content-end aligin-items-center`}>
-          <h6 className={`fw-bold m-2 ms-2`}>{data.title}</h6>
+        <span className={`${style.pannel_container}`}>
           <div
-            className={`${data.iconBg} d-flex justify-content-center align-items-center rounded-circle`}
-            style={{ width: "32px", height: "32px" }}
+            className={`d-flex justify-content-center align-items-center w-100`}
           >
-            <Image src={data.url} alt={`Icon`} height="12px" width="12px" />
+            <h6
+              className={`${style.collapsible_title} text-capitalize ${
+                router.locale === "en" ? `text-start` : `text-end`
+              } fw-bold m-2 ms-2`}
+            >
+              {data.title}
+            </h6>
+            <div
+              className={`${data.iconBg} d-flex justify-content-center align-items-center rounded-circle`}
+              style={{ width: "32px", height: "32px" }}
+            >
+              <Image src={data.url} alt={`Icon`} height="12px" width="12px" />
+            </div>
           </div>
-        </div>
+        </span>
       );
     } else {
       return (
-        <h6
-          className={`${style.collapsible_title} fw-bold ${
+        <div
+          className={`${style.collapsible_title} text-capitalize fw-bold ${
             router.locale === "en" ? `text-start` : `text-end`
           }`}
         >
           {data.title}
-        </h6>
+        </div>
       );
     }
   };
@@ -69,7 +94,7 @@ export default function AppCollapsible({ data, color }) {
                     <>
                       <span
                         className={`${style.role_bullet_point} mx-2`}
-                        style={{ color: `${color}` }}
+                        style={{ color: `${bulletColor}` }}
                       >
                         &#8226;
                       </span>
@@ -88,7 +113,7 @@ export default function AppCollapsible({ data, color }) {
 
                       <span
                         className={`${style.role_bullet_point} mx-2`}
-                        style={{ color: `${color}` }}
+                        style={{ color: `${bulletColor}` }}
                       >
                         &#8226;
                       </span>

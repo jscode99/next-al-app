@@ -8,7 +8,14 @@ import convertToInternationalCurrencySystem from "../../services/internationalCu
 
 export default function IntroCard({ data }) {
   return (
-    <Col xs={24} sm={24} md={8} lg={8} xl={8} className={`d-flex justify-content-center`}>
+    <Col
+      xs={24}
+      sm={24}
+      md={8}
+      lg={8}
+      xl={8}
+      className={`d-flex justify-content-center`}
+    >
       <div
         className={`${style.contribution_card_container} ${data.bg} shadow overflow-hidden`}
       >
@@ -30,7 +37,7 @@ export default function IntroCard({ data }) {
             {convertToInternationalCurrencySystem(Number(data.amount))}
           </p>
           <p
-            className={`${style.contribution_amount_subtitle} d-flex justify-content-end mb-4`}
+            className={`${style.contribution_amount_subtitle} d-flex justify-content-end mb-4 text-capitalize`}
           >
             {data.subTitle}
           </p>

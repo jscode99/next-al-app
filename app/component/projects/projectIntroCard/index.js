@@ -11,8 +11,10 @@ export default function ProjectIntroCard({ cardData }) {
 
   return (
     <div className={`${style.container} mb-4`}>
-      <h3 className={`${style.projectIntroCard_title} text-center m-0`}>
-        {t("Al Aqsa & Arab Funds Total Approved Projects")}
+      <h3
+        className={`${style.projectIntroCard_title} text-capitalize text-center m-0`}
+      >
+        {t("al aqsa & arab funds total approved projects")}
       </h3>
 
       <div

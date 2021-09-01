@@ -51,7 +51,9 @@ export default function AchievementCards({ data }) {
             </div>
           </>
         )}
-        <p className={`${style.achievement_card_title} text-center m-0`}>
+        <p
+          className={`${style.achievement_card_title} text-center m-0 text-capitalize`}
+        >
           {data.title}
         </p>
       </div>

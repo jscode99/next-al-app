@@ -34,11 +34,11 @@ export default function Selection() {
         <Row className={`h-100 pt-5 pb-5`}>
           {router.locale === "en" ? (
             <>
-              <Col className={`w-50`}>
+              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                 <h4
-                  className={`mb-5 ${style.selection_imp} d-flex justify-content-end me-5 pe-3`}
+                  className={`mb-5 ${style.selection_imp} d-flex justify-content-end me-5 pe-3 text-capitalize`}
                 >
-                  {t("Implementation")}
+                  {t("implementation")}
                 </h4>
                 <div className={`d-flex h-100`}>
                   <AppStep
@@ -48,7 +48,7 @@ export default function Selection() {
                   />
                 </div>
               </Col>
-              <Col className={`w-50`}>
+              <Col xs={0} sm={0} md={0} lg={12} xl={12}>
                 <div className={`d-flex h-100 justify-content-end`}>
                   <Image
                     src={"/images/about/approval/selection_imp.webp"}
@@ -61,7 +61,7 @@ export default function Selection() {
             </>
           ) : (
             <>
-              <Col className={`w-50`}>
+              <Col xs={0} sm={0} md={0} lg={12} xl={12}>
                 <div className={`d-flex h-100 justify-content-end`}>
                   <Image
                     src={"/images/about/approval/selection_imp.webp"}
@@ -71,11 +71,11 @@ export default function Selection() {
                   />
                 </div>
               </Col>
-              <Col className={`w-50`}>
+              <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                 <h4
-                  className={`mb-5 ${style.selection_imp} d-flex justify-content-start ms-5 ps-3`}
+                  className={`mb-5 ${style.selection_imp} d-flex justify-content-start ms-5 ps-3 text-capitalize`}
                 >
-                  Implementation
+                  {t("implementation")}
                 </h4>
                 <div className={`d-flex h-100`}>
                   <AppStep

@@ -34,7 +34,14 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
           paginatedListData.map(data => (
             <>
               {console.log("data", data)}
-              <Col xs={24} sm={24} md={12} lg={8} xl={8} className={`px-2 mt-3`}>
+              <Col
+                xs={24}
+                sm={24}
+                md={12}
+                lg={8}
+                xl={8}
+                className={`px-2 mt-3`}
+              >
                 <div
                   className={`d-flex justify-content-start align-items-start w-100`}
                   style={{ cursor: "pointer" }}
@@ -58,9 +65,9 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
                       </p>
                       <hr className={`${styles.stories_under_line} mb-1`} />
                       <p
-                        className={`${styles.stories_img_des2} d-flex justify-content-center text-white px-5 py-1`}
+                        className={`${styles.stories_img_des2} d-flex justify-content-center text-white px-3 py-1 text-capitalize`}
                       >
-                        {t("Total Approved")} : $ {data.TotalApproved}
+                        {t("total approved")} : $ {data.TotalApproved}
                       </p>
                     </div>
 

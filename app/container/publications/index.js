@@ -11,7 +11,7 @@ export default function PublicationsContainer({
       page={"publications"}
       pageName={"publications"}
       projectTitle={projectTitle}
-      title={"Publications"}
+      title={"publications"}
       heroImage={bannerImage}
     >
       <Publications pubListData={publication} />

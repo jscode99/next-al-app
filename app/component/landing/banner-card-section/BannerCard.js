@@ -13,6 +13,7 @@ export default function BannerCard({ data }) {
         return (
           <div
             style={{ cursor: "pointer" }}
+            className={`text-capitalize`}
             onClick={() => {
               router.push("/contributions");
             }}
@@ -24,6 +25,7 @@ export default function BannerCard({ data }) {
       } else {
         return (
           <div
+            className={`text-capitalize`}
             style={{ cursor: "pointer" }}
             onClick={() => {
               router.push("/contributions");
@@ -35,7 +37,7 @@ export default function BannerCard({ data }) {
         );
       }
     } else {
-      return <>{data.subTitle}</>;
+      return <div className={`text-capitalize`}>{data.subTitle}</div>;
     }
   };
   let countUpArray = splitLetterNumberService(data.title);

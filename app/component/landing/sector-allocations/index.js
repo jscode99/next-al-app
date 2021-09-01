@@ -17,15 +17,19 @@ export default function SectorAllocations({ sectorData }) {
         <Col xs={0} sm={0} md={0} lg={20} xl={16}>
           <div className="d-flex justify-content-end">
             <div className={`${style.sector_chart_container} h-100 py-4`}>
-              <p className={`${style.sector_title} ${
-              router.locale === "ar" ? "text-end" : "text-start"
-            } text-white mb-2`}>
-                {t("Sector Allocations")}
+              <p
+                className={`${style.sector_title} ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                } text-white mb-2 text-capitalize`}
+              >
+                {t("sector allocations")}
               </p>
-              <p className={`${style.sector_subtitle} ${
-              router.locale === "ar" ? "text-end" : "text-start"
-            } m-0`}>
-                {t("Al-Aqsa Approval Distribution")}
+              <p
+                className={`${style.sector_subtitle} ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                } m-0 text-capitalize`}
+              >
+                {t("al-aqsa approval distribution")}
               </p>
               <Row gutter={[4, 4]}>
                 {sectorData.map(data => (
@@ -68,7 +72,7 @@ export default function SectorAllocations({ sectorData }) {
                       />
                     </div>
                     <div
-                      className={`${style.sector_chart_title} d-flex justify-content-center text-center flex-row px-3`}
+                      className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
                     >
                       {t(data.title)}
                     </div>
@@ -81,14 +85,18 @@ export default function SectorAllocations({ sectorData }) {
         <Col xs={24} sm={24} md={24} lg={0} xl={0}>
           <div className="d-flex justify-content-center">
             <div className={`${style.sector_chart_container} h-100 py-4`}>
-              <p className={`${style.sector_title} ${
-              router.locale === "ar" ? "text-end" : "text-start"
-            } text-white mb-2`}>
+              <p
+                className={`${style.sector_title} ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                } text-white mb-2`}
+              >
                 {t("Sector Allocations")}
               </p>
-              <p className={`${style.sector_subtitle} ${
-              router.locale === "ar" ? "text-end" : "text-start"
-            } m-0`}>
+              <p
+                className={`${style.sector_subtitle} ${
+                  router.locale === "ar" ? "text-end" : "text-start"
+                } m-0`}
+              >
                 {t("Al-Aqsa Approval Distribution")}
               </p>
               <Row gutter={[4, 4]}>
@@ -132,7 +140,7 @@ export default function SectorAllocations({ sectorData }) {
                       />
                     </div>
                     <div
-                      className={`${style.sector_chart_title} d-flex justify-content-center text-center flex-row px-3`}
+                      className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
                     >
                       {t(data.title)}
                     </div>

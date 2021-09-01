@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-
+//Antd
+import { Row, Col } from "antd";
 //Components
 import MembersList from "./membersList";
 //Style
@@ -209,78 +210,174 @@ export default function Members({ members, flag }) {
   // ];
   return (
     <div className={`${style.container_bg} pb-4`}>
-      <div className={`${style.container} px-5`}>
-        {router.locale === "en" ? (
-          <div className={`d-flex justify-content-center my-3`}>
-            <div
-              className={`${style.member_intro_button} me-2`}
-              onClick={() => {
-                setActiveData(true);
-              }}
-            >
-              <p
-                className={`px-4 py-2 m-0 ${style.member_intro_button_title} ${
-                  activeData === true ? style.selected : ``
-                }`}
-              >
-                Supreme council
-              </p>
-            </div>
-            <div
-              className={`${style.member_intro_button}`}
-              onClick={() => {
-                setActiveData(false);
-              }}
-            >
-              <p
-                className={`px-4 py-2 m-0 ${style.member_intro_button_title} ${
-                  style.member_intro_button_title
-                } ${activeData === false ? style.selected : ``}`}
-              >
-                Management Committee
-              </p>
-            </div>
+      <Row>
+        <Col xs={0} sm={0} md={24} lg={24} xl={24}>
+          <div className={`${style.container} px-5`}>
+            {router.locale === "en" ? (
+              <div className={`d-flex justify-content-center my-3`}>
+                <div
+                  className={`${style.member_intro_button} me-2`}
+                  onClick={() => {
+                    setActiveData(true);
+                  }}
+                >
+                  <p
+                    className={`px-2 py-2 m-0 ${
+                      style.member_intro_button_title
+                    } text-capitalize ${
+                      activeData === true ? style.selected : ``
+                    }`}
+                  >
+                    {t("supreme council")}
+                  </p>
+                </div>
+                <div
+                  className={`${style.member_intro_button}`}
+                  onClick={() => {
+                    setActiveData(false);
+                  }}
+                >
+                  <p
+                    className={`text-capitalize px-2 py-2 m-0 ${
+                      style.member_intro_button_title
+                    } ${style.member_intro_button_title} ${
+                      activeData === false ? style.selected : ``
+                    }`}
+                  >
+                    {t("management committee")}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className={`d-flex justify-content-center my-5`}>
+                <div
+                  className={`${style.member_intro_button} me-2`}
+                  onClick={() => {
+                    setActiveData(false);
+                  }}
+                >
+                  <p
+                    className={`text-capitalize px-2 py-2 m-0 ${
+                      style.member_intro_button_title
+                    } ${style.member_intro_button_title} ${
+                      activeData === false ? style.selected : ``
+                    }`}
+                  >
+                    {t("management committee")}
+                  </p>
+                </div>
+                <div
+                  className={`${style.member_intro_button}`}
+                  onClick={() => {
+                    setActiveData(true);
+                  }}
+                >
+                  <p
+                    className={`text-capitalize px-2 py-2 m-0 ${
+                      style.member_intro_button_title
+                    } ${style.member_intro_button_title} ${
+                      activeData === true ? style.selected : ``
+                    }`}
+                  >
+                    {t("supreme council")}
+                  </p>
+                </div>
+              </div>
+            )}
+            {activeData === true
+              ? supremeMembersList.map((data, index) => (
+                  <MembersList key={index} data={data} />
+                ))
+              : managementMembersList.map((data, index) => (
+                  <MembersList key={index} data={data} />
+                ))}
           </div>
-        ) : (
-          <div className={`d-flex justify-content-center my-5`}>
-            <div
-              className={`${style.member_intro_button} me-2`}
-              onClick={() => {
-                setActiveData(false);
-              }}
-            >
-              <p
-                className={`px-4 py-2 m-0 ${style.member_intro_button_title} ${
-                  style.member_intro_button_title
-                } ${activeData === false ? style.selected : ``}`}
+        </Col>
+        <Col xs={24} sm={24} md={0} lg={0} xl={0}>
+          <div className={`${style.container} px-3`}>
+            {router.locale === "en" ? (
+              <div
+                className={`d-flex justify-content-start overflow-auto my-3`}
               >
-                {t("Management Committee")}
-              </p>
-            </div>
-            <div
-              className={`${style.member_intro_button}`}
-              onClick={() => {
-                setActiveData(true);
-              }}
-            >
-              <p
-                className={`px-4 py-2 m-0 ${style.member_intro_button_title} ${
-                  style.member_intro_button_title
-                } ${activeData === true ? style.selected : ``}`}
+                <div
+                  className={`${style.member_intro_button} me-2`}
+                  onClick={() => {
+                    setActiveData(true);
+                  }}
+                >
+                  <p
+                    className={`text-capitalize px-4 py-2 m-0 ${
+                      style.member_intro_button_title
+                    } ${activeData === true ? style.selected : ``}`}
+                  >
+                    {t("supreme council")}
+                  </p>
+                </div>
+                <div
+                  className={`${style.member_intro_button}`}
+                  onClick={() => {
+                    setActiveData(false);
+                  }}
+                >
+                  <p
+                    className={`text-capitalize px-4 py-2 m-0 ${
+                      style.member_intro_button_title
+                    } ${style.member_intro_button_title} ${
+                      activeData === false ? style.selected : ``
+                    }`}
+                  >
+                    {t("management committee")}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div
+                className={`d-flex justify-content-start overflow-auto my-5`}
               >
-                {t("Supreme Council")}
-              </p>
-            </div>
+                <div
+                  className={`${style.member_intro_button} me-2`}
+                  onClick={() => {
+                    setActiveData(false);
+                  }}
+                >
+                  <p
+                    className={`text-capitalize px-4 py-2 m-0 ${
+                      style.member_intro_button_title
+                    } ${style.member_intro_button_title} ${
+                      activeData === false ? style.selected : ``
+                    }`}
+                  >
+                    {t("management committee")}
+                  </p>
+                </div>
+                <div
+                  className={`${style.member_intro_button}`}
+                  onClick={() => {
+                    setActiveData(true);
+                  }}
+                >
+                  <p
+                    className={`text-capitalize px-4 py-2 m-0 ${
+                      style.member_intro_button_title
+                    } ${style.member_intro_button_title} ${
+                      activeData === true ? style.selected : ``
+                    }`}
+                  >
+                    {t("supreme council")}
+                  </p>
+                </div>
+              </div>
+            )}
+            {activeData === true
+              ? supremeMembersList.map((data, index) => (
+                  <MembersList key={index} data={data} />
+                ))
+              : managementMembersList.map((data, index) => (
+                  <MembersList key={index} data={data} />
+                ))}
           </div>
-        )}
-        {activeData === true
-          ? supremeMembersList.map((data, index) => (
-              <MembersList key={index} data={data} />
-            ))
-          : managementMembersList.map((data, index) => (
-              <MembersList key={index} data={data} />
-            ))}
-      </div>
+        </Col>
+      </Row>
     </div>
   );
 }

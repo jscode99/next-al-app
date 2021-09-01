@@ -4,5 +4,22 @@
     @extend %font_size_25
 
 .collapsible_title
+    display: inline-block
+    width: 95%
     font-family: roboto $important
     letter-spacing: 1px
+
+.pannel_container
+    display: inline-block
+    width: 95%
+
+@media only screen and (max-width: 1024px)
+
+@media only screen and (max-width: 768px)
+
+@media only screen and (max-width: 500px)
+    .collapsible_title
+        font-size: 10px
+    .collapsible_title,
+    .pannel_container
+            width: 85%

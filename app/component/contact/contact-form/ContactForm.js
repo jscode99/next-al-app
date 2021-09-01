@@ -36,7 +36,7 @@ export default function ContactForm() {
   const { handleSubmit, handleInputChange, inputs, errors } = UseContactForm(
     fromObject,
     errorObj,
-    setRegisterDone
+    setRegisterDone,
   );
 
   return (
@@ -48,8 +48,8 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                 <AppInput
                   sm={true}
-                  label={t("First Name")}
-                  placeholder={t("Enter First Name")}
+                  label={t("first name")}
+                  placeholder={t("enter first name")}
                   name="firstName"
                   errorText={`Please enter the field properly.`}
                   errorCheck={
@@ -66,8 +66,8 @@ export default function ContactForm() {
                 <div className={`d-flex justify-content-end w-100`}>
                   <AppInput
                     sm={true}
-                    label={t("Last Name (Optional)")}
-                    placeholder={t("Enter Last Name")}
+                    label={t("last name (optional)")}
+                    placeholder={t("enter last name")}
                     name="lastName"
                     value={inputs.lastName}
                     onChange={handleInputChange}
@@ -77,8 +77,8 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
                 <AppInput
                   sm={true}
-                  label={t("Last Name (Optional)")}
-                  placeholder={t("Enter Last Name")}
+                  label={t("last name (optional)")}
+                  placeholder={t("enter last name")}
                   name="lastName"
                   value={inputs.lastName}
                   onChange={handleInputChange}
@@ -89,8 +89,8 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                 <AppInput
                   sm={true}
-                  label={t("Email Address")}
-                  placeholder={t("Enter Email Address")}
+                  label={t("email address")}
+                  placeholder={t("enter email address")}
                   name="email"
                   errorText={`Please check your email.`}
                   errorCheck={
@@ -105,16 +105,8 @@ export default function ContactForm() {
                 <div className={`d-flex align-items-end w-100 flex-column`}>
                   <AppInput
                     sm={true}
-                    label={
-                      router.locale === "en"
-                        ? `Phone Number`
-                        : `رقم الهاتف \ الجوال`
-                    }
-                    placeholder={
-                      router.locale === "en"
-                        ? `Enter Phone Number`
-                        : `ادخل رقم الهاتف \ الجوال`
-                    }
+                    label={t("phone number")}
+                    placeholder={t("enter phone number")}
                     errorText={`Enter a valid phone number or try adding your country code.`}
                     errorCheck={
                       errors.phoneNumber !== null && !errors.phoneNumber
@@ -131,16 +123,8 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
                 <AppInput
                   sm={true}
-                  label={
-                    router.locale === "en"
-                      ? `Phone Number`
-                      : `رقم الهاتف \ الجوال`
-                  }
-                  placeholder={
-                    router.locale === "en"
-                      ? `Enter Phone Number`
-                      : `ادخل رقم الهاتف \ الجوال`
-                  }
+                  label={t("phone number")}
+                  placeholder={t("enter phone number")}
                   errorText={`Enter a valid phone number or try adding your country code.`}
                   errorCheck={
                     errors.phoneNumber !== null && !errors.phoneNumber
@@ -157,8 +141,8 @@ export default function ContactForm() {
             <Row className={`px-4`}>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <AppInput
-                  label={t("Subject")}
-                  placeholder={t("Enter Subject")}
+                  label={t("subject")}
+                  placeholder={t("enter subject")}
                   name="subject"
                   errorText={`Please enter a valid subject.`}
                   errorCheck={
@@ -173,8 +157,8 @@ export default function ContactForm() {
             <Row className={`px-4`}>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <AppTextArea
-                  label={t("Message")}
-                  placeholder={t("Enter Message")}
+                  label={t("message")}
+                  placeholder={t("enter message")}
                   name="message"
                   errorText={`Please enter a valid message.`}
                   errorCheck={
@@ -190,7 +174,7 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <div className={`d-flex justify-content-end w-100`}>
                   <AppButton
-                    text={t("Submit")}
+                    text={t("submit")}
                     OnClickHandler={() => {
                       handleSubmit(inputs);
                     }}
@@ -204,8 +188,8 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                 <AppInput
                   sm={true}
-                  label={t("First Name")}
-                  placeholder={t("Enter First Name")}
+                  label={t("first name")}
+                  placeholder={t("enter first name")}
                   name="firstName"
                   errorText={`Please enter the field properly.`}
                   errorCheck={
@@ -222,8 +206,8 @@ export default function ContactForm() {
                 <div className={`d-flex justify-content-end w-100`}>
                   <AppInput
                     sm={true}
-                    label={t("Last Name (Optional)")}
-                    placeholder={t("Enter Last Name")}
+                    label={t("last name (optional)")}
+                    placeholder={t("enter last name")}
                     name="lastName"
                     value={inputs.lastName}
                     onChange={handleInputChange}
@@ -233,8 +217,8 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
                 <AppInput
                   sm={true}
-                  label={t("Last Name (Optional)")}
-                  placeholder={t("Enter Last Name")}
+                  label={t("last name (optional)")}
+                  placeholder={t("enter last name")}
                   name="lastName"
                   value={inputs.lastName}
                   onChange={handleInputChange}
@@ -245,8 +229,8 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                 <AppInput
                   sm={true}
-                  label={t("Email Address")}
-                  placeholder={t("Enter Email Address")}
+                  label={t("email address")}
+                  placeholder={t("enter email address")}
                   name="email"
                   errorText={`Please check your email.`}
                   errorCheck={
@@ -261,16 +245,8 @@ export default function ContactForm() {
                 <div className={`d-flex align-items-end w-100 flex-column`}>
                   <AppInput
                     sm={true}
-                    label={
-                      router.locale === "en"
-                        ? `Phone Number`
-                        : `رقم الهاتف \ الجوال`
-                    }
-                    placeholder={
-                      router.locale === "en"
-                        ? `Enter Phone Number`
-                        : `ادخل رقم الهاتف \ الجوال`
-                    }
+                    label={t("phone number")}
+                    placeholder={t("enter phone number")}
                     errorText={`Enter a valid phone number or try adding your country code.`}
                     errorCheck={
                       errors.phoneNumber !== null && !errors.phoneNumber
@@ -287,16 +263,8 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
                 <AppInput
                   sm={true}
-                  label={
-                    router.locale === "en"
-                      ? `Phone Number`
-                      : `رقم الهاتف \ الجوال`
-                  }
-                  placeholder={
-                    router.locale === "en"
-                      ? `Enter Phone Number`
-                      : `ادخل رقم الهاتف \ الجوال`
-                  }
+                  label={t("phone number")}
+                  placeholder={t("enter phone number")}
                   errorText={`Enter a valid phone number or try adding your country code.`}
                   errorCheck={
                     errors.phoneNumber !== null && !errors.phoneNumber
@@ -313,8 +281,8 @@ export default function ContactForm() {
             <Row>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <AppInput
-                  label={t("Subject")}
-                  placeholder={t("Enter Subject")}
+                  label={t("subject")}
+                  placeholder={t("enter subject")}
                   name="subject"
                   errorText={`Please enter a valid subject.`}
                   errorCheck={
@@ -329,8 +297,8 @@ export default function ContactForm() {
             <Row>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <AppTextArea
-                  label={t("Message")}
-                  placeholder={t("Enter Message")}
+                  label={t("message")}
+                  placeholder={t("enter message")}
                   name="message"
                   errorText={`Please enter a valid message.`}
                   errorCheck={
@@ -346,7 +314,7 @@ export default function ContactForm() {
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <div className={`d-flex justify-content-end w-100`}>
                   <AppButton
-                    text={t("Submit")}
+                    text={t("submit")}
                     OnClickHandler={() => {
                       handleSubmit(inputs);
                     }}

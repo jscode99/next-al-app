@@ -27,3 +27,15 @@
 
 .flag_container
     width: 125px
+
+@media only screen and (max-width: 1024px)
+    .shareHolder_container
+        @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+    .shareHolder_container
+        @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+    .shareHolder_container
+        @include container_padding_smScreen

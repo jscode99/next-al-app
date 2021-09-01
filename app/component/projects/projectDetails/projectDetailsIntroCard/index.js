@@ -17,11 +17,13 @@ export default function ProjectDetailsIntroCard({ cardData }) {
         className={`w-100 d-flex justify-content-center align-items-center px-5 py-4`}
       >
         <Row gutter={[18, 18]} className={`w-100 justify-content-center`}>
-          {router.locale === "en"?cardData.map(data => (
-            <IntroCard data={data} />
-          )):new Array(...cardData).map(data => (
-            <IntroCard data={data} />
-          ))}
+          {router.locale === "en"
+            ? cardData.map((data, index) => (
+                <IntroCard data={data} key={index} />
+              ))
+            : new Array(...cardData).map(data => (
+                <IntroCard data={data} key={index} />
+              ))}
         </Row>
       </div>
     </div>

@@ -65,7 +65,12 @@ export default function ResponsiveView({ view, logo }) {
         } `}
       >
         {router.locale === "en" ? (
-          <div>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              router.push("/");
+            }}
+          >
             <Row>
               <Col
                 xs={24}
@@ -84,8 +89,8 @@ export default function ResponsiveView({ view, logo }) {
                   height="100px"
                   width="100px"
                 />
-                <p className={`${style.logo_title} text-white`}>
-                  {t("Al Aqsa Funds")}
+                <p className={`${style.logo_title} text-capitalize text-white`}>
+                  {t("al aqsa fund")}
                 </p>
                 {/* <div
                 className={`mt-4 d-flex justify-content-center w-100 flex-wrap px-2`}
@@ -140,26 +145,28 @@ export default function ResponsiveView({ view, logo }) {
                 </ul>
               </Col>
               <Col xs={24} sm={24} md={6} lg={6} xl={6}>
-                <ul className={`${style.footer_list}`}>
+                <ul className={`${style.footer_list} text-capitalize`}>
                   <li
-                    className={`${style.footer_list_header} ${style.footer_list_cursor_auto}`}
+                    className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
                   >
                     Quick Links
                   </li>
                   <li>
-                    <Link href={"/about"}>About</Link>
+                    <Link href={"/about"}>{t("about")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Projects</a>
+                    <Link href={"/projects"}>{t("projects")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Success Stories</a>
+                    <Link href={"/success-stories"}>
+                      {t("success stories")}
+                    </Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Publications</a>
+                    <Link href={"/publications"}>{t("publications")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Contact</a>
+                    <Link href={"/contact"}>{t("contact")}</Link>
                   </li>
                   {/* {fLinks && fLinks.length > 0
                   ? fLinks.map((data) => (
@@ -204,7 +211,7 @@ export default function ResponsiveView({ view, logo }) {
           <div>
             <Row>
               <Col xs={0} sm={0} md={5} lg={6} xl={6}>
-                <ul className={`${style.footer_list} text-end`}>
+                <ul className={`${style.footer_list} text-end text-capitalize`}>
                   <li
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto}
                    `}
@@ -224,7 +231,7 @@ export default function ResponsiveView({ view, logo }) {
               </Col>
 
               <Col xs={0} sm={0} md={6} lg={6} xl={6}>
-                <ul className={`${style.footer_list} text-end`}>
+                <ul className={`${style.footer_list} text-end text-capitalize`}>
                   <li
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
                   >
@@ -234,16 +241,18 @@ export default function ResponsiveView({ view, logo }) {
                     <Link href={"/about"}>{t("about")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("projects")}</a>
+                    <Link href={"/projects"}>{t("projects")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("success stories")}</a>
+                    <Link href={"/success-stories"}>
+                      {t("success stories")}
+                    </Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("publications")}</a>
+                    <Link href={"/publications"}>{t("publications")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("contact")}</a>
+                    <Link href={"/contact"}>{t("contact")}</Link>
                   </li>
                   {/* {fLinks && fLinks.length > 0
                   ? fLinks.map((data) => (
@@ -289,6 +298,10 @@ export default function ResponsiveView({ view, logo }) {
                 className={`d-flex justify-content-center align-items-center flex-column ${
                   view === "mobile" ? "p-footer-logo" : ""
                 } w-100`}
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  router.push("/");
+                }}
               >
                 <Image
                   src={"/images/projects/logo8.webp"}
@@ -296,8 +309,8 @@ export default function ResponsiveView({ view, logo }) {
                   height="100px"
                   width="100px"
                 />
-                <p className={`${style.logo_title} text-white`}>
-                  {t("Al Aqsa Funds")}
+                <p className={`${style.logo_title} text-capitalize text-white`}>
+                  {t("al aqsa fund")}
                 </p>
               </Col>
             </Row>
@@ -330,7 +343,9 @@ export default function ResponsiveView({ view, logo }) {
               </Col>
 
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-                <ul className={`${style.footer_list} text-center`}>
+                <ul
+                  className={`${style.footer_list} text-center text-capitalize`}
+                >
                   <li
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
                   >
@@ -340,16 +355,18 @@ export default function ResponsiveView({ view, logo }) {
                     <Link href={"/about"}>{t("about")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("projects")}</a>
+                    <Link href={"/projects"}>{t("projects")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("success stories")}</a>
+                    <Link href={"/success-stories"}>
+                      {t("success stories")}
+                    </Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("publications")}</a>
+                    <Link href={"/publications"}>{t("publications")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("contact")}</a>
+                    <Link href={"/contact"}>{t("contact")}</Link>
                   </li>
                   {/* {fLinks && fLinks.length > 0
                   ? fLinks.map((data) => (
@@ -362,7 +379,9 @@ export default function ResponsiveView({ view, logo }) {
               </Col>
 
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-                <ul className={`${style.footer_list} text-center`}>
+                <ul
+                  className={`${style.footer_list} text-center text-capitalize`}
+                >
                   <li
                     className={`${style.footer_list_header} ${style.footer_list_cursor_auto}
                    `}

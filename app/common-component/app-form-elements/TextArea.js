@@ -25,26 +25,28 @@ export default function AppTextArea({
           router.locale === "en"
             ? "justify-content-start"
             : "justify-content-end"
-        } align-items-center w-100 mb-2`}
+        } align-items-center w-100`}
       >
-        <span className={`${style.app_label}`}>{label}</span>
+        <span className={`${style.app_label} text-capitalize`}>{label}</span>
       </div>
       <div className={`d-flex justify-content-center align-items-center w-100`}>
         <TextArea
           rows={6}
           placeholder={`${placeholder}`}
-          className={`${errorCheck ? "border border-danger" : ""}  ${
-            style.app_text_area
-          }`}
+          className={`text-capitalize ${
+            errorCheck ? "border border-danger" : ""
+          }  ${style.app_text_area}`}
           name={name}
           value={value}
           onChange={onChange}
         />
       </div>
-      <div
-        className={`d-flex justify-content-start align-items-center mt-1 w-100`}
-      >
-        <p className={`text-danger mb-0 ${errorCheck ? "" : style.visibility}`}>
+      <div className={`d-flex justify-content-start align-items-center w-100`}>
+        <p
+          className={`text-capitalize text-danger mb-0 ${
+            errorCheck ? "" : style.visibility
+          }`}
+        >
           {errorText}
         </p>
       </div>

@@ -1,6 +1,5 @@
 import { useTranslation } from "next-i18next";
-import InnerLayout from "../../common-component/inner-layout/InnerLayout";
-import PageCommonSection from "../../common-component/page-common-section/PageCommonSection";
+import { useRouter } from "next/router";
 //Components
 import ShareHolder from "./shareholders";
 import AboutUsCard from "./aboutCards";
@@ -11,6 +10,7 @@ import MissionSection from "./missionSection";
 
 export default function About({}) {
   const { t } = useTranslation("common");
+  const router = useRouter();
   const flagData = [
     {
       title: "Jordan",
@@ -82,12 +82,31 @@ export default function About({}) {
     },
   ];
 
+  const cardData = [
+    {
+      title: t("Governance Structure"),
+      route: "/about/governance-structure",
+    },
+    {
+      title: t("Members"),
+      route: "/about/members",
+    },
+    {
+      title: t("Approval Process and Selection Criteria"),
+      route: "/about/approval-process-and-selection-criteria",
+    },
+  ];
+
   return (
     <>
       <IntroSection />
       <MissionSection />
       <ShareHolder flagData={flagData} />
-      <AboutUsCard />
+      {router.locale === "en" ? (
+        <AboutUsCard cardData={cardData} />
+      ) : (
+        <AboutUsCard cardData={cardData.reverse()} />
+      )}
       <IsdbRoleSection />
       <ProcedureSection />
     </>

@@ -7,24 +7,10 @@ import { Row, Col } from "antd";
 //styles
 import style from "./index.module.sass";
 
-export default function AboutUsCard() {
+export default function AboutUsCard({ cardData }) {
+  console.log("cardData", cardData);
   const router = useRouter();
   const { t } = useTranslation("common");
-
-  const cardData = [
-    {
-      title: t("Governance Structure"),
-      route: "/about/governance-structure",
-    },
-    {
-      title: t("Members"),
-      route: "/about/members",
-    },
-    {
-      title: t("Approval Process and Selection Criteria"),
-      route: "/about/approval-process-and-selection-criteria",
-    },
-  ];
 
   return (
     <div className={`${style.container_bg} py-5`}>

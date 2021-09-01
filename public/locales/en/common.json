@@ -19,7 +19,7 @@
     "success stories":"success stories",
     "publications":"publications",
     "contact":"contact",
-    "Aqsa Funds":"Aqsa Funds",
+    "Aqsa Fund":"Aqsa Fund",
     "Arab Funds":"Arab Funds",
     "Al Aqsa Funds Resources":"Al Aqsa Fund Resources",
     "Achievements of Al-Aqsa Funds":"Achievements of Al-Aqsa Funds",
@@ -101,8 +101,12 @@
     "fax": "fax",
     "phone": "phone",
     "email": "email",
-    "website": "website"
-
+    "website": "website",
+    "other resources":"other resources",
+    "terms and conditions":"Terms and Conditions",
+    "privacy policy":"Privacy Policy",
+    "sitemap":"Sitemap",
+    "quick links":"Quick Links"
 }
 
 

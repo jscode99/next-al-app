@@ -10,7 +10,7 @@ export default function FundResource({}) {
   let fundData = [
     {
       count: "$1.028B",
-      text: t("Aqsa Funds"),
+      text: t("Aqsa Fund"),
       bg: style.primary_bg,
       font: style.primary_font,
     },

@@ -19,7 +19,7 @@
     "success stories":"قصص النجاح",
     "publications":"المنشورات",
     "contact":"اتصل بنا",
-    "Aqsa Funds":"صندوق الأقصى",
+    "Aqsa Fund":"صندوق الأقصى",
     "Arab Funds":"الصناديق العربية",
     "Al Aqsa Funds Resources":"موارد صندوق الأقصى",
     "Achievements of Al-Aqsa Funds":"إنجازات صندوق الأقصى",
@@ -101,7 +101,12 @@
     "fax": "****",
     "phone": "****",
     "email": "****",
-    "website": "****"
-
+    "website": "****",
+    "other resources":"مصادر أخرى",
+    "terms and conditions":"البنود والأحكام",
+    "privacy policy":"سياسة الخصوصية",
+    "sitemap":"خريطة الموقع",
+    "quick links":"روابط سريعة"
+    
 }
 

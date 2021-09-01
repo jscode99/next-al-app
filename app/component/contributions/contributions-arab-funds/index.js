@@ -94,7 +94,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
       totalValue = new Intl.NumberFormat().format(totalValue);
       data.push({
         Allocation: <b>{totalValue}</b>,
-        Name: <b>{t("Total")}</b>,
+        Name: <b>{t("total")}</b>,
       });
     }
 

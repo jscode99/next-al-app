@@ -206,7 +206,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         CairoSummitContribution: <b>{cairoSummitTotal}</b>,
         DeadSeaSummitContribution: <b>{deadSeaSummitTotal}</b>,
         BeirutSirteSummitContribution: <b>{beirutSirteSummitTotal}</b>,
-        Country: <b>{t("Total")}</b>,
+        Country: <b>{t("total")}</b>,
       });
     }
 

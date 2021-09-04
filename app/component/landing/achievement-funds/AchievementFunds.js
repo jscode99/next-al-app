@@ -1,58 +1,72 @@
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { Row } from "antd";
 import AchievementCards from "./AchievementCards";
 import style from "./index.module.sass";
 
-export default function AchievementFunds({}) {
+export default function AchievementFunds({ data }) {
+  const [cardData, setcardData] = useState([]);
   const router = useRouter();
   //Trans Lib
   const { t } = useTranslation("common");
-  const cardData = [
-    {
-      title: t("building & equipping schools"),
-      count: "269",
-      bgColor: style.bg_theme_sky_blue_color,
-      ftColor: style.ft_theme_sky_blue_color,
-      image: "/images/achievement-logos/Icon-Scholar.webp",
-    },
-    {
-      title: t("building & equipping hospitals"),
-      count: "56",
-      bgColor: style.bg_secondary_color,
-      ftColor: style.ft_secondary_color,
-      image: "/images/achievement-logos/Icon-Health.webp",
-    },
-    {
-      title: t("roads paved"),
-      count: "651",
-      bgColor: style.bg_theme_dark_green_color,
-      ftColor: style.ft_theme_dark_green_color,
-      image: "/images/achievement-logos/Icon-Roads.webp",
-    },
-    {
-      title: t("revitalizing donum of land"),
-      count: "72000",
-      bgColor: style.bg_theme_golden_color,
-      ftColor: style.ft_theme_golden_color,
 
-      image: "/images/achievement-logos/Icon-Plants.webp",
-    },
-    {
-      title: t("economic empowerment of families"),
-      count: "24000",
-      bgColor: style.bg_theme_lite_blue_color,
-      ftColor: style.ft_theme_lite_blue_color,
-      image: "/images/achievement-logos/Icon-People.webp",
-    },
-    {
-      title: t("restoration of houses"),
-      count: "35",
-      bgColor: style.bg_primary_color,
-      ftColor: style.ft_primary_color,
-      image: "/images/achievement-logos/Icon-Buildings.webp",
-    },
-  ];
+  const getProperty = priority => {
+    switch (priority) {
+      case "1":
+        return [
+          style.bg_theme_sky_blue_color,
+          style.ft_theme_sky_blue_color,
+          "/images/achievement-logos/Icon-Scholar.webp",
+        ];
+      case "2":
+        return [
+          style.bg_secondary_color,
+          style.ft_secondary_color,
+          "/images/achievement-logos/Icon-Health.webp",
+        ];
+      case "3":
+        return [
+          style.bg_theme_dark_green_color,
+          style.ft_theme_dark_green_color,
+          "/images/achievement-logos/Icon-Roads.webp",
+        ];
+      case "4":
+        return [
+          style.bg_theme_golden_color,
+          style.ft_theme_golden_color,
+          "/images/achievement-logos/Icon-Plants.webp",
+        ];
+      case "5":
+        return [
+          style.bg_theme_lite_blue_color,
+          style.ft_theme_lite_blue_color,
+          "/images/achievement-logos/Icon-People.webp",
+        ];
+      case "6":
+        return [
+          style.bg_primary_color,
+          style.ft_primary_color,
+          "/images/achievement-logos/Icon-Buildings.webp",
+        ];
+    }
+  };
+
+  useEffect(() => {
+    let achievement = data.sort((x, y) => x.priority - y.priority);
+    console.log("achievement", achievement);
+    let cardData = achievement.map(data => {
+      return {
+        title: data.title,
+        count: data.count,
+        bgColor: getProperty(data.priority)[0],
+        ftColor: getProperty(data.priority)[1],
+        image: getProperty(data.priority)[2],
+      };
+    });
+    setcardData(cardData);
+  }, [data, data.length]);
+
   return (
     <div className={`${style.achievement_bg}`}>
       <div className={`${style.achievement_container}`}>

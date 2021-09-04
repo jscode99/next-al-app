@@ -15,7 +15,11 @@ export default function ProjectDetailsTable({ projectData }) {
   let columnDataEn = [
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>{t("code")}</p>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
+          {t("code")}
+        </p>
       ),
       dataIndex: "Code",
       render: code => (
@@ -23,16 +27,21 @@ export default function ProjectDetailsTable({ projectData }) {
           {code}
         </p>
       ),
+      width: "10%",
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-start m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-start m-1`}
+        >
           {t("projects")}
         </p>
       ),
       dataIndex: "Projects",
       render: projects => (
-        <p className={`${style.table_name} text-capitalize  text-start m-1`}>
+        <p
+          className={`${style.table_name} text-capitalize fw-bold text-start m-1`}
+        >
           {projects}
         </p>
       ),
@@ -41,7 +50,9 @@ export default function ProjectDetailsTable({ projectData }) {
 
     {
       title: (
-        <p className={`text-capitalize fw-bold text-start m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-start m-1`}
+        >
           {t("sector")}
         </p>
       ),
@@ -51,11 +62,13 @@ export default function ProjectDetailsTable({ projectData }) {
           {sector}
         </p>
       ),
-      width: "20%",
+      width: "16%",
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
           {t("al-quds")}
         </p>
       ),
@@ -69,7 +82,9 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
           {t("west bank")}
         </p>
       ),
@@ -83,7 +98,11 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>{t("gaza")}</p>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
+          {t("gaza")}
+        </p>
       ),
       dataIndex: "gazaStrip",
       render: gaza => (
@@ -95,7 +114,9 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
           {t("approved amount")}
         </p>
       ),
@@ -106,7 +127,9 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
           {t("disbursement amount")}
         </p>
       ),
@@ -122,7 +145,9 @@ export default function ProjectDetailsTable({ projectData }) {
   let columnDataAr = [
     {
       title: (
-        <p className={`text-capitalize fw-bold text-end m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-end m-1`}
+        >
           {t("disbursement amount")}
         </p>
       ),
@@ -133,7 +158,9 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
           {t("approved amount")}
         </p>
       ),
@@ -144,7 +171,11 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>{t("gaza")}</p>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
+          {t("gaza")}
+        </p>
       ),
       dataIndex: "gazaStrip",
       render: gaza => (
@@ -154,7 +185,9 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
           {t("west bank")}
         </p>
       ),
@@ -166,7 +199,9 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
           {t("al-quds")}
         </p>
       ),
@@ -178,7 +213,11 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-end m-1`}>{t("sector")}</p>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-end m-1`}
+        >
+          {t("sector")}
+        </p>
       ),
       dataIndex: "Sector",
       render: sector => (
@@ -188,20 +227,26 @@ export default function ProjectDetailsTable({ projectData }) {
     },
     {
       title: (
-        <p className={`text-capitalize fw-bold text-end m-1`}>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-end m-1`}
+        >
           {t("projects")}
         </p>
       ),
       dataIndex: "Projects",
       render: projects => (
-        <p className={`${style.table_name} text-end m-1`}>{projects}</p>
+        <p className={`${style.table_name} fw-bold text-end m-1`}>{projects}</p>
       ),
       width: "60%",
     },
 
     {
       title: (
-        <p className={`text-capitalize fw-bold text-center m-1`}>{t("code")}</p>
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
+          {t("code")}
+        </p>
       ),
       dataIndex: "Code",
       render: code => (

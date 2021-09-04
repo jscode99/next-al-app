@@ -43,7 +43,7 @@ export default function CommonTable({ columnData, data, pagination, scroll }) {
   }
   return (
     <div
-      className={`${style.contribution_tale_container} w-100 overflow-hidden shadow`}
+      className={`${style.contribution_table_container} w-100 overflow-hidden shadow`}
     >
       <Table
         columns={column}

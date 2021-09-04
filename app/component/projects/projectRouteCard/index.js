@@ -11,7 +11,7 @@ import convertToInternationalCurrencySystem from "../../../services/internationa
 import style from "./index.module.sass";
 
 export default function ProjectRouteCard({ finalChartData }) {
-  // console.log("finalChartData", finalChartData.reverse());
+  console.log("finalChartData", finalChartData.reverse());
   const router = useRouter();
   const base_url = process.env.BASE_URL;
 
@@ -30,7 +30,7 @@ export default function ProjectRouteCard({ finalChartData }) {
             <>
               <Col xs={0} sm={0} md={0} lg={5} xl={5}>
                 <div
-                  className={`${style.route_card_container} shadow pt-4`}
+                  className={`${style.route_card_container} pt-4`}
                   onClick={() => {
                     router.push({
                       pathname: `/projects/${mapTitleToRoutePath(data.title)}`,

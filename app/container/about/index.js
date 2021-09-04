@@ -1,7 +1,13 @@
 import Layout from "../layout";
 import About from "../../component/about";
 
-export default function AboutContainer({ projectTitle, bannerImage }) {
+export default function AboutContainer({
+  staticSite,
+  projectTitle,
+  bannerImage,
+  flag,
+  flagAr,
+}) {
   return (
     <Layout
       heroImage={bannerImage}
@@ -10,7 +16,7 @@ export default function AboutContainer({ projectTitle, bannerImage }) {
       projectTitle={projectTitle}
       title={"al aqsa fund"}
     >
-      <About />
+      <About staticSite={staticSite} flag={flag} flagAr={flagAr} />
     </Layout>
   );
 }

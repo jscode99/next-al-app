@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
@@ -6,6 +7,7 @@ import { splitLetterNumberService } from "../../../services/commonService";
 import style from "./index.module.sass";
 
 export default function BannerCard({ data }) {
+  const [countUpArray, setcountUpArray] = useState("");
   const router = useRouter();
   const subtitleFunc = () => {
     if (data.navigation) {
@@ -40,8 +42,14 @@ export default function BannerCard({ data }) {
       return <div className={`text-capitalize`}>{data.subTitle}</div>;
     }
   };
-  let countUpArray = splitLetterNumberService(data.title);
-  console.log("countUpArray", countUpArray);
+
+  useEffect(() => {
+    // let countUpArray = splitLetterNumberService(data.title);
+    if (data && Object.keys(data).length > 0)
+      setcountUpArray(splitLetterNumberService(data.title.toString()));
+  }, [data]);
+
+  // console.log("countUpArray", countUpArray);
   return (
     <div className={`${style.banner_card} bg-white mb-5`}>
       <div className={`${style.banner_card_logo_container}`}>
@@ -54,19 +62,21 @@ export default function BannerCard({ data }) {
       <h3
         className={`${style.banner_card_title} text-center d-flex justify-content-center m-1`}
       >
-        {countUpArray.map(value => {
-          if (Number.isNaN(parseFloat(value))) {
-            return value;
-          } else {
-            return (
-              <CountUp
-                value={parseFloat(value)}
-                floatLength={data.floatLength}
-                scroll={false}
-              />
-            );
-          }
-        })}
+        {countUpArray &&
+          countUpArray.length > 0 &&
+          countUpArray.map(value => {
+            if (Number.isNaN(parseFloat(value))) {
+              return value;
+            } else {
+              return (
+                <CountUp
+                  value={parseFloat(value)}
+                  floatLength={data.floatLength}
+                  scroll={false}
+                />
+              );
+            }
+          })}
       </h3>
       <p
         className={`${style.banner_card_subtitle} ${data.ftColor} text-center`}

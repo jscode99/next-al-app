@@ -1,10 +1,50 @@
+import { useEffect, useState } from "react";
 //Components
 import PieChart from "./pieChart";
 import { useTranslation } from "next-i18next";
 //styles
 import style from "./index.module.sass";
 
-export default function GeographicalApprovals({ geoData }) {
+export default function GeographicalApprovals({ projectData }) {
+  const [geoSector, setGeoSector] = useState([]);
+  // console.log(
+  //   "test",
+  //   test[0].gazatotalAmount,
+  //   test[0].totalApproved,
+  //   test[0].gazatotalAmount / test[0].totalApproved,
+  //   Math.round((test[0].gazatotalAmount / test[0].totalApproved) * 100),
+  // );
+  console.log("ProjectData", projectData);
+
+  useEffect(() => {
+    let geo = [];
+    if (projectData && Object.keys(projectData).length > 0) {
+      for (let index in projectData) {
+        geo.push({
+          title: "gaza",
+          totalAmount: projectData[index].totalGazaAmount,
+          totalProject: projectData[index].totalGaza,
+          totalApproved: projectData[index].totalApprovedAmount,
+        });
+        geo.push({
+          title: "al-quds",
+          totalAmount: projectData[index].totalAlQuadsAmount,
+          totalProject: projectData[index].totalAlQuads,
+          totalApproved: projectData[index].totalApprovedAmount,
+        });
+        geo.push({
+          title: "west bank",
+          totalAmount: projectData[index].totalWestBanksAmount,
+          totalProject: projectData[index].totalWestBanks,
+          totalApproved: projectData[index].totalApprovedAmount,
+        });
+      }
+    }
+    setGeoSector(geo);
+  }, [projectData]);
+
+  console.log("geoSector", geoSector);
+
   const { t } = useTranslation("common");
 
   return (
@@ -33,24 +73,32 @@ export default function GeographicalApprovals({ geoData }) {
           {t("% total portfolio")}
         </p>
       </div>
-      {geoData.map((data, index) => (
+      {geoSector.map((data, index) => (
         <div
           key={index}
-          className={`${style.common_sectoral_list} d-flex justify-content-center align-items-center bg-white shadow my-1 w-100`}
+          className={`${style.common_sectoral_list} d-flex justify-content-center align-items-center bg-white my-1 w-100`}
         >
-          <p className={`w-50 ms-3 fw-bold m-0`}>{t(data.title)}</p>
+          <p className={`w-50 ms-3 fw-bold m-0 text-capitalize`}>
+            {t(data.title)}
+          </p>
           <p className={`${style.number_of_projects} w-25 text-center m-0`}>
-            {data.projects}
+            {data.totalProject}
           </p>
           <div
             className={`d-flex justify-content-center align-items-center w-25`}
           >
-            <PieChart data={data} color={`#5ca849`} />
+            <PieChart
+              totalAmountData={data.totalAmount}
+              totalApproved={data.totalApproved}
+              // data={data}
+              color={`#5ca849`}
+            />
             <p
               className={`ms-2 m-0 ${style.percentage}`}
               style={{ width: "45px" }}
             >
-              {data.percent}
+              {Math.round((data.totalAmount / data.totalApproved) * 100)}
+              {"%"}
             </p>
           </div>
         </div>

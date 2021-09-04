@@ -8,7 +8,7 @@ import styles from "./index.module.sass";
 export default function SuccessStories({ stories, successStoriesAR }) {
   const { t } = useTranslation("common");
   const router = useRouter();
-  const [listSize, setListSize] = useState(12);
+  const [listSize, setListSize] = useState(6);
   const [pageNumber, setPageNumber] = useState(1);
 
   return (

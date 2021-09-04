@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Row, Col } from "antd";
 import { useRouter } from "next/router";
 
@@ -7,9 +8,29 @@ import GeographicalApprovals from "./GeographicalApprovals";
 //style
 import style from "./index.module.sass";
 
-export default function ProjectDetailsApproval({ projectData }) {
+export default function ProjectDetailsApproval({ projectData, sector }) {
   console.log("projectData", projectData);
+  console.log("sector", sector);
   let router = useRouter();
+  // const [geoSector, setGeoSector] = useState([]);
+
+  // useEffect(() => {
+  //   let geo = [];
+  //   for (let index in projectData) {
+  //     geo.push({
+  //       gazatotal: projectData[index].totalGaza,
+  //       gazatotalAmount: projectData[index].totalGazaAmount,
+  //       alQuadsTotal: projectData[index].totalAlQuads,
+  //       alQuadsTotalAmount: projectData[index].totalAlQuadsAmount,
+  //       westBankTotal: projectData[index].totalWestBanks,
+  //       westBankTotalAmount: projectData[index].totalWestBanksAmount,
+  //       totalApproved: projectData[index].totalApprovedAmount,
+  //       totalDisbursed: projectData[index].totalDisbursementAmount,
+  //     });
+  //   }
+  //   setGeoSector(geo);
+  // }, [projectData]);
+  // console.log("geoSector", geoSector);
 
   const sectoralData = [
     {
@@ -44,24 +65,6 @@ export default function ProjectDetailsApproval({ projectData }) {
     },
   ];
 
-  const geoData = [
-    {
-      title: "Al-Quds",
-      projects: "45",
-      percent: "86.50%",
-    },
-    {
-      title: "West Bank",
-      projects: "35",
-      percent: "66.30%",
-    },
-    {
-      title: "Gaza",
-      projects: "20",
-      percent: "90%",
-    },
-  ];
-
   return (
     <div className={`${style.project_details_bg}`}>
       <div className={`${style.container} px-5`}>
@@ -69,10 +72,13 @@ export default function ProjectDetailsApproval({ projectData }) {
           {router.locale === "en" ? (
             <>
               <Col span={12}>
-                <SectoralApproval sectoralData={sectoralData} />
+                <SectoralApproval
+                  sectoralData={sectoralData}
+                  projectData={projectData}
+                />
               </Col>
               <Col span={12}>
-                <GeographicalApprovals geoData={geoData} />
+                <GeographicalApprovals projectData={projectData} />
               </Col>
             </>
           ) : (

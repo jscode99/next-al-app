@@ -30,18 +30,22 @@ export default function ShareHolder({ flagData }) {
                 <div
                   className={`${style.flag_container} d-flex justify-content-center align-items-center flex-column`}
                 >
-                  <div className={`rounded-circle`}>
+                  <div className={`${style.flag_image} rounded-circle`}>
                     <Image
-                      src={data.url}
+                      src={process.env.BASE_URL + data.Flag[0].url}
                       alt={`Flags`}
                       height="80px"
                       width="80px"
                     />
                   </div>
                   <p
-                    className={`${style.shareHolder_labels} fw-bold text-center`}
+                    className={`${
+                      router.locale === "en"
+                        ? style.shareHolder_labels
+                        : style.shareHolder_labels_AR
+                    } fw-bold text-capitalize text-center`}
                   >
-                    {data.title}
+                    {data.Country}
                   </p>
                 </div>
               </div>

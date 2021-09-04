@@ -53,7 +53,7 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
                   }}
                 >
                   <div
-                    className={`${styles.stories_img_card} position-relative shadow w-100`}
+                    className={`${styles.stories_img_card} position-relative w-100`}
                   >
                     <div
                       className={`${styles.stories_img_des_container} position-absolute d-flex justify-content-end h-100 flex-column`}

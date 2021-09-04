@@ -3,6 +3,9 @@
 .container
     @include container_padding_smScreen
 
+.full_head
+    box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
+
 .app_header_language_section,
 .app_header_nav_container
     @extend %container_padding
@@ -22,8 +25,8 @@
 .app_header_language_section
     height: 40px
 
-// .language_switch_button
-//     width: 120px
+.language_switch_button
+    box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
 
 .route_switch_button
     width: 10px
@@ -57,12 +60,13 @@
 
 .dd_list
     font-family: roboto
-
+    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)
     li
         color: $grey_color
         &:hover
             background-color: $primary_color $important
             color: $white_color $important
+            box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
 
 .app_nav_list_hr
     visibility: hidden

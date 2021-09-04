@@ -84,7 +84,7 @@ export default function ResponsiveView({ view, logo }) {
               >
                 {/* <Image src={logo} alt="logo" width="200" height="116" /> */}
                 <Image
-                  src={"/images/projects/logo8.webp"}
+                  src={"/images/common/alAqsaHead.png"}
                   alt={`Organization Logo`}
                   height="100px"
                   width="100px"
@@ -304,7 +304,7 @@ export default function ResponsiveView({ view, logo }) {
                 }}
               >
                 <Image
-                  src={"/images/projects/logo8.webp"}
+                  src={"/images/common/alAqsaHead.png"}
                   alt={`Organization Logo`}
                   height="100px"
                   width="100px"

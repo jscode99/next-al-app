@@ -5,11 +5,16 @@ export default function HeroImage({ image, pageName }) {
   const [imageData, setImageData] = useState(null);
 
   useEffect(() => {
-    // let bannerImage = image.find(
-    //   (imageDate) => imageDate.PageName.toLowerCase() === pageName.toLowerCase()
-    // );
-    setImageData(/* bannerImage */ image[0]);
-  }, [image]);
+    console.log(image, pageName);
+    if (image && image.length > 0 && pageName) {
+      
+      let bannerImage = image.find(
+        (imageDate) =>
+          imageDate.Page.toLowerCase() === pageName.toLowerCase()
+      );
+      setImageData(bannerImage);
+    }
+  }, [image, pageName]);
 
   return (
     <>

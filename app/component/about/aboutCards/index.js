@@ -37,7 +37,7 @@ export default function AboutUsCard({ cardData }) {
                   <>
                     <Col xs={0} sm={0} md={0} lg={8} xl={8}>
                       <div
-                        className={`${style.aboutUsCard_container} shadow overflow-hidden`}
+                        className={`${style.aboutUsCard_container} overflow-hidden`}
                       >
                         {router.locale === "en" ? (
                           <div
@@ -100,7 +100,7 @@ export default function AboutUsCard({ cardData }) {
                   <>
                     <Col xs={24} sm={24} md={8} lg={0} xl={0}>
                       <div
-                        className={`${style.aboutUsCard_container} shadow overflow-hidden`}
+                        className={`${style.aboutUsCard_container} overflow-hidden`}
                       >
                         {router.locale === "en" ? (
                           <div

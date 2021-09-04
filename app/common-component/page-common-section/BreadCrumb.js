@@ -8,14 +8,14 @@ export default function BreadCrumb({ breadcrumList }) {
   const { t } = useTranslation("common");
   // console.log("lllll", breadcrumList);
   let router = useRouter();
-  return router.locale === "en" ? (
+  return (
     <Breadcrumb separator="">
       {breadcrumList.map((data, index) => {
         if (!data) {
           return (
             <>
               <Breadcrumb.Item className={`${style.breadcrumb_item}`} href="/">
-                Home
+                {router.locale === "en" ? "Home" : "الرئيسية"}
               </Breadcrumb.Item>
               <Breadcrumb.Separator>
                 <span className={`${style.primary_color} ${style.separator}`}>
@@ -30,76 +30,35 @@ export default function BreadCrumb({ breadcrumList }) {
               <Breadcrumb.Item
                 className={`${style.breadcrumb_item} ${style.primary_color}`}
               >
-                {t(data).length > 30
-                  ? t(data).substring(0, 30).concat("...")
-                  : t(data)}
-              </Breadcrumb.Item>
-            );
-          } else {
-            return (
-              <>
-                <Breadcrumb.Item
-                  className={`${style.breadcrumb_item}`}
-                  href={`/${mapTitleToRoutePath({ Title: data })}`}
-                >
-                  {t(data).length > 30
+                {router.locale === "en"
+                  ? t(data).length > 30
                     ? t(data).substring(0, 30).concat("...")
-                    : t(data)}
-                </Breadcrumb.Item>
-                <Breadcrumb.Separator>
-                  <span className={`${style.primary_color} ${style.separator}`}>
-                    &#8226;
-                  </span>
-                </Breadcrumb.Separator>
-              </>
-            );
-          }
-        }
-      })}
-    </Breadcrumb>
-  ) : (
-    <Breadcrumb separator="">
-      {breadcrumList.map((data, index) => {
-        if (!data) {
-          return (
-            <>
-              <Breadcrumb.Separator>
-                <span className={`${style.primary_color} ${style.separator}`}>
-                  &#8226;
-                </span>
-              </Breadcrumb.Separator>
-              <Breadcrumb.Item className={`${style.breadcrumb_item}`} href="/">
-                الرئيسية
-              </Breadcrumb.Item>
-            </>
-          );
-        } else {
-          if (index === 0) {
-            return (
-              <Breadcrumb.Item
-                className={`${style.breadcrumb_item} ${style.primary_color}`}
-              >
-                {t(data).length > 30
-                  ? "...".concat(t(data).substring(0, 30))
+                    : t(data)
+                  : t(data).length > 30
+                  ? t(data).substring(0, 30)
                   : t(data)}
               </Breadcrumb.Item>
             );
           } else {
             return (
               <>
+                <Breadcrumb.Item
+                  className={`${style.breadcrumb_item}`}
+                  href={`/${mapTitleToRoutePath({ Title: data })}`}
+                >
+                  {router.locale === "en"
+                    ? t(data).length > 30
+                      ? t(data).substring(0, 30).concat("...")
+                      : t(data)
+                    : t(data).length > 30
+                    ? t(data).substring(0, 30)
+                    : t(data)}
+                </Breadcrumb.Item>
                 <Breadcrumb.Separator>
                   <span className={`${style.primary_color} ${style.separator}`}>
                     &#8226;
                   </span>
                 </Breadcrumb.Separator>
-                <Breadcrumb.Item
-                  className={`${style.breadcrumb_item}`}
-                  href={`/${mapTitleToRoutePath({ Title: data })}`}
-                >
-                  {t(data).length > 30
-                    ? "...".concat(t(data).substring(0, 30))
-                    : t(data)}
-                </Breadcrumb.Item>
               </>
             );
           }

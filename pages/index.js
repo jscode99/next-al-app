@@ -10,6 +10,8 @@ import Landing from "../app/container/landing";
 import AppContext from "../app/AppContext";
 
 export default function Home({
+  staticSite,
+  projectData,
   sector,
   projectTitle,
   projectAr,
@@ -22,9 +24,13 @@ export default function Home({
   bannerImage,
   flag,
   flagAr,
+  isdbManage,
+  isdbManageAr,
 }) {
   return (
     <Landing
+      staticSite={staticSite}
+      projectData={projectData}
       sector={sector}
       projectTitle={projectTitle}
       projectAr={projectAr}
@@ -37,11 +43,17 @@ export default function Home({
       bannerImage={bannerImage}
       flag={flag}
       flagAr={flagAr}
+      isdbManage={isdbManage}
+      isdbManageAr={isdbManageAr}
     />
   );
 }
 
 export async function getStaticProps({ locale }) {
+  let staticSiteUrl =
+    process.env.BASE_URL + process.env.PATH.STATIC_SITE + "?_limit=-1";
+  let projectDetailsUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_DATA + "?_limit=-1";
   let sectorUrl =
     process.env.BASE_URL + process.env.PATH.SECTOR_ALLOCATION + `?_limit=-1`;
   let projectTitleUrl =
@@ -64,8 +76,13 @@ export async function getStaticProps({ locale }) {
   let flagUrl = process.env.BASE_URL + process.env.PATH.FLAG;
   let flagArUrl =
     process.env.BASE_URL + process.env.PATH.FLAG + "?_locale=ar-001";
+  let isdbManagesUrl = process.env.BASE_URL + process.env.PATH.ISDB_MANAGES;
+  let isdbManagesArUrl =
+    process.env.BASE_URL + process.env.PATH.ISDB_MANAGES + "?_locale=ar-001";
 
   const [
+    staticSite,
+    projectData,
     sector,
     projectTitle,
     projectAr,
@@ -78,7 +95,11 @@ export async function getStaticProps({ locale }) {
     bannerImage,
     flag,
     flagAr,
+    isdbManage,
+    isdbManageAr,
   ] = await Promise.all([
+    await fetchService(staticSiteUrl, CONST.API_METHOD.GET),
+    await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
     await fetchService(sectorUrl, CONST.API_METHOD.GET),
     await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
     await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
@@ -91,10 +112,14 @@ export async function getStaticProps({ locale }) {
     await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
     await fetchService(flagUrl, CONST.API_METHOD.GET),
     await fetchService(flagArUrl, CONST.API_METHOD.GET),
+    await fetchService(isdbManagesUrl, CONST.API_METHOD.GET),
+    await fetchService(isdbManagesArUrl, CONST.API_METHOD.GET),
   ]);
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),
+      staticSite,
+      projectData,
       sector,
       projectTitle,
       projectAr,
@@ -107,6 +132,8 @@ export async function getStaticProps({ locale }) {
       bannerImage,
       flag,
       flagAr,
+      isdbManage,
+      isdbManageAr,
     },
     revalidate: 10,
   };

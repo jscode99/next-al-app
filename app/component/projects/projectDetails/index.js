@@ -28,7 +28,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
     },
     {
       amount: finalChartData.reduce(function (accumulator, item) {
-        return accumulator + item.totalApprovedAmount;
+        return accumulator + item.totalDisbursementAmount;
       }, 0),
       subTitle: t("total disbursed"),
       bg: style.bg_theme_golden_color,
@@ -53,13 +53,19 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
         totalDisbursementAmount: 0,
         totalProjects: 0,
         totalGaza: 0,
+        totalGazaAmount: 0,
         totalAlQuads: 0,
+        totalAlQuadsAmount: 0,
         totalWestBanks: 0,
+        totalWestBanksAmount: 0,
         logo: projectTitle[index].logo[0].url,
       };
 
       chartData[projectData[0].projectTitle.toLowerCase()][
-        `total${sector[index].title.split(" ")[0]}`
+        `total${sector[index].title.split(" ")[0].split(",")[0]}`
+      ] = 0;
+      chartData[projectData[0].projectTitle.toLowerCase()][
+        `totalAmount${sector[index].title.split(" ")[0].split(",")[0]}`
       ] = 0;
 
       console.log("SectorCheck", chartData);
@@ -84,6 +90,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
             : chartData[projectData[0].projectTitle.toLowerCase()]
                 .totalDisbursementAmount +
               parseFloat(projectData[innerIndex].disbursementAmount),
+
           totalGaza:
             projectData[innerIndex].gazaStrip &&
             parseInt(projectData[innerIndex].gazaStrip)
@@ -94,6 +101,19 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
                     .totalGaza + 1
               : chartData[projectData[0].projectTitle.toLowerCase()].totalGaza +
                 0,
+
+          totalGazaAmount:
+            projectData[innerIndex].gazaStrip &&
+            parseInt(projectData[innerIndex].gazaStrip)
+              ? Number.isNaN(parseFloat(projectData[innerIndex].gazaStrip))
+                ? chartData[projectData[0].projectTitle.toLowerCase()]
+                    .totalGazaAmount + 0
+                : chartData[projectData[0].projectTitle.toLowerCase()]
+                    .totalGazaAmount +
+                  parseFloat(projectData[innerIndex].gazaStrip)
+              : chartData[projectData[0].projectTitle.toLowerCase()]
+                  .totalGazaAmount + 0,
+
           totalAlQuads:
             projectData[innerIndex].Alquds &&
             parseInt(projectData[innerIndex].Alquds)
@@ -104,6 +124,19 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
                     .totalAlQuads + 1
               : chartData[projectData[0].projectTitle.toLowerCase()]
                   .totalAlQuads + 0,
+
+          totalAlQuadsAmount:
+            projectData[innerIndex].Alquds &&
+            parseInt(projectData[innerIndex].Alquds)
+              ? Number.isNaN(parseFloat(projectData[innerIndex].Alquds))
+                ? chartData[projectData[0].projectTitle.toLowerCase()]
+                    .totalAlQuadsAmount + 0
+                : chartData[projectData[0].projectTitle.toLowerCase()]
+                    .totalAlQuadsAmount +
+                  parseFloat(projectData[innerIndex].Alquds)
+              : chartData[projectData[0].projectTitle.toLowerCase()]
+                  .totalAlQuadsAmount + 0,
+
           totalWestBanks:
             projectData[innerIndex].westBank &&
             parseInt(projectData[innerIndex].westBank)
@@ -114,17 +147,42 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
                     .totalWestBanks + 1
               : chartData[projectData[0].projectTitle.toLowerCase()]
                   .totalWestBanks + 0,
+
+          totalWestBanksAmount:
+            projectData[innerIndex].westBank &&
+            parseInt(projectData[innerIndex].westBank)
+              ? Number.isNaN(parseFloat(projectData[innerIndex].westBank))
+                ? chartData[projectData[0].projectTitle.toLowerCase()]
+                    .totalWestBanksAmount + 0
+                : chartData[projectData[0].projectTitle.toLowerCase()]
+                    .totalWestBanksAmount +
+                  parseFloat(projectData[innerIndex].westBank)
+              : chartData[projectData[0].projectTitle.toLowerCase()]
+                  .totalWestBanksAmount + 0,
         };
+        // console.log("calc", chartData);
         if (
           sector[index].title.toLowerCase() ===
           projectData[innerIndex].Sector.toLowerCase()
         ) {
+          //No: of projects
           chartData[projectData[0].projectTitle.toLowerCase()][
-            `total${sector[index].title.split(" ")[0]}`
+            `total${sector[index].title.split(" ")[0].split(",")[0]}`
           ] =
             chartData[projectData[0].projectTitle.toLowerCase()][
-              `total${sector[index].title.split(" ")[0]}`
+              `total${sector[index].title.split(" ")[0].split(",")[0]}`
             ] + 1;
+
+          // Allocation amount
+          chartData[projectData[0].projectTitle.toLowerCase()][
+            `totalAmount${sector[index].title.split(" ")[0].split(",")[0]}`
+          ] = Number.isNaN(parseFloat(projectData[innerIndex].approvedAmount))
+            ? chartData[projectData[0].projectTitle.toLowerCase()][
+                `totalAmount${sector[index].title.split(" ")[0].split(",")[0]}`
+              ] + 0
+            : chartData[projectData[0].projectTitle.toLowerCase()][
+                `totalAmount${sector[index].title.split(" ")[0].split(",")[0]}`
+              ] + parseFloat(projectData[innerIndex].approvedAmount);
         }
       }
 
@@ -164,6 +222,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
     setFinalChartData(chartDataPriority);
     console.log("finalChartData", finalChartData);
   }, [projectData]);
+  console.log("Sector Data", sectorData);
 
   return (
     <>
@@ -173,7 +232,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
         <ProjectDetailsIntroCard cardData={cardData.reverse()} />
       )}
 
-      <ProjectDetailsApproval projectData={sectorData} />
+      <ProjectDetailsApproval projectData={sectorData} sector={sector} />
 
       <ProjectDetailsTable projectData={projectData} />
     </>

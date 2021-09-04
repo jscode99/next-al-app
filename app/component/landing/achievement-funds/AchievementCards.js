@@ -7,7 +7,7 @@ export default function AchievementCards({ data }) {
   const router = useRouter();
   return (
     <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-      <div className={`${style.achievement_card_container} px-4 py-5 shadow`}>
+      <div className={`${style.achievement_card_container} px-4 py-5`}>
         {router.locale === "en" ? (
           <div
             className={`d-flex justify-content-center align-items-center mb-4`}

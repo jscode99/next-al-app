@@ -40,7 +40,7 @@ export default function Contributions({
         bg: style.bg_primary_color,
       },
     ]);
-  }, []);
+  }, [summitAmount]);
   console.log("cardData", cardData);
   return (
     <>

@@ -1,5 +1,18 @@
 @import '../../../../../../styles/variable'
 
+.bg_primary_color
+    background-color: $primary_color $important
+.bg_secondary_color
+    background-color: $secondary_color $important
+.bg_theme_dark_green_color
+    background-color: $theme_dark_green_color $important
+.bg_theme_lite_blue_color
+    background-color: $theme_lite_blue_color $important
+.bg_theme_sky_blue_color
+    background-color: $theme_sky_blue_color $important
+.bg_theme_golden_color
+    background-color: $theme_golden_color $important
+
 .ProposalCard_bg
     background-image: url("/images/about/approval/bg_4.webp")
     background-position: 20% 12%
@@ -18,17 +31,21 @@
 .ProposalCard_card_section
     background-color: $white_color
     border-radius: 15px
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15),6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
 
 .ProposalCard_card_polygon
-    background-color: $primary_color
+    background-color: $grey_color
     width: 70px
     height: 70px
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)
+    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)
 
 .ProposalCard_card_title
     @extend %font_size_18
     font-family: roboto
     letter-spacing: .5px
+    font-weight: $nine_hundred
+    font-size: 17px $important
 
 .ProposalCard_des
     font-family: roboto
@@ -43,10 +60,17 @@
 @media only screen and (max-width: 1024px)
     .ProposalCard_container
         @include container_padding_lapScreen
+    .ProposalCard_card_polygon
+        width: 60px
+        height: 60px
+    .ProposalCard_card_title
+        font-size: 15px $important
 
 @media only screen and (max-width: 768px)
     .ProposalCard_container
         @include container_padding_tabScreen
+    .ProposalCard_card_title
+        @include font_size_18
 
 @media only screen and (max-width: 500px)
     .ProposalCard_container

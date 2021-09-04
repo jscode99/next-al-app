@@ -14,7 +14,7 @@ import style from "./index.module.sass";
 
 export default function ProjectFundChart({ finalChartData }) {
   const base_url = process.env.BASE_URL;
-  console.log("finalChartData", finalChartData);
+  // console.log("finalChartData", finalChartData);
   const [xAxisWidth, setXAxisWidth] = useState(0);
   const [chartSeriesData, setChartSeriesData] = useState([]);
   const [option, setOption] = useState([]);
@@ -79,7 +79,7 @@ export default function ProjectFundChart({ finalChartData }) {
             fontSize: "8px",
             fontWeight: 400,
           },
-          formatter: value => {
+          formatter: (value) => {
             return value / 1000 + "K";
           },
         },
@@ -89,12 +89,12 @@ export default function ProjectFundChart({ finalChartData }) {
         y: {
           formatter: function (
             value,
-            { series, seriesIndex, dataPointIndex, w },
+            { series, seriesIndex, dataPointIndex, w }
           ) {
             return "$" + value;
           },
           title: {
-            formatter: seriesName => seriesName + " :",
+            formatter: (seriesName) => seriesName + " :",
           },
         },
       },
@@ -138,10 +138,10 @@ export default function ProjectFundChart({ finalChartData }) {
     if (finalChartData.length > 0) {
       for (let index = 0; index < Object.keys(finalChartData).length; index++) {
         series[0].data.push(
-          Math.round(parseFloat(finalChartData[index].totalApprovedAmount)),
+          Math.round(parseFloat(finalChartData[index].totalApprovedAmount))
         );
         series[1].data.push(
-          Math.round(parseFloat(finalChartData[index].totalDisbursementAmount)),
+          Math.round(parseFloat(finalChartData[index].totalDisbursementAmount))
         );
         options.xaxis.categories.push(finalChartData[index].title);
         chartData.push({
@@ -171,7 +171,7 @@ export default function ProjectFundChart({ finalChartData }) {
     setTimeout(() => {
       let apexChart =
         document.getElementsByClassName(
-          "apexcharts-xaxis",
+          "apexcharts-xaxis"
         )[0]; /* .getElementsByTagName("line")[0] */
       console.log(
         "chartElement==========>",
@@ -179,10 +179,10 @@ export default function ProjectFundChart({ finalChartData }) {
         // fundChartElement1.width.animVal.value
         apexChart,
         apexChart.getBoundingClientRect().width,
-        apexChart.getBBox().width,
+        apexChart.getBBox().width
       );
       setXAxisWidth(
-        apexChart.getBoundingClientRect().width || apexChart.getBBox().width,
+        apexChart.getBoundingClientRect().width || apexChart.getBBox().width
       );
     }, 5000);
   }, []);

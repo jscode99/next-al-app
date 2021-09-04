@@ -5,6 +5,7 @@
     box-shadow: 1px 1px 18px #0000001F
     border-radius: 10px
     letter-spacing: 0.5px
+    box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
 
 .publication_list_title
     font-size: 20px
@@ -29,10 +30,12 @@
     @extend %font_size_18
     font-weight: $five_hundred
     letter-spacing: 0.5px
+    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)
     &:hover,
     &:focus
         background-color: #12328E4D
         color: $primary_color
+        box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
 
 @media only screen and (max-width: 1024px)
     .publication_list_container

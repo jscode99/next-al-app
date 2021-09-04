@@ -1,7 +1,11 @@
 import Layout from "../layout";
 import Governance from "../../component/about/subPages/governance";
 
-export default function GovernanceContainer({ projectTitle, bannerImage }) {
+export default function GovernanceContainer({
+  staticSite,
+  projectTitle,
+  bannerImage,
+}) {
   return (
     <Layout
       heroImage={bannerImage}
@@ -10,7 +14,7 @@ export default function GovernanceContainer({ projectTitle, bannerImage }) {
       projectTitle={projectTitle}
       title={"governance structure"}
     >
-      <Governance />
+      <Governance staticSite={staticSite} />
     </Layout>
   );
 }

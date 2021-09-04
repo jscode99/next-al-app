@@ -17,7 +17,7 @@ export default function IntroCard({ data }) {
       className={`d-flex justify-content-center`}
     >
       <div
-        className={`${style.contribution_card_container} ${data.bg} shadow overflow-hidden`}
+        className={`${style.contribution_card_container} ${data.bg} overflow-hidden`}
       >
         <div
           className={`${style.contribution_card_amount} d-flex justify-content-end h-100 flex-column position-relative px-4`}

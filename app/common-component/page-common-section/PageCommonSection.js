@@ -11,9 +11,8 @@ export default function PageCommonSection({ title }) {
   const [breadcrumList, setBreadcrumList] = useState([]);
   const [socialMediaList, setSocialMediaList] = useState([]);
   useEffect(() => {
-    console.log("path", router);
-    if (router.locale === "en") setBreadcrumList(getBreadcrumData(router));
-    else setBreadcrumList(getBreadcrumData(router).reverse());
+    // console.log("path", router);
+    setBreadcrumList(getBreadcrumData(router));
     let socialMediaList = [
       { className: "fas fa-print", link: "https://www.google.co.in/" },
       { className: "fas fa-envelope", link: "mailto:" },
@@ -70,7 +69,7 @@ export default function PageCommonSection({ title }) {
                           </Button> */}
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map(data => (
+                            socialMediaList.map((data) => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
@@ -93,7 +92,7 @@ export default function PageCommonSection({ title }) {
                           </Button> */}
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map(data => (
+                            socialMediaList.map((data) => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
@@ -117,7 +116,17 @@ export default function PageCommonSection({ title }) {
                           } align-items-center mb-2`}
                         >
                           {breadcrumList && breadcrumList.length > 0 && (
-                            <BreadCrumb breadcrumList={breadcrumList} />
+                            <>
+                              {breadcrumList[breadcrumList.length - 1].length >
+                                30 && (
+                                <span
+                                  className={`${style.breadcrumb_item} ${style.primary_color}`}
+                                >
+                                  {"..."}
+                                </span>
+                              )}
+                              <BreadCrumb breadcrumList={breadcrumList} />
+                            </>
                           )}
                         </div>
                       </Col>
@@ -163,7 +172,7 @@ export default function PageCommonSection({ title }) {
                         >
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map(data => (
+                            socialMediaList.map((data) => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
@@ -180,7 +189,7 @@ export default function PageCommonSection({ title }) {
                         >
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map(data => (
+                            socialMediaList.map((data) => (
                               <SocialMedia
                                 className={data.className}
                                 link={data.link}
@@ -218,7 +227,17 @@ export default function PageCommonSection({ title }) {
                           } align-items-center mb-2`}
                         >
                           {breadcrumList && breadcrumList.length > 0 && (
-                            <BreadCrumb breadcrumList={breadcrumList} />
+                            <>
+                              {breadcrumList[breadcrumList.length - 1].length >
+                                30 && (
+                                <span
+                                  className={`${style.breadcrumb_item} ${style.primary_color}`}
+                                >
+                                  {"..."}
+                                </span>
+                              )}
+                              <BreadCrumb breadcrumList={breadcrumList} />
+                            </>
                           )}
                         </div>
                       </Col>

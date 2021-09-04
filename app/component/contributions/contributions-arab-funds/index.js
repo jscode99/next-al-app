@@ -17,14 +17,16 @@ export default function ContributionsArabFunds({ arabContributions }) {
     {
       title: (
         <p
-          className={`${style.table_name} fw-bold d-flex justify-content-start m-0 text-capitalize`}
+          className={`${style.table_title} fw-bold d-flex justify-content-start m-0 text-capitalize`}
         >
           {t("name Of funds")}
         </p>
       ),
       dataIndex: "Name",
       render: name => (
-        <p className={`${style.table_name} text-capitalize text-start m-1`}>
+        <p
+          className={`${style.table_name} text-capitalize fw-bold text-start m-1`}
+        >
           {name}
         </p>
       ),
@@ -32,7 +34,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
     {
       title: (
         <p
-          className={`${style.table_name} fw-bold d-flex justify-content-center m-0 text-capitalize`}
+          className={`${style.table_title} fw-bold d-flex justify-content-center m-0 text-capitalize`}
         >
           {t("allocation (in 000)")}
         </p>
@@ -49,7 +51,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
     {
       title: (
         <p
-          className={`${style.table_name} fw-bold d-flex justify-content-center m-1 pe-3`}
+          className={`${style.table_title} fw-bold d-flex justify-content-center m-1 pe-3`}
         >
           {t("allocation (in 000)")}
         </p>
@@ -62,7 +64,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
     {
       title: (
         <p
-          className={`${style.table_name} fw-bold d-flex justify-content-end m-1 pe-3`}
+          className={`${style.table_title} fw-bold d-flex justify-content-end m-1 pe-3`}
         >
           {t("name Of funds")}
         </p>

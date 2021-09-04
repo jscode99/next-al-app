@@ -81,10 +81,12 @@ export default function MapSvg() {
               placement="top"
               color="white"
               title={
-                <div className={`${style.tooltip} py-1 px-3 `}>
-                  <p className={`text-dark m-0`}>Total Approval - 120 bn</p>
-                  <p className={`text-dark m-0`}>15% of Portfolio</p>
-                  <p className={`text-dark m-0`}>Total Projects - 78</p>
+                <div className={`${style.tooltip} py-1 px-3 text-capitalize`}>
+                  <p className={`text-dark m-0`}>
+                    {t("total approvals")} - 120 bn
+                  </p>
+                  <p className={`text-dark m-0`}>15{t("% total Portfolio")}</p>
+                  <p className={`text-dark m-0`}>{t("total projects")} - 78</p>
                 </div>
               }
             >
@@ -114,10 +116,12 @@ export default function MapSvg() {
               placement="top"
               color="white"
               title={
-                <div className={`${style.tooltip} py-1 px-3 `}>
-                  <p className={`text-dark m-0`}>Total Approval - 120 bn</p>
-                  <p className={`text-dark m-0`}>15% of Portfolio</p>
-                  <p className={`text-dark m-0`}>Total Projects - 78</p>
+                <div className={`${style.tooltip} py-1 px-3 text-capitalize`}>
+                  <p className={`text-dark m-0`}>
+                    {t("total approvals")} - 120 bn
+                  </p>
+                  <p className={`text-dark m-0`}>15{t("% total Portfolio")}</p>
+                  <p className={`text-dark m-0`}>{t("total projects")} - 78</p>
                 </div>
               }
             >
@@ -147,10 +151,12 @@ export default function MapSvg() {
               placement="top"
               color="white"
               title={
-                <div className={`${style.tooltip} py-1 px-3 `}>
-                  <p className={`text-dark m-0`}>Total Approval - 120 bn</p>
-                  <p className={`text-dark m-0`}>15% of Portfolio</p>
-                  <p className={`text-dark m-0`}>Total Projects - 78</p>
+                <div className={`${style.tooltip} py-1 px-3 text-capitalize`}>
+                  <p className={`text-dark m-0`}>
+                    {t("total approvals")} - 120 bn
+                  </p>
+                  <p className={`text-dark m-0`}>15{t("% total Portfolio")}</p>
+                  <p className={`text-dark m-0`}>{t("total projects")} - 78</p>
                 </div>
               }
             >

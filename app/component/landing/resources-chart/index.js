@@ -27,7 +27,7 @@ export default function ResourceChart({
   // console.log("projectAr", projectAr);
   // console.log("alAqsa", alAqsa);
   // console.log("alAqsaAr", alAqsaAr);
-  // console.log("arab", arab);
+  console.log("arab", arab);
   // console.log("arabAr", arabAr);
   // console.log("yearly direct", yearly);
   // console.log("yearlyAr", yearlyAr);

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { Row, Table } from "antd";
 import { stringToNumberConverter } from "../../../services/commonService";
+
 //Common Component
 import CommonTable from "../../../common-component/common-table/CommonTable";
 //Style
@@ -16,7 +17,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_name} fw-bold d-flex justify-content-start m-0 text-capitalize`}
+          className={`${style.table_title} fw-bold d-flex justify-content-start m-0 text-capitalize`}
         >
           {t("country")}
         </p>
@@ -31,7 +32,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_name} fw-bold d-flex justify-content-start m-0 text-capitalize`}
+          className={`${style.table_title} fw-bold d-flex justify-content-center m-0 text-capitalize`}
         >
           {t("cairo summit")}
         </p>
@@ -46,7 +47,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_name} text-capitalize fw-bold d-flex justify-content-start m-0`}
+          className={`${style.table_title} text-capitalize fw-bold d-flex justify-content-center m-0`}
         >
           {t("beirut & sirte summit")}
         </p>
@@ -61,7 +62,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_name} text-capitalize fw-bold d-flex justify-content-start m-0`}
+          className={`${style.table_title} text-capitalize fw-bold d-flex justify-content-center m-0`}
         >
           {t("dead sea summit")}
         </p>
@@ -76,7 +77,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_name} fw-bold d-flex justify-content-start m-0 text-capitalize`}
+          className={`${style.table_title} fw-bold d-flex justify-content-center m-0 text-capitalize`}
         >
           {t("total payed")}
         </p>

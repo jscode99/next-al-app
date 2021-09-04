@@ -21,6 +21,7 @@ export function paginationService(listData, listSize, pageNumber) {
 }
 
 export function splitLetterNumberService(data) {
+  console.log("data", data);
   return data.match(/[a-zA-Z$]+|[0-9]+(?:\.[0-9]+|)/g);
 }
 

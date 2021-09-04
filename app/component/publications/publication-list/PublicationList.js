@@ -26,7 +26,7 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
       {paginatedListData && paginatedListData.length > 0 ? (
         paginatedListData.map((listData, i) => (
           <>
-            <Col span={24} className={`my-2`}>
+            <Col span={24} className={`my-1`}>
               <div className={`${style.publication_list_card} bg-white`}>
                 <Row className={`h-100`}>
                   <Col xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -134,7 +134,7 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
       {paginatedListData && paginatedListData.length > 0 ? (
         paginatedListData.map((listData, i) => (
           <>
-            <Col span={24} className={`my-2`}>
+            <Col span={24} className={`my-1`}>
               <div className={`${style.publication_list_card} bg-white`}>
                 <Row className={`h-100`}>
                   <Col xs={0} sm={0} md={6} lg={6} xl={6}>

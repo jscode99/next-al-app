@@ -18,7 +18,7 @@ export default function AppTextArea({
     <div
       className={`${
         sm ? style.app_input_group_sm : "w-100"
-      } d-flex justify-content-center align-items-center flex-column mb-4`}
+      } d-flex justify-content-center align-items-center flex-column mb-2`}
     >
       <div
         className={`d-flex ${

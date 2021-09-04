@@ -9,6 +9,8 @@ import FundResource from "../../component/landing/fund-resource/FundResource";
 import IsdbManage from "../../component/landing/isdb-manage/IsdbManage";
 
 export default function Landing({
+  staticSite,
+  projectData,
   sector,
   projectTitle,
   projectAr,
@@ -21,16 +23,23 @@ export default function Landing({
   bannerImage,
   flag,
   flagAr,
+  isdbManage,
+  isdbManageAr,
 }) {
   const router = useRouter();
+  console.log("staticSite", staticSite);
   return (
     <Layout
+      staticSite={staticSite}
       heroImage={bannerImage}
       page={"landing"}
       pageName={"home"}
       projectTitle={projectTitle}
+      projectData={projectData}
     >
-      <FundResource />
+      {staticSite[0].static.home_fundResources.length > 0 && (
+        <FundResource data={staticSite[0].static.home_fundResources} />
+      )}
       {router.locale === "en" ? (
         <ResourceChart
           projectTitle={projectTitle}
@@ -49,8 +58,10 @@ export default function Landing({
         />
       )}
       <SectorAllocations sectorData={sector} />
-      <AchievementFunds />
-      <IsdbManage />
+      {staticSite[0].static.home_achievements.length > 0 && (
+        <AchievementFunds data={staticSite[0].static.home_achievements} />
+      )}
+      <IsdbManage isdbManage={isdbManage} isdbManageAr={isdbManageAr} />
     </Layout>
   );
 }

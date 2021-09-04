@@ -8,26 +8,9 @@ import AppStep from "../../../../../common-component/app-step";
 //Styles
 import style from "./index.module.sass";
 
-export default function Selection() {
+export default function Selection({ data }) {
   const router = useRouter();
   const { t } = useTranslation("common");
-  let stepperData = [
-    {
-      title: "Signing of Financing Agreements",
-      description:
-        "Agreement of financing is signed with the Implementing Agencies detailing the items financed as well as disbursement and procurements procedures.",
-    },
-    {
-      title: "Project Disbursements",
-      description:
-        "Disbursements are made based on the progress of implementation, invoices, receiving vouchers…etc, approved by project consultant and the beneficiary.",
-    },
-    {
-      title: "Implementation Follow Up",
-      description:
-        "Follow up on the implementation of projects and its  conformity with the approved procurement and disbursement procedures is conducted on a constant basis by IDB consultants in Palestine.",
-    },
-  ];
   return (
     <div className={`${style.selection_bg}`}>
       <div className={`${style.selection_container} px-5`}>
@@ -43,7 +26,7 @@ export default function Selection() {
                 <div className={`d-flex h-100`}>
                   <AppStep
                     textAlign={"left"}
-                    step={stepperData}
+                    step={data}
                     defaultActiveStep={3}
                   />
                 </div>
@@ -80,7 +63,7 @@ export default function Selection() {
                 <div className={`d-flex h-100`}>
                   <AppStep
                     textAlign={"right"}
-                    step={stepperData}
+                    step={data}
                     defaultActiveStep={3}
                   />
                 </div>

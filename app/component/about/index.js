@@ -9,81 +9,10 @@ import ProcedureSection from "./procedureSection";
 import IntroSection from "./introSection";
 import MissionSection from "./missionSection";
 
-export default function About({}) {
+export default function About({ staticSite, flag, flagAr }) {
   const { t } = useTranslation("common");
   const router = useRouter();
-
-  const flagData = [
-    {
-      title: "Jordan",
-      url: "/images/about/flags/Jordan.webp",
-    },
-    {
-      title: "UAE",
-      url: "/images/about/flags/Uae.webp",
-    },
-    {
-      title: "Bahrain",
-      url: "/images/about/flags/Baharain.webp",
-    },
-    {
-      title: "Algeria",
-      url: "/images/about/flags/Algeria.webp",
-    },
-    {
-      title: "Saudi Arabia",
-      url: "/images/about/flags/Saudi.webp",
-    },
-    {
-      title: "Sudan",
-      url: "/images/about/flags/Sudan.webp",
-    },
-    {
-      title: "Syria",
-      url: "/images/about/flags/Syria.webp",
-    },
-    {
-      title: "Oman",
-      url: "/images/about/flags/Oman.webp",
-    },
-    {
-      title: "Qatar",
-      url: "/images/about/flags/Qatar.webp",
-    },
-    {
-      title: "Kuwait",
-      url: "/images/about/flags/Kuwait.webp",
-    },
-    {
-      title: "Egypt",
-      url: "/images/about/flags/Egypt.webp",
-    },
-    {
-      title: "Morocco",
-      url: "/images/about/flags/Morocco.webp",
-    },
-    {
-      title: "Yemen",
-      url: "/images/about/flags/Yemen.webp",
-    },
-    {
-      title: "Iraq",
-      url: "/images/about/flags/Iraq.webp",
-    },
-    {
-      title: "Lebanon",
-      url: "/images/about/flags/Lebanon.webp",
-    },
-    {
-      title: "Mali",
-      url: "/images/about/flags/Mali.webp",
-    },
-    {
-      title: "Pakistan",
-      url: "/images/about/flags/Pak.webp",
-    },
-  ];
-
+  console.log("staticSite", staticSite);
   const cardData = [
     {
       title: t("governance structure"),
@@ -101,16 +30,28 @@ export default function About({}) {
 
   return (
     <>
-      <IntroSection />
-      <MissionSection />
-      <ShareHolder flagData={flagData} />
+      {Object.keys(staticSite[0].static.about_introduction).length > 0 && (
+        <IntroSection data={staticSite[0].static.about_introduction} />
+      )}
+      {Object.keys(staticSite[0].static.about_missions).length > 0 && (
+        <MissionSection data={staticSite[0].static.about_missions} />
+      )}
+      {router.locale === "en" ? (
+        <ShareHolder flagData={flag} />
+      ) : (
+        <ShareHolder flagData={flagAr} />
+      )}
       {router.locale === "en" ? (
         <AboutUsCard cardData={cardData} />
       ) : (
         <AboutUsCard cardData={cardData.reverse()} />
       )}
-      <IsdbRoleSection />
-      <ProcedureSection />
+      {Object.keys(staticSite[0].static.about_roles).length > 0 && (
+        <IsdbRoleSection data={staticSite[0].static.about_roles} />
+      )}
+      {Object.keys(staticSite[0].static.about_procedures).length > 0 && (
+        <ProcedureSection data={staticSite[0].static.about_procedures} />
+      )}
     </>
   );
 }

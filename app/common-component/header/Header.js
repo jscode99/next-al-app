@@ -173,7 +173,7 @@ export default function AppHeader({ pageName, projectTitle }) {
             </div>
           </Col>
           <Col xs={0} sm={0} md={0} lg={24} xl={24}>
-            <div className="bg-white">
+            <div className={`bg-white ${style.full_head}`}>
               <div className={`${style.app_header_nav_container} px-2`}>
                 {router.locale === "en" ? (
                   <Row>
@@ -186,7 +186,7 @@ export default function AppHeader({ pageName, projectTitle }) {
                         }}
                       >
                         <Image
-                          src={"/images/common/head.webp"}
+                          src={"/images/common/alAqsaHead.png"}
                           alt={`Organization Logo`}
                           height="80px"
                           width="80px"
@@ -318,7 +318,7 @@ export default function AppHeader({ pageName, projectTitle }) {
                           </p>
                         </div>
                         <Image
-                          src={"/images/common/head.webp"}
+                          src={"/images/common/alAqsaHead.png"}
                           alt={`Organization Logo`}
                           height="80px"
                           width="80px"
@@ -343,7 +343,7 @@ export default function AppHeader({ pageName, projectTitle }) {
                       }}
                     >
                       <Image
-                        src={"/images/projects/logo8.webp"}
+                        src={"/images/common/alAqsaHead.png"}
                         alt={`Organization Logo`}
                         height="80px"
                         width="80px"
@@ -487,7 +487,7 @@ export default function AppHeader({ pageName, projectTitle }) {
                         </p>
                       </div>
                       <Image
-                        src={"/images/projects/logo8.webp"}
+                        src={"/images/common/alAqsaHead.png"}
                         alt={`Organization Logo`}
                         height="80px"
                         width="80px"

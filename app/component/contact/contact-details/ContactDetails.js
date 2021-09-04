@@ -4,17 +4,10 @@ import { Row, Col } from "antd";
 // Style
 import style from "./index.module.sass";
 
-export default function ContactDetails({}) {
+export default function ContactDetails({ data }) {
   let router = useRouter();
   const { t } = useTranslation("common");
-  let data = [
-    {
-      email: "tfd@isdb.org",
-      fax: "+ 966-12-6366871",
-      phone: "+ 966-12-6361400",
-      website: "www.al-aqsa.com",
-    },
-  ];
+
   return (
     <div className={`${style.details_bg}`}>
       <div className={`${style.container} px-5`}>

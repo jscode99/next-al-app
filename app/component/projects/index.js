@@ -9,7 +9,13 @@ import ProjectFundChart from "./projectFundChart";
 //styles
 import style from "./index.module.sass";
 
-export default function Projects({ projectTitle, projectData }) {
+export default function Projects({
+  projectTitle,
+  projectAr,
+  projectData,
+  arab,
+  arabAr,
+}) {
   const router = useRouter();
 
   console.log("projectTitle", projectTitle);
@@ -147,7 +153,7 @@ export default function Projects({ projectTitle, projectData }) {
       {router.locale === "en" ? (
         <ProjectIntroCard cardData={cardData} />
       ) : (
-        <ProjectIntroCard cardData={new Array(...cardData).reverse()} />
+        <ProjectIntroCard cardData={cardData.reverse()} />
       )}
 
       {router.locale === "en" ? (
@@ -157,13 +163,8 @@ export default function Projects({ projectTitle, projectData }) {
           finalChartData={new Array(...finalChartData).reverse()}
         />
       )}
-      {router.locale === "en" ? (
-        <ProjectFundChart finalChartData={finalChartData} />
-      ) : (
-        <ProjectFundChart
-          finalChartData={new Array(...finalChartData).reverse()}
-        />
-      )}
+
+      <ProjectFundChart finalChartData={finalChartData} />
     </>
   );
 }

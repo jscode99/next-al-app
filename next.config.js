@@ -8,8 +8,11 @@ const { i18n } = require("./i18n");
 module.exports = {
   i18n,
   env: {
-    BASE_URL: "https://z966c6ddc-z1680a652-gtw.qovery.io",
+    BASE_URL:
+      "https://z24eee497-ze87c794b-gtw.qovery.io" /* "https://z966c6ddc-z1680a652-gtw.qovery.io" */,
     PATH: {
+      STATIC_SITE: "/static-stites",
+      ISDB_MANAGES: "/isdb-manages",
       BANNER_IMAGE: "/banner-images",
       ARAB_CONTRIBUTIONS: "/arab-contributions",
       OVERALL_CONTRIBUTIONS: "/overall-contributions",
@@ -28,7 +31,7 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["z966c6ddc-z1680a652-gtw.qovery.io"],
+    domains: ["z24eee497-ze87c794b-gtw.qovery.io"],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],

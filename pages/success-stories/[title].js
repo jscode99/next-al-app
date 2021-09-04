@@ -1,5 +1,6 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../../i18n";
+import { useRouter } from "next/router";
 //Constant
 import { CONST } from "../../app/services/constants";
 //Services
@@ -20,6 +21,7 @@ export default function storiesDetails({
   bannerImage,
 }) {
   console.log("storiesArDetailsProp", storiesProps);
+
   return (
     <>
       <StoriesDetailsContainer
@@ -97,14 +99,16 @@ export async function getStaticProps(context) {
   const storiesProps = storiesDetailsProp || storiesArDetailsProp;
 
   // Not path
-  if (!storiesProps) {
-    return {
-      redirect: {
-        destination: "/success-stories",
-        permanent: false,
-      },
-    };
-  }
+  // if (!storiesProps) {
+  // debugger;
+  // return {
+  //   redirect: {
+  //     destination: "/success-stories",
+  //     permanent: false,
+  //   },
+  // };
+  // }
+
   return {
     props: {
       ...(await serverSideTranslations(

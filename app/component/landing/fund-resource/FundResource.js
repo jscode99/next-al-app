@@ -1,27 +1,41 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import { Row } from "antd";
 import FundIndicator from "./FundIndicator";
 import style from "./index.module.sass";
 
-export default function FundResource({}) {
+export default function FundResource({ data }) {
+  const [fundData, setFundData] = useState([]);
   const router = useRouter();
   //Translation lib
   const { t } = useTranslation("common");
-  let fundData = [
-    {
-      count: "$1.028B",
-      text: t("aqsa fund"),
-      bg: style.primary_bg,
-      font: style.primary_font,
-    },
-    {
-      count: "$705M",
-      text: t("arab funds"),
-      bg: style.secondary_bg,
-      font: style.secondary_font,
-    },
-  ];
+
+  const getProperty = priority => {
+    switch (priority) {
+      case "1":
+        return [style.primary_bg, style.primary_font];
+        break;
+      case "2":
+        return [style.secondary_bg, style.secondary_font];
+        break;
+    }
+  };
+
+  useEffect(() => {
+    let fund = data.sort((x, y) => x.priority - y.priority);
+    let fundData = fund.map(data => {
+      return {
+        text: t(data.title.toLowerCase()),
+        count: data.amount,
+        bg: getProperty(data.priority)[0],
+        font: getProperty(data.priority)[1],
+      };
+    });
+
+    setFundData(fundData);
+  }, [data]);
+
   return (
     <div className={`${style.fund_resource_bg}`}>
       <div className={`${style.fund_resource_container}`}>
@@ -34,8 +48,14 @@ export default function FundResource({}) {
           <div className="w-100 d-flex justify-content-center align-items-center">
             <Row>
               {router.locale === "en"
-                ? fundData.map(data => <FundIndicator data={data} />)
-                : fundData.reverse().map(data => <FundIndicator data={data} />)}
+                ? fundData &&
+                  fundData.length > 0 &&
+                  fundData.map(data => <FundIndicator data={data} />)
+                : fundData &&
+                  fundData.length > 0 &&
+                  new Array(...fundData)
+                    .reverse()
+                    .map(data => <FundIndicator data={data} />)}
             </Row>
           </div>
         </div>

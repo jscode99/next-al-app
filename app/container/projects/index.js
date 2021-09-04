@@ -3,8 +3,11 @@ import Projects from "../../component/projects";
 
 export default function ProjectsContainer({
   projectTitle,
+  projectAr,
   projectData,
   bannerImage,
+  arab,
+  arabAr,
 }) {
   return (
     <Layout
@@ -14,7 +17,13 @@ export default function ProjectsContainer({
       projectTitle={projectTitle}
       title={"projects"}
     >
-      <Projects projectTitle={projectTitle} projectData={projectData} />
+      <Projects
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        projectData={projectData}
+        arab={arab}
+        arabAr={arabAr}
+      />
     </Layout>
   );
 }

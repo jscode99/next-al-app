@@ -1,7 +1,11 @@
 import Layout from "../layout";
 import Contact from "../../component/contact";
 
-export default function ContactContainer({ projectTitle, bannerImage }) {
+export default function ContactContainer({
+  staticSite,
+  projectTitle,
+  bannerImage,
+}) {
   return (
     <Layout
       heroImage={bannerImage}
@@ -10,7 +14,7 @@ export default function ContactContainer({ projectTitle, bannerImage }) {
       projectTitle={projectTitle}
       title={"get in touch"}
     >
-      <Contact />
+      <Contact staticSite={staticSite} />
     </Layout>
   );
 }

@@ -7,26 +7,9 @@ import AppStep from "../../../../../common-component/app-step";
 //Styles
 import style from "./index.module.sass";
 
-export default function Approval() {
+export default function Approval({ data }) {
   const router = useRouter();
   const { t } = useTranslation("common");
-  let stepperData = [
-    {
-      title: "Project Identification",
-      description:
-        "The project for funding is identified by the PNA or parties cleared by the PNA.",
-    },
-    {
-      title: "Proposals Evaluation",
-      description:
-        "An evaluation and rationale for the project is conducted by IDB consultants and staff in coordination with the PNA",
-    },
-    {
-      title: "Submittal to Management Committee for Approval",
-      description:
-        "A project report is submitted to the Management Committee for review and approval of the funding proposal ",
-    },
-  ];
   return (
     <div className={`${style.approval_bg}`}>
       <div className={`${style.container} px-5`}>
@@ -57,7 +40,7 @@ export default function Approval() {
                 <div className={`d-flex h-100`}>
                   <AppStep
                     textAlign={"right"}
-                    step={stepperData}
+                    step={data}
                     defaultActiveStep={3}
                   />
                 </div>
@@ -74,7 +57,7 @@ export default function Approval() {
                 <div className={`d-flex h-100`}>
                   <AppStep
                     textAlign={"left"}
-                    step={stepperData}
+                    step={data}
                     defaultActiveStep={3}
                   />
                 </div>

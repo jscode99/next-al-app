@@ -12,18 +12,21 @@ export default function ProjectDetailsContainer({
 }) {
   console.log("projectPageTitle", projectPageTitle);
   return (
-    <Layout
-      heroImage={bannerImage}
-      page={"projects"}
-      pageName={"projects"}
-      projectTitle={projectTitle}
-      title={projectPageTitle[0].title}
-    >
-      <ProjectDetails
+    projectPageTitle &&
+    projectPageTitle.length > 0 && (
+      <Layout
+        heroImage={bannerImage}
+        page={"projects"}
+        pageName={"projects"}
         projectTitle={projectTitle}
-        projectData={projectDetailsProp}
-        sector={sector}
-      />
-    </Layout>
+        title={projectPageTitle[0].title}
+      >
+        <ProjectDetails
+          projectTitle={projectTitle}
+          projectData={projectDetailsProp}
+          sector={sector}
+        />
+      </Layout>
+    )
   );
 }

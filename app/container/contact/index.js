@@ -3,6 +3,7 @@ import Contact from "../../component/contact";
 
 export default function ContactContainer({
   staticSite,
+  staticSiteAr,
   projectTitle,
   bannerImage,
 }) {
@@ -14,7 +15,7 @@ export default function ContactContainer({
       projectTitle={projectTitle}
       title={"get in touch"}
     >
-      <Contact staticSite={staticSite} />
+      <Contact staticSite={staticSite} staticSiteAr={staticSiteAr} />
     </Layout>
   );
 }

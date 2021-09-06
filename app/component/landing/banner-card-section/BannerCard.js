@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useInView } from "react-hook-inview";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import CountUp from "../../../common-component/app-animation/count-up";
 import { splitLetterNumberService } from "../../../services/commonService";
@@ -8,6 +9,9 @@ import style from "./index.module.sass";
 
 export default function BannerCard({ data }) {
   const [countUpArray, setcountUpArray] = useState("");
+  const [ref, isVisible] = useInView({
+    threshold: 1,
+  });
   const router = useRouter();
   const subtitleFunc = () => {
     if (data.navigation) {
@@ -60,21 +64,24 @@ export default function BannerCard({ data }) {
         </div>
       </div>
       <h3
+        ref={ref}
         className={`${style.banner_card_title} text-center d-flex justify-content-center m-1`}
       >
         {countUpArray &&
           countUpArray.length > 0 &&
-          countUpArray.map(value => {
+          countUpArray.map((value) => {
             if (Number.isNaN(parseFloat(value))) {
               return value;
             } else {
-              return (
-                <CountUp
-                  value={parseFloat(value)}
-                  floatLength={data.floatLength}
-                  scroll={false}
-                />
-              );
+              if (isVisible)
+                return (
+                  <CountUp
+                    value={parseFloat(value)}
+                    floatLength={data.floatLength}
+                    scroll={false}
+                  />
+                );
+              else return parseFloat(value);
             }
           })}
       </h3>

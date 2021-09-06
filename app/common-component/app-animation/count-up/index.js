@@ -4,29 +4,14 @@ import Children from "rc-tween-one/lib/plugin/ChildrenPlugin";
 
 TweenOne.plugins.push(Children);
 
-export default function CountUp({ value, floatLength, scroll }) {
-  return scroll ? (
-    <OverPack>
-      <TweenOne
-        animation={{
-          Children: {
-            value: value,
-            floatLength: floatLength,
-            formatMoney: 1000,
-          },
-          duration: 1500,
-        }}
-      >
-        0
-      </TweenOne>
-    </OverPack>
-  ) : (
+export default function CountUp({ value, floatLength, formatMoney }) {
+  return (
     <TweenOne
       animation={{
         Children: {
           value: value,
           floatLength: floatLength,
-          formatMoney: 1000,
+          formatMoney: formatMoney,
         },
         duration: 1500,
       }}

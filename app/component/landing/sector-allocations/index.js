@@ -3,6 +3,8 @@ import { Row, Col } from "antd";
 import { useRouter } from "next/router";
 import Chart from "react-google-charts";
 import { useTranslation } from "next-i18next";
+import { useInView } from "react-hook-inview";
+import CountUp from "../../../common-component/app-animation/count-up";
 
 //styles
 import style from "./index.module.sass";
@@ -11,8 +13,12 @@ import Map from "./Map";
 export default function SectorAllocations({ sectorData }) {
   const { t } = useTranslation("common");
   const router = useRouter();
+  const [ref, isVisible] = useInView({
+    threshold: 1,
+  });
+
   return (
-    <div className={`${style.sector_container}`}>
+    <div ref={ref} className={`${style.sector_container}`}>
       <Row>
         <Col xs={0} sm={0} md={0} lg={20} xl={16}>
           <div className="d-flex justify-content-end">
@@ -32,7 +38,7 @@ export default function SectorAllocations({ sectorData }) {
                 {t("al-aqsa approval distribution")}
               </p>
               <Row gutter={[4, 4]}>
-                {sectorData.map(data => (
+                {sectorData.map((data) => (
                   <Col xs={24} sm={24} md={24} lg={8} xl={8} key={data.id}>
                     <div
                       className={`position-relative d-flex justify-content-center align-items-center`}
@@ -42,7 +48,18 @@ export default function SectorAllocations({ sectorData }) {
                         className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
                         style={{ color: data.color }}
                       >
-                        {Math.round(parseInt(data.percentage))}%
+                        {isVisible ? (
+                          <CountUp
+                            value={Math.round(
+                              parseFloat(data.percentage)
+                            ).toString()}
+                            floatLength={0}
+                            formatMoney={false}
+                          />
+                        ) : (
+                          Math.round(parseFloat(data.percentage))
+                        )}
+                        %
                       </div>
                       <Chart
                         width={"180px"}
@@ -100,7 +117,7 @@ export default function SectorAllocations({ sectorData }) {
                 {t("Al-Aqsa Approval Distribution")}
               </p>
               <Row gutter={[4, 4]}>
-                {sectorData.map(data => (
+                {sectorData.map((data) => (
                   <Col xs={12} sm={12} md={8} lg={8} xl={8} key={data.id}>
                     <div
                       className={`position-relative d-flex justify-content-center align-items-center`}
@@ -110,7 +127,18 @@ export default function SectorAllocations({ sectorData }) {
                         className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
                         style={{ color: data.color }}
                       >
-                        {Math.round(parseInt(data.percentage))}%
+                        {isVisible ? (
+                          <CountUp
+                            value={Math.round(
+                              parseFloat(data.percentage)
+                            ).toString()}
+                            floatLength={0}
+                            formatMoney={false}
+                          />
+                        ) : (
+                          Math.round(parseFloat(data.percentage))
+                        )}
+                        %
                       </div>
                       <Chart
                         width={"180px"}

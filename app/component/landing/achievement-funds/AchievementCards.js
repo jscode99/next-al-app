@@ -1,13 +1,22 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Row, Col } from "antd";
+import { useInView } from "react-hook-inview";
+import CountUp from "../../../common-component/app-animation/count-up";
 import style from "./index.module.sass";
 
 export default function AchievementCards({ data }) {
   const router = useRouter();
+  const [ref, isVisible] = useInView({
+    threshold: 1,
+  });
+
   return (
     <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-      <div className={`${style.achievement_card_container} px-4 py-5`}>
+      <div
+        ref={ref}
+        className={`${style.achievement_card_container} px-4 py-5`}
+      >
         {router.locale === "en" ? (
           <div
             className={`d-flex justify-content-center align-items-center mb-4`}
@@ -25,7 +34,15 @@ export default function AchievementCards({ data }) {
             <div
               className={`${style.achievement_card_count} ${data.ftColor} ps-4`}
             >
-              {data.count}
+              {isVisible ? (
+                <CountUp
+                  value={data.count.toString()}
+                  floatLength={0}
+                  formatMoney={false}
+                />
+              ) : (
+                data.count
+              )}
             </div>
           </div>
         ) : (
@@ -36,7 +53,15 @@ export default function AchievementCards({ data }) {
               <div
                 className={`${style.achievement_card_count} ${data.ftColor}  pe-4`}
               >
-                {data.count}
+                {isVisible ? (
+                  <CountUp
+                    value={data.count.toString()}
+                    floatLength={0}
+                    formatMoney={false}
+                  />
+                ) : (
+                  data.count
+                )}
               </div>
               <div
                 className={`${style.achievement_card_polygon} ${data.bgColor} d-flex justify-content-center align-items-center`}

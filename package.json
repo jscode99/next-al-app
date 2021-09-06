@@ -24,6 +24,7 @@
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "17.0.2",
     "react-google-charts": "^3.0.15",
+    "react-hook-inview": "^4.3.10",
     "react-responsive-carousel": "^3.2.20",
     "sass": "^1.35.2",
     "save": "^2.4.0"

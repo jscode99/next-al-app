@@ -3,6 +3,7 @@ import Governance from "../../component/about/subPages/governance";
 
 export default function GovernanceContainer({
   staticSite,
+  staticSiteAr,
   projectTitle,
   bannerImage,
 }) {
@@ -14,7 +15,7 @@ export default function GovernanceContainer({
       projectTitle={projectTitle}
       title={"governance structure"}
     >
-      <Governance staticSite={staticSite} />
+      <Governance staticSite={staticSite} staticSiteAr={staticSiteAr} />
     </Layout>
   );
 }

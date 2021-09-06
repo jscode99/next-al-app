@@ -558,7 +558,7 @@ export default function ResourceChart({
     },
     {
       color: `linear-gradient(to bottom, #a7e05f, #12ab97)`,
-      text: t("disburesed"),
+      text: t("disbursed"),
     },
   ];
   const legendDataYr = [
@@ -568,7 +568,7 @@ export default function ResourceChart({
     },
     {
       color: `linear-gradient(to bottom, #a7e05f, #12ab97)`,
-      text: t("disburesed"),
+      text: t("disbursed"),
     },
   ];
 

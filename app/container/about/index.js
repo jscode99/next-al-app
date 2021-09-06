@@ -3,6 +3,7 @@ import About from "../../component/about";
 
 export default function AboutContainer({
   staticSite,
+  staticSiteAr,
   projectTitle,
   bannerImage,
   flag,
@@ -16,7 +17,12 @@ export default function AboutContainer({
       projectTitle={projectTitle}
       title={"al aqsa fund"}
     >
-      <About staticSite={staticSite} flag={flag} flagAr={flagAr} />
+      <About
+        staticSite={staticSite}
+        staticSiteAr={staticSiteAr}
+        flag={flag}
+        flagAr={flagAr}
+      />
     </Layout>
   );
 }

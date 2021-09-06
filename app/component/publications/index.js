@@ -16,7 +16,10 @@ export default function Publications({ pubListData }) {
     <>
       <div className={`${style.bg}`}>
         <div className={`${style.publication_list_container} px-4`}>
-          {pubListData && pubListData.length > 0 ? (
+          {pubListData &&
+          pubListData.sort(
+            (x, y) => new Date(y.Date).getTime() - new Date(x.Date).getTime()
+          ).length > 0 ? (
             <>
               <PublicationList
                 listData={pubListData}

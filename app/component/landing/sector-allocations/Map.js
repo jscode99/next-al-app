@@ -81,12 +81,24 @@ export default function MapSvg() {
               placement="top"
               color="white"
               title={
-                <div className={`${style.tooltip} py-1 px-3 text-capitalize`}>
+                <div
+                  className={`${style.tooltip} py-1 px-3 ${
+                    router.locale === "ar" ? `text-end` : `text-start`
+                  } text-capitalize`}
+                >
                   <p className={`text-dark m-0`}>
-                    {t("total approvals")} - 120 bn
+                    {router.locale === "ar" && `120 bn -`}{" "}
+                    {t("total approvals")}{" "}
+                    {router.locale === "en" && `- 120 bn`}
                   </p>
-                  <p className={`text-dark m-0`}>15{t("% total Portfolio")}</p>
-                  <p className={`text-dark m-0`}>{t("total projects")} - 78</p>
+                  <p className={`text-dark m-0`}>
+                    {router.locale === "en" && `${t("total Portfolio")} - 15%`}
+                    {router.locale === "ar" && `15% - ${t("total Portfolio")}`}
+                  </p>
+                  <p className={`text-dark m-0`}>
+                    {router.locale === "ar" && `78 -`} {t("total projects")}{" "}
+                    {router.locale === "en" && `- 78`}
+                  </p>
                 </div>
               }
             >
@@ -116,12 +128,24 @@ export default function MapSvg() {
               placement="top"
               color="white"
               title={
-                <div className={`${style.tooltip} py-1 px-3 text-capitalize`}>
+                <div
+                  className={`${style.tooltip} py-1 px-3 ${
+                    router.locale === "ar" ? `text-end` : `text-start`
+                  } text-capitalize`}
+                >
                   <p className={`text-dark m-0`}>
-                    {t("total approvals")} - 120 bn
+                    {router.locale === "ar" && `120 bn -`}{" "}
+                    {t("total approvals")}{" "}
+                    {router.locale === "en" && `- 120 bn`}
                   </p>
-                  <p className={`text-dark m-0`}>15{t("% total Portfolio")}</p>
-                  <p className={`text-dark m-0`}>{t("total projects")} - 78</p>
+                  <p className={`text-dark m-0`}>
+                    {router.locale === "en" && `${t("total Portfolio")} - 15%`}
+                    {router.locale === "ar" && `15% - ${t("total Portfolio")}`}
+                  </p>
+                  <p className={`text-dark m-0`}>
+                    {router.locale === "ar" && `78 -`} {t("total projects")}{" "}
+                    {router.locale === "en" && `- 78`}
+                  </p>
                 </div>
               }
             >
@@ -151,12 +175,24 @@ export default function MapSvg() {
               placement="top"
               color="white"
               title={
-                <div className={`${style.tooltip} py-1 px-3 text-capitalize`}>
+                <div
+                  className={`${style.tooltip} py-1 px-3 ${
+                    router.locale === "ar" ? `text-end` : `text-start`
+                  } text-capitalize`}
+                >
                   <p className={`text-dark m-0`}>
-                    {t("total approvals")} - 120 bn
+                    {router.locale === "ar" && `120 bn -`}{" "}
+                    {t("total approvals")}{" "}
+                    {router.locale === "en" && `- 120 bn`}
                   </p>
-                  <p className={`text-dark m-0`}>15{t("% total Portfolio")}</p>
-                  <p className={`text-dark m-0`}>{t("total projects")} - 78</p>
+                  <p className={`text-dark m-0`}>
+                    {router.locale === "en" && `${t("total Portfolio")} - 15%`}
+                    {router.locale === "ar" && `15% - ${t("total Portfolio")}`}
+                  </p>
+                  <p className={`text-dark m-0`}>
+                    {router.locale === "ar" && `78 -`} {t("total projects")}{" "}
+                    {router.locale === "en" && `- 78`}
+                  </p>
                 </div>
               }
             >

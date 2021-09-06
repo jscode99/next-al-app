@@ -30,7 +30,7 @@ export default function ProjectFundChart({ finalChartData }) {
       },
 
       {
-        name: "Disburesed",
+        name: "Disbursed",
         data: [],
       },
     ];
@@ -163,7 +163,7 @@ export default function ProjectFundChart({ finalChartData }) {
     },
     {
       color: `linear-gradient(to bottom, #a7e05f, #12ab97)`,
-      text: t("disburesed"),
+      text: t("disbursed"),
     },
   ];
 

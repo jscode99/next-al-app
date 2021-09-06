@@ -171,7 +171,7 @@ export default function CardSection({ data }) {
             ))
           : cardData &&
             cardData.length > 0 &&
-            new Array(...cardData).map((data, index) => (
+            new Array(...cardData).reverse().map((data, index) => (
               <>
                 <Col xs={0} sm={0} md={0} lg={8} xl={8} key={index}>
                   <div className={`${style.card_container} bg-white p-3 mx-2`}>

@@ -4,6 +4,7 @@ import ApprovalProcess from "../../component/about/subPages/approvalProcess";
 
 export default function ApprovalProcessContainer({
   staticSite,
+  staticSiteAr,
   projectTitle,
   bannerImage,
 }) {
@@ -15,7 +16,7 @@ export default function ApprovalProcessContainer({
       projectTitle={projectTitle}
       title={"approval process and selection criteria"}
     >
-      <ApprovalProcess staticSite={staticSite} />
+      <ApprovalProcess staticSite={staticSite} staticSiteAr={staticSiteAr} />
     </Layout>
   );
 }

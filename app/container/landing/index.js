@@ -10,6 +10,7 @@ import IsdbManage from "../../component/landing/isdb-manage/IsdbManage";
 
 export default function Landing({
   staticSite,
+  staticSiteAr,
   projectData,
   sector,
   projectTitle,
@@ -27,19 +28,23 @@ export default function Landing({
   isdbManageAr,
 }) {
   const router = useRouter();
-  console.log("staticSite", staticSite);
+  // console.log("staticSite", staticSite);
   return (
     <Layout
-      staticSite={staticSite}
+      staticSite={router.locale === "en" ? staticSite : staticSiteAr}
       heroImage={bannerImage}
       page={"landing"}
       pageName={"home"}
       projectTitle={projectTitle}
       projectData={projectData}
     >
-      {staticSite[0].static.home_fundResources.length > 0 && (
-        <FundResource data={staticSite[0].static.home_fundResources} />
-      )}
+      {router.locale === "en"
+        ? staticSite[0].static.home_fundResources.length > 0 && (
+            <FundResource data={staticSite[0].static.home_fundResources} />
+          )
+        : staticSiteAr[0].static.home_fundResources.length > 0 && (
+            <FundResource data={staticSiteAr[0].static.home_fundResources} />
+          )}
       {router.locale === "en" ? (
         <ResourceChart
           projectTitle={projectTitle}
@@ -58,9 +63,13 @@ export default function Landing({
         />
       )}
       <SectorAllocations sectorData={sector} />
-      {staticSite[0].static.home_achievements.length > 0 && (
-        <AchievementFunds data={staticSite[0].static.home_achievements} />
-      )}
+      {router.locale === "en"
+        ? staticSite[0].static.home_achievements.length > 0 && (
+            <AchievementFunds data={staticSite[0].static.home_achievements} />
+          )
+        : staticSiteAr[0].static.home_achievements.length > 0 && (
+            <AchievementFunds data={staticSiteAr[0].static.home_achievements} />
+          )}
       <IsdbManage isdbManage={isdbManage} isdbManageAr={isdbManageAr} />
     </Layout>
   );

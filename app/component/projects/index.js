@@ -62,7 +62,7 @@ export default function Projects({
           chartData[projectTitle[index].title.toLowerCase()] = {
             ...chartData[projectTitle[index].title.toLowerCase()],
             totalApprovedAmount: Number.isNaN(
-              parseFloat(projectData[innerIndex].approvedAmount),
+              parseFloat(projectData[innerIndex].approvedAmount)
             )
               ? chartData[projectTitle[index].title.toLowerCase()]
                   .totalApprovedAmount + 0
@@ -70,7 +70,7 @@ export default function Projects({
                   .totalApprovedAmount +
                 parseFloat(projectData[innerIndex].approvedAmount),
             totalDisbursementAmount: Number.isNaN(
-              parseFloat(projectData[innerIndex].disbursementAmount),
+              parseFloat(projectData[innerIndex].disbursementAmount)
             )
               ? chartData[projectTitle[index].title.toLowerCase()]
                   .totalDisbursementAmount + 0
@@ -163,8 +163,13 @@ export default function Projects({
           finalChartData={new Array(...finalChartData).reverse()}
         />
       )}
-
-      <ProjectFundChart finalChartData={finalChartData} />
+      {router.locale === "en" ? (
+        <ProjectFundChart finalChartData={finalChartData} />
+      ) : (
+        <ProjectFundChart
+          finalChartData={new Array(...finalChartData).reverse()}
+        />
+      )}
     </>
   );
 }

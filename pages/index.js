@@ -11,6 +11,7 @@ import AppContext from "../app/AppContext";
 
 export default function Home({
   staticSite,
+  staticSiteAr,
   projectData,
   sector,
   projectTitle,
@@ -30,6 +31,7 @@ export default function Home({
   return (
     <Landing
       staticSite={staticSite}
+      staticSiteAr={staticSiteAr}
       projectData={projectData}
       sector={sector}
       projectTitle={projectTitle}
@@ -52,6 +54,11 @@ export default function Home({
 export async function getStaticProps({ locale }) {
   let staticSiteUrl =
     process.env.BASE_URL + process.env.PATH.STATIC_SITE + "?_limit=-1";
+  let staticSiteArUrl =
+    process.env.BASE_URL +
+    process.env.PATH.STATIC_SITE +
+    "?_locale=ar-001" +
+    "&&_limit=-1";
   let projectDetailsUrl =
     process.env.BASE_URL + process.env.PATH.PROJECT_DATA + "?_limit=-1";
   let sectorUrl =
@@ -82,6 +89,7 @@ export async function getStaticProps({ locale }) {
 
   const [
     staticSite,
+    staticSiteAr,
     projectData,
     sector,
     projectTitle,
@@ -99,6 +107,7 @@ export async function getStaticProps({ locale }) {
     isdbManageAr,
   ] = await Promise.all([
     await fetchService(staticSiteUrl, CONST.API_METHOD.GET),
+    await fetchService(staticSiteArUrl, CONST.API_METHOD.GET),
     await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
     await fetchService(sectorUrl, CONST.API_METHOD.GET),
     await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
@@ -119,6 +128,7 @@ export async function getStaticProps({ locale }) {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),
       staticSite,
+      staticSiteAr,
       projectData,
       sector,
       projectTitle,

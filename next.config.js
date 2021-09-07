@@ -8,6 +8,7 @@ const { i18n } = require("./i18n");
 module.exports = {
   i18n,
   env: {
+    DOMAIN:"next-al-app.vercel.app",
     BASE_URL:
       "https://z24eee497-ze87c794b-gtw.qovery.io" /* "https://z966c6ddc-z1680a652-gtw.qovery.io" */,
     PATH: {

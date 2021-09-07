@@ -26,6 +26,7 @@
     "react-google-charts": "^3.0.15",
     "react-hook-inview": "^4.3.10",
     "react-responsive-carousel": "^3.2.20",
+    "react-to-print": "^2.13.0",
     "sass": "^1.35.2",
     "save": "^2.4.0"
   },

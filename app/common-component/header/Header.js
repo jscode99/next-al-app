@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState, useEffect, useContext } from "react";
 import { useTranslation } from "next-i18next";
-import { Row, Col, Layout, Menu, Dropdown, Button } from "antd";
+import { Row, Col, Layout, Menu, Dropdown, Button, Drawer } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import style from "./index.module.sass";
 //Context API
@@ -12,13 +12,22 @@ import AppContext from "../../AppContext";
 import { mapTitleToRoutePath } from "../../services/projectTitle";
 
 const { Header } = Layout;
+const { SubMenu } = Menu;
 
 export default function AppHeader({ pageName, projectTitle }) {
+  const [routePath, setRoutePath] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const showDrawer = () => {
+    setVisible(true);
+  };
+  const onClose = () => {
+    setVisible(false);
+  };
+
   console.log("projectTitle", projectTitle);
   const { t } = useTranslation("common");
   // let { appContext } = useContext(AppContext);
   const router = useRouter();
-  const [routePath, setRoutePath] = useState([]);
   const language = [
     {
       flag: "/images/language-flags/united-kingdom.webp",
@@ -271,6 +280,38 @@ export default function AppHeader({ pageName, projectTitle }) {
                     </Col>
                     <Col xs={8} sm={8} md={14} lg={0} xl={0}>
                       {/* <div
+                        className={`${style.app_header_nav_section} d-flex justify-content-end align-items-center`}
+                      >
+                        <Button
+                          type="text"
+                          className={`${style.menu_button} d-flex justify-content-between align-items-center`}
+                          onClick={showDrawer}
+                        >
+                          <i className="fas fa-bars"></i>
+                        </Button>
+                        <Drawer
+                          title={t("al aqsa fund")}
+                          className={`text-capitalize`}
+                          placement="left"
+                          onClose={onClose}
+                          visible={visible}
+                        >
+                          <Menu mode="inline">
+                            {routePath.reverse().map((route, index) =>
+                              route.navigation === false ? (
+                                <Menu.Item key={index}>
+                                  <Link href={route.path}>{t(route.name)}</Link>
+                                </Menu.Item>
+                              ) : (
+                                <SubMenu key={index} title={route.name}>
+                                  {route.name === "about" ? nav : navProject}
+                                </SubMenu>
+                              ),
+                            )}
+                          </Menu>
+                        </Drawer>
+                      </div> */}
+                      {/* <div
                       className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
                     >
                       {routePath.map((route, index) => (
@@ -364,36 +405,55 @@ export default function AppHeader({ pageName, projectTitle }) {
                       <Button
                         type="text"
                         className={`${style.menu_button} d-flex justify-content-between align-items-center`}
+                        onClick={showDrawer}
                       >
                         <i className="fas fa-bars"></i>
                       </Button>
-                      {/* {routePath.map((route, index) => (
-                        <Dropdown
-                          key={index}
-                          overlay={route.name === "About" ? nav : navProject}
-                          placement={"bottomLeft"}
-                          disabled={route.navigation ? false : true}
-                        >
-                          <p
-                            className={`${
-                              route.name.toLowerCase() === pageName &&
-                              style.selected
-                            }`}
-                            onClick={() => {
-                              router.push(route.path);
-                            }}
-                          >
-                            {route.name}
-                            {route.navigation && (
-                              <DownOutlined
-                                className={`${style.language_dd_icon} ps-1`}
-                                style={{ fontSize: "10px" }}
-                              />
-                            )}
-                            <hr className={`${style.app_nav_list_hr}`} />
-                          </p>
-                        </Dropdown>
-                      ))} */}
+                      <Drawer
+                        title={t("al aqsa fund")}
+                        className={`text-capitalize`}
+                        placement="right"
+                        onClose={onClose}
+                        closable={false}
+                        visible={visible}
+                      >
+                        <Menu mode="inline" className={`${style.dd_list}`}>
+                          {/* route.navigation === false ? ( */}
+                          {routePath.map((route, index) => (
+                            <Menu.Item key={index}>
+                              <Link href={route.path}>
+                                <p
+                                  className={`${
+                                    route.name.toLowerCase() === pageName &&
+                                    style.mobile_selected_menu
+                                  } m-0 ps-2`}
+                                >
+                                  {t(route.name)}
+                                </p>
+                              </Link>
+                              {/* <i className="ant-menu-submenu-arrow"></i> */}
+                            </Menu.Item>
+                          ))}
+                          {/* ) : (
+                              <SubMenu
+                                icon={false}
+                                key={index}
+                                title={
+                                  <p
+                                    onClick={() => {
+                                      router.push(route.path);
+                                    }}
+                                    className={`m-0`}
+                                  >
+                                    {route.name}
+                                  </p>
+                                }
+                              >
+                                {route.name === "about" ? nav : navProject}
+                              </SubMenu>
+                            ), */}
+                        </Menu>
+                      </Drawer>
                     </div>
                   </Col>
                 </Row>
@@ -439,36 +499,38 @@ export default function AppHeader({ pageName, projectTitle }) {
                       <Button
                         type="text"
                         className={`${style.menu_button} d-flex justify-content-between align-items-center`}
+                        onClick={showDrawer}
                       >
                         <i className="fas fa-bars"></i>
                       </Button>
-                      {/* {routePath.map((route, index) => (
-                        <Dropdown
-                          key={index}
-                          overlay={route.name === "About" ? nav : navProject}
-                          placement={"bottomRight"}
-                          disabled={route.navigation ? false : true}
-                        >
-                          <p
-                            className={`${
-                              route.name.toLowerCase() === pageName &&
-                              style.selected
-                            }`}
-                            onClick={() => {
-                              router.push(route.path);
-                            }}
-                          >
-                            {t(route.name)}
-                            {route.navigation && (
-                              <DownOutlined
-                                className={`${style.language_dd_icon} ps-1`}
-                                style={{ fontSize: "10px" }}
-                              />
-                            )}
-                            <hr className={`${style.app_nav_list_hr}`} />
-                          </p>
-                        </Dropdown>
-                      ))} */}
+                      <Drawer
+                        title={t("al aqsa fund")}
+                        className={`text-end text-capitalize`}
+                        placement="left"
+                        onClose={onClose}
+                        closable={false}
+                        visible={visible}
+                      >
+                        <Menu mode="inline" className={`${style.dd_list}`}>
+                          {new Array(...routePath)
+                            .reverse()
+                            .map((route, index) => (
+                              <Menu.Item key={index}>
+                                <Link href={route.path}>
+                                  <p
+                                    className={`${
+                                      route.name.toLowerCase() === pageName &&
+                                      style.mobile_selected_menu
+                                    } m-0 text-end pe-2`}
+                                  >
+                                    {t(route.name)}
+                                  </p>
+                                </Link>
+                                {/* <i className="ant-menu-submenu-arrow"></i> */}
+                              </Menu.Item>
+                            ))}
+                        </Menu>
+                      </Drawer>
                     </div>
                   </Col>
                   <Col xs={16} sm={16} md={10} lg={6} xl={6}>

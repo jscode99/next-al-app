@@ -9,7 +9,7 @@ import style from "./index.module.sass";
 
 export default function BannerCardSection({ data, projectData, projectTitle }) {
   const { t } = useTranslation("common");
-  const [finalChartData, setFinalChartData] = useState(null);
+  const [finalChartData, setFinalChartData] = useState([]);
   const [bannerData, setBannerData] = useState([]);
   const router = useRouter();
   const getProperty = priority => {
@@ -173,7 +173,7 @@ export default function BannerCardSection({ data, projectData, projectTitle }) {
     }
     //Setting chart data state
     setFinalChartData(chartDataPriority);
-    // console.log("finalChartData", finalChartData);
+    console.log("finalChartData", finalChartData);
   }, [projectData]);
 
   return (

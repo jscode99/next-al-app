@@ -32,39 +32,6 @@ export default function ProjectDetailsApproval({ projectData, sector }) {
   // }, [projectData]);
   // console.log("geoSector", geoSector);
 
-  const sectoralData = [
-    {
-      title: "Infrastructure & Housing",
-      projects: "12",
-      percent: "86.50%",
-    },
-    {
-      title: "Education",
-      projects: "25",
-      percent: "66.30%",
-    },
-    {
-      title: "Health",
-      projects: "15",
-      percent: "90%",
-    },
-    {
-      title: "Economic Empowerment",
-      projects: "10",
-      percent: "60.10%",
-    },
-    {
-      title: "Trade, Industry & Other",
-      projects: "3",
-      percent: "72.33%",
-    },
-    {
-      title: "Agriculture & Rural Development",
-      projects: "2",
-      percent: "86.50%",
-    },
-  ];
-
   return (
     <div className={`${style.project_details_bg}`}>
       <div className={`${style.container} px-5`}>
@@ -72,10 +39,7 @@ export default function ProjectDetailsApproval({ projectData, sector }) {
           {router.locale === "en" ? (
             <>
               <Col span={12}>
-                <SectoralApproval
-                  sectoralData={sectoralData}
-                  projectData={projectData}
-                />
+                <SectoralApproval projectData={projectData} />
               </Col>
               <Col span={12}>
                 <GeographicalApprovals projectData={projectData} />
@@ -84,10 +48,10 @@ export default function ProjectDetailsApproval({ projectData, sector }) {
           ) : (
             <>
               <Col span={12}>
-                <GeographicalApprovals geoData={geoData} />
+                <GeographicalApprovals projectData={projectData} />
               </Col>
               <Col span={12}>
-                <SectoralApproval sectoralData={sectoralData} />
+                <SectoralApproval projectData={projectData} />
               </Col>
             </>
           )}

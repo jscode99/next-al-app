@@ -77,7 +77,7 @@ export default function ProjectRouteCard({ finalChartData }) {
                         : `text-end justify-content-end`
                     } `}
                   >
-                    {t(data.title)}
+                    {data.title}
                   </p>
                 </div>
               </Col>

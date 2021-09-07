@@ -6,6 +6,8 @@ import nextI18NextConfig from "../i18n";
 import { OverPack } from "rc-scroll-anim";
 import TweenOne from "rc-tween-one";
 import Children from "rc-tween-one/lib/plugin/ChildrenPlugin";
+import {useReactToPrint } from "react-to-print";
+import { useRef } from "react";
 
 import Texty from "rc-texty";
 import "rc-texty/assets/index.css";
@@ -13,6 +15,7 @@ import "rc-texty/assets/index.css";
 TweenOne.plugins.push(Children);
 
 export default function Demo() {
+  const printRef = useRef();
   //////chart
   /* const series = [
     {
@@ -172,6 +175,10 @@ export default function Demo() {
     return c;
   };
 
+  const handlePrint = useReactToPrint({
+    content: () => printRef.current,
+  });
+
   return (
     // <ApexCharts
     //   options={options}
@@ -180,33 +187,43 @@ export default function Demo() {
     //   width={"100%"}
     //   height={"500px"}
     // />
-    <div style={{paddingBottom: "300vh" }}>
-      <div
-        style={{
-          overflow: "hidden",
-          height: 300,
-          position: 'relative',
-          backgroundColor: "red",
-          fontSize: 56,
-          display: "flex",
-          color: "black",
-        }}
-      >
-        <OverPack style={{ overflow: 'hidden', height: 200 }} >
-          <TweenOne
-            animation={{
-              Children: {
-                value: 1.734,
-                floatLength: 3,
-                formatMoney: 1000,
-              },
-              duration: 1000,
-            }}
-            // style={{ fontSize: 56, }}
-          >
-            0
-          </TweenOne>
-          {/* <Texty
+    <>
+    {/* <ReactToPrint
+          trigger={() => {
+            // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
+            // to the root node of the returned component as it will be overwritten.
+            return <a>Print this out!</a>;
+          }}
+          content={() => printRef.current}
+        /> */}
+        <button onClick={handlePrint}>Print</button>
+      <div ref={printRef} style={{ paddingBottom: "300vh" }}>
+        <div
+          style={{
+            overflow: "hidden",
+            height: 300,
+            position: "relative",
+            backgroundColor: "red",
+            fontSize: 56,
+            display: "flex",
+            color: "black",
+          }}
+        >
+          <OverPack style={{ overflow: "hidden", height: 200 }}>
+            <TweenOne
+              animation={{
+                Children: {
+                  value: 1.734,
+                  floatLength: 3,
+                  formatMoney: 1000,
+                },
+                duration: 1000,
+              }}
+              // style={{ fontSize: 56, }}
+            >
+              0
+            </TweenOne>
+            {/* <Texty
             type="mask-top"
             delay={400}
             enter={getEnter}
@@ -248,81 +265,81 @@ export default function Demo() {
           >
             Animation specification and components of Ant Design.
           </Texty> */}
-          <div className="combined">
-            <div className="combined-shape">
-              <div className="shape-left">
-                <TweenOne
-                  animation={[
-                    {
-                      x: 158,
-                      type: "from",
-                      ease: "easeInOutQuint",
-                      duration: 600,
-                    },
-                    {
-                      x: -158,
-                      ease: "easeInOutQuart",
-                      duration: 450,
-                      delay: -150,
-                    },
-                  ]}
-                />
+            <div className="combined">
+              <div className="combined-shape">
+                <div className="shape-left">
+                  <TweenOne
+                    animation={[
+                      {
+                        x: 158,
+                        type: "from",
+                        ease: "easeInOutQuint",
+                        duration: 600,
+                      },
+                      {
+                        x: -158,
+                        ease: "easeInOutQuart",
+                        duration: 450,
+                        delay: -150,
+                      },
+                    ]}
+                  />
+                </div>
+                <div className="shape-right">
+                  <TweenOne
+                    animation={[
+                      {
+                        x: -158,
+                        type: "from",
+                        ease: "easeInOutQuint",
+                        duration: 600,
+                      },
+                      {
+                        x: 158,
+                        ease: "easeInOutQuart",
+                        duration: 450,
+                        delay: -150,
+                      },
+                    ]}
+                  />
+                </div>
               </div>
-              <div className="shape-right">
-                <TweenOne
-                  animation={[
+              <Texty
+                className="title"
+                type="mask-top"
+                delay={400}
+                enter={getEnter}
+                interval={geInterval}
+                component={TweenOne}
+                componentProps={{
+                  animation: [
+                    { x: 130, type: "set" },
+                    { x: 100, delay: 500, duration: 450 },
                     {
-                      x: -158,
-                      type: "from",
+                      ease: "easeOutQuart",
+                      duration: 300,
+                      x: 0,
+                    },
+                    {
+                      letterSpacing: 0,
+                      delay: -300,
+                      scale: 0.9,
                       ease: "easeInOutQuint",
-                      duration: 600,
+                      duration: 1000,
                     },
                     {
-                      x: 158,
-                      ease: "easeInOutQuart",
-                      duration: 450,
-                      delay: -150,
+                      scale: 1,
+                      width: "100%",
+                      delay: -300,
+                      duration: 1000,
+                      ease: "easeInOutQuint",
                     },
-                  ]}
-                />
-              </div>
-            </div>
-            <Texty
-              className="title"
-              type="mask-top"
-              delay={400}
-              enter={getEnter}
-              interval={geInterval}
-              component={TweenOne}
-              componentProps={{
-                animation: [
-                  { x: 130, type: "set" },
-                  { x: 100, delay: 500, duration: 450 },
-                  {
-                    ease: "easeOutQuart",
-                    duration: 300,
-                    x: 0,
-                  },
-                  {
-                    letterSpacing: 0,
-                    delay: -300,
-                    scale: 0.9,
-                    ease: "easeInOutQuint",
-                    duration: 1000,
-                  },
-                  {
-                    scale: 1,
-                    width: "100%",
-                    delay: -300,
-                    duration: 1000,
-                    ease: "easeInOutQuint",
-                  },
-                ],
-              }}
-            >
-              Ant Motion
-            </Texty>
-            {/* <TweenOne
+                  ],
+                }}
+              >
+                Ant Motion
+              </Texty>
+              {/* <TweenOne
               className="combined-bar"
               animation={{
                 delay: 2000,
@@ -332,19 +349,20 @@ export default function Demo() {
                 ease: "easeInOutExpo",
               }}
             /> */}
-            <Texty
-              className="content"
-              type="bottom"
-              split={getSplit}
-              delay={2200}
-              interval={30}
-            >
-              Animation specification and components of Ant Design.
-            </Texty>
-          </div>
-        </OverPack>
+              <Texty
+                className="content"
+                type="bottom"
+                split={getSplit}
+                delay={2200}
+                interval={30}
+              >
+                Animation specification and components of Ant Design.
+              </Texty>
+            </div>
+          </OverPack>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

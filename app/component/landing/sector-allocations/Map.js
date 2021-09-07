@@ -2,9 +2,11 @@ import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Tooltip } from "antd";
+import { convertToInternationalCurrencySystem } from "../../../services/internationalCurrency";
 import style from "./index.module.sass";
 
-export default function MapSvg() {
+export default function MapSvg({ finalChartData }) {
+  console.log("----->>>>>", finalChartData);
   const { t } = useTranslation("common");
   let router = useRouter();
   const [countryName, setCountryName] = useState(null);
@@ -87,17 +89,32 @@ export default function MapSvg() {
                   } text-capitalize`}
                 >
                   <p className={`text-dark m-0`}>
-                    {router.locale === "ar" && `120 bn -`}{" "}
+                    {router.locale === "ar" &&
+                      `${finalChartData[0].totalAlQuadsAmount} bn -`}{" "}
                     {t("total approvals")}{" "}
-                    {router.locale === "en" && `- 120 bn`}
+                    {router.locale === "en" &&
+                      `- ${finalChartData[0].totalAlQuadsAmount} bn`}
                   </p>
                   <p className={`text-dark m-0`}>
-                    {router.locale === "en" && `${t("total Portfolio")} - 15%`}
-                    {router.locale === "ar" && `15% - ${t("total Portfolio")}`}
+                    {router.locale === "en" &&
+                      `${t("total Portfolio")} - ${Math.round(
+                        (finalChartData[0].totalAlQuadsAmount /
+                          finalChartData[0].totalApprovedAmount) *
+                          100,
+                      )}%`}
+                    {router.locale === "ar" &&
+                      `${Math.round(
+                        (finalChartData[0].totalAlQuadsAmount /
+                          finalChartData[0].totalApprovedAmount) *
+                          100,
+                      )}% - ${t("total Portfolio")}`}
                   </p>
                   <p className={`text-dark m-0`}>
-                    {router.locale === "ar" && `78 -`} {t("total projects")}{" "}
-                    {router.locale === "en" && `- 78`}
+                    {router.locale === "ar" &&
+                      `${finalChartData[0].totalAlQuads} -`}{" "}
+                    {t("total projects")}{" "}
+                    {router.locale === "en" &&
+                      `- ${finalChartData[0].totalAlQuads} `}
                   </p>
                 </div>
               }
@@ -134,17 +151,32 @@ export default function MapSvg() {
                   } text-capitalize`}
                 >
                   <p className={`text-dark m-0`}>
-                    {router.locale === "ar" && `120 bn -`}{" "}
+                    {router.locale === "ar" &&
+                      `${finalChartData[0].totalGazaAmount} bn -`}{" "}
                     {t("total approvals")}{" "}
-                    {router.locale === "en" && `- 120 bn`}
+                    {router.locale === "en" &&
+                      `- ${finalChartData[0].totalGazaAmount} bn`}
                   </p>
                   <p className={`text-dark m-0`}>
-                    {router.locale === "en" && `${t("total Portfolio")} - 15%`}
-                    {router.locale === "ar" && `15% - ${t("total Portfolio")}`}
+                    {router.locale === "en" &&
+                      `${t("total Portfolio")} - ${Math.round(
+                        (finalChartData[0].totalGazaAmount /
+                          finalChartData[0].totalApprovedAmount) *
+                          100,
+                      )}%`}
+                    {router.locale === "ar" &&
+                      `${Math.round(
+                        (finalChartData[0].totalGazaAmount /
+                          finalChartData[0].totalApprovedAmount) *
+                          100,
+                      )}% - ${t("total Portfolio")}`}
                   </p>
                   <p className={`text-dark m-0`}>
-                    {router.locale === "ar" && `78 -`} {t("total projects")}{" "}
-                    {router.locale === "en" && `- 78`}
+                    {router.locale === "ar" &&
+                      `${finalChartData[0].totalGaza} -`}{" "}
+                    {t("total projects")}{" "}
+                    {router.locale === "en" &&
+                      `- ${finalChartData[0].totalGaza} `}
                   </p>
                 </div>
               }
@@ -181,17 +213,32 @@ export default function MapSvg() {
                   } text-capitalize`}
                 >
                   <p className={`text-dark m-0`}>
-                    {router.locale === "ar" && `120 bn -`}{" "}
+                    {router.locale === "ar" &&
+                      `${finalChartData[0].totalWestBanksAmount} bn -`}{" "}
                     {t("total approvals")}{" "}
-                    {router.locale === "en" && `- 120 bn`}
+                    {router.locale === "en" &&
+                      `- ${finalChartData[0].totalWestBanksAmount} bn`}
                   </p>
                   <p className={`text-dark m-0`}>
-                    {router.locale === "en" && `${t("total Portfolio")} - 15%`}
-                    {router.locale === "ar" && `15% - ${t("total Portfolio")}`}
+                    {router.locale === "en" &&
+                      `${t("total Portfolio")} - ${Math.round(
+                        (finalChartData[0].totalWestBanksAmount /
+                          finalChartData[0].totalApprovedAmount) *
+                          100,
+                      )}%`}
+                    {router.locale === "ar" &&
+                      `${Math.round(
+                        (finalChartData[0].totalWestBanksAmount /
+                          finalChartData[0].totalApprovedAmount) *
+                          100,
+                      )}% - ${t("total Portfolio")}`}
                   </p>
                   <p className={`text-dark m-0`}>
-                    {router.locale === "ar" && `78 -`} {t("total projects")}{" "}
-                    {router.locale === "en" && `- 78`}
+                    {router.locale === "ar" &&
+                      `${finalChartData[0].totalWestBanks} -`}{" "}
+                    {t("total projects")}{" "}
+                    {router.locale === "en" &&
+                      `- ${finalChartData[0].totalWestBanks} `}
                   </p>
                 </div>
               }

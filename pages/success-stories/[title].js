@@ -18,6 +18,7 @@ export default function storiesDetails({
   storiesProps,
   path,
   projectTitle,
+  projectAr,
   bannerImage,
 }) {
   console.log("storiesArDetailsProp", storiesProps);
@@ -27,6 +28,7 @@ export default function storiesDetails({
       <StoriesDetailsContainer
         storiesProps={storiesProps}
         projectTitle={projectTitle}
+        projectAr={projectAr}
         bannerImage={bannerImage}
       />
     </>
@@ -77,14 +79,18 @@ export async function getStaticProps(context) {
   let storiesArUrl =
     process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
+  let projectTitleArUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   // , successStoriesAR
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
   // successStoriesAR,
-  const [stories, successStoriesAR, projectTitle, bannerImage] =
+  const [stories, successStoriesAR, projectTitle, projectAr, bannerImage] =
     await Promise.all([
       await fetchService(storiesUrl, CONST.API_METHOD.GET),
       await fetchService(storiesArUrl, CONST.API_METHOD.GET),
       await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+      await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
+
       await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
     ]);
   const path = context.params.title;
@@ -119,6 +125,7 @@ export async function getStaticProps(context) {
       storiesProps,
       path,
       projectTitle,
+      projectAr,
       bannerImage,
     },
     revalidate: 10,

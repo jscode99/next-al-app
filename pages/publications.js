@@ -13,6 +13,7 @@ export default function Publication({
   publication,
   publicationAr,
   projectTitle,
+  projectAr,
   bannerImage,
 }) {
   let router = useRouter();
@@ -26,7 +27,7 @@ export default function Publication({
   ) : (
     <PublicationsContainer
       publication={publicationAr}
-      projectTitle={projectTitle}
+      projectTitle={projectAr}
       bannerImage={bannerImage}
     />
   );
@@ -35,14 +36,17 @@ export default function Publication({
 export async function getStaticProps({ locale }) {
   let publicationUrl = process.env.BASE_URL + process.env.PATH.PUBLICATION;
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
+  let projectTitleArUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
   let publicationArUrl =
     process.env.BASE_URL + process.env.PATH.PUBLICATION + "?_locale=ar-001";
-  const [publication, publicationAr, projectTitle, bannerImage] =
+  const [publication, publicationAr, projectTitle, projectAr, bannerImage] =
     await Promise.all([
       await fetchService(publicationUrl, CONST.API_METHOD.GET),
       await fetchService(publicationArUrl, CONST.API_METHOD.GET),
       await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+      await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
       await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
     ]);
   return {
@@ -51,6 +55,7 @@ export async function getStaticProps({ locale }) {
       publication,
       publicationAr,
       projectTitle,
+      projectAr,
       bannerImage,
     },
     revalidate: 10,

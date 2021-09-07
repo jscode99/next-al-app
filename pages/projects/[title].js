@@ -15,16 +15,22 @@ import ProjectDetailsContainer from "../../app/container/projects/projectDetails
 
 export default function ProjectDetails({
   projectTitleData,
-  projectDetailsProp,
-  projectPageTitle,
+  projectAr,
+  projectDetailsEnProp,
+  projectDetailsArProp,
+  projectTitleEn,
+  projectTitleAr,
   sector,
   bannerImage,
 }) {
   return (
     <ProjectDetailsContainer
       projectTitle={projectTitleData}
-      projectDetailsProp={projectDetailsProp}
-      projectPageTitle={projectPageTitle}
+      projectAr={projectAr}
+      projectDetailsEnProp={projectDetailsEnProp}
+      projectDetailsArProp={projectDetailsArProp}
+      projectTitleEn={projectTitleEn}
+      projectTitleAr={projectTitleAr}
       sector={sector}
       bannerImage={bannerImage}
     />
@@ -35,18 +41,35 @@ export default function ProjectDetails({
 export async function getStaticPaths({ locales }) {
   let projectDetailsUrl =
     process.env.BASE_URL + process.env.PATH.PROJECT_DATA + `?_limit=-1`;
-
-  const [projectData] = await Promise.all([
+  let projectDetailsArUrl =
+    process.env.BASE_URL +
+    process.env.PATH.PROJECT_DATA +
+    "?_locale=ar-001" +
+    "&&_limit=-1";
+  const [projectData, projectDataAr] = await Promise.all([
     await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
+    await fetchService(projectDetailsArUrl, CONST.API_METHOD.GET),
   ]);
   //path
-  const paths = projectData.map(projectD => {
+  const pathsEn = projectData.map(projectD => {
     return {
       params: {
         title: mapTitleToRoutePath(projectD.projectTitle),
       },
+      locale: locales[0],
     };
   });
+  //Path Arabic
+  const pathsAr = projectDataAr.map(projectD => {
+    return {
+      params: {
+        title: mapTitleToRoutePath(projectD.projectTitle),
+      },
+      locale: locales[1],
+    };
+  });
+
+  const paths = [...pathsEn, ...pathsAr];
 
   return {
     paths,
@@ -58,38 +81,63 @@ export async function getStaticProps(context) {
   const path = context.params.title;
   mapRoutePathToTitle(path);
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
+  let projectTitleArUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   let projectDetailsUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_DATA + `?_limit=-1`;
+  let projectDetailsArUrl =
     process.env.BASE_URL +
     process.env.PATH.PROJECT_DATA +
-    // `?projectTitle=${mapRoutePathToTitle(path).toUpperCase()}&_limit=-1`;
-    `?_limit=-1`;
-  // `?projectTitle=Al Aqsa Fund&_limit=-1`;
+    "?_locale=ar-001" +
+    "&&_limit=-1";
   let sectorUrl = process.env.BASE_URL + process.env.PATH.SECTOR_ALLOCATION;
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
-  const [projectTitleData, projectData, sector, bannerImage] =
-    await Promise.all([
-      await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-      await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
-      await fetchService(sectorUrl, CONST.API_METHOD.GET),
-      await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
-    ]);
+  const [
+    projectTitleData,
+    projectAr,
+    projectData,
+    projectDataAr,
+    sector,
+    bannerImage,
+  ] = await Promise.all([
+    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+    await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
+    await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
+    await fetchService(projectDetailsArUrl, CONST.API_METHOD.GET),
+    await fetchService(sectorUrl, CONST.API_METHOD.GET),
+    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
+  ]);
 
-  const projectDetailsProp = projectData.filter(
+  const projectDetailsEnProp = projectData.filter(
     data => data.projectTitle.toLowerCase() === mapRoutePathToTitle(path),
   );
-  const projectPageTitle = projectTitleData.filter(
+  const projectDetailsArProp = projectDataAr.filter(
+    data => data.projectTitle.toLowerCase() === mapRoutePathToTitle(path),
+  );
+
+  //Project Data
+  // const projectDetailsProp = projectDetailsEnProp || projectDetailsArProp;
+
+  const projectTitleEn = projectTitleData.filter(
     data => data.title.toLowerCase() === mapRoutePathToTitle(path),
   );
+
+  const projectTitleAr = projectAr.filter(
+    data => data.title.toLowerCase() === mapRoutePathToTitle(path),
+  );
+
+  // const projectPageTitle = projectTitleEn || projectTitleAr;
+
   //   // Not path
-  if (!projectDetailsProp) {
-    return {
-      redirect: {
-        destination: "/projects",
-        permanent: false,
-      },
-    };
-  }
+  // if (!projectDetailsProp) {
+  //   return {
+  //     redirect: {
+  //       destination: "/projects",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
   return {
     props: {
       ...(await serverSideTranslations(
@@ -98,8 +146,11 @@ export async function getStaticProps(context) {
         nextI18NextConfig,
       )),
       projectTitleData,
-      projectDetailsProp,
-      projectPageTitle,
+      projectAr,
+      projectDetailsEnProp,
+      projectDetailsArProp,
+      projectTitleEn,
+      projectTitleAr,
       sector,
       bannerImage,
     },

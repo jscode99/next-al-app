@@ -9,14 +9,12 @@ import MembersContainer from "../../app/container/about/Members";
 
 export default function Members({
   projectTitle,
+  projectAr,
   bannerImage,
   members,
   membersAr,
   flag,
 }) {
-  // console.log("members", members);
-  // console.log("membersAr", membersAr);
-  // console.log("flag", flag);
   let router = useRouter();
   return router.locale === "en" ? (
     <MembersContainer
@@ -27,7 +25,7 @@ export default function Members({
     />
   ) : (
     <MembersContainer
-      projectTitle={projectTitle}
+      projectTitle={projectAr}
       members={membersAr}
       flag={flag}
       bannerImage={bannerImage}
@@ -37,15 +35,18 @@ export default function Members({
 
 export async function getStaticProps({ locale }) {
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
+  let projectTitleArUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
   let membersUrl = process.env.BASE_URL + process.env.PATH.MEMBERS;
   let membersArUrl =
     process.env.BASE_URL + process.env.PATH.MEMBERS + "?_locale=ar-001";
   let flagUrl = process.env.BASE_URL + process.env.PATH.FLAG;
 
-  const [projectTitle, bannerImage, members, membersAr, flag] =
+  const [projectTitle, projectAr, bannerImage, members, membersAr, flag] =
     await Promise.all([
       await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+      await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
       await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
       await fetchService(membersUrl, CONST.API_METHOD.GET),
       await fetchService(membersArUrl, CONST.API_METHOD.GET),
@@ -55,6 +56,7 @@ export async function getStaticProps({ locale }) {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),
       projectTitle,
+      projectAr,
       bannerImage,
       members,
       membersAr,

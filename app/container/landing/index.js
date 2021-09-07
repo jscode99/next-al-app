@@ -12,6 +12,7 @@ export default function Landing({
   staticSite,
   staticSiteAr,
   projectData,
+  projectDataAr,
   sector,
   projectTitle,
   projectAr,
@@ -35,7 +36,7 @@ export default function Landing({
       heroImage={bannerImage}
       page={"landing"}
       pageName={"home"}
-      projectTitle={projectTitle}
+      projectTitle={router.locale === "en" ? projectTitle : projectAr}
       projectData={projectData}
     >
       {router.locale === "en"
@@ -62,7 +63,11 @@ export default function Landing({
           flag={flagAr}
         />
       )}
-      <SectorAllocations sectorData={sector} />
+      <SectorAllocations
+        projectTitle={projectTitle}
+        projectData={projectData}
+        sectorData={sector}
+      />
       {router.locale === "en"
         ? staticSite[0].static.home_achievements.length > 0 && (
             <AchievementFunds data={staticSite[0].static.home_achievements} />

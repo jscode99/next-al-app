@@ -10,8 +10,8 @@ import ProjectDetailsTable from "./projectDetailsTable";
 import style from "./index.module.sass";
 
 export default function ProjectDetails({ projectTitle, projectData, sector }) {
-  console.log("sector", sector);
-  console.log("projectData", projectData);
+  // console.log("sector", sector);
+  console.log("projectData  INNER COMPONENT", projectData);
   const [finalChartData, setFinalChartData] = useState([]);
   const [sectorData, setSectorData] = useState([]);
   let router = useRouter();
@@ -46,6 +46,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
 
   useEffect(() => {
     let chartData = {};
+    // debugger;
     for (let index = 0; index < sector.length; index++) {
       chartData[projectData[0].projectTitle.toLowerCase()] = {
         ...chartData[projectData[0].projectTitle.toLowerCase()],

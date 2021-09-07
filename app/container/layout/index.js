@@ -1,6 +1,7 @@
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { Fragment, useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import AppHead from "../../common-component/head/Head";
 import AppLoader from "../../common-component/app-loader/AppLoader";
 import AppHeader from "../../common-component/header/Header";
@@ -22,6 +23,11 @@ export default function Layout({
 }) {
   // console.log("PROJECT DATA", projectData);
   const { t } = useTranslation("common");
+  const printRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => printRef.current,
+  });
   return (
     <>
       <AppHead />
@@ -40,10 +46,10 @@ export default function Layout({
             projectTitle={projectTitle}
           />
         ) : (
-          <PageCommonSection title={t(title)} />
+          <PageCommonSection title={t(title)} handlePrint={handlePrint} />
         )}
       </div>
-      {children}
+      <div ref={printRef}>{children}</div>
       <Footer />
     </>
   );

@@ -10,6 +10,7 @@ export default function Governance({
   staticSite,
   staticSiteAr,
   projectTitle,
+  projectAr,
   bannerImage,
 }) {
   return (
@@ -17,6 +18,7 @@ export default function Governance({
       staticSite={staticSite}
       staticSiteAr={staticSiteAr}
       projectTitle={projectTitle}
+      projectAr={projectAr}
       bannerImage={bannerImage}
     />
   );
@@ -30,13 +32,16 @@ export async function getStaticProps({ locale }) {
     "?_locale=ar-001" +
     "&&_limit=-1";
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
+  let projectTitleArUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
-  const [staticSite, staticSiteAr, projectTitle, bannerImage] =
+  const [staticSite, staticSiteAr, projectTitle, projectAr, bannerImage] =
     await Promise.all([
       await fetchService(staticSiteUrl, CONST.API_METHOD.GET),
       await fetchService(staticSiteArUrl, CONST.API_METHOD.GET),
       await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+      await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
       await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
     ]);
   return {
@@ -45,6 +50,7 @@ export async function getStaticProps({ locale }) {
       staticSite,
       staticSiteAr,
       projectTitle,
+      projectAr,
       bannerImage,
     },
     revalidate: 10,

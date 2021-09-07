@@ -13,6 +13,7 @@ export default function SuccessStories({
   stories,
   successStoriesAR,
   projectTitle,
+  projectAr,
   bannerImage,
 }) {
   console.log("successStoriesAR", successStoriesAR);
@@ -21,6 +22,7 @@ export default function SuccessStories({
       stories={stories}
       successStoriesAR={successStoriesAR}
       projectTitle={projectTitle}
+      projectAr={projectAr}
       bannerImage={bannerImage}
     />
   );
@@ -31,13 +33,16 @@ export async function getStaticProps({ locale }) {
   let storiesArUrl =
     process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
   let projectTitleUrl = process.env.BASE_URL + process.env.PATH.PROJECT_TITLE;
+  let projectTitleArUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
-  const [stories, successStoriesAR, projectTitle, bannerImage] =
+  const [stories, successStoriesAR, projectTitle, projectAr, bannerImage] =
     await Promise.all([
       await fetchService(storiesUrl, CONST.API_METHOD.GET),
       await fetchService(storiesArUrl, CONST.API_METHOD.GET),
       await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
+      await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
       await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
     ]);
 
@@ -47,6 +52,7 @@ export async function getStaticProps({ locale }) {
       stories,
       successStoriesAR,
       projectTitle,
+      projectAr,
       bannerImage,
     },
     revalidate: 60,

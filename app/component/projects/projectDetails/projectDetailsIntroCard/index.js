@@ -21,7 +21,7 @@ export default function ProjectDetailsIntroCard({ cardData }) {
             ? cardData.map((data, index) => (
                 <IntroCard data={data} key={index} />
               ))
-            : new Array(...cardData).map(data => (
+            : new Array(...cardData).map((data, index) => (
                 <IntroCard data={data} key={index} />
               ))}
         </Row>

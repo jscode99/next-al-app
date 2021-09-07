@@ -13,6 +13,7 @@ export default function Home({
   staticSite,
   staticSiteAr,
   projectData,
+  projectDataAr,
   sector,
   projectTitle,
   projectAr,
@@ -33,6 +34,7 @@ export default function Home({
       staticSite={staticSite}
       staticSiteAr={staticSiteAr}
       projectData={projectData}
+      projectDataAr={projectDataAr}
       sector={sector}
       projectTitle={projectTitle}
       projectAr={projectAr}
@@ -61,6 +63,11 @@ export async function getStaticProps({ locale }) {
     "&&_limit=-1";
   let projectDetailsUrl =
     process.env.BASE_URL + process.env.PATH.PROJECT_DATA + "?_limit=-1";
+  let projectDetailsArUrl =
+    process.env.BASE_URL +
+    process.env.PATH.PROJECT_DATA +
+    "?_locale=ar-001" +
+    "&&_limit=-1";
   let sectorUrl =
     process.env.BASE_URL + process.env.PATH.SECTOR_ALLOCATION + `?_limit=-1`;
   let projectTitleUrl =
@@ -91,6 +98,7 @@ export async function getStaticProps({ locale }) {
     staticSite,
     staticSiteAr,
     projectData,
+    projectDataAr,
     sector,
     projectTitle,
     projectAr,
@@ -109,6 +117,7 @@ export async function getStaticProps({ locale }) {
     await fetchService(staticSiteUrl, CONST.API_METHOD.GET),
     await fetchService(staticSiteArUrl, CONST.API_METHOD.GET),
     await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
+    await fetchService(projectDetailsArUrl, CONST.API_METHOD.GET),
     await fetchService(sectorUrl, CONST.API_METHOD.GET),
     await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
     await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
@@ -130,6 +139,7 @@ export async function getStaticProps({ locale }) {
       staticSite,
       staticSiteAr,
       projectData,
+      projectDataAr,
       sector,
       projectTitle,
       projectAr,

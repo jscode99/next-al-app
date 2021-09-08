@@ -7,9 +7,9 @@ import style from "./index.module.sass";
 
 const { Panel } = Collapse;
 
-export default function AppCollapsible({ data, color }) {
+export default function AppCollapsible({ keys, data }) {
   const [bulletColor, setBulletColor] = useState("");
-  console.log("data", data);
+  console.log("KEYYYY", keys);
   let router = useRouter();
 
   useEffect(() => {
@@ -77,10 +77,10 @@ export default function AppCollapsible({ data, color }) {
         <Collapse
           collapsible="header"
           accordion
-          // defaultActiveKey={["1"]}
+          defaultActiveKey={["0"]}
           expandIconPosition={router.locale === "en" ? `right` : `left`}
         >
-          <Panel header={Icon()} key="1">
+          <Panel header={Icon()} key={keys.toString()}>
             {data.des.map(data => (
               <>
                 <div

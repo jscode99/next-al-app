@@ -61,47 +61,6 @@ export default function FunctionSection({ data }) {
     setListData(list);
   }, [data]);
 
-  // const listData = [
-  //   {
-  //     title: t("supreme council"),
-  //     url: "/images/about/Governance/Star.webp",
-  //     iconBg: style.secondary_color,
-  //     color: "#5ca849",
-  //     des: [
-  //       { des: "Approves the policies of the Fund." },
-  //       { des: "Approves Investment polices and growth" },
-  //       { des: "Approves Annual reports on the Fund activities" },
-  //       { des: "Selection and approval of annual auditors" },
-  //       { des: "Approves financial statements and closing balances " },
-  //     ],
-  //   },
-  //   {
-  //     title: t("management committee"),
-  //     url: "/images/about/Governance/People.webp",
-  //     iconBg: style.theme_golden_color,
-  //     color: "#dabd2c",
-  //     des: [
-  //       { des: "Approves the policies of the Fund." },
-  //       { des: "Approves Investment polices and growth" },
-  //       { des: "Approves Annual reports on the Fund activities" },
-  //       { des: "Selection and approval of annual auditors" },
-  //       { des: "Approves financial statements and closing balances " },
-  //     ],
-  //   },
-  //   {
-  //     title: t("islamic development bank"),
-  //     url: "/images/about/Governance/Bank.webp",
-  //     iconBg: style.primary_color,
-  //     color: "#0E3890",
-  //     des: [
-  //       { des: "Approves the policies of the Fund." },
-  //       { des: "Approves Investment polices and growth" },
-  //       { des: "Approves Annual reports on the Fund activities" },
-  //       { des: "Selection and approval of annual auditors" },
-  //       { des: "Approves financial statements and closing balances " },
-  //     ],
-  //   },
-  // ];
   return (
     <div className={`${style.function_bg}`}>
       <Row>
@@ -117,9 +76,9 @@ export default function FunctionSection({ data }) {
               </h4>
               {listData &&
                 listData.length > 0 &&
-                listData.map(data => (
-                  <div className={`ms-5`} key={Math.random()}>
-                    <AppCollapsible data={data} color={`#64ac52`} />
+                listData.map((data, index) => (
+                  <div className={`ms-5`} key={index}>
+                    <AppCollapsible keys={index} data={data} />
                   </div>
                 ))}
             </div>
@@ -137,9 +96,9 @@ export default function FunctionSection({ data }) {
               </h4>
               {listData &&
                 listData.length > 0 &&
-                listData.map(data => (
-                  <div className={`ms-3`} key={Math.random()}>
-                    <AppCollapsible data={data} />
+                listData.map((data, index) => (
+                  <div className={`ms-3`} key={index}>
+                    <AppCollapsible keys={index} data={data} />
                   </div>
                 ))}
             </div>

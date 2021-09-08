@@ -10,9 +10,26 @@ export default function ApprovalProcess({ staticSite, staticSiteAr }) {
   return (
     <>
       {router.locale === "en"
-        ? staticSite[0].static.about_selectionProcess_implementationProcess
+        ? staticSite[0].static.about_selectionProcess_initiationProcess.length >
+            0 && (
+            <Approval
+              data={
+                staticSite[0].static.about_selectionProcess_initiationProcess
+              }
+            />
+          )
+        : staticSiteAr[0].static.about_selectionProcess_initiationProcess
             .length > 0 && (
             <Approval
+              data={
+                staticSiteAr[0].static.about_selectionProcess_initiationProcess
+              }
+            />
+          )}
+      {router.locale === "en"
+        ? staticSite[0].static.about_selectionProcess_implementationProcess
+            .length > 0 && (
+            <Selection
               data={
                 staticSite[0].static
                   .about_selectionProcess_implementationProcess
@@ -21,27 +38,10 @@ export default function ApprovalProcess({ staticSite, staticSiteAr }) {
           )
         : staticSiteAr[0].static.about_selectionProcess_implementationProcess
             .length > 0 && (
-            <Approval
+            <Selection
               data={
                 staticSiteAr[0].static
                   .about_selectionProcess_implementationProcess
-              }
-            />
-          )}
-      {router.locale === "en"
-        ? staticSite[0].static.about_selectionProcess_initiationProcess.length >
-            0 && (
-            <Selection
-              data={
-                staticSite[0].static.about_selectionProcess_initiationProcess
-              }
-            />
-          )
-        : staticSiteAr[0].static.about_selectionProcess_initiationProcess
-            .length > 0 && (
-            <Selection
-              data={
-                staticSiteAr[0].static.about_selectionProcess_initiationProcess
               }
             />
           )}

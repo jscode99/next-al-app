@@ -268,7 +268,7 @@ export default function SectorAllocations({
                         options={{
                           // title: "My Daily Activities",
                           legend: { position: "none" },
-                          slices: [{ color: data.color }, { color: `#666d77` }],
+                          slices: [{ color: data.color }, { color: `#2C555F` }],
                           tooltip: { trigger: "none" },
                           backgroundColor: { fill: "transparent" },
                           pieSliceText: "none",
@@ -347,7 +347,7 @@ export default function SectorAllocations({
                         options={{
                           // title: "My Daily Activities",
                           legend: { position: "none" },
-                          slices: [{ color: data.color }, { color: `#666d77` }],
+                          slices: [{ color: data.color }, { color: `#2C555F` }],
                           tooltip: { trigger: "none" },
                           backgroundColor: { fill: "transparent" },
                           pieSliceText: "none",

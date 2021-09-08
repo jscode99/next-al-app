@@ -43,7 +43,7 @@ export default function ShareHolder({ flagData }) {
                       router.locale === "en"
                         ? style.shareHolder_labels
                         : style.shareHolder_labels_AR
-                    } fw-bold text-capitalize text-center`}
+                    } text-capitalize text-center`}
                   >
                     {data.Country}
                   </p>

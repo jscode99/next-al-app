@@ -11,7 +11,7 @@ import style from "./index.module.sass";
 
 export default function ProjectDetails({ projectTitle, projectData, sector }) {
   // console.log("sector", sector);
-  console.log("projectData  INNER COMPONENT", projectData);
+  // console.log("projectData  INNER COMPONENT", projectData);
   const [finalChartData, setFinalChartData] = useState([]);
   const [sectorData, setSectorData] = useState([]);
   let router = useRouter();

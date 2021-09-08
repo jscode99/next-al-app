@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import { Tooltip } from "antd";
+
 //Antd
 import { Row, Col } from "antd";
 //Common-components
@@ -45,7 +47,7 @@ export default function ProjectDetailsTable({ projectData }) {
           {projects}
         </p>
       ),
-      width: "60%",
+      width: "30%",
     },
 
     {
@@ -62,7 +64,7 @@ export default function ProjectDetailsTable({ projectData }) {
           {sector}
         </p>
       ),
-      width: "16%",
+      width: "10%",
     },
     {
       title: (
@@ -78,7 +80,7 @@ export default function ProjectDetailsTable({ projectData }) {
           {quds}
         </p>
       ),
-      width: "13%",
+      width: "8%",
     },
     {
       title: (
@@ -94,7 +96,7 @@ export default function ProjectDetailsTable({ projectData }) {
           {west}
         </p>
       ),
-      width: "13%",
+      width: "8%",
     },
     {
       title: (
@@ -110,27 +112,28 @@ export default function ProjectDetailsTable({ projectData }) {
           {gaza}
         </p>
       ),
-      width: "13%",
+      width: "8%",
     },
     {
       title: (
         <p
           className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
         >
-          {t("approved amount")}
+          {t("total approved")}
         </p>
       ),
       dataIndex: "approvedAmount",
       render: approved => (
         <p className={`${style.table_name} text-center m-1`}>{approved}</p>
       ),
+      width: "8%",
     },
     {
       title: (
         <p
           className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
         >
-          {t("disbursement amount")}
+          {t("total disbursed")}
         </p>
       ),
       dataIndex: "disbursementAmount",
@@ -139,6 +142,53 @@ export default function ProjectDetailsTable({ projectData }) {
           {disbursed}
         </p>
       ),
+      width: "8%",
+    },
+    {
+      title: (
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
+          {t("status")}
+        </p>
+      ),
+      dataIndex: "status",
+      render: status => (
+        <div
+          className={`d-flex w-100 position-relative`}
+          style={{ height: "50px" }}
+        >
+          <Tooltip
+            placement="top"
+            title={
+              <div className={`text-capitalize`}>{t("total approved")}</div>
+            }
+          >
+            <div
+              className={`d-flex w-100 h-100 position-absolute`}
+              style={{ backgroundColor: "#B54F9B" }}
+            ></div>
+          </Tooltip>
+          <Tooltip
+            placement="top"
+            title={
+              <div className={`text-capitalize`}>{t("total disbursed")}</div>
+            }
+          >
+            <div
+              className={`d-flex h-100 position-absolute fw-bold justify-content-center align-items-center`}
+              style={{
+                backgroundColor: "#FE8954",
+                width: `${status}%`,
+                color: "#fff",
+              }}
+            >
+              {status + "%"}
+            </div>
+          </Tooltip>
+        </div>
+      ),
+      width: "20%",
     },
   ];
 
@@ -148,7 +198,7 @@ export default function ProjectDetailsTable({ projectData }) {
         <p
           className={`${style.table_title} text-capitalize fw-bold text-end m-1`}
         >
-          {t("disbursement amount")}
+          {t("total disbursed")}
         </p>
       ),
       dataIndex: "disbursementAmount",
@@ -161,7 +211,7 @@ export default function ProjectDetailsTable({ projectData }) {
         <p
           className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
         >
-          {t("approved amount")}
+          {t("total approved")}
         </p>
       ),
       dataIndex: "approvedAmount",
@@ -278,6 +328,14 @@ export default function ProjectDetailsTable({ projectData }) {
           ? data.disbursementAmount
           : "$" + new Intl.NumberFormat().format(data.disbursementAmount),
         projectTitle: data.projectTitle,
+        status:
+          !Number.isNaN(parseInt(data.disbursementAmount)) &&
+          !Number.isNaN(parseInt(data.approvedAmount))
+            ? Math.round((data.disbursementAmount / data.approvedAmount) * 100)
+            : Number.isNaN(parseInt(data.disbursementAmount)) &&
+              !Number.isNaN(parseInt(data.approvedAmount))
+            ? 0
+            : null,
       };
     });
     setTableData(tData);
@@ -302,7 +360,7 @@ export default function ProjectDetailsTable({ projectData }) {
               columnData={router.locale === "en" ? columnDataEn : columnDataAr}
               data={tableData}
               pagination={true}
-              scroll={{ x: 1500 }}
+              scroll={{ x: 1800 }}
             />
           </div>
         </Row>

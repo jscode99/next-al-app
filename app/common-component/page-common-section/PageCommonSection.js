@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { Row, Col, Button } from "antd";
+import { Row, Col, Button, Dropdown, Menu } from "antd";
+import { MoreOutlined } from "@ant-design/icons";
 import BreadCrumb from "./BreadCrumb";
 import SocialMedia from "./SocialMedia";
 import { getBreadcrumData } from "../../services/commonService";
@@ -18,9 +19,7 @@ export default function PageCommonSection({ title, handlePrint }) {
       { className: "fas fa-envelope", link: "mailto:", btn: null },
       {
         className: "fab fa-whatsapp",
-        link: `https://api.whatsapp.com/send?text=Al%20Aqsa%20https%3A%2F%2F${
-          process.env.DOMAIN
-        }/${router.asPath}` /* "https://api.whatsapp.com/send" */,
+        link: `https://api.whatsapp.com/send?text=Al%20Aqsa%20https%3A%2F%2F${process.env.DOMAIN}/${router.asPath}` /* "https://api.whatsapp.com/send" */,
         btn: null,
       },
       {
@@ -34,12 +33,29 @@ export default function PageCommonSection({ title, handlePrint }) {
           process.env.DOMAIN
         }%252F${router.asPath.replace(
           "/",
-          "%252F"
+          "%252F",
         )}%26client_id%3D140586622674265%26ret%3Dlogin&cancel_url=https%3A%2F%2Fs7.addthis.com%2Fstatic%2Fthankyou.html%3Ferror_code%3D4201%26error_message%3DUser%2Bcanceled%2Bthe%2BDialog%2Bflow%23_%3D_&display=popup&locale=en_GB` /* "https://www.facebook.com/login.php" */,
       },
     ];
     setSocialMediaList(socialMediaList);
   }, [router.locale, handlePrint]);
+
+  let overLay = (
+    <Menu>
+      {socialMediaList &&
+        socialMediaList.length &&
+        socialMediaList.map((data, index) => (
+          <Menu.Item key={index}>
+            <SocialMedia
+              className={data.className}
+              link={data.link}
+              btn={data.btn}
+            />
+          </Menu.Item>
+        ))}
+    </Menu>
+  );
+
   return (
     <div className={`${style.container} w-100`}>
       <Row className="h-100">
@@ -84,8 +100,9 @@ export default function PageCommonSection({ title, handlePrint }) {
                           </Button> */}
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map(data => (
+                            socialMediaList.map((data, index) => (
                               <SocialMedia
+                                key={index}
                                 className={data.className}
                                 link={data.link}
                                 btn={data.btn}
@@ -108,8 +125,9 @@ export default function PageCommonSection({ title, handlePrint }) {
                           </Button> */}
                           {socialMediaList &&
                             socialMediaList.length &&
-                            socialMediaList.map(data => (
+                            socialMediaList.map((data, index) => (
                               <SocialMedia
+                                key={index}
                                 className={data.className}
                                 link={data.link}
                                 btn={data.btn}
@@ -183,38 +201,46 @@ export default function PageCommonSection({ title, handlePrint }) {
                           )}
                         </div>
                       </Col>
-                      <Col xs={0} sm={0} md={10} lg={8} xl={8}>
+                      <Col xs={2} sm={2} md={10} lg={8} xl={8}>
                         <div
                           className={`${style.page_common_section_social_media_icon} d-flex justify-content-center align-items-center h-100`}
                         >
-                          {socialMediaList &&
-                            socialMediaList.length &&
-                            socialMediaList.map(data => (
-                              //<MoreOutlined />
-                              <SocialMedia
-                                className={data.className}
-                                link={data.link}
-                                btn={data.btn}
+                          <Dropdown
+                            overlay={overLay}
+                            style={{ width: "20px", height: "20px" }}
+                            placement="bottomCenter"
+                          >
+                            <Button
+                              className={`${style.dropdown_button} d-flex justify-content-center align-items-center px-0`}
+                            >
+                              <MoreOutlined
+                                // className={``}
+                                style={{ fontSize: "25px", color: "#0E3890" }}
                               />
-                            ))}
+                            </Button>
+                          </Dropdown>
                         </div>
                       </Col>
                     </Row>
                   ) : (
                     <Row>
-                      <Col xs={0} sm={0} md={10} lg={8} xl={8}>
+                      <Col xs={2} sm={2} md={10} lg={8} xl={8}>
                         <div
                           className={`${style.page_common_section_social_media_icon} d-flex justify-content-center align-items-center h-100`}
                         >
-                          {socialMediaList &&
-                            socialMediaList.length &&
-                            socialMediaList.map(data => (
-                              <SocialMedia
-                                className={data.className}
-                                link={data.link}
-                                btn={data.btn}
-                              />
-                            ))}
+                          <Dropdown
+                            overlay={overLay}
+                            style={{ width: "20px", height: "20px" }}
+                            placement="bottomCenter"
+                          >
+                            <Button
+                              icon={
+                                <MoreOutlined
+                                  style={{ fontSize: "25px", color: "#0E3890" }}
+                                />
+                              }
+                            ></Button>
+                          </Dropdown>
                         </div>
                       </Col>
                       <Col xs={4} sm={4} md={10} lg={8} xl={8}>

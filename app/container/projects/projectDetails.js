@@ -23,11 +23,7 @@ export default function ProjectDetailsContainer({
       page={"projects"}
       pageName={"projects"}
       projectTitle={router.locale === "en" ? projectTitle : projectAr}
-      title={
-        router.locale === "en"
-          ? projectTitleEn[0].title
-          : projectTitleAr[0].title
-      }
+      title={"projects"}
     >
       <ProjectDetails
         projectTitle={router.locale === "en" ? projectTitle : projectAr}

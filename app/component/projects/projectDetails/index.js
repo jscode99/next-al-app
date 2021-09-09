@@ -10,8 +10,10 @@ import ProjectDetailsTable from "./projectDetailsTable";
 import style from "./index.module.sass";
 
 export default function ProjectDetails({ projectTitle, projectData, sector }) {
-  // console.log("sector", sector);
-  // console.log("projectData  INNER COMPONENT", projectData);
+  console.log("sector", sector);
+  console.log("projectData  INNER COMPONENT", projectData);
+  console.log("projectTitle  INNER COMPONENT", projectTitle);
+
   const [finalChartData, setFinalChartData] = useState([]);
   const [sectorData, setSectorData] = useState([]);
   let router = useRouter();
@@ -63,13 +65,13 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       };
 
       chartData[projectData[0].projectTitle.toLowerCase()][
-        `total${sector[index].title.split(" ")[0].split(",")[0]}`
+        `total${sector[index].enTitle.split(" ")[0].split(",")[0]}`
       ] = 0;
       chartData[projectData[0].projectTitle.toLowerCase()][
-        `totalAmount${sector[index].title.split(" ")[0].split(",")[0]}`
+        `totalAmount${sector[index].enTitle.split(" ")[0].split(",")[0]}`
       ] = 0;
 
-      console.log("SectorCheck", chartData);
+      // console.log("SectorCheck", chartData);
 
       for (let innerIndex = 0; innerIndex < projectData.length; innerIndex++) {
         // debugger;
@@ -168,21 +170,25 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
         ) {
           //No: of projects
           chartData[projectData[0].projectTitle.toLowerCase()][
-            `total${sector[index].title.split(" ")[0].split(",")[0]}`
+            `total${sector[index].enTitle.split(" ")[0].split(",")[0]}`
           ] =
             chartData[projectData[0].projectTitle.toLowerCase()][
-              `total${sector[index].title.split(" ")[0].split(",")[0]}`
+              `total${sector[index].enTitle.split(" ")[0].split(",")[0]}`
             ] + 1;
 
           // Allocation amount
           chartData[projectData[0].projectTitle.toLowerCase()][
-            `totalAmount${sector[index].title.split(" ")[0].split(",")[0]}`
+            `totalAmount${sector[index].enTitle.split(" ")[0].split(",")[0]}`
           ] = Number.isNaN(parseFloat(projectData[innerIndex].approvedAmount))
             ? chartData[projectData[0].projectTitle.toLowerCase()][
-                `totalAmount${sector[index].title.split(" ")[0].split(",")[0]}`
+                `totalAmount${
+                  sector[index].enTitle.split(" ")[0].split(",")[0]
+                }`
               ] + 0
             : chartData[projectData[0].projectTitle.toLowerCase()][
-                `totalAmount${sector[index].title.split(" ")[0].split(",")[0]}`
+                `totalAmount${
+                  sector[index].enTitle.split(" ")[0].split(",")[0]
+                }`
               ] + parseFloat(projectData[innerIndex].approvedAmount);
         }
       }
@@ -222,7 +228,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
     //Setting chart data state
     setFinalChartData(chartDataPriority);
     console.log("finalChartData", finalChartData);
-  }, [projectData]);
+  }, [projectData, projectTitle, sector]);
   console.log("Sector Data", sectorData);
 
   return (

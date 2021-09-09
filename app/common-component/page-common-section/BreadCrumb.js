@@ -14,7 +14,7 @@ export default function BreadCrumb({ breadcrumList }) {
         if (!data) {
           return (
             <>
-              <Breadcrumb.Item className={`${style.breadcrumb_item}`} href="/">
+              <Breadcrumb.Item className={`${style.breadcrumb_item}`} /* href="/" */>
                 {router.locale === "en" ? "Home" : "الرئيسية"}
               </Breadcrumb.Item>
               <Breadcrumb.Separator>
@@ -44,7 +44,7 @@ export default function BreadCrumb({ breadcrumList }) {
               <>
                 <Breadcrumb.Item
                   className={`${style.breadcrumb_item}`}
-                  href={`/${mapTitleToRoutePath({ Title: data })}`}
+                  // href={`/${mapTitleToRoutePath({ Title: data })}`}
                 >
                   {router.locale === "en"
                     ? t(data).length > 30

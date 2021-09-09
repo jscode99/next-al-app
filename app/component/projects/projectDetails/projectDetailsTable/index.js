@@ -24,7 +24,7 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "Code",
-      render: code => (
+      render: (code) => (
         <p className={`${style.table_name} text-capitalize text-center m-1`}>
           {code}
         </p>
@@ -40,14 +40,14 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "Projects",
-      render: projects => (
+      render: (projects) => (
         <p
           className={`${style.table_name} text-capitalize fw-bold text-start m-1`}
         >
           {projects}
         </p>
       ),
-      width: "30%",
+      width: "19%",
     },
 
     {
@@ -59,7 +59,7 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "Sector",
-      render: sector => (
+      render: (sector) => (
         <p className={`${style.table_name} text-capitalize text-start m-1`}>
           {sector}
         </p>
@@ -75,12 +75,12 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "Alquds",
-      render: quds => (
+      render: (quds) => (
         <p className={`${style.table_name} text-capitalize text-center m-1`}>
           {quds}
         </p>
       ),
-      width: "8%",
+      width: "10%",
     },
     {
       title: (
@@ -91,12 +91,12 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "westBank",
-      render: west => (
+      render: (west) => (
         <p className={`${style.table_name} text-capitalize text-center m-1`}>
           {west}
         </p>
       ),
-      width: "8%",
+      width: "10%",
     },
     {
       title: (
@@ -107,12 +107,12 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "gazaStrip",
-      render: gaza => (
+      render: (gaza) => (
         <p className={`${style.table_name} text-capitalize text-center m-1`}>
           {gaza}
         </p>
       ),
-      width: "8%",
+      width: "10%",
     },
     {
       title: (
@@ -123,10 +123,10 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "approvedAmount",
-      render: approved => (
+      render: (approved) => (
         <p className={`${style.table_name} text-center m-1`}>{approved}</p>
       ),
-      width: "8%",
+      width: "10%",
     },
     {
       title: (
@@ -137,12 +137,12 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "disbursementAmount",
-      render: disbursed => (
+      render: (disbursed) => (
         <p className={`${style.table_name} text-capitalize text-center m-1`}>
           {disbursed}
         </p>
       ),
-      width: "8%",
+      width: "10%",
     },
     {
       title: (
@@ -153,9 +153,64 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "status",
-      render: status => (
+      render: (status) => (
         <div
           className={`d-flex w-100 position-relative`}
+          style={{ height: "50px" }}
+        >
+          <Tooltip
+            placement="top"
+            title={
+              <div className={`text-capitalize`}>
+                {t("total approved")}
+                {`: ${status !== null ? "100%" : "NA"}`}
+              </div>
+            }
+          >
+            <div
+              className={`d-flex w-100 h-100 position-absolute`}
+              style={{ backgroundColor: status !== null ? "#B54F9B" : "#999" }}
+            ></div>
+          </Tooltip>
+          <Tooltip
+            placement="top"
+            title={
+              <div className={`text-capitalize`}>
+                {t("total disbursed")}
+                {`: ${status !== null ? `${status}%` : "0"}`}
+              </div>
+            }
+          >
+            <div
+              className={`d-flex h-100 position-absolute fw-bold justify-content-center align-items-center`}
+              style={{
+                backgroundColor: "#FE8954",
+                width: `${status !== null ? status : 0}%`,
+                color: "#fff",
+              }}
+            >
+              {status !== null && parseInt(status) ? status + "%" : ""}
+            </div>
+          </Tooltip>
+        </div>
+      ),
+      width: "11%",
+    },
+  ];
+
+  let columnDataAr = [
+    {
+      title: (
+        <p
+          className={`${style.table_title} text-capitalize fw-bold text-center m-1`}
+        >
+          {t("status")}
+        </p>
+      ),
+      dataIndex: "status",
+      render: (status) => (
+        <div
+          className={`d-flex w-100 position-relative flex-row-reverse`}
           style={{ height: "50px" }}
         >
           <Tooltip
@@ -166,7 +221,7 @@ export default function ProjectDetailsTable({ projectData }) {
           >
             <div
               className={`d-flex w-100 h-100 position-absolute`}
-              style={{ backgroundColor: "#B54F9B" }}
+              style={{ backgroundColor: status !== null ? "#B54F9B" : "#999" }}
             ></div>
           </Tooltip>
           <Tooltip
@@ -179,20 +234,17 @@ export default function ProjectDetailsTable({ projectData }) {
               className={`d-flex h-100 position-absolute fw-bold justify-content-center align-items-center`}
               style={{
                 backgroundColor: "#FE8954",
-                width: `${status}%`,
+                width: `${status !== null ? status : 0}%`,
                 color: "#fff",
               }}
             >
-              {status + "%"}
+              {status !== null && parseInt(status) ? status + "%" : ""}
             </div>
           </Tooltip>
         </div>
       ),
-      width: "20%",
+      width: "11%",
     },
-  ];
-
-  let columnDataAr = [
     {
       title: (
         <p
@@ -202,9 +254,10 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "disbursementAmount",
-      render: disbursed => (
+      render: (disbursed) => (
         <p className={`${style.table_name} text-center m-1`}>{disbursed}</p>
       ),
+      width: "10%",
     },
     {
       title: (
@@ -215,9 +268,10 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "approvedAmount",
-      render: approved => (
+      render: (approved) => (
         <p className={`${style.table_name} text-center m-1`}>{approved}</p>
       ),
+      width: "10%",
     },
     {
       title: (
@@ -228,10 +282,10 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "gazaStrip",
-      render: gaza => (
+      render: (gaza) => (
         <p className={`${style.table_name} text-center m-1`}>{gaza}</p>
       ),
-      width: "13%",
+      width: "10%",
     },
     {
       title: (
@@ -242,10 +296,10 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "westBank",
-      render: west => (
+      render: (west) => (
         <p className={`${style.table_name} text-center m-1`}>{west}</p>
       ),
-      width: "13%",
+      width: "10%",
     },
     {
       title: (
@@ -256,10 +310,10 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "Alquds",
-      render: quds => (
+      render: (quds) => (
         <p className={`${style.table_name} text-center m-1`}>{quds}</p>
       ),
-      width: "13%",
+      width: "10%",
     },
     {
       title: (
@@ -270,10 +324,10 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "Sector",
-      render: sector => (
+      render: (sector) => (
         <p className={`${style.table_name} text-end m-1`}>{sector}</p>
       ),
-      width: "20%",
+      width: "10%",
     },
     {
       title: (
@@ -284,10 +338,10 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "Projects",
-      render: projects => (
+      render: (projects) => (
         <p className={`${style.table_name} fw-bold text-end m-1`}>{projects}</p>
       ),
-      width: "60%",
+      width: "19%",
     },
 
     {
@@ -299,14 +353,51 @@ export default function ProjectDetailsTable({ projectData }) {
         </p>
       ),
       dataIndex: "Code",
-      render: code => (
+      render: (code) => (
         <p className={`${style.table_name} text-center m-1`}>{code}</p>
       ),
+      width: "10%",
     },
   ];
 
   useEffect(() => {
-    let tData = projectData.map(data => {
+    let tData = projectData.map((data) => {
+      // !Number.isNaN(parseInt(data.disbursementAmount)) &&
+      //     !Number.isNaN(parseInt(data.approvedAmount))
+      //       ? Math.round((data.disbursementAmount / data.approvedAmount) * 100)
+      //       : Number.isNaN(parseInt(data.disbursementAmount)) &&
+      //         !Number.isNaN(parseInt(data.approvedAmount))
+      //       ? 0
+      //       : !Number.isNaN(parseInt(data.disbursementAmount)) &&
+      //         Number.isNaN(parseInt(data.approvedAmount))
+      //       ? null
+      //       : Number.isNaN(parseInt(data.disbursementAmount)) &&
+      //       Number.isNaN(parseInt(data.approvedAmount))?null:null,
+      let status = 0;
+      if (
+        !Number.isNaN(parseInt(data.disbursementAmount)) &&
+        !Number.isNaN(parseInt(data.approvedAmount))
+      ) {
+        status = Math.round(
+          (data.disbursementAmount / data.approvedAmount) * 100
+        );
+      } else if (
+        Number.isNaN(parseInt(data.disbursementAmount)) &&
+        Number.isNaN(parseInt(data.approvedAmount))
+      ) {
+        status = null;
+      } else if (
+        !Number.isNaN(parseInt(data.disbursementAmount)) &&
+        Number.isNaN(parseInt(data.approvedAmount))
+      ) {
+        status = null;
+      } else if (
+        Number.isNaN(parseInt(data.disbursementAmount)) &&
+        !Number.isNaN(parseInt(data.approvedAmount))
+      ) {
+        status = 0;
+      }
+
       return {
         id: data.id,
         Code: data.Code,
@@ -314,28 +405,23 @@ export default function ProjectDetailsTable({ projectData }) {
         Sector: data.Sector,
         Alquds: Number.isNaN(parseInt(data.Alquds))
           ? data.Alquds
-          : "$" + new Intl.NumberFormat().format(data.Alquds),
+          : "$" + new Intl.NumberFormat().format(Math.round(data.Alquds)),
         westBank: Number.isNaN(parseInt(data.westBank))
           ? data.westBank
-          : "$" + new Intl.NumberFormat().format(data.westBank),
+          : "$" + new Intl.NumberFormat().format(Math.round(data.westBank)),
         gazaStrip: Number.isNaN(parseInt(data.gazaStrip))
           ? data.gazaStrip
-          : "$" + new Intl.NumberFormat().format(data.gazaStrip),
+          : "$" + new Intl.NumberFormat().format(Math.round(data.gazaStrip)),
         approvedAmount: Number.isNaN(parseInt(data.approvedAmount))
           ? data.approvedAmount
-          : "$" + new Intl.NumberFormat().format(data.approvedAmount),
+          : "$" +
+            new Intl.NumberFormat().format(Math.round(data.approvedAmount)),
         disbursementAmount: Number.isNaN(parseInt(data.disbursementAmount))
           ? data.disbursementAmount
-          : "$" + new Intl.NumberFormat().format(data.disbursementAmount),
+          : "$" +
+            new Intl.NumberFormat().format(Math.round(data.disbursementAmount)),
         projectTitle: data.projectTitle,
-        status:
-          !Number.isNaN(parseInt(data.disbursementAmount)) &&
-          !Number.isNaN(parseInt(data.approvedAmount))
-            ? Math.round((data.disbursementAmount / data.approvedAmount) * 100)
-            : Number.isNaN(parseInt(data.disbursementAmount)) &&
-              !Number.isNaN(parseInt(data.approvedAmount))
-            ? 0
-            : null,
+        status,
       };
     });
     setTableData(tData);
@@ -360,7 +446,7 @@ export default function ProjectDetailsTable({ projectData }) {
               columnData={router.locale === "en" ? columnDataEn : columnDataAr}
               data={tableData}
               pagination={true}
-              scroll={{ x: 1800 }}
+              // scroll={{ x: 1800 }}
             />
           </div>
         </Row>

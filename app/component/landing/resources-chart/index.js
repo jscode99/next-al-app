@@ -730,7 +730,7 @@ export default function ResourceChart({
                         <p
                           className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
                         >
-                          {t("total granted")} :{" "}
+                          {t("total approved")} :{" "}
                           <span>{`$${
                             activeData === "arab"
                               ? new Intl.NumberFormat().format(totalArab)
@@ -765,7 +765,7 @@ export default function ResourceChart({
                         <p
                           className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
                         >
-                          {t("total Approved")} :{" "}
+                          {t("total approved")} :{" "}
                           <span>{`$${
                             activeData === "yearly"
                               ? new Intl.NumberFormat().format(totalYearly)
@@ -841,7 +841,7 @@ export default function ResourceChart({
                             <p
                               className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
                             >
-                              {t("total granted")} :{" "}
+                              {t("total approved")} :{" "}
                               <span>{`$${
                                 activeData === "arab"
                                   ? new Intl.NumberFormat().format(totalArab)
@@ -873,7 +873,7 @@ export default function ResourceChart({
                                   ? new Intl.NumberFormat().format(totalArab)
                                   : ""
                               }`}</span>{" "}
-                              :{t("total granted")}
+                              :{t("total approved")}
                               {/* {router.locale === "ar" ? <span>$</span>:''} */}
                             </p>
                           </>
@@ -908,7 +908,7 @@ export default function ResourceChart({
                             <p
                               className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
                             >
-                              {t("total Approved")} :{" "}
+                              {t("total approved")} :{" "}
                               <span>{`$${
                                 activeData === "yearly"
                                   ? new Intl.NumberFormat().format(totalYearly)
@@ -938,7 +938,7 @@ export default function ResourceChart({
                                   ? new Intl.NumberFormat().format(totalYearly)
                                   : ""
                               }`}</span>{" "}
-                              : {t("total Approved")}
+                              : {t("total approved")}
                               {/* {router.locale === "ar" ? <span>$</span>:''} */}
                             </p>
                           </>

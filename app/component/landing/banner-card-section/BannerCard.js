@@ -8,6 +8,7 @@ import { splitLetterNumberService } from "../../../services/commonService";
 import style from "./index.module.sass";
 
 export default function BannerCard({ data }) {
+  console.log("BANNER CARD", data);
   const [countUpArray, setcountUpArray] = useState("");
   const [ref, isVisible] = useInView({
     threshold: 1,
@@ -69,7 +70,7 @@ export default function BannerCard({ data }) {
       >
         {countUpArray &&
           countUpArray.length > 0 &&
-          countUpArray.map((value) => {
+          countUpArray.map(value => {
             if (Number.isNaN(parseFloat(value))) {
               return value;
             } else {

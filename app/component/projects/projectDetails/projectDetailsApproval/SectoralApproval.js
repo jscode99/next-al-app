@@ -19,38 +19,38 @@ export default function SectoralApproval({ sectoralData, projectData }) {
       for (let index in projectData) {
         sector.push({
           title: "infrastructure & housing",
-          totalAllocated: projectData[index].totalAmountinfrastructure,
-          totalProject: projectData[index].totalinfrastructure,
+          totalAllocated: projectData[index].totalAmountInfrastructure,
+          totalProject: projectData[index].totalInfrastructure,
           totalApproved: projectData[index].totalApprovedAmount,
         });
         sector.push({
           title: "education",
-          totalAllocated: projectData[index].totalAmounteducation,
-          totalProject: projectData[index].totaleducation,
+          totalAllocated: projectData[index].totalAmountEducation,
+          totalProject: projectData[index].totalEducation,
           totalApproved: projectData[index].totalApprovedAmount,
         });
         sector.push({
           title: "health",
-          totalAllocated: projectData[index].totalAmounthealth,
-          totalProject: projectData[index].totalhealth,
+          totalAllocated: projectData[index].totalAmountHealth,
+          totalProject: projectData[index].totalHealth,
           totalApproved: projectData[index].totalApprovedAmount,
         });
         sector.push({
           title: "economic empowerment",
-          totalAllocated: projectData[index].totalAmounteconomic,
-          totalProject: projectData[index].totaleconomic,
+          totalAllocated: projectData[index].totalAmountEconomic,
+          totalProject: projectData[index].totalEconomic,
           totalApproved: projectData[index].totalApprovedAmount,
         });
         sector.push({
           title: "trade, industry and civil institutions",
-          totalAllocated: projectData[index].totalAmounttrade,
-          totalProject: projectData[index].totaltrade,
+          totalAllocated: projectData[index].totalAmountTrade,
+          totalProject: projectData[index].totalTrade,
           totalApproved: projectData[index].totalApprovedAmount,
         });
         sector.push({
           title: "agriculture and rural development",
-          totalAllocated: projectData[index].totalAmountagriculture,
-          totalProject: projectData[index].totalagriculture,
+          totalAllocated: projectData[index].totalAmountAgriculture,
+          totalProject: projectData[index].totalAgriculture,
           totalApproved: projectData[index].totalApprovedAmount,
         });
       }
@@ -85,7 +85,7 @@ export default function SectoralApproval({ sectoralData, projectData }) {
             <p
               className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}
             >
-              {t("% total portfolio")}
+              {t("% total Portfolio")}
             </p>
           </div>
           {sectorApproval.map((data, index) => (
@@ -132,7 +132,7 @@ export default function SectoralApproval({ sectoralData, projectData }) {
             <p
               className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}
             >
-              {t("% total portfolio")}
+              {t("% total Portfolio")}
             </p>
             <p
               className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}

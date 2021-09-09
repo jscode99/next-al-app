@@ -14,6 +14,7 @@ export default function Landing({
   projectData,
   projectDataAr,
   sector,
+  sectorAr,
   projectTitle,
   projectAr,
   alAqsa,
@@ -37,7 +38,7 @@ export default function Landing({
       page={"landing"}
       pageName={"home"}
       projectTitle={router.locale === "en" ? projectTitle : projectAr}
-      projectData={projectData}
+      projectData={router.locale === "en" ? projectData : projectDataAr}
     >
       {router.locale === "en"
         ? staticSite[0].static.home_fundResources.length > 0 && (
@@ -66,7 +67,7 @@ export default function Landing({
       <SectorAllocations
         projectTitle={projectTitle}
         projectData={projectData}
-        sectorData={sector}
+        sectorData={router.locale === "en" ? sector : sectorAr}
       />
       {router.locale === "en"
         ? staticSite[0].static.home_achievements.length > 0 && (

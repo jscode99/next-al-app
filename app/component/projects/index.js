@@ -154,7 +154,7 @@ export default function Projects({ projectTitle, projectData, arab, arabAr }) {
         <ProjectRouteCard finalChartData={finalChartData} />
       ) : (
         <ProjectRouteCard
-          finalChartData={new Array(...finalChartData).reverse()}
+          finalChartData={finalChartData}
         />
       )}
       {router.locale === "en" ? (

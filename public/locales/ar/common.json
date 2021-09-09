@@ -45,7 +45,7 @@
     "fax":"الفاكس",
     "email us directly":"مراسلتنا عبر البريد الإلكتروني مباشرة",
     "head quarters":"موقع مجموعة البنك الإلاسلامي للتنمية",
-    "isdb hq":"*****",
+    "isdb hq":" موقع مجموعة البنك الإسلامي للتنمية",
     "total approved":"اجمالي الاعتمادات",
     "source of funds":"مصدر التمويل",
     "al aqsa fund":"صندوق الأقصى",
@@ -60,7 +60,7 @@
     "name Of funds":"اسم الصندوق",
     "allocation (in 000)":"المخصصات  ( بالألف دولار)",
     "arab funds contributions":"مخصصات الصناديق العربية",
-    "total":"مجموع",
+    "total":"المجموع",
     "al aqsa arab funds – approved vs disbursements":"صندوق الأقصى والصناديق العربية - الاعتماد مقابل المصروفات",
     "approved":"المعتمد",
     "disbursed": "المصروف",
@@ -91,9 +91,9 @@
     "al-quds":"القدس الشريف",
     "west bank":"الضفة الغربية",
     "gaza":"قطاع غزة",
-    "phone": "****",
-    "email": "****",
-    "website": "****",
+    "phone": " الهاتف",
+    "email": " البريد الإلكتروني",
+    "website": " الموقع الإلكتروني",
     "other resources":"مصادر أخرى",
     "terms and conditions":"البنود والأحكام",
     "privacy policy":"سياسة الخصوصية",
@@ -117,7 +117,12 @@
     "criteria":"المعايير",
     "approvals":"الموافقات",
     "bn":"مليار ",
-    "mn":"مليون "
-
+    "mn":"مليون ",
+    "status":"نسبة الصرف",
+    "please enter a valid name.":" الرجاء إدخال الاسم",
+    "please enter a valid email.":" الرجاء إدخال البريد الإلكتروني",
+    "please enter a valid phone number or try adding your country code.":" الرجاء إدخال رقم الهاتف او محاولة إدخال المفتاح الدولي لدولتك",
+    "please enter a valid subject.":" الرجاء كتابة الموضوع",
+    "please enter a valid message.":" الرجاء كتابة الرسالة"
 }
 

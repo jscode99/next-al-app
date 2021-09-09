@@ -31,7 +31,7 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
       <Row gutter={[16, 16]} className={`px-3 pt-3`}>
         {paginatedListData &&
           paginatedListData.length > 0 &&
-          paginatedListData.map(data => (
+          paginatedListData.map((data) => (
             <>
               {console.log("data", data)}
               <Col
@@ -67,7 +67,9 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
                       <p
                         className={`${styles.stories_img_des2} d-flex justify-content-center text-white px-3 py-1 text-capitalize`}
                       >
-                        {t("total approved")} : $ {data.TotalApproved}
+                        {router.locale === "en"
+                          ? `total approved : $${data.TotalApproved}`
+                          : `$${data.TotalApproved} : ${t("total approved")}`}
                       </p>
                     </div>
 

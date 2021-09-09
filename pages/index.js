@@ -15,6 +15,7 @@ export default function Home({
   projectData,
   projectDataAr,
   sector,
+  sectorAr,
   projectTitle,
   projectAr,
   alAqsa,
@@ -36,6 +37,7 @@ export default function Home({
       projectData={projectData}
       projectDataAr={projectDataAr}
       sector={sector}
+      sectorAr={sectorAr}
       projectTitle={projectTitle}
       projectAr={projectAr}
       alAqsa={alAqsa}
@@ -70,6 +72,10 @@ export async function getStaticProps({ locale }) {
     "&&_limit=-1";
   let sectorUrl =
     process.env.BASE_URL + process.env.PATH.SECTOR_ALLOCATION + `?_limit=-1`;
+  let sectorArUrl =
+    process.env.BASE_URL +
+    process.env.PATH.SECTOR_ALLOCATION +
+    "?_locale=ar-001";
   let projectTitleUrl =
     process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + `?_limit=-1`;
   let projectTitleArUrl =
@@ -100,6 +106,7 @@ export async function getStaticProps({ locale }) {
     projectData,
     projectDataAr,
     sector,
+    sectorAr,
     projectTitle,
     projectAr,
     alAqsa,
@@ -119,6 +126,7 @@ export async function getStaticProps({ locale }) {
     await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
     await fetchService(projectDetailsArUrl, CONST.API_METHOD.GET),
     await fetchService(sectorUrl, CONST.API_METHOD.GET),
+    await fetchService(sectorArUrl, CONST.API_METHOD.GET),
     await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
     await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
     await fetchService(alAqsaFundUrl, CONST.API_METHOD.GET),
@@ -141,6 +149,7 @@ export async function getStaticProps({ locale }) {
       projectData,
       projectDataAr,
       sector,
+      sectorAr,
       projectTitle,
       projectAr,
       alAqsa,

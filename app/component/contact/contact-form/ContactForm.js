@@ -51,7 +51,7 @@ export default function ContactForm() {
                   label={t("first name")}
                   placeholder={t("enter first name")}
                   name="firstName"
-                  errorText={`Please enter the field properly.`}
+                  errorText={t("please enter a valid name.")}
                   errorCheck={
                     errors.firstName !== null && !errors.firstName
                       ? true
@@ -92,7 +92,7 @@ export default function ContactForm() {
                   label={t("email address")}
                   placeholder={t("enter email address")}
                   name="email"
-                  errorText={`Please check your email.`}
+                  errorText={t("please enter a valid email.")}
                   errorCheck={
                     errors.email !== null && !errors.email ? true : false
                   }
@@ -107,7 +107,9 @@ export default function ContactForm() {
                     sm={true}
                     label={t("phone number")}
                     placeholder={t("enter phone number")}
-                    errorText={`Enter a valid phone number or try adding your country code.`}
+                    errorText={t(
+                      "please enter a valid phone number or try adding your country code.",
+                    )}
                     errorCheck={
                       errors.phoneNumber !== null && !errors.phoneNumber
                         ? true
@@ -125,7 +127,9 @@ export default function ContactForm() {
                   sm={true}
                   label={t("phone number")}
                   placeholder={t("enter phone number")}
-                  errorText={`Enter a valid phone number or try adding your country code.`}
+                  errorText={t(
+                    "please enter a valid phone number or try adding your country code.",
+                  )}
                   errorCheck={
                     errors.phoneNumber !== null && !errors.phoneNumber
                       ? true
@@ -144,7 +148,7 @@ export default function ContactForm() {
                   label={t("subject")}
                   placeholder={t("enter subject")}
                   name="subject"
-                  errorText={`Please enter a valid subject.`}
+                  errorText={t("please enter a valid subject.")}
                   errorCheck={
                     errors.subject !== null && !errors.subject ? true : false
                   }
@@ -160,7 +164,7 @@ export default function ContactForm() {
                   label={t("message")}
                   placeholder={t("enter message")}
                   name="message"
-                  errorText={`Please enter a valid message.`}
+                  errorText={t("please enter a valid message.")}
                   errorCheck={
                     errors.message !== null && !errors.message ? true : false
                   }
@@ -191,7 +195,7 @@ export default function ContactForm() {
                   label={t("first name")}
                   placeholder={t("enter first name")}
                   name="firstName"
-                  errorText={`Please enter the field properly.`}
+                  errorText={t("please enter a valid name.")}
                   errorCheck={
                     errors.firstName !== null && !errors.firstName
                       ? true
@@ -232,7 +236,7 @@ export default function ContactForm() {
                   label={t("email address")}
                   placeholder={t("enter email address")}
                   name="email"
-                  errorText={`Please check your email.`}
+                  errorText={t("please enter a valid email.")}
                   errorCheck={
                     errors.email !== null && !errors.email ? true : false
                   }
@@ -247,7 +251,9 @@ export default function ContactForm() {
                     sm={true}
                     label={t("phone number")}
                     placeholder={t("enter phone number")}
-                    errorText={`Enter a valid phone number or try adding your country code.`}
+                    errorText={t(
+                      "please enter a valid phone number or try adding your country code.",
+                    )}
                     errorCheck={
                       errors.phoneNumber !== null && !errors.phoneNumber
                         ? true
@@ -265,7 +271,9 @@ export default function ContactForm() {
                   sm={true}
                   label={t("phone number")}
                   placeholder={t("enter phone number")}
-                  errorText={`Enter a valid phone number or try adding your country code.`}
+                  errorText={t(
+                    "please enter a valid phone number or try adding your country code.",
+                  )}
                   errorCheck={
                     errors.phoneNumber !== null && !errors.phoneNumber
                       ? true
@@ -284,7 +292,7 @@ export default function ContactForm() {
                   label={t("subject")}
                   placeholder={t("enter subject")}
                   name="subject"
-                  errorText={`Please enter a valid subject.`}
+                  errorText={t("please enter a valid subject.")}
                   errorCheck={
                     errors.subject !== null && !errors.subject ? true : false
                   }
@@ -300,7 +308,7 @@ export default function ContactForm() {
                   label={t("message")}
                   placeholder={t("enter message")}
                   name="message"
-                  errorText={`Please enter a valid message.`}
+                  errorText={t("please enter a valid message.")}
                   errorCheck={
                     errors.message !== null && !errors.message ? true : false
                   }

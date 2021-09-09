@@ -11,7 +11,7 @@ import convertToInternationalCurrencySystem from "../../../services/internationa
 import style from "./index.module.sass";
 
 export default function ProjectRouteCard({ finalChartData }) {
-  console.log("finalChartData", finalChartData.reverse());
+  // console.log("finalChartData", finalChartData.reverse());
   const router = useRouter();
   const base_url = process.env.BASE_URL;
 
@@ -25,12 +25,12 @@ export default function ProjectRouteCard({ finalChartData }) {
         >
           {t("al aqsa & arab funds approved projects per fund")}
         </h3>
-        <Row gutter={[20, 20]} className={`w-100 justify-content-center pb-5`}>
-          {finalChartData.map(data => (
+        <Row gutter={[20, 20]} className={`w-100 justify-content-center pb-5 ${router.locale==="ar" && 'flex-row-reverse'}`}>
+          {finalChartData.map((data) => (
             <>
               <Col xs={0} sm={0} md={0} lg={5} xl={5}>
                 <div
-                  className={`${style.route_card_container} pt-4`}
+                  className={`${style.route_card_container} shadow pt-4`}
                   onClick={() => {
                     router.push({
                       pathname: `/projects/${mapTitleToRoutePath(data.title)}`,
@@ -57,8 +57,9 @@ export default function ProjectRouteCard({ finalChartData }) {
                       className={`${style.route_card_count} d-flex justify-content-center flex-column ps-3 pt-2`}
                     >
                       <p className={`m-0 ${style.route_card_approvals_amount}`}>
+                        $
                         {convertToInternationalCurrencySystem(
-                          data.totalApprovedAmount,
+                          data.totalApprovedAmount
                         )}
                       </p>
                       <p

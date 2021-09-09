@@ -75,7 +75,7 @@ export default function GeographicalApprovals({ projectData }) {
             <p
               className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}
             >
-              {t("% total portfolio")}
+              {t("% total Portfolio")}
             </p>
           </div>
           {geoSector.map((data, index) => (
@@ -122,7 +122,7 @@ export default function GeographicalApprovals({ projectData }) {
             <p
               className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}
             >
-              {t("% total portfolio")}
+              {t("% total Portfolio")}
             </p>
             <p
               className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}

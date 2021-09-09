@@ -82,7 +82,6 @@ export default function ResponsiveView({ view, logo }) {
                   view === "mobile" ? "p-footer-logo" : ""
                 } ${style.logo}`}
               >
-                {/* <Image src={logo} alt="logo" width="200" height="116" /> */}
                 <Image
                   src={"/images/common/alAqsaHead.png"}
                   alt={`Organization Logo`}
@@ -92,32 +91,6 @@ export default function ResponsiveView({ view, logo }) {
                 <p className={`${style.logo_title} text-capitalize text-white`}>
                   {t("al aqsa fund")}
                 </p>
-                {/* <div
-                className={`mt-4 d-flex justify-content-center w-100 flex-wrap px-2`}
-              >
-                {sMedia && sMedia.length > 0
-                  ? sMedia.map(data => (
-                      <span
-                        className={`mx-2 ${styles.footer-list-cursor-pointer} `}
-                        key={data.id}
-                        onClick={() => {
-                          window.open(data.Link);
-                        }}
-                      >
-                        <img
-                          src={
-                            data.AttachmentFiles[0].ServerRelativeUrl
-                              ? data.AttachmentFiles[0].ServerRelativeUrl
-                              : ""
-                          }
-                          alt="Media Icons"
-                          width="22px"
-                          height="18px"
-                        ></img>
-                      </span>
-                    ))
-                  : ""}
-              </div> */}
               </Col>
               <Col xs={24} sm={24} md={6} lg={7} xl={7}>
                 <ul className={`${style.footer_list}`}>
@@ -139,9 +112,9 @@ export default function ResponsiveView({ view, logo }) {
                   <li className={`${style.footer_list_cursor_auto}`}>
                     Tel: +966 (12) 636 1264
                   </li>
-                  {/* <li className={`${style.footer_list_cursor_auto}`}>
-                  Fax: +966 (12) 636 1264
-                </li> */}
+                  <li className={`${style.footer_list_cursor_auto}`}>
+                    Fax: +966 (12) 6366871
+                  </li>
                 </ul>
               </Col>
               <Col xs={24} sm={24} md={6} lg={6} xl={6}>
@@ -168,13 +141,6 @@ export default function ResponsiveView({ view, logo }) {
                   <li>
                     <Link href={"/contact"}>{t("contact")}</Link>
                   </li>
-                  {/* {fLinks && fLinks.length > 0
-                  ? fLinks.map((data) => (
-                      <li>
-                        <a href={data.Link}>{data.Title}</a>
-                      </li>
-                    ))
-                  : ""} */}
                 </ul>
               </Col>
               <Col xs={24} sm={24} md={5} lg={6} xl={6}>
@@ -254,13 +220,6 @@ export default function ResponsiveView({ view, logo }) {
                   <li>
                     <Link href={"/contact"}>{t("contact")}</Link>
                   </li>
-                  {/* {fLinks && fLinks.length > 0
-                  ? fLinks.map((data) => (
-                      <li>
-                        <a href={data.Link}>{data.Title}</a>
-                      </li>
-                    ))
-                  : ""} */}
                 </ul>
               </Col>
               <Col xs={0} sm={0} md={6} lg={7} xl={7}>
@@ -282,11 +241,11 @@ export default function ResponsiveView({ view, logo }) {
                     <br />
                   </li>
                   <li className={`${style.footer_list_cursor_auto} `}>
-                    التليفون: 1400 636 (12) 966 + الفاكس: 6366871- 12- 966+
+                    +التليفون: 636 1400 (12) 966
                   </li>
-                  {/* <li className={`${style.footer_list_cursor_auto}`}>
-                  Fax: +966 (12) 636 1264
-                </li> */}
+                  <li className={`${style.footer_list_cursor_auto}`}>
+                    +الفاكس: 636 6871 (12) 966
+                  </li>
                 </ul>
               </Col>
               <Col
@@ -334,11 +293,11 @@ export default function ResponsiveView({ view, logo }) {
                     <br />
                   </li>
                   <li className={`${style.footer_list_cursor_auto} `}>
-                    التليفون: 1400 636 (12) 966 + الفاكس: 6366871- 12- 966+
+                    +التليفون: 636 1400 (12) 966
                   </li>
-                  {/* <li className={`${style.footer_list_cursor_auto}`}>
-                  Fax: +966 (12) 636 1264
-                </li> */}
+                  <li className={`${style.footer_list_cursor_auto}`}>
+                    +الفاكس: 636 6871 (12) 966
+                  </li>
                 </ul>
               </Col>
 

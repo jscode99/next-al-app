@@ -9,28 +9,9 @@ import GeographicalApprovals from "./GeographicalApprovals";
 import style from "./index.module.sass";
 
 export default function ProjectDetailsApproval({ projectData, sector }) {
-  console.log("projectData", projectData);
-  console.log("sector", sector);
+  // console.log("projectData", projectData);
+  // console.log("sector", sector);
   let router = useRouter();
-  // const [geoSector, setGeoSector] = useState([]);
-
-  // useEffect(() => {
-  //   let geo = [];
-  //   for (let index in projectData) {
-  //     geo.push({
-  //       gazatotal: projectData[index].totalGaza,
-  //       gazatotalAmount: projectData[index].totalGazaAmount,
-  //       alQuadsTotal: projectData[index].totalAlQuads,
-  //       alQuadsTotalAmount: projectData[index].totalAlQuadsAmount,
-  //       westBankTotal: projectData[index].totalWestBanks,
-  //       westBankTotalAmount: projectData[index].totalWestBanksAmount,
-  //       totalApproved: projectData[index].totalApprovedAmount,
-  //       totalDisbursed: projectData[index].totalDisbursementAmount,
-  //     });
-  //   }
-  //   setGeoSector(geo);
-  // }, [projectData]);
-  // console.log("geoSector", geoSector);
 
   return (
     <div className={`${style.project_details_bg}`}>

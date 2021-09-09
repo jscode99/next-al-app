@@ -12,6 +12,7 @@ export default function ProjectDetailsContainer({
   projectTitleEn,
   projectTitleAr,
   sector,
+  sectorAr,
   bannerImage,
 }) {
   const router = useRouter();
@@ -22,14 +23,18 @@ export default function ProjectDetailsContainer({
       page={"projects"}
       pageName={"projects"}
       projectTitle={router.locale === "en" ? projectTitle : projectAr}
-      title={"projects"}
+      title={
+        router.locale === "en"
+          ? projectTitleEn[0].title
+          : projectTitleAr[0].title
+      }
     >
       <ProjectDetails
         projectTitle={router.locale === "en" ? projectTitle : projectAr}
         projectData={
           router.locale === "en" ? projectDetailsEnProp : projectDetailsArProp
         }
-        sector={sector}
+        sector={router.locale === "en" ? sector : sectorAr}
       />
     </Layout>
   );

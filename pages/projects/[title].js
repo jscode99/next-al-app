@@ -21,6 +21,7 @@ export default function ProjectDetails({
   projectTitleEn,
   projectTitleAr,
   sector,
+  sectorAr,
   bannerImage,
 }) {
   return (
@@ -32,6 +33,7 @@ export default function ProjectDetails({
       projectTitleEn={projectTitleEn}
       projectTitleAr={projectTitleAr}
       sector={sector}
+      sectorAr={sectorAr}
       bannerImage={bannerImage}
     />
   );
@@ -91,6 +93,10 @@ export async function getStaticProps(context) {
     "?_locale=ar-001" +
     "&&_limit=-1";
   let sectorUrl = process.env.BASE_URL + process.env.PATH.SECTOR_ALLOCATION;
+  let sectorArUrl =
+    process.env.BASE_URL +
+    process.env.PATH.SECTOR_ALLOCATION +
+    "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
   const [
@@ -99,6 +105,7 @@ export async function getStaticProps(context) {
     projectData,
     projectDataAr,
     sector,
+    sectorAr,
     bannerImage,
   ] = await Promise.all([
     await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
@@ -106,6 +113,7 @@ export async function getStaticProps(context) {
     await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
     await fetchService(projectDetailsArUrl, CONST.API_METHOD.GET),
     await fetchService(sectorUrl, CONST.API_METHOD.GET),
+    await fetchService(sectorArUrl, CONST.API_METHOD.GET),
     await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
   ]);
 
@@ -152,6 +160,7 @@ export async function getStaticProps(context) {
       projectTitleEn,
       projectTitleAr,
       sector,
+      sectorAr,
       bannerImage,
     },
     revalidate: 10,

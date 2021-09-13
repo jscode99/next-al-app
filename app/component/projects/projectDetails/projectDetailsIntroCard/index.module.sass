@@ -2,3 +2,15 @@
 
 .container
     @extend %container_padding
+
+@media only screen and (max-width: 1024px)
+  .container
+    @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+  .container
+    @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+  .container
+    @include container_padding_smScreen

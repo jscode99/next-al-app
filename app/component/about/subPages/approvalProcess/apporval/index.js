@@ -22,12 +22,12 @@ export default function Approval({ data }) {
           {router.locale === "en" ? (
             <>
               <Col xs={0} sm={0} md={0} lg={12} xl={12}>
-                <div className={`d-flex h-100 justify-content-end`}>
+                <div className={`d-flex justify-content-end`}>
                   <Image
                     src={"/images/about/approval/approval_ini.webp"}
                     alt={`Process`}
                     width={"556"}
-                    height={"400"}
+                    height={"498"}
                   />
                 </div>
               </Col>
@@ -63,12 +63,12 @@ export default function Approval({ data }) {
                 </div>
               </Col>
               <Col xs={0} sm={0} md={0} lg={12} xl={12}>
-                <div className={`d-flex h-100 justify-content-end`}>
+                <div className={`d-flex justify-content-end`}>
                   <Image
                     src={"/images/about/approval/approval_ini.webp"}
                     alt={`Process`}
-                    width="556px"
-                    height="498px"
+                    width={"556"}
+                    height={"498"}
                   />
                 </div>
               </Col>

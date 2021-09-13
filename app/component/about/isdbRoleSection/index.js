@@ -22,7 +22,7 @@ export default function IsdbRoleSection({ data }) {
       <Row>
         <Col xs={0} sm={0} md={0} lg={24} xl={24}>
           <div className={`${style.role_container} px-5`}>
-            <div className={`${style.role_details_conatiner}`}>
+            <div className={`${style.role_details_conatiner} shadow`}>
               <div className={`p-5`}>
                 <p
                   className={`${style.role_title} text-capitalize mb-4 ${

@@ -15,7 +15,7 @@ export default function MembersList({ data }) {
     <Row>
       {router.locale === "en" ? (
         <Col xs={0} sm={0} md={24} lg={24} xl={24} className={`mx-3 mt-2`}>
-          <div className={`${style.members_list_card} bg-white`}>
+          <div className={`${style.members_list_card} shadow bg-white`}>
             <Row className={`h-100`}>
               {false ? (
                 <>
@@ -96,7 +96,7 @@ export default function MembersList({ data }) {
         </Col>
       ) : (
         <Col xs={0} sm={0} md={24} lg={24} xl={24} className={`mb-3 mt-4`}>
-          <div className={`${style.members_list_card} bg-white`}>
+          <div className={`${style.members_list_card} shadow bg-white`}>
             <Row className={`h-100`}>
               {false ? (
                 <>
@@ -180,7 +180,7 @@ export default function MembersList({ data }) {
       )}
       {router.locale === "en" ? (
         <Col xs={24} sm={24} md={0} lg={0} xl={0} className={`mx-0 mt-2`}>
-          <div className={`${style.members_list_card} bg-white`}>
+          <div className={`${style.members_list_card} shadow bg-white`}>
             <Row className={`h-100`}>
               {false ? (
                 <>
@@ -261,7 +261,7 @@ export default function MembersList({ data }) {
         </Col>
       ) : (
         <Col xs={24} sm={24} md={0} lg={0} xl={0} className={`mb-3 mt-4`}>
-          <div className={`${style.members_list_card} bg-white`}>
+          <div className={`${style.members_list_card} shadow bg-white`}>
             <Row className={`h-100`}>
               {false ? (
                 <>

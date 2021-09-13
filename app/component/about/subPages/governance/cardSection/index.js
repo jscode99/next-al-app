@@ -50,7 +50,7 @@ export default function CardSection({ data }) {
             cardData.map((data, index) => (
               <>
                 <Col xs={0} sm={0} md={0} lg={8} xl={8} key={index}>
-                  <div className={`${style.card_container} bg-white p-3 mx-2`}>
+                  <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
                     <div
                       className={`d-flex ${
                         router.locale === "en"
@@ -88,7 +88,7 @@ export default function CardSection({ data }) {
                   </div>
                 </Col>
                 <Col xs={0} sm={0} md={8} lg={0} xl={0} key={index}>
-                  <div className={`${style.card_container} bg-white p-3 mx-2`}>
+                  <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
                     <div
                       className={`d-flex ${
                         router.locale === "en"
@@ -127,7 +127,7 @@ export default function CardSection({ data }) {
                 </Col>
                 <Col xs={24} sm={24} md={0} lg={0} xl={0} key={index}>
                   <div
-                    className={`${style.card_container} bg-white p-3 my-2 mx-5`}
+                    className={`${style.card_container} shadow bg-white p-3 my-2 mx-5`}
                   >
                     <div
                       className={`d-flex ${
@@ -174,7 +174,7 @@ export default function CardSection({ data }) {
             new Array(...cardData).reverse().map((data, index) => (
               <>
                 <Col xs={0} sm={0} md={0} lg={8} xl={8} key={index}>
-                  <div className={`${style.card_container} bg-white p-3 mx-2`}>
+                  <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
                     <div
                       className={`d-flex ${
                         router.locale === "en"
@@ -212,7 +212,7 @@ export default function CardSection({ data }) {
                   </div>
                 </Col>
                 <Col xs={0} sm={0} md={8} lg={0} xl={0} key={index}>
-                  <div className={`${style.card_container} bg-white p-3 mx-2`}>
+                  <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
                     <div
                       className={`d-flex ${
                         router.locale === "en"
@@ -251,7 +251,7 @@ export default function CardSection({ data }) {
                 </Col>
                 <Col xs={24} sm={24} md={0} lg={0} xl={0} key={index}>
                   <div
-                    className={`${style.card_container} bg-white p-3 my-2 mx-5`}
+                    className={`${style.card_container} shadow bg-white p-3 my-2 mx-5`}
                   >
                     <div
                       className={`d-flex ${
@@ -300,7 +300,7 @@ export default function CardSection({ data }) {
       >
         {data.map((data, index) => (
           <Col xs={0} sm={0} md={0} lg={8} xl={8} key={index}>
-            <div className={`${style.card_container} bg-white p-3 mx-2`}>
+            <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
               <div
                 className={`d-flex ${
                   router.locale === "en"
@@ -340,7 +340,7 @@ export default function CardSection({ data }) {
         ))}
         {data.map((data, index) => (
           <Col xs={0} sm={0} md={8} lg={0} xl={0} key={index}>
-            <div className={`${style.card_container} bg-white p-3 mx-2`}>
+            <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
               <div
                 className={`d-flex ${
                   router.locale === "en"
@@ -380,13 +380,9 @@ export default function CardSection({ data }) {
         ))}
         {data.map((data, index) => (
           <Col xs={24} sm={24} md={0} lg={0} xl={0} key={index}>
-<<<<<<< HEAD
             <div
               className={`${style.card_container} shadow bg-white p-3 my-2 mx-5`}
             >
-=======
-            <div className={`${style.card_container} bg-white p-3 my-2 mx-5`}>
->>>>>>> 39559c1081468eabe1ec14623861bb65786ba52f
               <div
                 className={`d-flex ${
                   router.locale === "en"

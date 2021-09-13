@@ -10,9 +10,9 @@ import ProjectDetailsTable from "./projectDetailsTable";
 import style from "./index.module.sass";
 
 export default function ProjectDetails({ projectTitle, projectData, sector }) {
-  console.log("sector", sector);
-  console.log("projectData  INNER COMPONENT", projectData);
-  console.log("projectTitle  INNER COMPONENT", projectTitle);
+  // console.log("sector", sector);
+  // console.log("projectData  INNER COMPONENT", projectData);
+  // console.log("projectTitle  INNER COMPONENT", projectTitle);
 
   const [finalChartData, setFinalChartData] = useState([]);
   const [sectorData, setSectorData] = useState([]);
@@ -164,9 +164,30 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
                   .totalWestBanksAmount + 0,
         };
         // console.log("calc", chartData);
+
+        // console.log(
+        //   "TESTINGGG",
+        //   sector[index].title
+        //     .toLowerCase()
+        //     .match(projectData[innerIndex].Sector.toLowerCase()),
+        //   ===
+        //     projectData[innerIndex].Sector.toLowerCase().match(
+        //       sector[index].title.toLowerCase(),
+        //     ),
+        // );
+
+        // console.log(
+        //   "TESTINGGGG =======>",
+        //   sector[index].title.toLowerCase().split(" ")[0].split(",")[0] ===
+        //     projectData[innerIndex].Sector.toLowerCase()
+        //       .split(" ")[0]
+        //       .split(",")[0],
+        // );
+
         if (
-          sector[index].title.toLowerCase() ===
-          projectData[innerIndex].Sector.toLowerCase()
+          sector[index].title
+            .toLowerCase()
+            .match(projectData[innerIndex].Sector.toLowerCase()) !== null
         ) {
           //No: of projects
           chartData[projectData[0].projectTitle.toLowerCase()][
@@ -202,7 +223,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       };
     }
     setSectorData(chartData);
-    console.log("chartData1==================>", chartData);
+    // console.log("chartData1==================>", chartData);
 
     let chartDataPriority = [];
     for (let index in chartData) {
@@ -227,9 +248,9 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
     }
     //Setting chart data state
     setFinalChartData(chartDataPriority);
-    console.log("finalChartData", finalChartData);
+    // console.log("finalChartData", finalChartData);
   }, [projectData, projectTitle, sector]);
-  console.log("Sector Data", sectorData);
+  // console.log("Sector Data", sectorData);
 
   return (
     <>

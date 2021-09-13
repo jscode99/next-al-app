@@ -152,13 +152,13 @@ export default function ResponsiveView({ view, logo }) {
                     Other Resources
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Terms and Conditions</a>
+                    <Link href={"/"}>Terms and Conditions</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Privacy Policy</a>
+                    <Link href={"/"}>Privacy Policy</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>Sitemap</a>
+                    <Link href={"/"}>Sitemap</Link>
                   </li>
                   {/* {otResource && otResource.length > 0
                   ? otResource.map((data) => (
@@ -185,13 +185,13 @@ export default function ResponsiveView({ view, logo }) {
                     {t("other resources")}
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("terms and conditions")}</a>
+                    <Link href={"/"}>{t("terms and conditions")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("privacy policy")}</a>
+                    <Link href={"/"}>{t("privacy policy")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("sitemap")}</a>
+                    <Link href={"/"}>{t("sitemap")}</Link>
                   </li>
                 </ul>
               </Col>
@@ -348,13 +348,13 @@ export default function ResponsiveView({ view, logo }) {
                     {t("other resources")}
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("terms and conditions")}</a>
+                    <Link href={"/"}>{t("terms and conditions")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("privacy policy")}</a>
+                    <Link href={"/"}>{t("privacy policy")}</Link>
                   </li>
                   <li>
-                    <a /* href={data.Link} */>{t("sitemap")}</a>
+                    <Link href={"/"}>{t("sitemap")}</Link>
                   </li>
                 </ul>
               </Col>

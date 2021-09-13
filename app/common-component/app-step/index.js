@@ -35,13 +35,15 @@ export default function AppStep({ textAlign, step, defaultActiveStep }) {
             >
               {data.title}
             </h5>
-            <h6
+            <p
               className={` ${
                 textAlign === "right" ? "text-start" : "text-end"
-              } ${style.description} mb-5 cursor-pointer`}
+              } ${defaultActive === index ? "fw-bold" : ""} ${
+                style.description
+              } mb-5 cursor-pointer`}
             >
               {data.description}
-            </h6>
+            </p>
           </div>
           {textAlign === "left" && (
             <div className="d-flex flex-column h-100 w-25 justify-content-center align-items-center">

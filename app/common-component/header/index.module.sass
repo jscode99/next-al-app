@@ -4,7 +4,7 @@
     @include container_padding_smScreen
 
 .full_head
-    // box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
+    box-shadow: 0 .5rem 1rem rgba(255, 255, 255,.20)
 
 .app_header_language_section,
 .app_header_nav_container
@@ -26,7 +26,7 @@
     height: 40px
 
 .language_switch_button
-    box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
+    box-shadow: 0 .5rem 1rem rgba(255, 255, 255,.20)
 
 .route_switch_button
     width: 10px
@@ -60,23 +60,16 @@
 
 .dd_list
     font-family: roboto
-    // box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)
     li
         color: $grey_color
         &:hover
             background-color: $primary_color $important
             color: $white_color $important
-            box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
 
 .mobile_selected_menu
     background-color: $primary_color $important
     color: #ffffff
     font-family: roboto
-    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5)
-    // &:hover
-    //     background-color: $primary_color $important
-    //     color: $white_color $important
-    //     box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
 
 .app_nav_list_hr
     visibility: hidden
@@ -94,7 +87,6 @@
 .menu_button
     font-size: 24px
     color: $primary_color
-    box-shadow: 6px 6px 8px 0 rgba(255, 255, 255, 0.3) inset,-8px -8px 12px 0 rgba(0, 0, 0, .25) inset
 
 @media only screen and (max-width: 1024px)
     .container

@@ -8,3 +8,15 @@
     font-family: "oswald",roboto
     font-weight: $nine_hundred
     letter-spacing: 1px
+
+@media only screen and (max-width: 1024px)
+  .container
+    @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+  .container
+    @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+  .container
+    @include container_padding_smScreen

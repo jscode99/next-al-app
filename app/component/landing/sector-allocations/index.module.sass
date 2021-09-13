@@ -25,6 +25,18 @@
     color: rgba(255, 255, 255, 0.87)
     letter-spacing: .5px
 
+.sector_button
+    display: none
+    height: 50px
+    border-radius: 6px
+    border: solid 1px #fff
+
+.sector_icon
+    font-size: 22px
+
+.sector_button_selected
+    background-color: #ffffff
+
 .tooltip
     font-weight: $five_hundred
 
@@ -40,10 +52,14 @@
         width: 75%
 
 @media only screen and (max-width: 1024px)
-    .map_container
-        display: none $important
+    // .map_container
+    //     display: none $important
+    .sector_button
+        display: flex
 
 @media only screen and (max-width: 768px)
+    // .sector_button
+    //     display: flex
 
 @media only screen and (max-width: 500px)
     .sector_chart_title

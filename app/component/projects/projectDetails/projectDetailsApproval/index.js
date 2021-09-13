@@ -15,23 +15,23 @@ export default function ProjectDetailsApproval({ projectData, sector }) {
 
   return (
     <div className={`${style.project_details_bg}`}>
-      <div className={`${style.container} px-5`}>
+      <div className={`${style.container} px-4`}>
         <Row gutter={[34, 34]} className={`h-100 my-4 align-items-end`}>
           {router.locale === "en" ? (
             <>
-              <Col span={12}>
+              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                 <SectoralApproval projectData={projectData} />
               </Col>
-              <Col span={12}>
+              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                 <GeographicalApprovals projectData={projectData} />
               </Col>
             </>
           ) : (
             <>
-              <Col span={12}>
+              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                 <GeographicalApprovals projectData={projectData} />
               </Col>
-              <Col span={12}>
+              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                 <SectoralApproval projectData={projectData} />
               </Col>
             </>

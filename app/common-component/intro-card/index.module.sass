@@ -30,7 +30,16 @@
 @media only screen and (max-width: 768px)
     .contribution_card_container
         height: 140px
+    .contribution_amount_title
+        @include font_size_25
+    .contribution_amount_subtitle
+        font-size:12px $important
+    .contribution_card_logo
+        height: 50px
+        width: 50px
 
 @media only screen and (max-width: 500px)
     .contribution_card_container
-        width: 80%
+        width: 100%
+    .contribution_amount_subtitle
+        font-size:10px $important

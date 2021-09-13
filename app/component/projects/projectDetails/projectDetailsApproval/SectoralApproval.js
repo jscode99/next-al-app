@@ -7,7 +7,7 @@ import { useTranslation } from "next-i18next";
 //styles
 import style from "./index.module.sass";
 
-export default function SectoralApproval({ sectoralData, projectData }) {
+export default function SectoralApproval({ projectData }) {
   const [sectorApproval, setSectorApproval] = useState([]);
   // console.log("projectData Sectoral", projectData);
   const { t } = useTranslation("common");
@@ -91,9 +91,9 @@ export default function SectoralApproval({ sectoralData, projectData }) {
           {sectorApproval.map((data, index) => (
             <div
               key={index}
-              className={`${style.common_sectoral_list} d-flex justify-content-center align-items-center bg-white my-1 w-100`}
+              className={`${style.common_sectoral_list} shadow d-flex justify-content-center align-items-center bg-white my-1 w-100`}
             >
-              <p className={`w-50 ms-3 fw-bold m-0 text-capitalize`}>
+              <p className={`${style.title} w-50 ms-3 fw-bold m-0 text-capitalize`}>
                 {t(data.title)}
               </p>
               <p className={`${style.number_of_projects} w-25 text-center m-0`}>
@@ -148,7 +148,7 @@ export default function SectoralApproval({ sectoralData, projectData }) {
           {sectorApproval.map((data, index) => (
             <div
               key={index}
-              className={`${style.common_sectoral_list} d-flex justify-content-center align-items-center bg-white my-1 w-100`}
+              className={`${style.common_sectoral_list} shadow d-flex justify-content-center align-items-center bg-white my-1 w-100`}
             >
               <div
                 className={`d-flex justify-content-center align-items-center w-25`}
@@ -169,7 +169,7 @@ export default function SectoralApproval({ sectoralData, projectData }) {
               <p className={`${style.number_of_projects} w-25 text-center m-0`}>
                 {data.totalProject}
               </p>
-              <p className={`w-50 me-3 fw-bold m-0 text-end text-capitalize`}>
+              <p className={`${style.title} w-50 me-3 fw-bold m-0 text-end text-capitalize`}>
                 {t(data.title)}
               </p>
             </div>

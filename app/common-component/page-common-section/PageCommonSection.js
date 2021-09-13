@@ -211,7 +211,7 @@ export default function PageCommonSection({ title, handlePrint }) {
                             placement="bottomCenter"
                           >
                             <Button
-                              className={`${style.dropdown_button} d-flex justify-content-center align-items-center px-0`}
+                              className={`d-flex justify-content-center align-items-center px-0`}
                             >
                               <MoreOutlined
                                 // className={``}
@@ -234,6 +234,7 @@ export default function PageCommonSection({ title, handlePrint }) {
                             placement="bottomCenter"
                           >
                             <Button
+                              className={`d-flex justify-content-center align-items-center px-0`}
                               icon={
                                 <MoreOutlined
                                   style={{ fontSize: "25px", color: "#0E3890" }}

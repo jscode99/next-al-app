@@ -134,8 +134,8 @@ export default function AppHeader({ pageName, projectTitle }) {
         <Menu.Item key={index}>
           <Link
             href={{
-              pathname: router.pathname,
-              query: router.query.title ? { title: router.query.title } : null,
+              pathname: `/${router.pathname.split('/')[1]}`,
+              // query: router.query.title ? { title: router.query.title } : null,
             }}
             locale={value.code === "en" ? "en" : "ar"}
           >

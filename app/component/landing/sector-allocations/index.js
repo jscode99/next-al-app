@@ -16,6 +16,7 @@ export default function SectorAllocations({
   projectData,
   sectorData,
 }) {
+  const [active, setActive] = useState(true);
   const [sectorDataCal, setSectorData] = useState([]);
   const [finalChartData, setFinalChartData] = useState([]);
 
@@ -214,23 +215,126 @@ export default function SectorAllocations({
         <Col xs={0} sm={0} md={0} lg={20} xl={16}>
           <div className="d-flex justify-content-end">
             <div className={`${style.sector_chart_container} h-100 py-4`}>
-              <p
-                className={`${style.sector_title} ${
-                  router.locale === "ar" ? "text-end" : "text-start"
-                } text-white mb-2 text-capitalize`}
-              >
-                {t("sector allocations")}
-              </p>
-              <p
-                className={`${style.sector_subtitle} ${
-                  router.locale === "ar" ? "text-end" : "text-start"
-                } m-0 text-capitalize`}
-              >
-                {t("al-aqsa approval distribution")}
-              </p>
+              <Row>
+                <Col xs={0} sm={0} md={0} lg={20} xl={20}>
+                  <p
+                    className={`${style.sector_title} ${
+                      router.locale === "ar" ? "text-end" : "text-start"
+                    } text-white mb-2 text-capitalize`}
+                  >
+                    {t("sector allocations")}
+                  </p>
+                  <p
+                    className={`${style.sector_subtitle} ${
+                      router.locale === "ar" ? "text-end" : "text-start"
+                    } m-0 text-capitalize`}
+                  >
+                    {t("al-aqsa approval distribution")}
+                  </p>
+                </Col>
+                <Col xs={0} sm={0} md={0} lg={4} xl={4}>
+                  <div
+                    className={`d-flex justify-content-end align-items-center w-100`}
+                  >
+                    <div
+                      className={`${style.sector_button} flex-row overflow-hidden w-100`}
+                    >
+                      <div
+                        className={`${
+                          active === true ? style.sector_button_selected : ``
+                        } d-flex justify-content-center align-items-center w-50`}
+                        onClick={() => {
+                          setActive(true);
+                        }}
+                      >
+                        <i
+                          className={`${style.sector_icon} far fa-chart-bar ${
+                            active === false ? `text-white` : ``
+                          }`}
+                        ></i>
+                      </div>
+                      <div
+                        className={`${
+                          active === false ? style.sector_button_selected : ``
+                        } d-flex justify-content-center align-items-center w-50`}
+                        onClick={() => {
+                          setActive(false);
+                        }}
+                      >
+                        <i
+                          className={`${style.sector_icon} far fa-map ${
+                            active === true ? `text-white` : ``
+                          } `}
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
               <Row gutter={[4, 4]}>
+                {active &&
+                  sectorData.map(data => (
+                    <Col xs={24} sm={24} md={24} lg={8} xl={0} key={data.id}>
+                      <div
+                        className={`position-relative d-flex justify-content-center align-items-center`}
+                        key={data.id}
+                      >
+                        <div
+                          className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
+                          style={{ color: data.color }}
+                        >
+                          {isVisible ? (
+                            <CountUp
+                              value={Math.round(
+                                parseFloat(data.percentage),
+                              ).toString()}
+                              floatLength={0}
+                              formatMoney={false}
+                            />
+                          ) : (
+                            Math.round(parseFloat(data.percentage))
+                          )}
+                          %
+                        </div>
+                        <Chart
+                          width={"180px"}
+                          height={"180px"}
+                          chartType="PieChart"
+                          loader={<div>Loading Chart</div>}
+                          data={[
+                            ["", "Approved"],
+                            [data.title, Math.round(parseInt(data.percentage))],
+                            [
+                              "Others",
+                              100 - Math.round(parseInt(data.percentage)),
+                            ],
+                          ]}
+                          options={{
+                            // title: "My Daily Activities",
+                            legend: { position: "none" },
+                            slices: [
+                              { color: data.color },
+                              { color: `#2C555F` },
+                            ],
+                            tooltip: { trigger: "none" },
+                            backgroundColor: { fill: "transparent" },
+                            pieSliceText: "none",
+                            pieSliceBorderColor: "none",
+                            // Just add this option
+                            pieHole: 0.7,
+                          }}
+                          rootProps={{ "data-testid": "3" }}
+                        />
+                      </div>
+                      <div
+                        className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                      >
+                        {t(data.title)}
+                      </div>
+                    </Col>
+                  ))}
                 {sectorData.map(data => (
-                  <Col xs={24} sm={24} md={24} lg={8} xl={8} key={data.id}>
+                  <Col xs={0} sm={0} md={0} lg={0} xl={8} key={data.id}>
                     <div
                       className={`position-relative d-flex justify-content-center align-items-center`}
                       key={data.id}
@@ -290,86 +394,146 @@ export default function SectorAllocations({
             </div>
           </div>
         </Col>
+
         <Col xs={24} sm={24} md={24} lg={0} xl={0}>
           <div className="d-flex justify-content-center">
             <div className={`${style.sector_chart_container} h-100 py-4`}>
-              <p
-                className={`${style.sector_title} ${
-                  router.locale === "ar" ? "text-end" : "text-start"
-                } text-white mb-2`}
-              >
-                {t("Sector Allocations")}
-              </p>
-              <p
-                className={`${style.sector_subtitle} ${
-                  router.locale === "ar" ? "text-end" : "text-start"
-                } m-0`}
-              >
-                {t("Al-Aqsa Approval Distribution")}
-              </p>
-              <Row gutter={[4, 4]}>
-                {sectorData.map(data => (
-                  <Col xs={12} sm={12} md={8} lg={8} xl={8} key={data.id}>
+              <Row>
+                <Col xs={24} sm={20} md={20} lg={0} xl={0}>
+                  <p
+                    className={`${style.sector_title} ${
+                      router.locale === "ar" ? "text-end" : "text-start"
+                    } text-white mb-2 text-capitalize`}
+                  >
+                    {t("sector allocations")}
+                  </p>
+                  <p
+                    className={`${style.sector_subtitle} ${
+                      router.locale === "ar" ? "text-end" : "text-start"
+                    } mb-2 text-capitalize`}
+                  >
+                    {t("al-aqsa approval distribution")}
+                  </p>
+                </Col>
+                <Col xs={24} sm={4} md={4} lg={0} xl={0}>
+                  <div
+                    className={`d-flex justify-content-end align-items-center w-100`}
+                  >
                     <div
-                      className={`position-relative d-flex justify-content-center align-items-center`}
-                      key={data.id}
+                      className={`${style.sector_button} flex-row overflow-hidden w-100`}
                     >
                       <div
-                        className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
-                        style={{ color: data.color }}
-                      >
-                        {isVisible ? (
-                          <CountUp
-                            value={Math.round(
-                              parseFloat(data.percentage),
-                            ).toString()}
-                            floatLength={0}
-                            formatMoney={false}
-                          />
-                        ) : (
-                          Math.round(parseFloat(data.percentage))
-                        )}
-                        %
-                      </div>
-                      <Chart
-                        width={"180px"}
-                        height={"180px"}
-                        chartType="PieChart"
-                        loader={<div>Loading Chart</div>}
-                        data={[
-                          ["", "Approved"],
-                          [data.title, Math.round(parseInt(data.percentage))],
-                          [
-                            "Others",
-                            100 - Math.round(parseInt(data.percentage)),
-                          ],
-                        ]}
-                        options={{
-                          // title: "My Daily Activities",
-                          legend: { position: "none" },
-                          slices: [{ color: data.color }, { color: `#2C555F` }],
-                          tooltip: { trigger: "none" },
-                          backgroundColor: { fill: "transparent" },
-                          pieSliceText: "none",
-                          pieSliceBorderColor: "none",
-                          // Just add this option
-                          pieHole: 0.7,
+                        className={`${
+                          active === true ? style.sector_button_selected : ``
+                        } d-flex justify-content-center align-items-center w-50`}
+                        onClick={() => {
+                          setActive(true);
                         }}
-                        rootProps={{ "data-testid": "3" }}
-                      />
+                      >
+                        <i
+                          className={`${style.sector_icon} far fa-chart-bar ${
+                            active === false ? `text-white` : ``
+                          }`}
+                        ></i>
+                      </div>
+                      <div
+                        className={`${
+                          active === false ? style.sector_button_selected : ``
+                        } d-flex justify-content-center align-items-center w-50`}
+                        onClick={() => {
+                          setActive(false);
+                        }}
+                      >
+                        <i
+                          className={`${style.sector_icon} far fa-map ${
+                            active === true ? `text-white` : ``
+                          } `}
+                        ></i>
+                      </div>
                     </div>
-                    <div
-                      className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
-                    >
-                      {t(data.title)}
-                    </div>
-                  </Col>
-                ))}
+                  </div>
+                </Col>
+              </Row>
+
+              <Row gutter={[4, 4]}>
+                {active &&
+                  sectorData.map(data => (
+                    <Col xs={12} sm={12} md={8} lg={8} xl={8} key={data.id}>
+                      <div
+                        className={`position-relative d-flex justify-content-center align-items-center`}
+                        key={data.id}
+                      >
+                        <div
+                          className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
+                          style={{ color: data.color }}
+                        >
+                          {isVisible ? (
+                            <CountUp
+                              value={Math.round(
+                                parseFloat(data.percentage),
+                              ).toString()}
+                              floatLength={0}
+                              formatMoney={false}
+                            />
+                          ) : (
+                            Math.round(parseFloat(data.percentage))
+                          )}
+                          %
+                        </div>
+                        <Chart
+                          width={"180px"}
+                          height={"180px"}
+                          chartType="PieChart"
+                          loader={<div>Loading Chart</div>}
+                          data={[
+                            ["", "Approved"],
+                            [data.title, Math.round(parseInt(data.percentage))],
+                            [
+                              "Others",
+                              100 - Math.round(parseInt(data.percentage)),
+                            ],
+                          ]}
+                          options={{
+                            // title: "My Daily Activities",
+                            legend: { position: "none" },
+                            slices: [
+                              { color: data.color },
+                              { color: `#2C555F` },
+                            ],
+                            tooltip: { trigger: "none" },
+                            backgroundColor: { fill: "transparent" },
+                            pieSliceText: "none",
+                            pieSliceBorderColor: "none",
+                            // Just add this option
+                            pieHole: 0.7,
+                          }}
+                          rootProps={{ "data-testid": "3" }}
+                        />
+                      </div>
+                      <div
+                        className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                      >
+                        {t(data.title)}
+                      </div>
+                    </Col>
+                  ))}
               </Row>
             </div>
           </div>
         </Col>
-        <Col xs={24} sm={24} md={24} lg={4} xl={8}>
+
+        {!active && (
+          <Col xs={24} sm={24} md={24} lg={24} xl={0}>
+            <div
+              className={`${style.map_container} d-flex justify-content-end`}
+            >
+              {finalChartData && finalChartData.length > 0 && (
+                <Map finalChartData={finalChartData} />
+              )}
+            </div>
+          </Col>
+        )}
+        <Col xs={0} sm={0} md={0} lg={0} xl={8}>
           <div className={`${style.map_container} d-flex justify-content-end`}>
             {finalChartData && finalChartData.length > 0 && (
               <Map finalChartData={finalChartData} />

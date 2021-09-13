@@ -15,7 +15,7 @@ export default function AchievementCards({ data }) {
     <Col xs={24} sm={24} md={12} lg={8} xl={8}>
       <div
         ref={ref}
-        className={`${style.achievement_card_container} px-4 py-5`}
+        className={`${style.achievement_card_container} shadow px-4 py-5`}
       >
         {router.locale === "en" ? (
           <div

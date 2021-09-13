@@ -32,12 +32,12 @@ export default function Selection({ data }) {
                 </div>
               </Col>
               <Col xs={0} sm={0} md={0} lg={12} xl={12}>
-                <div className={`d-flex h-100 justify-content-end`}>
+                <div className={`d-flex justify-content-end`}>
                   <Image
                     src={"/images/about/approval/selection_imp.webp"}
                     alt={`Process`}
-                    height="520px"
-                    width="560px"
+                    height="591"
+                    width="668"
                   />
                 </div>
               </Col>
@@ -45,12 +45,12 @@ export default function Selection({ data }) {
           ) : (
             <>
               <Col xs={0} sm={0} md={0} lg={12} xl={12}>
-                <div className={`d-flex h-100 justify-content-end`}>
+                <div className={`d-flex justify-content-end`}>
                   <Image
                     src={"/images/about/approval/selection_imp.webp"}
                     alt={`Process`}
-                    height="520px"
-                    width="560px"
+                    height="591"
+                    width="668"
                   />
                 </div>
               </Col>

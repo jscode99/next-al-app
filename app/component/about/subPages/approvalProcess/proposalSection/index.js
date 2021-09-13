@@ -13,7 +13,7 @@ export default function ProposalSection({ data }) {
     <Row>
       <Col xs={0} sm={0} md={24} lg={24} xl={24}>
         <div className={`${style.container}`}>
-          <div className={`${style.proposal_container} mb-5`}>
+          <div className={`${style.proposal_container} shadow mb-5`}>
             <div className={`p-4`}>
               <h3
                 className={`${style.proposal_title} text-center w-100 text-capitalize`}

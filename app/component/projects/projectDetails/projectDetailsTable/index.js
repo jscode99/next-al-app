@@ -431,13 +431,13 @@ export default function ProjectDetailsTable({ projectData }) {
     <div className={`${style.bg}`}>
       <div className={`${style.container} px-5`}>
         <Row className={`py-4`}>
-          <Col className={`align-items-center mb-4 w-100`}>
+          <div className={`align-items-center mb-4 w-100`}>
             <h3
               className={`${style.project_details_table_title} text-capitalize text-center`}
             >
               {t("projects")}
             </h3>
-          </Col>
+          </div>
 
           <div
             className={`${style.project_details_table_container} overflow-hidden shadow w-100`}
@@ -446,7 +446,7 @@ export default function ProjectDetailsTable({ projectData }) {
               columnData={router.locale === "en" ? columnDataEn : columnDataAr}
               data={tableData}
               pagination={true}
-              // scroll={{ x: 1800 }}
+              scroll={{ x: 1050 }}
             />
           </div>
         </Row>

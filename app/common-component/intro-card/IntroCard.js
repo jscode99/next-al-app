@@ -13,55 +13,107 @@ export default function IntroCard({ data }) {
   });
   const { t } = useTranslation("common");
   return (
-    <Col
-      xs={24}
-      sm={24}
-      md={8}
-      lg={8}
-      xl={8}
-      className={`d-flex justify-content-center`}
-    >
-      <div
-        className={`${style.contribution_card_container} ${data.bg} overflow-hidden`}
-      >
-        <div
-          className={`${style.contribution_card_amount} d-flex justify-content-end h-100 flex-column position-relative px-4`}
-        >
-          {data.url && (
-            <div className={`d-flex w-100`}>
-              <div
-                className={`${style.contribution_card_logo} d-flex justify-content-center align-items-center rounded-circle bg-white `}
+    <>
+      <Col xs={0} sm={0} md={8} lg={8} xl={8}>
+        <div className={`d-flex justify-content-center`}>
+          <div
+            className={`${style.contribution_card_container} ${data.bg} overflow-hidden`}
+          >
+            <div
+              className={`${style.contribution_card_amount} d-flex justify-content-end h-100 flex-column position-relative px-4`}
+            >
+              {data.url && (
+                <div className={`d-flex w-100`}>
+                  <div
+                    className={`${style.contribution_card_logo} d-flex justify-content-center align-items-center rounded-circle bg-white `}
+                  >
+                    <Image
+                      alt={`Logo`}
+                      src={data.url}
+                      height="30px"
+                      width="30px"
+                    />
+                  </div>
+                </div>
+              )}
+              <p
+                ref={ref}
+                className={`${style.contribution_amount_title} d-flex justify-content-end text-white m-0`}
               >
-                <Image alt={`Logo`} src={data.url} height="30px" width="30px" />
-              </div>
+                {!data.subTitle.match("project") &&
+                  !data.subTitle.match("المشاريع") &&
+                  "$"}
+                {isVisible ? (
+                  <CountUp
+                    value={data.amount}
+                    floatLength={0}
+                    formatMoney={data.subTitle.match("project") ? false : true}
+                  />
+                ) : !data.subTitle.match("project") ? (
+                  new Intl.NumberFormat().format(Math.round(data.amount))
+                ) : (
+                  data.amount
+                )}
+              </p>
+              <p
+                className={`${style.contribution_amount_subtitle} d-flex justify-content-end mb-4 text-capitalize`}
+              >
+                {data.subTitle}
+              </p>
             </div>
-          )}
-          <p
-            ref={ref}
-            className={`${style.contribution_amount_title} d-flex justify-content-end text-white m-0`}
-          >
-            {!data.subTitle.match("project") &&
-              !data.subTitle.match("المشاريع") &&
-              "$"}
-            {isVisible ? (
-              <CountUp
-                value={data.amount}
-                floatLength={0}
-                formatMoney={data.subTitle.match("project") ? false : true}
-              />
-            ) : !data.subTitle.match("project") ? (
-              new Intl.NumberFormat().format(Math.round(data.amount))
-            ) : (
-              data.amount
-            )}
-          </p>
-          <p
-            className={`${style.contribution_amount_subtitle} d-flex justify-content-end mb-4 text-capitalize`}
-          >
-            {data.subTitle}
-          </p>
+          </div>
         </div>
-      </div>
-    </Col>
+      </Col>
+      <Col xs={24} sm={24} md={0} lg={0} xl={0}>
+        <div className={`d-flex justify-content-center`}>
+          <div
+            className={`${style.contribution_card_container} ${data.bg} overflow-hidden`}
+          >
+            <div
+              className={`${style.contribution_card_amount} d-flex justify-content-end h-100 flex-column position-relative px-4`}
+            >
+              {data.url && (
+                <div className={`d-flex w-100`}>
+                  <div
+                    className={`${style.contribution_card_logo} d-flex justify-content-center align-items-center rounded-circle bg-white `}
+                  >
+                    <Image
+                      alt={`Logo`}
+                      src={data.url}
+                      height="20px"
+                      width="20px"
+                    />
+                  </div>
+                </div>
+              )}
+              <p
+                ref={ref}
+                className={`${style.contribution_amount_title} d-flex justify-content-end text-white m-0`}
+              >
+                {!data.subTitle.match("project") &&
+                  !data.subTitle.match("المشاريع") &&
+                  "$"}
+                {isVisible ? (
+                  <CountUp
+                    value={data.amount}
+                    floatLength={0}
+                    formatMoney={data.subTitle.match("project") ? false : true}
+                  />
+                ) : !data.subTitle.match("project") ? (
+                  new Intl.NumberFormat().format(Math.round(data.amount))
+                ) : (
+                  data.amount
+                )}
+              </p>
+              <p
+                className={`${style.contribution_amount_subtitle} d-flex justify-content-end mb-4 text-capitalize`}
+              >
+                {data.subTitle}
+              </p>
+            </div>
+          </div>
+        </div>
+      </Col>
+    </>
   );
 }

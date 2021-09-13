@@ -10,7 +10,7 @@ export default function LegendSection({legendData}) {
         router.locale === "en" ? "justify-content-end" : "justify-content-start"
       } align-items-center`}
     >
-      <div className={`d-flex justify-content-center align-items-center p-3`}>
+      <div className={`d-flex justify-content-center align-items-center p-3 flex-wrap`}>
         {legendData.map((data) => (
           <div
             className={`d-flex justify-content-center align-items-center mx-3 ${

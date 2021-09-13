@@ -43,3 +43,15 @@
 .route_card_approvals_amount
     font-family: "oswald"
     letter-spacing: .2px
+
+@media only screen and (max-width: 1024px)
+  .container
+    @include container_padding_lapScreen
+
+@media only screen and (max-width: 768px)
+  .container
+    @include container_padding_tabScreen
+
+@media only screen and (max-width: 500px)
+  .container
+    @include container_padding_smScreen

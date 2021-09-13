@@ -40,10 +40,10 @@ function MyApp({ Component, pageProps }) {
         FallbackComponent={ErrorFallback}
         onReset={() => {
           router.reload(window.location.pathname);
-          // reset the state of your app so the error doesn't happen again
         }}
       >
         {/* <Component {...pageProps} /> */}
+        <h4>Trial End</h4>
       </ErrorBoundary>
     </AppContext.Provider>
   );

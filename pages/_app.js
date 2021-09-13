@@ -23,7 +23,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AppContext.Provider value={{ appContext, setAppContext }}>
-      <Component {...pageProps} />
+      {/* <Component {...pageProps} /> */}
+      <div></div>
     </AppContext.Provider>
   );
 }

@@ -8,6 +8,21 @@
     background-position: right center,left bottom
     background-repeat: no-repeat,no-repeat
 
+.gallery_image_container
+    width: 100%
+    height: 250px
+
+.gallery_image_container
+    &:hover
+        transform: scale(1.1)
+
+.video_player
+
+    overflow: hidden
+    background-color: #000
+    top: 0
+    z-index: 1200
+
 .stories_amount_heading
     font-weight: $five_hundred
     font-family: roboto
@@ -18,6 +33,12 @@
     font-family: roboto
     @extend %font_size_18
     letter-spacing: 0.5px
+
+.video_modal
+    &>div
+        &>div
+            border-radius: 20px
+            &>:first-child
 
 .stories_details_des
     font-family: roboto
@@ -34,7 +55,11 @@
     width: 500px
 
 .thumbnail_container
-    height: 84px
+    height: 90px
+
+.image_cont
+    width: 100px
+    height: 86px
 
 @media only screen and (max-width: 1024px)
     .stories_card_container

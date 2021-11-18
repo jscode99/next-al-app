@@ -27,7 +27,7 @@ export default function ResourceChart({
   // console.log("projectAr", projectAr);
   // console.log("alAqsa", alAqsa);
   // console.log("alAqsaAr", alAqsaAr);
-  console.log("arab", arab);
+  // console.log("arab", arab);
   // console.log("arabAr", arabAr);
   // console.log("yearly direct", yearly);
   // console.log("yearlyAr", yearlyAr);
@@ -53,497 +53,553 @@ export default function ResourceChart({
   const [xDataYr, setXdataYr] = useState(null);
   const [xDataAr, setXdataAr] = useState(null);
   const [xDataAl, setXdataAl] = useState(null);
+  const [showChart, setShowChart] = useState(true);
+
+  // useEffect(() => {
+  //   if (!showChart)
+  //     setTimeout(() => {
+  //       setShowChart(true);
+  //     }, 5000);
+  // }, [showChart]);
 
   useEffect(() => {
-    setTimeout(() => {
-      // let fundChartElement1 = document.getElementsByTagName("rect")[0];
-      let apexChart =
-        document.getElementsByClassName(
-          "apexcharts-xaxis",
-        )[0]; /* .getElementsByTagName("line")[0] */
-      console.log(
-        "chartElement==========>",
-        // fundChartElement1,
-        // fundChartElement1.width.animVal.value
-        apexChart,
-        apexChart.getBoundingClientRect().width,
-        apexChart.getBBox().width,
-      );
-      setXAxisWidth(
-        apexChart.getBoundingClientRect().width || apexChart.getBBox().width,
-      );
-    }, 5000);
-    //YearlyData
-    let seriesYr = [
-      {
-        name: "Approved Amount",
-        data: [],
-      },
+    if (showChart) {
+      setTimeout(() => {
+        // let fundChartElement1 = document.getElementsByTagName("rect")[0];
+        let apexChart =
+          document.getElementsByClassName(
+            "apexcharts-xaxis",
+          )[0]; /* .getElementsByTagName("line")[0] */
+        // console.log(
+        //   "chartElement==========>",
+        //   // fundChartElement1,
+        //   // fundChartElement1.width.animVal.value
+        //   apexChart,
+        //   apexChart.getBoundingClientRect().width,
+        //   apexChart.getBBox().width,
+        // );
+        if (apexChart)
+          setXAxisWidth(
+            apexChart.getBoundingClientRect().width ||
+              apexChart.getBBox().width,
+          );
+      }, 5000);
+      //YearlyData
+      let seriesYr = [
+        {
+          name: "Approved Amount",
+          data: [],
+        },
 
-      {
-        name: "Disbursement Amount",
-        data: [],
-      },
-    ];
-    const optionsYr = {
-      chart: {
-        type: "bar",
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 0,
-          columnWidth: "90%",
-          dataLabels: {
-            position: "top", // top, center, bottom
+        {
+          name: "Disbursement Amount",
+          data: [],
+        },
+      ];
+      const optionsYr = {
+        chart: {
+          type: "bar",
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 0,
+            columnWidth: "90%",
+            dataLabels: {
+              position: "top", // top, center, bottom
+            },
           },
         },
-      },
-      stroke: {
-        show: true,
-        width: 30,
-        colors: ["transparent"],
-      },
+        stroke: {
+          show: true,
+          width: 30,
+          colors: ["transparent"],
+        },
 
-      grid: {
-        strokeDashArray: 7,
-        //   row: {
-        //     colors: ["#fff", "#f2f2f2"],
-        //   },
-      },
-      xaxis: {
-        labels: {
+        grid: {
+          strokeDashArray: 7,
+          //   row: {
+          //     colors: ["#fff", "#f2f2f2"],
+          //   },
+        },
+        xaxis: {
+          labels: {
+            show: false,
+            rotate: -45,
+            formatter: function (value, timestamp, opts) {
+              return value;
+            },
+          },
+
+          categories: [],
+          // tickPlacement: "on",
+        },
+        yaxis: {
+          labels: {
+            style: {
+              colors: ["#a8a8a8"],
+              fontSize: "8px",
+              fontWeight: 400,
+            },
+            formatter: value => {
+              return value / 1000 + "K";
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+          y: {
+            formatter: function (
+              value,
+              { series, seriesIndex, dataPointIndex, w },
+            ) {
+              return "$" + value;
+            },
+            title: {
+              formatter: seriesName => seriesName + " :",
+            },
+          },
+        },
+        legend: {
           show: false,
-          rotate: -45,
-          formatter: function (value, timestamp, opts) {
-            return value;
-          },
+          //   position: "top",
+          //   horizontalAlign: "right",
+          // //   width: 100,
+          //   height: 50,
         },
-
-        categories: [],
-        // tickPlacement: "on",
-      },
-      yaxis: {
-        labels: {
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return "$" + convertToInternationalCurrencySystem(Number(val));
+          },
+          offsetY: -20,
           style: {
-            colors: ["#a8a8a8"],
-            fontSize: "8px",
-            fontWeight: 400,
-          },
-          formatter: value => {
-            return value / 1000 + "K";
+            fontSize: "12px",
+            colors: ["#304758"],
           },
         },
-      },
-      tooltip: {
-        enabled: false,
-        y: {
-          formatter: function (
-            value,
-            { series, seriesIndex, dataPointIndex, w },
-          ) {
-            return "$" + value;
+        fill: {
+          type: "gradient",
+          colors: ["#ed6961", "#12ab97"],
+          gradient: {
+            shade: "light",
+            type: "vertical",
+            shadeIntensity: 0.75,
+            gradientToColors: ["#ffb28e", "#a7e05f"],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [10],
           },
-          title: {
-            formatter: seriesName => seriesName + " :",
-          },
         },
-      },
-      legend: {
-        show: false,
-        //   position: "top",
-        //   horizontalAlign: "right",
-        // //   width: 100,
-        //   height: 50,
-      },
-      dataLabels: {
-        enabled: true,
-        formatter: function (val) {
-          return "$" + convertToInternationalCurrencySystem(Number(val));
+      };
+      //Arab Resource
+      let seriesAr = [
+        {
+          name: "Disbursement Amount",
+          data: [],
         },
-        offsetY: -20,
-        style: {
-          fontSize: "12px",
-          colors: ["#304758"],
-        },
-      },
-      fill: {
-        type: "gradient",
-        colors: ["#ed6961", "#12ab97"],
-        gradient: {
-          shade: "light",
-          type: "vertical",
-          shadeIntensity: 0.75,
-          gradientToColors: ["#ffb28e", "#a7e05f"],
-          inverseColors: true,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [10],
-        },
-      },
-    };
-    //Arab Resource
-    let seriesAr = [
-      {
-        name: "Disbursement Amount",
-        data: [],
-      },
 
-      {
-        name: "Grants",
-        data: [],
-      },
-    ];
+        {
+          name: "Grants",
+          data: [],
+        },
+      ];
 
-    const optionsAR = {
-      chart: {
-        type: "bar",
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 0,
-          columnWidth: "70%",
-          dataLabels: {
-            position: "top", // top, center, bottom
+      const optionsAR = {
+        chart: {
+          type: "bar",
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 0,
+            columnWidth: "70%",
+            dataLabels: {
+              position: "top", // top, center, bottom
+            },
           },
         },
-      },
-      stroke: {
-        show: true,
-        width: 30,
-        colors: ["transparent"],
-      },
+        stroke: {
+          show: true,
+          width: 30,
+          colors: ["transparent"],
+        },
 
-      grid: {
-        strokeDashArray: 7,
-        //   row: {
-        //     colors: ["#fff", "#f2f2f2"],
-        //   },
-      },
-      xaxis: {
-        labels: {
+        grid: {
+          strokeDashArray: 7,
+          //   row: {
+          //     colors: ["#fff", "#f2f2f2"],
+          //   },
+        },
+        xaxis: {
+          labels: {
+            show: false,
+            rotate: -45,
+            formatter: function (value, timestamp, opts) {
+              return value;
+            },
+          },
+
+          categories: [],
+          // tickPlacement: "on",
+        },
+        yaxis: {
+          labels: {
+            style: {
+              colors: ["#a8a8a8"],
+              fontSize: "8px",
+              fontWeight: 400,
+            },
+            formatter: value => {
+              return value / 1000 + "K";
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+          y: {
+            formatter: function (
+              value,
+              { series, seriesIndex, dataPointIndex, w },
+            ) {
+              return "$" + value;
+            },
+            title: {
+              formatter: seriesName => seriesName + " :",
+            },
+          },
+        },
+        legend: {
           show: false,
-          rotate: -45,
-          formatter: function (value, timestamp, opts) {
-            return value;
-          },
+          //   position: "top",
+          //   horizontalAlign: "right",
+          // //   width: 100,
+          //   height: 50,
         },
-
-        categories: [],
-        // tickPlacement: "on",
-      },
-      yaxis: {
-        labels: {
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return "$" + convertToInternationalCurrencySystem(Number(val));
+          },
+          offsetY: -20,
           style: {
-            colors: ["#a8a8a8"],
-            fontSize: "8px",
-            fontWeight: 400,
-          },
-          formatter: value => {
-            return value / 1000 + "K";
+            fontSize: "12px",
+            colors: ["#304758"],
           },
         },
-      },
-      tooltip: {
-        enabled: false,
-        y: {
-          formatter: function (
-            value,
-            { series, seriesIndex, dataPointIndex, w },
-          ) {
-            return "$" + value;
+        fill: {
+          type: "gradient",
+          colors: ["#ed6961", "#12ab97"],
+          gradient: {
+            shade: "light",
+            type: "vertical",
+            shadeIntensity: 0.75,
+            gradientToColors: ["#ffb28e", "#a7e05f"],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [10],
           },
-          title: {
-            formatter: seriesName => seriesName + " :",
-          },
         },
-      },
-      legend: {
-        show: false,
-        //   position: "top",
-        //   horizontalAlign: "right",
-        // //   width: 100,
-        //   height: 50,
-      },
-      dataLabels: {
-        enabled: true,
-        formatter: function (val) {
-          return "$" + convertToInternationalCurrencySystem(Number(val));
-        },
-        offsetY: -20,
-        style: {
-          fontSize: "12px",
-          colors: ["#304758"],
-        },
-      },
-      fill: {
-        type: "gradient",
-        colors: ["#ed6961", "#12ab97"],
-        gradient: {
-          shade: "light",
-          type: "vertical",
-          shadeIntensity: 0.75,
-          gradientToColors: ["#ffb28e", "#a7e05f"],
-          inverseColors: true,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [10],
-        },
-      },
-    };
+      };
 
-    //Aqsa
-    let seriesAq = [
-      {
-        name: "Total Contribution",
-        data: [],
-      },
-    ];
+      //Aqsa
+      let seriesAq = [
+        {
+          name: "Total Contribution",
+          data: [],
+        },
+      ];
 
-    const optionsAq = {
-      chart: {
-        type: "bar",
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 0,
-          columnWidth: "25%",
-          dataLabels: {
-            position: "top", // top, center, bottom
+      const optionsAq = {
+        chart: {
+          type: "bar",
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 0,
+            columnWidth: "25%",
+            dataLabels: {
+              position: "top", // top, center, bottom
+            },
           },
         },
-      },
-      // stroke: {
-      //   show: true,
-      //   width: 30,
-      //   colors: ["transparent"],
-      // },
+        // stroke: {
+        //   show: true,
+        //   width: 30,
+        //   colors: ["transparent"],
+        // },
 
-      grid: {
-        strokeDashArray: 7,
-        //   row: {
-        //     colors: ["#fff", "#f2f2f2"],
-        //   },
-      },
-      xaxis: {
-        labels: {
+        grid: {
+          strokeDashArray: 7,
+          //   row: {
+          //     colors: ["#fff", "#f2f2f2"],
+          //   },
+        },
+        xaxis: {
+          labels: {
+            show: false,
+            rotate: -45,
+            formatter: function (value, timestamp, opts) {
+              return value;
+            },
+          },
+
+          categories: [],
+          // tickPlacement: "on",
+        },
+        yaxis: {
+          labels: {
+            style: {
+              colors: ["#a8a8a8"],
+              fontSize: "8px",
+              fontWeight: 400,
+            },
+            formatter: value => {
+              return value / 1000 + "K";
+            },
+          },
+        },
+        tooltip: {
+          enabled: false,
+          y: {
+            formatter: function (
+              value,
+              { series, seriesIndex, dataPointIndex, w },
+            ) {
+              return "$" + value;
+            },
+            title: {
+              formatter: seriesName => seriesName + " :",
+            },
+          },
+        },
+        legend: {
           show: false,
-          rotate: -45,
-          formatter: function (value, timestamp, opts) {
-            return value;
-          },
+          //   position: "top",
+          //   horizontalAlign: "right",
+          // //   width: 100,
+          //   height: 50,
         },
-
-        categories: [],
-        // tickPlacement: "on",
-      },
-      yaxis: {
-        labels: {
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return "$" + convertToInternationalCurrencySystem(Number(val));
+          },
+          offsetY: -20,
           style: {
-            colors: ["#a8a8a8"],
-            fontSize: "8px",
-            fontWeight: 400,
-          },
-          formatter: value => {
-            return value / 1000 + "K";
+            fontSize: "12px",
+            colors: ["#304758"],
           },
         },
-      },
-      tooltip: {
-        enabled: false,
-        y: {
-          formatter: function (
-            value,
-            { series, seriesIndex, dataPointIndex, w },
-          ) {
-            return "$" + value;
+        fill: {
+          type: "gradient",
+          colors: ["#12ab97"],
+          gradient: {
+            shade: "light",
+            type: "vertical",
+            shadeIntensity: 0.75,
+            gradientToColors: ["#a7e05f"],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [10],
           },
-          title: {
-            formatter: seriesName => seriesName + " :",
-          },
         },
-      },
-      legend: {
-        show: false,
-        //   position: "top",
-        //   horizontalAlign: "right",
-        // //   width: 100,
-        //   height: 50,
-      },
-      dataLabels: {
-        enabled: true,
-        formatter: function (val) {
-          return "$" + convertToInternationalCurrencySystem(Number(val));
-        },
-        offsetY: -20,
-        style: {
-          fontSize: "12px",
-          colors: ["#304758"],
-        },
-      },
-      fill: {
-        type: "gradient",
-        colors: ["#12ab97"],
-        gradient: {
-          shade: "light",
-          type: "vertical",
-          shadeIntensity: 0.75,
-          gradientToColors: ["#a7e05f"],
-          inverseColors: true,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [10],
-        },
-      },
-    };
+      };
 
-    let AqsaSorted =
-      router.locale === "en"
-        ? [
-            ...alAqsa.sort(function (x, y) {
-              return y.TotalContribution - x.TotalContribution;
-            }),
-          ]
-        : [
-            ...alAqsa
-              .sort(function (x, y) {
+      let AqsaSorted =
+        router.locale === "en"
+          ? [
+              ...alAqsa.sort(function (x, y) {
                 return y.TotalContribution - x.TotalContribution;
-              })
-              .reverse(),
-          ];
+              }),
+            ]
+          : [
+              ...alAqsa
+                .sort(function (x, y) {
+                  return y.TotalContribution - x.TotalContribution;
+                })
+                .reverse(),
+            ];
 
-    let XAxisDataAq = [];
-    let totalAq = 0;
+      let XAxisDataAq = [];
+      let totalAq = 0;
 
-    if (AqsaSorted.length > 0 && flag.length > 0) {
-      let XAxisDataAqLocal = [];
-      for (let index = 0; index < AqsaSorted.length; index++) {
-        seriesAq[0].data.push(
-          Math.round(parseFloat(AqsaSorted[index].TotalContribution)),
-        );
-        totalAq += Math.round(parseFloat(AqsaSorted[index].TotalContribution));
-        optionsAq.xaxis.categories.push(AqsaSorted[index].Country);
-        XAxisDataAqLocal.push(AqsaSorted[index].Country);
-      }
-      for (let index = 0; index < XAxisDataAqLocal.length; index++) {
-        let data = null;
-        for (let innerIndex = 0; innerIndex < flag.length; innerIndex++) {
-          if (
-            flag[innerIndex].Country.toLowerCase() ===
-            XAxisDataAqLocal[index].toLowerCase()
-          ) {
-            data = {
-              url: flag[innerIndex].Flag[0].url,
-              title: XAxisDataAqLocal[index],
-            };
-          }
+      if (
+        AqsaSorted.length > 0 &&
+        flag.length > 0 &&
+        (aqsaResource.length === 0 ||
+          Object.keys(aqsaOption).length === 0 ||
+          !xDataAl ||
+          totalAqsa.length === 0)
+      ) {
+        let XAxisDataAqLocal = [];
+        for (let index = 0; index < AqsaSorted.length; index++) {
+          seriesAq[0].data.push(
+            Math.round(parseFloat(AqsaSorted[index].TotalContribution)),
+          );
+          totalAq += Math.round(
+            parseFloat(AqsaSorted[index].TotalContribution),
+          );
+          optionsAq.xaxis.categories.push(AqsaSorted[index].Country);
+          XAxisDataAqLocal.push(AqsaSorted[index].Country);
         }
-        XAxisDataAq.push(data);
+        for (let index = 0; index < XAxisDataAqLocal.length; index++) {
+          let data = null;
+          for (let innerIndex = 0; innerIndex < flag.length; innerIndex++) {
+            if (
+              flag[innerIndex].Country.toLowerCase() ===
+              XAxisDataAqLocal[index].toLowerCase()
+            ) {
+              data = {
+                url: flag[innerIndex].Flag.url,
+                title: XAxisDataAqLocal[index],
+              };
+            }
+          }
+          XAxisDataAq.push(data);
+        }
+        // console.log("totalAq", totalAq);
+        setAqsaResource(seriesAq);
+        setAqsaOption(optionsAq);
+        setXdataAl(XAxisDataAq);
+        settotalAqsa(totalAq);
       }
-      // console.log("totalAq", totalAq);
-      setAqsaResource(seriesAq);
-      setAqsaOption(optionsAq);
-      setXdataAl(XAxisDataAq);
-      settotalAqsa(totalAq);
-    }
 
-    let ArabSorted =
-      router.locale === "en"
-        ? [
-            ...arab.sort(function (x, y) {
-              return y.Grants - x.Grants;
-            }),
-          ]
-        : [
-            ...arab
-              .sort(function (x, y) {
+      let ArabSorted =
+        router.locale === "en"
+          ? [
+              ...arab.sort(function (x, y) {
                 return y.Grants - x.Grants;
-              })
-              .reverse(),
-          ];
+              }),
+            ]
+          : [
+              ...arab
+                .sort(function (x, y) {
+                  return y.Grants - x.Grants;
+                })
+                .reverse(),
+            ];
 
-    let XAxisDataAr = [];
-    let totalAr = 0;
-    let totalArDis = 0;
-    if (ArabSorted.length > 0 && projectTitle.length > 0) {
-      let XAxisDataAqLocal = [];
-      for (let index = 0; index < ArabSorted.length; index++) {
-        seriesAr[0].data.push(Math.round(parseFloat(ArabSorted[index].Grants)));
-        seriesAr[1].data.push(
-          Math.round(parseFloat(ArabSorted[index].DisbursementAmount)),
-        );
-        totalAr += Math.round(parseFloat(ArabSorted[index].Grants));
-        totalArDis += Math.round(
-          parseFloat(ArabSorted[index].DisbursementAmount),
-        );
-        optionsAR.xaxis.categories.push(ArabSorted[index].Fund);
-        XAxisDataAqLocal.push(ArabSorted[index].Fund);
-      }
-      for (let index = 0; index < XAxisDataAqLocal.length; index++) {
-        let data = null;
-        for (
-          let innerIndex = 0;
-          innerIndex < projectTitle.length;
-          innerIndex++
-        ) {
-          if (
-            projectTitle[innerIndex].title.toLowerCase() ===
-            XAxisDataAqLocal[index].toLowerCase()
-          ) {
-            data = {
-              url: projectTitle[innerIndex].logo[0].url,
-              title: XAxisDataAqLocal[index],
-            };
-          }
+      let XAxisDataAr = [];
+      let totalAr = 0;
+      let totalArDis = 0;
+      if (
+        ArabSorted.length > 0 &&
+        projectTitle.length > 0 &&
+        (arabResource.length === 0 ||
+          Object.keys(arabOption).length === 0 ||
+          !xDataAr ||
+          totalArab.length === 0 ||
+          totalArDisbursed.length === 0)
+      ) {
+        let XAxisDataAqLocal = [];
+        for (let index = 0; index < ArabSorted.length; index++) {
+          seriesAr[0].data.push(
+            Math.round(parseFloat(ArabSorted[index].Grants)),
+          );
+          seriesAr[1].data.push(
+            Math.round(parseFloat(ArabSorted[index].DisbursementAmount)),
+          );
+          totalAr += Math.round(parseFloat(ArabSorted[index].Grants));
+          totalArDis += Math.round(
+            parseFloat(ArabSorted[index].DisbursementAmount),
+          );
+          optionsAR.xaxis.categories.push(ArabSorted[index].Fund);
+          XAxisDataAqLocal.push(ArabSorted[index].Fund);
         }
-        XAxisDataAr.push(data);
+        for (let index = 0; index < XAxisDataAqLocal.length; index++) {
+          let data = null;
+          for (
+            let innerIndex = 0;
+            innerIndex < projectTitle.length;
+            innerIndex++
+          ) {
+            if (
+              projectTitle[innerIndex].title.toLowerCase() ===
+              XAxisDataAqLocal[index].toLowerCase()
+            ) {
+              data = {
+                url: projectTitle[innerIndex].logo[0].url,
+                title: XAxisDataAqLocal[index],
+              };
+            }
+          }
+          XAxisDataAr.push(data);
+        }
+        setArabResource(seriesAr);
+        setArabOption(optionsAR);
+        setXdataAr(XAxisDataAr);
+        settotalArab(totalAr);
+        setTotalArDisbursed(totalArDis);
       }
-      setArabResource(seriesAr);
-      setArabOption(optionsAR);
-      setXdataAr(XAxisDataAr);
-      settotalArab(totalAr);
-      setTotalArDisbursed(totalArDis);
-    }
 
-    let yearlySorted =
-      router.locale === "en"
-        ? [
-            ...yearly.sort(function (x, y) {
-              return x.id - y.id;
-            }),
-          ]
-        : [
-            ...yearly
-              .sort(function (x, y) {
+      let yearlySorted =
+        router.locale === "en"
+          ? [
+              ...yearly.sort(function (x, y) {
                 return x.id - y.id;
-              })
-              .reverse(),
-          ];
-    let XAxisDataYr = [];
-    let totalYr = 0;
-    let totalYrDis = 0;
-    if (yearlySorted.length > 0) {
-      for (let index = 0; index < yearlySorted.length; index++) {
-        seriesYr[0].data.push(
-          Math.round(parseFloat(yearlySorted[index].ApprovedAmount)),
-        );
-        seriesYr[1].data.push(
-          Math.round(parseFloat(yearlySorted[index].DisbursementAmount)),
-        );
-        totalYr += Math.round(parseFloat(yearlySorted[index].ApprovedAmount));
-        totalYrDis += Math.round(
-          parseFloat(yearlySorted[index].DisbursementAmount),
-        );
-        optionsYr.xaxis.categories.push(yearlySorted[index].Year);
-        XAxisDataYr.push(yearlySorted[index].Year);
+              }),
+            ]
+          : [
+              ...yearly
+                .sort(function (x, y) {
+                  return x.id - y.id;
+                })
+                .reverse(),
+            ];
+      let XAxisDataYr = [];
+      let totalYr = 0;
+      let totalYrDis = 0;
+      if (
+        yearlySorted.length > 0 &&
+        (yearlyApproval.length === 0 ||
+          Object.keys(yearlyOption).length === 0 ||
+          !xDataYr ||
+          totalYearly.length === 0 ||
+          totalYrDisbursed.length === 0)
+      ) {
+        for (let index = 0; index < yearlySorted.length; index++) {
+          seriesYr[0].data.push(
+            Math.round(parseFloat(yearlySorted[index].ApprovedAmount)),
+          );
+          seriesYr[1].data.push(
+            Math.round(parseFloat(yearlySorted[index].DisbursementAmount)),
+          );
+          totalYr += Math.round(parseFloat(yearlySorted[index].ApprovedAmount));
+          totalYrDis += Math.round(
+            parseFloat(yearlySorted[index].DisbursementAmount),
+          );
+          optionsYr.xaxis.categories.push(yearlySorted[index].Year);
+          XAxisDataYr.push(yearlySorted[index].Year);
+        }
+        // console.log("seriesYr", seriesYr);
+        setXdataYr(XAxisDataYr);
+        setYearlyApproval(seriesYr);
+        setYearlyOption(optionsYr);
+        settotalYearly(totalYr);
+        setTotalYrDisbursed(totalYrDis);
       }
-      console.log("seriesYr", seriesYr);
-      setXdataYr(XAxisDataYr);
-      setYearlyApproval(seriesYr);
-      setYearlyOption(optionsYr);
-      settotalYearly(totalYr);
-      setTotalYrDisbursed(totalYrDis);
     }
-  }, [yearly, arab]);
+  }, [
+    yearly,
+    arab,
+    showChart,
+    aqsaResource,
+    aqsaOption,
+    xDataAl,
+    totalAqsa,
+    arabResource,
+    arabOption,
+    xDataAr,
+    totalArab,
+    totalArDisbursed,
+    yearlyApproval,
+    yearlyOption,
+    xDataYr,
+    totalYearly,
+    totalYrDisbursed,
+  ]);
 
   const legendDataAq = [
     {
@@ -571,7 +627,7 @@ export default function ResourceChart({
       text: t("disbursed"),
     },
   ];
-
+  console.log("=====>", aqsaResource, aqsaOption, xDataAl, totalAqsa);
   return (
     <div className={`${style.resource_bg} py-3`}>
       <div className={`${style.resource_container}`}>
@@ -954,35 +1010,49 @@ export default function ResourceChart({
               )}
               {/* <div id="fund_chart"></div> */}
               <div className={`${style.horz_scroll}`}>
-                <div className={`${style.bar_chart}`}>
-                  {activeData === "aqsa" && (
-                    <ApexCharts
-                      options={aqsaOption}
-                      series={aqsaResource}
-                      type="bar"
-                      width={"200%"}
-                      height={"400px"}
-                    />
-                  )}
-                  {activeData === "arab" && (
-                    <ApexCharts
-                      options={arabOption}
-                      series={arabResource}
-                      type="bar"
-                      width={"200%"}
-                      height={"400px"}
-                    />
-                  )}
-                  {activeData === "yearly" && (
-                    <ApexCharts
-                      options={yearlyOption}
-                      series={yearlyApproval}
-                      type="bar"
-                      width={"200%"}
-                      height={"400px"}
-                    />
-                  )}
-                </div>
+                {showChart && (
+                  <div className={`${style.bar_chart}`}>
+                    {activeData === "aqsa" &&
+                      Object.keys(aqsaOption).length > 0 &&
+                      aqsaResource.length > 0 && (
+                        <>
+                          <ApexCharts
+                            options={aqsaOption}
+                            series={aqsaResource}
+                            type="bar"
+                            width={"200%"}
+                            height={"400px"}
+                          />
+                        </>
+                      )}
+                    {activeData === "arab" &&
+                      Object.keys(arabOption).length > 0 &&
+                      arabResource.length > 0 && (
+                        <>
+                          <ApexCharts
+                            options={arabOption}
+                            series={arabResource}
+                            type="bar"
+                            width={"200%"}
+                            height={"400px"}
+                          />
+                        </>
+                      )}
+                    {activeData === "yearly" &&
+                      Object.keys(yearlyOption).length > 0 &&
+                      yearlyApproval.length > 0 && (
+                        <>
+                          <ApexCharts
+                            options={yearlyOption}
+                            series={yearlyApproval}
+                            type="bar"
+                            width={"200%"}
+                            height={"400px"}
+                          />
+                        </>
+                      )}
+                  </div>
+                )}
                 <div className="d-flex justify-content-start align-items-center px-5">
                   {activeData === "yearly" && xAxisWidth && (
                     <div
@@ -1292,35 +1362,49 @@ export default function ResourceChart({
               )}
               {/* <div id="fund_chart"></div> */}
               <div className={`${style.horz_scroll}`}>
-                <div className={`${style.bar_chart}`}>
-                  {activeData === "aqsa" && (
-                    <ApexCharts
-                      options={aqsaOption}
-                      series={aqsaResource}
-                      type="bar"
-                      width={"600%"}
-                      height={"400px"}
-                    />
-                  )}
-                  {activeData === "arab" && (
-                    <ApexCharts
-                      options={arabOption}
-                      series={arabResource}
-                      type="bar"
-                      width={"600%"}
-                      height={"400px"}
-                    />
-                  )}
-                  {activeData === "yearly" && (
-                    <ApexCharts
-                      options={yearlyOption}
-                      series={yearlyApproval}
-                      type="bar"
-                      width={"600%"}
-                      height={"400px"}
-                    />
-                  )}
-                </div>
+                {showChart && (
+                  <div className={`${style.bar_chart}`}>
+                    {activeData === "aqsa" &&
+                      Object.keys(aqsaOption).length > 0 &&
+                      aqsaResource.length > 0 && (
+                        <>
+                          <ApexCharts
+                            options={aqsaOption}
+                            series={aqsaResource}
+                            type="bar"
+                            width={"600%"}
+                            height={"400px"}
+                          />
+                        </>
+                      )}
+                    {activeData === "arab" &&
+                      Object.keys(arabOption).length > 0 &&
+                      arabResource.length > 0 && (
+                        <>
+                          <ApexCharts
+                            options={arabOption}
+                            series={arabResource}
+                            type="bar"
+                            width={"600%"}
+                            height={"400px"}
+                          />
+                        </>
+                      )}
+                    {activeData === "yearly" &&
+                      Object.keys(yearlyOption).length > 0 &&
+                      yearlyApproval.length > 0 && (
+                        <>
+                          <ApexCharts
+                            options={yearlyOption}
+                            series={yearlyApproval}
+                            type="bar"
+                            width={"600%"}
+                            height={"400px"}
+                          />
+                        </>
+                      )}
+                  </div>
+                )}
                 <div className="d-flex justify-content-start align-items-center px-5">
                   {activeData === "yearly" && xAxisWidth && (
                     <div

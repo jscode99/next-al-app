@@ -16,25 +16,48 @@ export default function PageCommonSection({ title, handlePrint }) {
     setBreadcrumList(getBreadcrumData(router));
     let socialMediaList = [
       { className: "fas fa-print", link: null, btn: handlePrint },
-      { className: "fas fa-envelope", link: "mailto:", btn: null },
+      {
+        className: "fas fa-envelope",
+        link:
+          router.locale === "en"
+            ? `mailto:?body=https%3A%2F%2F${
+                process.env.DOMAIN
+              }&subject=${"Al-Aqsa"}`
+            : `mailto:?body=https%3A%2F%2F${
+                process.env.DOMAIN
+              }%2Far&subject=${"الأقصى"}`,
+        btn: null,
+      },
       {
         className: "fab fa-whatsapp",
-        link: `https://api.whatsapp.com/send?text=Al%20Aqsa%20https%3A%2F%2F${process.env.DOMAIN}/${router.asPath}` /* "https://api.whatsapp.com/send" */,
+        link:
+          router.locale === "en"
+            ? `https://api.whatsapp.com/send?text=${"Al-Aqsa"}%20https%3A%2F%2F${
+                process.env.DOMAIN
+              }`
+            : `https://api.whatsapp.com/send?text=${"الأقصى"}%20https%3A%2F%2F${
+                process.env.DOMAIN
+              }%2Far`,
         btn: null,
       },
       {
         className: "fab fa-twitter",
-        link: "https://twitter.com/intent/tweet",
+        link:
+          router.locale === "en"
+            ? `https://twitter.com/intent/tweet?text=${"Al-Aqsa"}&url=https%3A%2F%2F${
+                process.env.DOMAIN
+              }.YUBfkjipWaQ.twitter&related=`
+            : `https://twitter.com/intent/tweet?text=${"الأقصى"}&url=https%3A%2F%2F${
+                process.env.DOMAIN
+              }%2Far.YUBfkjipWaQ.twitter&related=`,
         btn: null,
       },
       {
         className: "fab fa-facebook-f",
-        link: `https://www.facebook.com/login.php?skip_api_login=1&api_key=140586622674265&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv4.0%2Fdialog%2Fshare%3Fredirect_uri%3Dhttp%253A%252F%252Fs7.addthis.com%252Fstatic%252Fthankyou.html%26display%3Dpopup%26href%3Dhttps%253A%252F%252F${
-          process.env.DOMAIN
-        }%252F${router.asPath.replace(
-          "/",
-          "%252F",
-        )}%26client_id%3D140586622674265%26ret%3Dlogin&cancel_url=https%3A%2F%2Fs7.addthis.com%2Fstatic%2Fthankyou.html%3Ferror_code%3D4201%26error_message%3DUser%2Bcanceled%2Bthe%2BDialog%2Bflow%23_%3D_&display=popup&locale=en_GB` /* "https://www.facebook.com/login.php" */,
+        link:
+          router.locale === "en"
+            ? `https://www.facebook.com/login.php?skip_api_login=1&api_key=140586622674265&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv4.0%2Fdialog%2Fshare%3Fredirect_uri%3Dhttp%253A%252F%252Fs7.addthis.com%252Fstatic%252Fthankyou.html%26display%3Dpopup%26href%3Dhttps%253A%252F%252F${process.env.DOMAIN}%26client_id%3D140586622674265%26ret%3Dlogin&cancel_url=https%3A%2F%2Fs7.addthis.com%2Fstatic%2Fthankyou.html%3Ferror_code%3D4201%26error_message%3DUser%2Bcanceled%2Bthe%2BDialog%2Bflow%23_%3D_&display=popup&locale=en_GB`
+            : `https://www.facebook.com/login.php?skip_api_login=1&api_key=140586622674265&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv4.0%2Fdialog%2Fshare%3Fredirect_uri%3Dhttp%253A%252F%252Fs7.addthis.com%252Fstatic%252Fthankyou.html%26display%3Dpopup%26href%3Dhttps%253A%252F%252F${process.env.DOMAIN}%2Far%26client_id%3D140586622674265%26ret%3Dlogin&cancel_url=https%3A%2F%2Fs7.addthis.com%2Fstatic%2Fthankyou.html%3Ferror_code%3D4201%26error_message%3DUser%2Bcanceled%2Bthe%2BDialog%2Bflow%23_%3D_&display=popup&locale=en_GB`,
       },
     ];
     setSocialMediaList(socialMediaList);

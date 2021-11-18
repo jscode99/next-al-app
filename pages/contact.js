@@ -1,5 +1,7 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
 //Constants
 import { CONST } from "../app/services/constants";
 //Services
@@ -13,14 +15,22 @@ export default function Contact({
   projectAr,
   bannerImage,
 }) {
+  const { t } = useTranslation("common");
   return (
-    <ContactContainer
-      staticSite={staticSite}
-      staticSiteAr={staticSiteAr}
-      projectTitle={projectTitle}
-      projectAr={projectAr}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("contact")}</title>
+        <meta property="og:title" content="IsDB - About Us" />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <ContactContainer
+        staticSite={staticSite}
+        staticSiteAr={staticSiteAr}
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        bannerImage={bannerImage}
+      />
+    </>
   );
 }
 

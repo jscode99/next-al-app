@@ -82,7 +82,12 @@ export default function ContributionsArabFunds({ arabContributions }) {
 
   useEffect(() => {
     let totalValue = 0;
-    let data = arabContributions.map(value => {
+    let contribution = arabContributions.sort(
+      (a, b) =>
+        parseFloat(b.Allocation.split(",").join("")) -
+        parseFloat(a.Allocation.split(",").join("")),
+    );
+    let data = contribution.map(value => {
       totalValue += parseInt(value.Allocation.split(",").join(""));
       return {
         Allocation:

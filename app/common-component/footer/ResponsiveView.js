@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { useState, useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Row, Col } from "antd";
 import { useTranslation } from "next-i18next";
+//Context API
+import AppContext from "../../AppContext";
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 // import { CONST } from "../../constant/index";
@@ -12,7 +15,15 @@ import style from "./footer.module.sass";
 export default function ResponsiveView({ view, logo }) {
   const router = useRouter();
   const { t } = useTranslation("common");
-  // const [fLinks, setFooterLink] = useState(null);
+  let { appContext, setAppContext } = useContext(AppContext);
+  console.log("footer");
+  const [fLinks, setFooterLink] = useState([
+    "about",
+    "projects",
+    "success stories",
+    "publications",
+    "contact",
+  ]);
   // const [sMedia, setSocialMedia] = useState(null);
   // const [otResource, setOtResource] = useState(null);
   // useEffect(() => {
@@ -124,23 +135,67 @@ export default function ResponsiveView({ view, logo }) {
                   >
                     Quick Links
                   </li>
-                  <li>
-                    <Link href={"/about"}>{t("about")}</Link>
+                  {fLinks.map((link) => (
+                    <li>
+                      <p
+                        className={`mb-0`}
+                        onClick={() => {
+                          setAppContext({
+                            ...appContext,
+                            fLinkClick: true,
+                          });
+                          router.push(`/${link.split(" ").join("-")}`);
+                        }}
+                        // href={"/about"}
+                      >
+                        {t(link)}
+                      </p>
+                    </li>
+                  ))}
+                  {/* <li>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/projects");
+                      }}
+                      // href={"/projects"}
+                    >
+                      {t("projects")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/projects"}>{t("projects")}</Link>
-                  </li>
-                  <li>
-                    <Link href={"/success-stories"}>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/success-stories");
+                      }}
+                      // href={"/success-stories"}
+                    >
                       {t("success stories")}
-                    </Link>
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/publications"}>{t("publications")}</Link>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/publications");
+                      }}
+                      // href={"/publications"}
+                    >
+                      {t("publications")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/contact"}>{t("contact")}</Link>
-                  </li>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/contact");
+                      }}
+                      // href={"/contact"}
+                    >
+                      {t("contact")}
+                    </p>
+                  </li> */}
                 </ul>
               </Col>
               <Col xs={24} sm={24} md={5} lg={6} xl={6}>
@@ -152,18 +207,18 @@ export default function ResponsiveView({ view, logo }) {
                     Other Resources
                   </li>
                   <li>
-                    <Link href={"/"}>Terms and Conditions</Link>
+                    <p href={"/"}>Terms and Conditions</p>
                   </li>
                   <li>
-                    <Link href={"/"}>Privacy Policy</Link>
+                    <p href={"/"}>Privacy Policy</p>
                   </li>
                   <li>
-                    <Link href={"/"}>Sitemap</Link>
+                    <p href={"/"}>Sitemap</p>
                   </li>
                   {/* {otResource && otResource.length > 0
                   ? otResource.map((data) => (
                       <li>
-                        <a href={data.Link} target="_blank" rel="noreferrer">
+                        <a href={data.p} target="_blank" rel="noreferrer">
                           {data.Title}
                         </a>
                       </li>
@@ -185,13 +240,19 @@ export default function ResponsiveView({ view, logo }) {
                     {t("other resources")}
                   </li>
                   <li>
-                    <Link href={"/"}>{t("terms and conditions")}</Link>
+                    <p className={`mb-0`} href={"/"}>
+                      {t("terms and conditions")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/"}>{t("privacy policy")}</Link>
+                    <p className={`mb-0`} href={"/"}>
+                      {t("privacy policy")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/"}>{t("sitemap")}</Link>
+                    <p className={`mb-0`} href={"/"}>
+                      {t("sitemap")}
+                    </p>
                   </li>
                 </ul>
               </Col>
@@ -204,21 +265,59 @@ export default function ResponsiveView({ view, logo }) {
                     {t("quick links")}
                   </li>
                   <li>
-                    <Link href={"/about"}>{t("about")}</Link>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/about");
+                      }}
+                      // href={"/about"}
+                    >
+                      {t("about")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/projects"}>{t("projects")}</Link>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/projects");
+                      }}
+                      // href={"/projects"}
+                    >
+                      {t("projects")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/success-stories"}>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/success-stories");
+                      }}
+                      // href={"/success-stories"}
+                    >
                       {t("success stories")}
-                    </Link>
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/publications"}>{t("publications")}</Link>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/publications");
+                      }}
+                      // href={"/publications"}
+                    >
+                      {t("publications")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/contact"}>{t("contact")}</Link>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/contact");
+                      }}
+                      // href={"/contact"}
+                    >
+                      {t("contact")}
+                    </p>
                   </li>
                 </ul>
               </Col>
@@ -311,26 +410,64 @@ export default function ResponsiveView({ view, logo }) {
                     {t("quick links")}
                   </li>
                   <li>
-                    <Link href={"/about"}>{t("about")}</Link>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/about");
+                      }}
+                      // href={"/about"}
+                    >
+                      {t("about")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/projects"}>{t("projects")}</Link>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/projects");
+                      }}
+                      // href={"/projects"}
+                    >
+                      {t("projects")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/success-stories"}>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/success-stories");
+                      }}
+                      // href={"/success-stories"}
+                    >
                       {t("success stories")}
-                    </Link>
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/publications"}>{t("publications")}</Link>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/publications");
+                      }}
+                      // href={"/publications"}
+                    >
+                      {t("publications")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/contact"}>{t("contact")}</Link>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/contact");
+                      }}
+                      // href={"/contact"}
+                    >
+                      {t("contact")}
+                    </p>
                   </li>
                   {/* {fLinks && fLinks.length > 0
                   ? fLinks.map((data) => (
                       <li>
-                        <a href={data.Link}>{data.Title}</a>
+                        <a href={data.p}>{data.Title}</a>
                       </li>
                     ))
                   : ""} */}
@@ -348,13 +485,19 @@ export default function ResponsiveView({ view, logo }) {
                     {t("other resources")}
                   </li>
                   <li>
-                    <Link href={"/"}>{t("terms and conditions")}</Link>
+                    <p className={`mb-0`} href={"/"}>
+                      {t("terms and conditions")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/"}>{t("privacy policy")}</Link>
+                    <p className={`mb-0`} href={"/"}>
+                      {t("privacy policy")}
+                    </p>
                   </li>
                   <li>
-                    <Link href={"/"}>{t("sitemap")}</Link>
+                    <p className={`mb-0`} href={"/"}>
+                      {t("sitemap")}
+                    </p>
                   </li>
                 </ul>
               </Col>

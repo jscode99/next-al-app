@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
 //Context
 import AppContext from "../../app/AppContext";
 //Constants
@@ -16,15 +18,22 @@ export default function SuccessStories({
   projectAr,
   bannerImage,
 }) {
-  console.log("successStoriesAR", successStoriesAR);
+  const { t } = useTranslation("common");
   return (
-    <SuccessStoriesContainer
-      stories={stories}
-      successStoriesAR={successStoriesAR}
-      projectTitle={projectTitle}
-      projectAr={projectAr}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("success stories")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <SuccessStoriesContainer
+        stories={stories}
+        successStoriesAR={successStoriesAR}
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        bannerImage={bannerImage}
+      />
+    </>
   );
 }
 

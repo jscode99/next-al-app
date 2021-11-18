@@ -3,8 +3,8 @@
 .container
     @include container_padding_smScreen
 
-.full_head
-    box-shadow: 0 .5rem 1rem rgba(255, 255, 255,.20)
+// .full_head
+//     box-shadow: 0 .5rem 1rem rgba(0, 0, 0,.20)
 
 .app_header_language_section,
 .app_header_nav_container
@@ -18,9 +18,9 @@
 
 .app_header_container
     height: 120px $important
-    z-index: 100
+    z-index: 200
     position: absolute
-    background-color: $transparent $important
+    // background-color: $transparent $important
 
 .app_header_language_section
     height: 40px
@@ -59,6 +59,7 @@
     visibility: visible
 
 .dd_list
+    z-index: 1160
     font-family: roboto
     li
         color: $grey_color

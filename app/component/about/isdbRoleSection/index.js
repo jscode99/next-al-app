@@ -7,7 +7,7 @@ import { Row, Col } from "antd";
 import style from "./index.module.sass";
 
 export default function IsdbRoleSection({ data }) {
-  console.log("data", data);
+  // console.log("data", data);
   let router = useRouter();
   const { t } = useTranslation("common");
   const [roleIntro, setRoleIntro] = useState("");

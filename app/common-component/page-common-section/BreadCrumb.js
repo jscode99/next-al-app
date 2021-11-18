@@ -49,8 +49,8 @@ export default function BreadCrumb({ breadcrumList }) {
                   className={`${style.breadcrumb_item}`}
                   href={`${
                     router.locale === "en"
-                      ? `/${mapTitleToRoutePath({ Title: data })}`
-                      : `/ar/${mapTitleToRoutePath({ Title: data })}`
+                      ? `/en/${mapTitleToRoutePath(data)}`
+                      : `/${mapTitleToRoutePath(data)}`
                   }`}
                 >
                   {router.locale === "en"

@@ -17,6 +17,7 @@ const { SubMenu } = Menu;
 export default function AppHeader({ pageName, projectTitle }) {
   const [routePath, setRoutePath] = useState([]);
   const [visible, setVisible] = useState(false);
+  const [navBar, setNavBar] = useState(false);
   const showDrawer = () => {
     setVisible(true);
   };
@@ -41,6 +42,23 @@ export default function AppHeader({ pageName, projectTitle }) {
     },
   ];
 
+  const handleScroll = () => {
+    // console.log("WINDOWWW", window.pageYOffset);
+    if (window.pageYOffset > 140) {
+      if (!navBar) {
+        setNavBar(true);
+      }
+    } else {
+      if (navBar) {
+        setNavBar(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, [navBar]);
+
   useEffect(() => {
     const ROUTE_PATHS = [
       { name: "home", path: "/", navigation: false },
@@ -55,13 +73,13 @@ export default function AppHeader({ pageName, projectTitle }) {
     else setRoutePath(ROUTE_PATHS.reverse());
   }, [router.locale]);
 
-  const getLanguageDataFromCode = code => {
-    return language.find(data => data.code === code);
+  const getLanguageDataFromCode = (code) => {
+    return language.find((data) => data.code === code);
   };
 
   const navProject = (
     <Menu className={`${style.dd_list}`}>
-      {projectTitle.map(data => (
+      {projectTitle.map((data) => (
         <Menu.Item key={data.id}>
           {/* <Link href={`/projects/${mapTitleToRoutePath(data.title)}`}> */}
           <div
@@ -134,7 +152,7 @@ export default function AppHeader({ pageName, projectTitle }) {
         <Menu.Item key={index}>
           <Link
             href={{
-              pathname: `/${router.pathname.split('/')[1]}`,
+              pathname: `/${router.pathname.split("/")[1]}`,
               // query: router.query.title ? { title: router.query.title } : null,
             }}
             locale={value.code === "en" ? "en" : "ar"}
@@ -150,8 +168,14 @@ export default function AppHeader({ pageName, projectTitle }) {
       ))}
     </Menu>
   );
+  console.log(router, router.locale, "router.locale", router.locale);
   return (
-    <Header className={`${style.app_header_container} w-100 p-0 top-0`}>
+    <Header
+      className={`${style.app_header_container} w-100 p-0 top-0 ${
+        navBar && "position-fixed shadow"
+      }`}
+      style={{ backgroundColor: navBar ? "#fff" : "#00000000" }}
+    >
       <div className={`${style.container}`}>
         <Row>
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
@@ -160,12 +184,14 @@ export default function AppHeader({ pageName, projectTitle }) {
                 router.locale === "en"
                   ? "justify-content-end"
                   : "justify-content-start"
-              } align-items-center`}
+              } align-items-center ${navBar && "bg-white"}`}
             >
               <Dropdown overlay={menu} placement="bottomCenter">
                 <Button
                   type="text"
-                  className={`${style.language_switch_button} text-white d-flex justify-content-between align-items-center`}
+                  className={`${style.language_switch_button} ${
+                    navBar ? "" : "text-white"
+                  } d-flex justify-content-between align-items-center`}
                 >
                   {/* <Image
                   src={getLanguageDataFromCode(router.locale).flag}

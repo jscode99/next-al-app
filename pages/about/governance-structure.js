@@ -4,6 +4,9 @@ import { CONST } from "../../app/services/constants";
 import { fetchService } from "../../app/services/fetchService";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
+//Container
 import GovernanceContainer from "../../app/container/about/Governance";
 
 export default function Governance({
@@ -13,14 +16,22 @@ export default function Governance({
   projectAr,
   bannerImage,
 }) {
+  const { t } = useTranslation("common");
   return (
-    <GovernanceContainer
-      staticSite={staticSite}
-      staticSiteAr={staticSiteAr}
-      projectTitle={projectTitle}
-      projectAr={projectAr}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("governance structure")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <GovernanceContainer
+        staticSite={staticSite}
+        staticSiteAr={staticSiteAr}
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        bannerImage={bannerImage}
+      />
+    </>
   );
 }
 export async function getStaticProps({ locale }) {

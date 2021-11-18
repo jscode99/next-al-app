@@ -4,6 +4,9 @@ import { CONST } from "../../app/services/constants";
 import { fetchService } from "../../app/services/fetchService";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
+//Container
 import ApprovalProcessContainer from "../../app/container/about/ApprovalProcess";
 
 export default function ApprovalProcess({
@@ -13,14 +16,23 @@ export default function ApprovalProcess({
   projectAr,
   bannerImage,
 }) {
+  const { t } = useTranslation("common");
+
   return (
-    <ApprovalProcessContainer
-      staticSite={staticSite}
-      staticSiteAr={staticSiteAr}
-      projectTitle={projectTitle}
-      projectAr={projectAr}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("approval process and selection criteria")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <ApprovalProcessContainer
+        staticSite={staticSite}
+        staticSiteAr={staticSiteAr}
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        bannerImage={bannerImage}
+      />
+    </>
   );
 }
 

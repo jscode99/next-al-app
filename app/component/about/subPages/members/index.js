@@ -23,21 +23,21 @@ export default function Members({ members, flag }) {
     let resultMem = [];
     if (members.length > 0 && flag.length > 0) {
       for (let index = 0; index < members.length; index++) {
-        let url = null;
-        for (let innerIndex = 0; innerIndex < flag.length; innerIndex++) {
-          if (
-            members[index].country.toLowerCase() ===
-            flag[innerIndex].Country.toLowerCase()
-          ) {
-            url = flag[innerIndex].Flag[0].url;
-          }
-        }
+        // let url = null;
+        // for (let innerIndex = 0; innerIndex < flag.length; innerIndex++) {
+        //   if (
+        //     members[index].country.toLowerCase() ===
+        //     flag[innerIndex].Country.toLowerCase()
+        //   ) {
+        //     url = flag[innerIndex].Flag[0].url;
+        //   }
+        // }
         resultMem.push({
           title: members[index].title,
           label: members[index].label,
           reputation: members[index].reputation,
           type: members[index].type,
-          url: url,
+          // url: url,
         });
       }
     }

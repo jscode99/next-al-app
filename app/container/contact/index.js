@@ -1,6 +1,9 @@
 import { useRouter } from "next/router";
 import Layout from "../layout";
+import { useEffect, useContext } from "react";
 import Contact from "../../component/contact";
+//Context API
+import AppContext from "../../AppContext";
 
 export default function ContactContainer({
   staticSite,
@@ -10,6 +13,18 @@ export default function ContactContainer({
   bannerImage,
 }) {
   const router = useRouter();
+  let { appContext, setAppContext } = useContext(AppContext);
+  useEffect(() => {
+    // console.log(
+    //   "======================CONTACT===========================>",
+    //   appContext.fLinkClick
+    // );
+    if (appContext && !appContext.fLinkClick)
+      setAppContext({
+        ...appContext,
+        loader: false,
+      });
+  }, [appContext.fLinkClick]);
   return (
     <Layout
       heroImage={bannerImage}

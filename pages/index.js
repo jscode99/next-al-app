@@ -1,10 +1,13 @@
 import { useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 //Constants
 import { CONST } from "../app/services/constants";
 //Services
 import { fetchService } from "../app/services/fetchService";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
 import Landing from "../app/container/landing";
 //Context Api
 import AppContext from "../app/AppContext";
@@ -30,28 +33,54 @@ export default function Home({
   isdbManage,
   isdbManageAr,
 }) {
+  const router = useRouter();
+  const { t } = useTranslation("common");
+  let { appContext, setAppContext } = useContext(AppContext);
+  // console.log(
+  //   "==================================================>",
+  //   appContext.fLinkClick
+  // );
+  console.log("flag", flag);
+  console.log("PROJECT", projectData);
+  useEffect(() => {
+    if (appContext && appContext.fLinkClick) {
+      setAppContext({
+        ...appContext,
+        fLinkClick: false,
+        loader: true,
+      });
+      router.back();
+    }
+  }, []);
   return (
-    <Landing
-      staticSite={staticSite}
-      staticSiteAr={staticSiteAr}
-      projectData={projectData}
-      projectDataAr={projectDataAr}
-      sector={sector}
-      sectorAr={sectorAr}
-      projectTitle={projectTitle}
-      projectAr={projectAr}
-      alAqsa={alAqsa}
-      alAqsaAr={alAqsaAr}
-      arab={arab}
-      arabAr={arabAr}
-      yearly={yearly}
-      yearlyAr={yearlyAr}
-      bannerImage={bannerImage}
-      flag={flag}
-      flagAr={flagAr}
-      isdbManage={isdbManage}
-      isdbManageAr={isdbManageAr}
-    />
+    <>
+      <Helmet>
+        <title>{t("al aqsa fund")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <Landing
+        staticSite={staticSite}
+        staticSiteAr={staticSiteAr}
+        projectData={projectData}
+        projectDataAr={projectDataAr}
+        sector={sector}
+        sectorAr={sectorAr}
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        alAqsa={alAqsa}
+        alAqsaAr={alAqsaAr}
+        arab={arab}
+        arabAr={arabAr}
+        yearly={yearly}
+        yearlyAr={yearlyAr}
+        bannerImage={bannerImage}
+        flag={flag}
+        flagAr={flagAr}
+        isdbManage={isdbManage}
+        isdbManageAr={isdbManageAr}
+      />
+    </>
   );
 }
 

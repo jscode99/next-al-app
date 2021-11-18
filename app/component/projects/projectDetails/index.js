@@ -10,7 +10,7 @@ import ProjectDetailsTable from "./projectDetailsTable";
 import style from "./index.module.sass";
 
 export default function ProjectDetails({ projectTitle, projectData, sector }) {
-  // console.log("sector", sector);
+  console.log("sector", sector);
   // console.log("projectData  INNER COMPONENT", projectData);
   // console.log("projectTitle  INNER COMPONENT", projectTitle);
 

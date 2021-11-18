@@ -5,13 +5,13 @@ import { useRouter } from "next/router";
 // import { useEffect } from "react";
 
 export default function StoriesDetailsContainer({
+  successMedia,
   storiesProps,
   projectTitle,
   projectAr,
   bannerImage,
 }) {
   const router = useRouter();
-  console.log("storiesProps", storiesProps);
   // useEffect(() => {
   //   if (!storiesProps) router.push("/success-stories");
   // }, [storiesProps]);
@@ -23,7 +23,10 @@ export default function StoriesDetailsContainer({
       projectTitle={router.locale === "en" ? projectTitle : projectAr}
       title={storiesProps.Title}
     >
-      <StoriesDetailsComponent storiesProps={storiesProps} />
+      <StoriesDetailsComponent
+        successMedia={successMedia}
+        storiesProps={storiesProps}
+      />
     </Layout>
   );
 }

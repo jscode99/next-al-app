@@ -32,7 +32,7 @@ export default function ShareHolder({ flagData }) {
                 >
                   <div className={`${style.flag_image} rounded-circle`}>
                     <Image
-                      src={process.env.BASE_URL + data.Flag[0].url}
+                      src={process.env.BASE_URL + data.Flag.url}
                       alt={`Flags`}
                       height="80px"
                       width="80px"

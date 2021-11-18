@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import App from "next/app";
 //Constants
 import { CONST } from "../app/services/constants";
@@ -8,6 +8,7 @@ import { fetchService } from "../app/services/fetchService";
 import { useRouter } from "next/router";
 import { ErrorBoundary } from "react-error-boundary";
 import AppContext from "../app/AppContext";
+import AppLoader from "../app/common-component/app-loader/AppLoader";
 // Language Trans Lib
 import { appWithTranslation } from "next-i18next";
 import nextI18NextConfig from "../i18n";
@@ -19,41 +20,84 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [appContext, setAppContext] = useState({
     loader: false,
-    languageCode: "en",
-    successStoriesAR: null,
+    fLinkClick: false,
+    // successStoriesAR: null,
   });
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   const ErrorFallback = ({ error, resetErrorBoundary }) => {
+    console.log("ErrorFallback", router.pathname);
     return (
-      <div role="alert">
-        <p>Something went wrong:</p>
-        <pre>{error.message}</pre>
-        <button onClick={resetErrorBoundary}>Try again</button>
+      <div
+        className={`d-flex justify-content-center align-items-center`}
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        role="alert"
+      >
+        <div>
+          <div
+            style={{
+              width: "50vw",
+              height: "5px",
+              backgroundColor: "#99999950",
+            }}
+          >
+            <div
+              style={{
+                width: "25vw",
+                height: "5px",
+                backgroundColor: "#061BCF",
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              textAlign: "center",
+              color: "#061BCF",
+            }}
+          >
+            Loading...
+          </div>
+        </div>
+
+        {/* <button
+          onClick={() => {
+            console.log("btn", router.pathname);
+            resetErrorBoundary();
+          }}
+        >
+          Click
+        </button> */}
+        <div
+          style={{
+            visibility: "hidden",
+          }}
+        >
+          {setTimeout(() => {
+            resetErrorBoundary();
+          }, 500)}
+        </div>
       </div>
     );
   };
-
+  // console.log("Myapp", router.pathname);
   return (
     <AppContext.Provider value={{ appContext, setAppContext }}>
-      <ErrorBoundary
+      {/* <ErrorBoundary
         FallbackComponent={ErrorFallback}
         onReset={() => {
-          router.reload(window.location.pathname);
+          router.reload();
         }}
-      >
-        {/* <Component {...pageProps} /> */}
-        <h4>Trial End</h4>
-      </ErrorBoundary>
+      > */}
+        <Component {...pageProps} />
+      {/* </ErrorBoundary> */}
     </AppContext.Provider>
   );
 }
-
-//    export async function
-// MyApp.getInitialProps = async appContext => {
-
-//   return {
-//   };
-// };
 
 export default appWithTranslation(MyApp, nextI18NextConfig);

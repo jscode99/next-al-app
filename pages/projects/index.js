@@ -1,5 +1,7 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
 //Constant
 import { CONST } from "../../app/services/constants";
 //Services
@@ -17,17 +19,25 @@ export default function Project({
 }) {
   // console.log("projectData", projectData);
   // console.log("projectDataAr", projectDataAr);
+  const { t } = useTranslation("common");
 
   return (
-    <ProjectsContainer
-      projectTitle={projectTitle}
-      projectAr={projectAr}
-      projectData={projectData}
-      projectDataAr={projectDataAr}
-      bannerImage={bannerImage}
-      arab={arab}
-      arabAr={arabAr}
-    />
+    <>
+      <Helmet>
+        <title>{t("projects")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <ProjectsContainer
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        projectData={projectData}
+        projectDataAr={projectDataAr}
+        bannerImage={bannerImage}
+        arab={arab}
+        arabAr={arabAr}
+      />
+    </>
   );
 }
 

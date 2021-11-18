@@ -16,7 +16,7 @@ export default function ProjectDetailsContainer({
   bannerImage,
 }) {
   const router = useRouter();
-  console.log("projectDetailsEnProp CONTAINER", projectDetailsEnProp);
+  // console.log("projectDetailsEnProp CONTAINER", projectDetailsEnProp);
   return (
     <Layout
       heroImage={bannerImage}
@@ -25,8 +25,12 @@ export default function ProjectDetailsContainer({
       projectTitle={router.locale === "en" ? projectTitle : projectAr}
       title={
         router.locale === "en"
-          ? projectTitleEn[0].title
-          : projectTitleAr[0].title
+          ? projectTitleEn &&
+            projectTitleEn.length > 0 &&
+            projectTitleEn[0].title
+          : projectTitleAr &&
+            projectTitleAr.length > 0 &&
+            projectTitleAr[0].title
       }
     >
       <ProjectDetails

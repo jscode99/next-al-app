@@ -67,7 +67,7 @@ export default function BannerCardSection({ data, projectData, projectTitle }) {
     setBannerData(cardDt);
   }, [data, finalChartData]);
 
-  console.log("Banner Card", bannerData);
+  // console.log("Banner Card", bannerData);
 
   useEffect(() => {
     let chartData = {};

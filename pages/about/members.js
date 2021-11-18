@@ -5,6 +5,9 @@ import { CONST } from "../../app/services/constants";
 import { fetchService } from "../../app/services/fetchService";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
+//Container
 import MembersContainer from "../../app/container/about/Members";
 
 export default function Members({
@@ -16,20 +19,36 @@ export default function Members({
   flag,
 }) {
   let router = useRouter();
+  const { t } = useTranslation("common");
+
   return router.locale === "en" ? (
-    <MembersContainer
-      projectTitle={projectTitle}
-      members={members}
-      flag={flag}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("members")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <MembersContainer
+        projectTitle={projectTitle}
+        members={members}
+        flag={flag}
+        bannerImage={bannerImage}
+      />
+    </>
   ) : (
-    <MembersContainer
-      projectTitle={projectAr}
-      members={membersAr}
-      flag={flag}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("members")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <MembersContainer
+        projectTitle={projectAr}
+        members={membersAr}
+        flag={flag}
+        bannerImage={bannerImage}
+      />
+    </>
   );
 }
 

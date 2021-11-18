@@ -1,6 +1,9 @@
 import { useRouter } from "next/router";
+import { useEffect, useContext } from "react";
 import Layout from "../layout";
 import Contributions from "../../component/contributions";
+//Context API
+import AppContext from "../../AppContext";
 
 export default function ContributionsContainer({
   arabContributions,
@@ -12,6 +15,14 @@ export default function ContributionsContainer({
   bannerImage,
 }) {
   const router = useRouter();
+  let { appContext, setAppContext } = useContext(AppContext);
+  useEffect(() => {
+    if (appContext && !appContext.fLinkClick)
+      setAppContext({
+        ...appContext,
+        loader: false,
+      });
+  }, [appContext.fLinkClick]);
   return (
     <Layout
       heroImage={bannerImage}

@@ -8,9 +8,9 @@ const { i18n } = require("./i18n");
 module.exports = {
   i18n,
   env: {
-    DOMAIN:"next-al-app.vercel.app",
-    BASE_URL:
-      "https://z24eee497-ze87c794b-gtw.qovery.io" /* "https://z966c6ddc-z1680a652-gtw.qovery.io" */,
+    // DOMAIN: "al-aqsa-testing.vercel.app",
+    BASE_URL: "http://40.114.46.198:1337",
+    // "https://z24eee497-ze87c794b-gtw.qovery.io" /* "https://z966c6ddc-z1680a652-gtw.qovery.io" */,
     PATH: {
       STATIC_SITE: "/static-stites",
       ISDB_MANAGES: "/isdb-manages",
@@ -22,6 +22,7 @@ module.exports = {
       SECTOR_ALLOCATION: "/sector-allocations",
       PUBLICATION: "/publications",
       SUCCESS_STORIES: "/success-stories",
+      SUCCESS_STORIES_MEDIA: "/success-stories-medias",
       CONTACT_US: "/contact-uses",
       MEMBERS: "/members",
       FLAG: "/flags",
@@ -32,7 +33,7 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["z24eee497-ze87c794b-gtw.qovery.io"],
+    domains: ["40.114.46.198"],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],

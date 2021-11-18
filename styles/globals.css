@@ -52,7 +52,7 @@ a {
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 20px;
-  background: #5ca849;
+  background: rgba(53, 51, 51, 0.3);
 }
 
 /*Home page map*/

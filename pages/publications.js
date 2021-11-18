@@ -6,6 +6,8 @@ import { fetchService } from "../app/services/fetchService";
 // Translation Lib
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
 //Container
 import PublicationsContainer from "../app/container/publications";
 
@@ -17,19 +19,34 @@ export default function Publication({
   bannerImage,
 }) {
   let router = useRouter();
+  const { t } = useTranslation("common");
 
   return router.locale === "en" ? (
-    <PublicationsContainer
-      publication={publication}
-      projectTitle={projectTitle}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("publications")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <PublicationsContainer
+        publication={publication}
+        projectTitle={projectTitle}
+        bannerImage={bannerImage}
+      />
+    </>
   ) : (
-    <PublicationsContainer
-      publication={publicationAr}
-      projectTitle={projectAr}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("publications")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <PublicationsContainer
+        publication={publicationAr}
+        projectTitle={projectAr}
+        bannerImage={bannerImage}
+      />
+    </>
   );
 }
 

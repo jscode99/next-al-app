@@ -1,4 +1,7 @@
 import { useRouter } from "next/router";
+// import { useEffect, useContext, useState } from "react";
+// //Context API
+// import AppContext from "../../AppContext";
 //Common-Components
 import Layout from "../layout";
 //Components
@@ -30,6 +33,7 @@ export default function Landing({
   isdbManageAr,
 }) {
   const router = useRouter();
+
   // console.log("staticSite", staticSite);
   return (
     <Layout

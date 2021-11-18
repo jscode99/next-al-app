@@ -1,6 +1,9 @@
 import { useRouter } from "next/router";
+import { useEffect, useContext } from "react";
 import Layout from "../layout";
 import Projects from "../../component/projects";
+//Context API
+import AppContext from "../../AppContext";
 
 export default function ProjectsContainer({
   projectTitle,
@@ -12,6 +15,15 @@ export default function ProjectsContainer({
   arabAr,
 }) {
   const router = useRouter();
+  let { appContext, setAppContext } = useContext(AppContext);
+  useEffect(() => {
+    if (appContext && !appContext.fLinkClick)
+      setAppContext({
+        ...appContext,
+        loader: false,
+      });
+  }, [appContext.fLinkClick]);
+
   return (
     <Layout
       heroImage={bannerImage}

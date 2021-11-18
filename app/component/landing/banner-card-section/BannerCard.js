@@ -8,7 +8,7 @@ import { splitLetterNumberService } from "../../../services/commonService";
 import style from "./index.module.sass";
 
 export default function BannerCard({ data }) {
-  console.log("BANNER CARD", data);
+  // console.log("BANNER CARD", data);
   const [countUpArray, setcountUpArray] = useState("");
   const [ref, isVisible] = useInView({
     threshold: 1,

@@ -14,6 +14,7 @@ import { mapTitleToRoutePath } from "../../../services/storiesTitle";
 import styles from "./index.module.sass";
 
 export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
+  // console.log("listData", listData);
   // Translation Lib
   const { t } = useTranslation("common");
   const base_url = process.env.BASE_URL;
@@ -31,9 +32,9 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
       <Row gutter={[16, 16]} className={`px-3 pt-3`}>
         {paginatedListData &&
           paginatedListData.length > 0 &&
-          paginatedListData.map((data) => (
+          paginatedListData.map(data => (
             <>
-              {console.log("data", data)}
+              {/* {console.log("data", data)} */}
               <Col
                 xs={24}
                 sm={24}
@@ -47,7 +48,9 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
                   style={{ cursor: "pointer" }}
                   onClick={() => {
                     router.push({
-                      pathname: `/success-stories/${mapTitleToRoutePath(data)}`,
+                      pathname: `/success-stories/${mapTitleToRoutePath(
+                        data.Title,
+                      )}`,
                       query: { ...router.query },
                     });
                   }}
@@ -76,7 +79,7 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
                     <Image
                       className={`${styles.card_image} position-absolute`}
                       alt={`Stories-image`}
-                      src={base_url + data.Image[0].url}
+                      src={base_url + data.Image.url}
                       layout="fill"
                     />
                   </div>

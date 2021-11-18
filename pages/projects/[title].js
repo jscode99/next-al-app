@@ -1,5 +1,7 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
 //Constant
 import { CONST } from "../../app/services/constants";
 //Services
@@ -24,18 +26,27 @@ export default function ProjectDetails({
   sectorAr,
   bannerImage,
 }) {
+  const { t } = useTranslation("common");
+
   return (
-    <ProjectDetailsContainer
-      projectTitle={projectTitleData}
-      projectAr={projectAr}
-      projectDetailsEnProp={projectDetailsEnProp}
-      projectDetailsArProp={projectDetailsArProp}
-      projectTitleEn={projectTitleEn}
-      projectTitleAr={projectTitleAr}
-      sector={sector}
-      sectorAr={sectorAr}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("projects")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <ProjectDetailsContainer
+        projectTitle={projectTitleData}
+        projectAr={projectAr}
+        projectDetailsEnProp={projectDetailsEnProp}
+        projectDetailsArProp={projectDetailsArProp}
+        projectTitleEn={projectTitleEn}
+        projectTitleAr={projectTitleAr}
+        sector={sector}
+        sectorAr={sectorAr}
+        bannerImage={bannerImage}
+      />
+    </>
   );
 }
 
@@ -58,7 +69,7 @@ export async function getStaticPaths({ locales }) {
       params: {
         title: mapTitleToRoutePath(projectD.projectTitle),
       },
-      locale: locales[0],
+      locale: locales[1],
     };
   });
   //Path Arabic
@@ -67,7 +78,7 @@ export async function getStaticPaths({ locales }) {
       params: {
         title: mapTitleToRoutePath(projectD.projectTitle),
       },
-      locale: locales[1],
+      locale: locales[0],
     };
   });
 

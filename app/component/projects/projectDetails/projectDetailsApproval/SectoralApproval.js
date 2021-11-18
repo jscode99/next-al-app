@@ -57,7 +57,7 @@ export default function SectoralApproval({ projectData }) {
     }
     setSectorApproval(sector);
   }, [projectData]);
-  console.log("sectorApproval", sectorApproval);
+  // console.log("sectorApproval", sectorApproval);
 
   return (
     <div className={`d-flex align-items-center w-100 flex-column`}>
@@ -93,7 +93,9 @@ export default function SectoralApproval({ projectData }) {
               key={index}
               className={`${style.common_sectoral_list} shadow d-flex justify-content-center align-items-center bg-white my-1 w-100`}
             >
-              <p className={`${style.title} w-50 ms-3 fw-bold m-0 text-capitalize`}>
+              <p
+                className={`${style.title} w-50 ms-3 fw-bold m-0 text-capitalize`}
+              >
                 {t(data.title)}
               </p>
               <p className={`${style.number_of_projects} w-25 text-center m-0`}>
@@ -169,7 +171,9 @@ export default function SectoralApproval({ projectData }) {
               <p className={`${style.number_of_projects} w-25 text-center m-0`}>
                 {data.totalProject}
               </p>
-              <p className={`${style.title} w-50 me-3 fw-bold m-0 text-end text-capitalize`}>
+              <p
+                className={`${style.title} w-50 me-3 fw-bold m-0 text-end text-capitalize`}
+              >
                 {t(data.title)}
               </p>
             </div>

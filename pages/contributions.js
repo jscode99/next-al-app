@@ -1,4 +1,3 @@
-import { useState, useContext } from "react";
 //Constants
 import { CONST } from "../app/services/constants";
 //Services
@@ -6,6 +5,8 @@ import { fetchService } from "../app/services/fetchService";
 // Language Translation Lib
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../i18n";
+import { useTranslation } from "next-i18next";
+import { Helmet } from "react-helmet";
 // Container
 import ContributionsContainer from "../app/container/contributions";
 
@@ -18,16 +19,24 @@ export default function Contributions({
   projectAr,
   bannerImage,
 }) {
+  const { t } = useTranslation("common");
   return (
-    <ContributionsContainer
-      arabContributions={arabContributions}
-      arabArContributions={arabArContributions}
-      overallContributions={overallContributions}
-      overallArContributions={overallArContributions}
-      projectTitle={projectTitle}
-      projectAr={projectAr}
-      bannerImage={bannerImage}
-    />
+    <>
+      <Helmet>
+        <title>{t("contributions")}</title>
+        <meta property="og:title" content={t("al aqsa fund")} />
+        <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
+      </Helmet>
+      <ContributionsContainer
+        arabContributions={arabContributions}
+        arabArContributions={arabArContributions}
+        overallContributions={overallContributions}
+        overallArContributions={overallArContributions}
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        bannerImage={bannerImage}
+      />
+    </>
   );
 }
 

@@ -1,10 +1,16 @@
 //Components
 import SuccessStoriesDetails from "./success-stories-details/SuccessDetails";
 
-export default function StoriesDetailsComponent({ storiesProps }) {
+export default function StoriesDetailsComponent({
+  successMedia,
+  storiesProps,
+}) {
   return (
     <>
-      <SuccessStoriesDetails storiesProps={storiesProps} />
+      <SuccessStoriesDetails
+        successMedia={successMedia}
+        storiesProps={storiesProps}
+      />
     </>
   );
 }

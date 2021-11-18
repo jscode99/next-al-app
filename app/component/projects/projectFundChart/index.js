@@ -23,6 +23,14 @@ export default function ProjectFundChart({ finalChartData }) {
   const [chartData, setChartData] = useState([]);
   let router = useRouter();
   const { t } = useTranslation("common");
+  const [showChart, setShowChart] = useState(true);
+
+  // useEffect(() => {
+  //   if (!showChart)
+  //     setTimeout(() => {
+  //       setShowChart(true);
+  //     }, 10000);
+  // }, [showChart]);
 
   useEffect(() => {
     let series = [
@@ -136,8 +144,13 @@ export default function ProjectFundChart({ finalChartData }) {
 
     let chartData = [];
 
-    console.log("options", options.xaxis.categories);
-    if (finalChartData.length > 0) {
+    // console.log("options", options.xaxis.categories);
+    if (
+      Object.keys(finalChartData).length > 0 /* &&
+      (chartSeriesData.length === 0 ||
+        Object.keys(option).length === 0 ||
+        chartData.length === 0) */
+    ) {
       for (let index = 0; index < Object.keys(finalChartData).length; index++) {
         series[0].data.push(
           Math.round(parseFloat(finalChartData[index].totalApprovedAmount))
@@ -151,12 +164,12 @@ export default function ProjectFundChart({ finalChartData }) {
           url: finalChartData[index].logo,
         });
       }
+      // console.log("chartData", chartData);
+      setChartSeriesData(series);
+      setOption(options);
+      setChartData(chartData);
     }
-    console.log("chartData", chartData);
-    setChartSeriesData(series);
-    setOption(options);
-    setChartData(chartData);
-  }, [finalChartData]);
+  }, [finalChartData, /* chartSeriesData, option, chartData */]);
 
   const legendData = [
     {
@@ -175,19 +188,20 @@ export default function ProjectFundChart({ finalChartData }) {
         document.getElementsByClassName(
           "apexcharts-xaxis"
         )[0]; /* .getElementsByTagName("line")[0] */
-      console.log(
-        "chartElement==========>",
-        // fundChartElement1,
-        // fundChartElement1.width.animVal.value
-        apexChart,
-        apexChart.getBoundingClientRect().width,
-        apexChart.getBBox().width
-      );
-      setXAxisWidth(
-        apexChart.getBoundingClientRect().width || apexChart.getBBox().width
-      );
+      // console.log(
+      //   "chartElement==========>",
+      //   // fundChartElement1,
+      //   // fundChartElement1.width.animVal.value
+      //   apexChart,
+      //   apexChart.getBoundingClientRect().width,
+      //   apexChart.getBBox().width
+      // );
+      if (apexChart)
+        setXAxisWidth(
+          apexChart.getBoundingClientRect().width || apexChart.getBBox().width
+        );
     }, 5000);
-  }, []);
+  }, [showChart]);
 
   return (
     <div className={`${style.bg2} pb-5`}>
@@ -204,15 +218,19 @@ export default function ProjectFundChart({ finalChartData }) {
             >
               <LegendSection legendData={legendData} />
               {/* <div id="fund_chart"></div> */}
-              <div className={`${style.bar_chart} overflow-hidden px-4`}>
-                <ApexCharts
-                  options={option}
-                  series={chartSeriesData}
-                  type="bar"
-                  width={"100%"}
-                  height={"435px"}
-                />
-              </div>
+              {showChart &&
+                Object.keys(option).length > 0 &&
+                chartSeriesData.length > 0 && (
+                  <div className={`${style.bar_chart} overflow-hidden px-4`}>
+                    <ApexCharts
+                      options={option}
+                      series={chartSeriesData}
+                      type="bar"
+                      width={"100%"}
+                      height={"435px"}
+                    />
+                  </div>
+                )}
               <div className="d-flex justify-content-end align-items-center px-5">
                 {xAxisWidth ? (
                   <div
@@ -266,15 +284,19 @@ export default function ProjectFundChart({ finalChartData }) {
             >
               <LegendSection legendData={legendData} />
               <div className={`${style.horz_scroll}`}>
-                <div className={`${style.bar_chart} px-4`}>
-                  <ApexCharts
-                    options={option}
-                    series={chartSeriesData}
-                    type="bar"
-                    width={"200%"}
-                    height={"435px"}
-                  />
-                </div>
+                {showChart &&
+                  Object.keys(option).length > 0 &&
+                  chartSeriesData.length > 0 && (
+                    <div className={`${style.bar_chart} px-4`}>
+                      <ApexCharts
+                        options={option}
+                        series={chartSeriesData}
+                        type="bar"
+                        width={"200%"}
+                        height={"435px"}
+                      />
+                    </div>
+                  )}
                 <div className="d-flex justify-content-start align-items-center px-5 ms-4">
                   {xAxisWidth ? (
                     <div
@@ -330,15 +352,19 @@ export default function ProjectFundChart({ finalChartData }) {
             >
               <div className={`${style.horz_scroll}`}>
                 <LegendSection legendData={legendData} />
-                <div className={`${style.bar_chart} px-4`}>
-                  <ApexCharts
-                    options={option}
-                    series={chartSeriesData}
-                    type="bar"
-                    width={"600%"}
-                    height={"435px"}
-                  />
-                </div>
+                {showChart &&
+                  Object.keys(option).length > 0 &&
+                  chartSeriesData.length > 0 && (
+                    <div className={`${style.bar_chart} px-4`}>
+                      <ApexCharts
+                        options={option}
+                        series={chartSeriesData}
+                        type="bar"
+                        width={"600%"}
+                        height={"435px"}
+                      />
+                    </div>
+                  )}
                 <div className="d-flex justify-content-start align-items-center px-5 ms-4">
                   {xAxisWidth ? (
                     <div

@@ -210,7 +210,11 @@ export default function ResponsiveView({ view, logo }) {
                     <p href={"/"}>Terms and Conditions</p>
                   </li>
                   <li>
-                    <p href={"/"}>Privacy Policy</p>
+                    <p 
+                     onClick={() => {
+                      router.push("/policy")
+                    }}
+                    >Privacy Policy</p>
                   </li>
                   <li>
                     <p href={"/"}>Sitemap</p>
@@ -245,9 +249,9 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                    <p className={`mb-0`} href={"/"}>
+                    <a className={`mb-0`} href={"/policy"}>
                       {t("privacy policy")}
-                    </p>
+                    </a>
                   </li>
                   <li>
                     <p className={`mb-0`} href={"/"}>

@@ -15,7 +15,7 @@
     "disable-scroll": "^0.6.0",
     "google-map-react": "^2.1.10",
     "is-image": "^3.0.0",
-    "next": "11.0.1",
+    "next": "^11.0.1",
     "next-i18next": "^8.5.5",
     "rc-scroll-anim": "^2.7.6",
     "rc-texty": "^0.2.0",

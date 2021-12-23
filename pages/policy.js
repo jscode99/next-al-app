@@ -11,7 +11,7 @@ import nextI18NextConfig from "../i18n";
 import { useTranslation } from "next-i18next";
 import { Helmet } from "react-helmet";
 
-export default function policy({ projectTitle, projectAr, bannerImage }) {
+export default function Policy({ projectTitle, projectAr, bannerImage }) {
   let router = useRouter();
   const { t } = useTranslation("common");
 

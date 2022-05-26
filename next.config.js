@@ -9,7 +9,7 @@ module.exports = {
   i18n,
   env: {
     // DOMAIN: "al-aqsa-testing.vercel.app",
-    BASE_URL: "https://alaqsafunduat-api.isdb.org",
+    BASE_URL: "http://alaqsafunduat-api.isdb.org",
     // "https://z24eee497-ze87c794b-gtw.qovery.io" /* "https://z966c6ddc-z1680a652-gtw.qovery.io" */,
     PATH: {
       STATIC_SITE: "/static-stites",

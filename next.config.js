@@ -9,7 +9,7 @@ module.exports = {
   i18n,
   env: {
     // DOMAIN: "al-aqsa-testing.vercel.app",
-    BASE_URL: "https://alaqsafunduat-api.isdb.org:1337",
+    BASE_URL: "https://alaqsafunduat-api.isdb.org",
     // "https://z24eee497-ze87c794b-gtw.qovery.io" /* "https://z966c6ddc-z1680a652-gtw.qovery.io" */,
     PATH: {
       STATIC_SITE: "/static-stites",
@@ -33,7 +33,7 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["40.114.46.198"],
+    domains: ["alaqsafunduat-api.isdb.org"],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],

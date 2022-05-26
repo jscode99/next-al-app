@@ -55,6 +55,8 @@ export default function ResourceChart({
   const [xDataAl, setXdataAl] = useState(null);
   const [showChart, setShowChart] = useState(true);
 
+  console.log("xDataAr------>", xDataAr);
+
   // useEffect(() => {
   //   if (!showChart)
   //     setTimeout(() => {
@@ -68,7 +70,7 @@ export default function ResourceChart({
         // let fundChartElement1 = document.getElementsByTagName("rect")[0];
         let apexChart =
           document.getElementsByClassName(
-            "apexcharts-xaxis",
+            "apexcharts-xaxis"
           )[0]; /* .getElementsByTagName("line")[0] */
         // console.log(
         //   "chartElement==========>",
@@ -80,8 +82,7 @@ export default function ResourceChart({
         // );
         if (apexChart)
           setXAxisWidth(
-            apexChart.getBoundingClientRect().width ||
-              apexChart.getBBox().width,
+            apexChart.getBoundingClientRect().width || apexChart.getBBox().width
           );
       }, 5000);
       //YearlyData
@@ -140,7 +141,7 @@ export default function ResourceChart({
               fontSize: "8px",
               fontWeight: 400,
             },
-            formatter: value => {
+            formatter: (value) => {
               return value / 1000 + "K";
             },
           },
@@ -150,12 +151,12 @@ export default function ResourceChart({
           y: {
             formatter: function (
               value,
-              { series, seriesIndex, dataPointIndex, w },
+              { series, seriesIndex, dataPointIndex, w }
             ) {
               return "$" + value;
             },
             title: {
-              formatter: seriesName => seriesName + " :",
+              formatter: (seriesName) => seriesName + " :",
             },
           },
         },
@@ -249,7 +250,7 @@ export default function ResourceChart({
               fontSize: "8px",
               fontWeight: 400,
             },
-            formatter: value => {
+            formatter: (value) => {
               return value / 1000 + "K";
             },
           },
@@ -259,12 +260,12 @@ export default function ResourceChart({
           y: {
             formatter: function (
               value,
-              { series, seriesIndex, dataPointIndex, w },
+              { series, seriesIndex, dataPointIndex, w }
             ) {
               return "$" + value;
             },
             title: {
-              formatter: seriesName => seriesName + " :",
+              formatter: (seriesName) => seriesName + " :",
             },
           },
         },
@@ -354,7 +355,7 @@ export default function ResourceChart({
               fontSize: "8px",
               fontWeight: 400,
             },
-            formatter: value => {
+            formatter: (value) => {
               return value / 1000 + "K";
             },
           },
@@ -364,12 +365,12 @@ export default function ResourceChart({
           y: {
             formatter: function (
               value,
-              { series, seriesIndex, dataPointIndex, w },
+              { series, seriesIndex, dataPointIndex, w }
             ) {
               return "$" + value;
             },
             title: {
-              formatter: seriesName => seriesName + " :",
+              formatter: (seriesName) => seriesName + " :",
             },
           },
         },
@@ -436,10 +437,10 @@ export default function ResourceChart({
         let XAxisDataAqLocal = [];
         for (let index = 0; index < AqsaSorted.length; index++) {
           seriesAq[0].data.push(
-            Math.round(parseFloat(AqsaSorted[index].TotalContribution)),
+            Math.round(parseFloat(AqsaSorted[index].TotalContribution))
           );
           totalAq += Math.round(
-            parseFloat(AqsaSorted[index].TotalContribution),
+            parseFloat(AqsaSorted[index].TotalContribution)
           );
           optionsAq.xaxis.categories.push(AqsaSorted[index].Country);
           XAxisDataAqLocal.push(AqsaSorted[index].Country);
@@ -496,14 +497,14 @@ export default function ResourceChart({
         let XAxisDataAqLocal = [];
         for (let index = 0; index < ArabSorted.length; index++) {
           seriesAr[0].data.push(
-            Math.round(parseFloat(ArabSorted[index].Grants)),
+            Math.round(parseFloat(ArabSorted[index].Grants))
           );
           seriesAr[1].data.push(
-            Math.round(parseFloat(ArabSorted[index].DisbursementAmount)),
+            Math.round(parseFloat(ArabSorted[index].DisbursementAmount))
           );
           totalAr += Math.round(parseFloat(ArabSorted[index].Grants));
           totalArDis += Math.round(
-            parseFloat(ArabSorted[index].DisbursementAmount),
+            parseFloat(ArabSorted[index].DisbursementAmount)
           );
           optionsAR.xaxis.categories.push(ArabSorted[index].Fund);
           XAxisDataAqLocal.push(ArabSorted[index].Fund);
@@ -561,14 +562,14 @@ export default function ResourceChart({
       ) {
         for (let index = 0; index < yearlySorted.length; index++) {
           seriesYr[0].data.push(
-            Math.round(parseFloat(yearlySorted[index].ApprovedAmount)),
+            Math.round(parseFloat(yearlySorted[index].ApprovedAmount))
           );
           seriesYr[1].data.push(
-            Math.round(parseFloat(yearlySorted[index].DisbursementAmount)),
+            Math.round(parseFloat(yearlySorted[index].DisbursementAmount))
           );
           totalYr += Math.round(parseFloat(yearlySorted[index].ApprovedAmount));
           totalYrDis += Math.round(
-            parseFloat(yearlySorted[index].DisbursementAmount),
+            parseFloat(yearlySorted[index].DisbursementAmount)
           );
           optionsYr.xaxis.categories.push(yearlySorted[index].Year);
           XAxisDataYr.push(yearlySorted[index].Year);
@@ -888,7 +889,7 @@ export default function ResourceChart({
                               <span>{`$${
                                 activeData === "arab"
                                   ? new Intl.NumberFormat().format(
-                                      totalArDisbursed,
+                                      totalArDisbursed
                                     )
                                   : ""
                               }`}</span>
@@ -914,7 +915,7 @@ export default function ResourceChart({
                               <span>{`$${
                                 activeData === "arab"
                                   ? new Intl.NumberFormat().format(
-                                      totalArDisbursed,
+                                      totalArDisbursed
                                     )
                                   : ""
                               }`}</span>{" "}
@@ -954,7 +955,7 @@ export default function ResourceChart({
                               <span>{`$${
                                 activeData === "yearly"
                                   ? new Intl.NumberFormat().format(
-                                      totalYrDisbursed,
+                                      totalYrDisbursed
                                     )
                                   : ""
                               }`}</span>
@@ -980,7 +981,7 @@ export default function ResourceChart({
                               <span>{`$${
                                 activeData === "yearly"
                                   ? new Intl.NumberFormat().format(
-                                      totalYrDisbursed,
+                                      totalYrDisbursed
                                     )
                                   : ""
                               }`}</span>{" "}

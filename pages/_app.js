@@ -15,15 +15,22 @@ import nextI18NextConfig from "../i18n";
 // Global styles
 import "../styles/globals.css";
 import "antd/dist/antd.css";
+// import sslRootCAs from "ssl-root-cas";
+// require("ssl-root-cas").inject();
 
 function MyApp({ Component, pageProps }) {
+  // sslRootCAs.inject();
   const router = useRouter();
   const [appContext, setAppContext] = useState({
     loader: false,
     fLinkClick: false,
     // successStoriesAR: null,
   });
-  // useEffect(() => {}, []);
+  useEffect(() => {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  }, []);
+
+  process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
   const ErrorFallback = ({ error, resetErrorBoundary }) => {
     console.log("ErrorFallback", router.pathname);
@@ -94,7 +101,7 @@ function MyApp({ Component, pageProps }) {
           router.reload();
         }}
       > */}
-        <Component {...pageProps} />
+      <Component {...pageProps} />
       {/* </ErrorBoundary> */}
     </AppContext.Provider>
   );

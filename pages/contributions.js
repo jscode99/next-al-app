@@ -59,6 +59,24 @@ export async function getStaticProps({ locale }) {
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
   const [
+    arabContributionsRes,
+    arabArContributionsRes,
+    overallContributionsRes,
+    overallArContributionsRes,
+    projectTitleRes,
+    projectArRes,
+    bannerImageRes,
+  ] = await Promise.all([
+    await fetch(arabContributionsUrl),
+    await fetch(arabArContributionsUrl),
+    await fetch(overallContributionsUrl),
+    await fetch(overallArContributionsUrl),
+    await fetch(projectTitleUrl),
+    await fetch(projectTitleArUrl),
+    await fetch(bannerImageUrl),
+  ]);
+
+  const [
     arabContributions,
     arabArContributions,
     overallContributions,
@@ -67,14 +85,15 @@ export async function getStaticProps({ locale }) {
     projectAr,
     bannerImage,
   ] = await Promise.all([
-    await fetchService(arabContributionsUrl, CONST.API_METHOD.GET),
-    await fetchService(arabArContributionsUrl, CONST.API_METHOD.GET),
-    await fetchService(overallContributionsUrl, CONST.API_METHOD.GET),
-    await fetchService(overallArContributionsUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
-    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
+    await arabContributionsRes.json(),
+    await arabArContributionsRes.json(),
+    await overallContributionsRes.json(),
+    await overallArContributionsRes.json(),
+    await projectTitleRes.json(),
+    await projectArRes.json(),
+    await bannerImageRes.json(),
   ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),

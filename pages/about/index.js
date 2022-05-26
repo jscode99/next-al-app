@@ -56,6 +56,24 @@ export async function getStaticProps({ locale }) {
     process.env.BASE_URL + process.env.PATH.FLAG + "?_locale=ar-001";
 
   const [
+    staticSiteRes,
+    staticSiteArRes,
+    projectTitleRes,
+    projectArRes,
+    bannerImageRes,
+    flagRes,
+    flagArRes,
+  ] = await Promise.all([
+    await fetch(staticSiteUrl),
+    await fetch(staticSiteArUrl),
+    await fetch(projectTitleUrl),
+    await fetch(projectTitleArUrl),
+    await fetch(bannerImageUrl),
+    await fetch(flagUrl),
+    await fetch(flagArUrl),
+  ]);
+
+  const [
     staticSite,
     staticSiteAr,
     projectTitle,
@@ -64,14 +82,15 @@ export async function getStaticProps({ locale }) {
     flag,
     flagAr,
   ] = await Promise.all([
-    await fetchService(staticSiteUrl, CONST.API_METHOD.GET),
-    await fetchService(staticSiteArUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
-    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
-    await fetchService(flagUrl, CONST.API_METHOD.GET),
-    await fetchService(flagArUrl, CONST.API_METHOD.GET),
+    await staticSiteRes.json(),
+    await staticSiteArRes.json(),
+    await projectTitleRes.json(),
+    await projectArRes.json(),
+    await bannerImageRes.json(),
+    await flagRes.json(),
+    await flagArRes.json(),
   ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),

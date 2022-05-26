@@ -59,6 +59,24 @@ export async function getStaticProps({ locale }) {
     process.env.BASE_URL + process.env.PATH.ARAB_FUND + "?_locale=ar-001";
 
   const [
+    projectTitleRes,
+    projectArRes,
+    projectDataRes,
+    projectDataArRes,
+    bannerImageRes,
+    arabRes,
+    arabArRes,
+  ] = await Promise.all([
+    await fetch(projectTitleUrl),
+    await fetch(projectTitleArUrl),
+    await fetch(projectDetailsUrl),
+    await fetch(projectDetailsArUrl),
+    await fetch(bannerImageUrl),
+    await fetch(arabFundUrl),
+    await fetch(arabFundArUrl),
+  ]);
+
+  const [
     projectTitle,
     projectAr,
     projectData,
@@ -67,14 +85,15 @@ export async function getStaticProps({ locale }) {
     arab,
     arabAr,
   ] = await Promise.all([
-    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
-    await fetchService(projectDetailsUrl, CONST.API_METHOD.GET),
-    await fetchService(projectDetailsArUrl, CONST.API_METHOD.GET),
-    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
-    await fetchService(arabFundUrl, CONST.API_METHOD.GET),
-    await fetchService(arabFundArUrl, CONST.API_METHOD.GET),
+    await projectTitleRes.json(),
+    await projectArRes.json(),
+    await projectDataRes.json(),
+    await projectDataArRes.json(),
+    await bannerImageRes.json(),
+    await arabRes.json(),
+    await arabArRes.json(),
   ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),

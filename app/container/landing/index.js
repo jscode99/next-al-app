@@ -51,7 +51,7 @@ export default function Landing({
         : staticSiteAr[0].static.home_fundResources.length > 0 && (
             <FundResource data={staticSiteAr[0].static.home_fundResources} />
           )}
-      {router.locale === "en" ? (
+      {/* {router.locale === "en" ? (
         <ResourceChart
           projectTitle={projectTitle}
           alAqsa={alAqsa}
@@ -67,7 +67,7 @@ export default function Landing({
           yearly={yearlyAr}
           flag={flagAr}
         />
-      )}
+      )} */}
       <SectorAllocations
         projectTitle={projectTitle}
         projectData={projectData}

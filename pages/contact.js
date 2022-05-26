@@ -47,14 +47,29 @@ export async function getStaticProps({ locale }) {
     process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
+  const [
+    staticSiteRes,
+    staticSiteArRes,
+    projectTitleRes,
+    projectArRes,
+    bannerImageRes,
+  ] = await Promise.all([
+    await fetch(staticSiteUrl),
+    await fetch(staticSiteArUrl),
+    await fetch(projectTitleUrl),
+    await fetch(projectTitleArUrl),
+    await fetch(bannerImageUrl),
+  ]);
+
   const [staticSite, staticSiteAr, projectTitle, projectAr, bannerImage] =
     await Promise.all([
-      await fetchService(staticSiteUrl, CONST.API_METHOD.GET),
-      await fetchService(staticSiteArUrl, CONST.API_METHOD.GET),
-      await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-      await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
-      await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
+      await staticSiteRes.json(),
+      await staticSiteArRes.json(),
+      await projectTitleRes.json(),
+      await projectArRes.json(),
+      await bannerImageRes.json(),
     ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),

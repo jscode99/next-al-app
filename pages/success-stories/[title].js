@@ -50,12 +50,18 @@ export async function getStaticPaths({ locales }) {
   let storiesArUrl =
     process.env.BASE_URL + process.env.PATH.SUCCESS_STORIES + "?_locale=ar-001";
   //, successStoriesAR
-  const [stories, successStoriesAR] = await Promise.all([
-    await fetchService(storiesUrl, CONST.API_METHOD.GET),
-    await fetchService(storiesArUrl, CONST.API_METHOD.GET),
+  const [storiesRes, successStoriesARRes] = await Promise.all([
+    await fetch(storiesUrl),
+    await fetch(storiesArUrl),
   ]);
+
+  const [stories, successStoriesAR] = await Promise.all([
+    await storiesRes.json(),
+    await successStoriesARRes.json(),
+  ]);
+
   //path
-  const storiesPaths = stories.map(storiesData => {
+  const storiesPaths = stories.map((storiesData) => {
     return {
       params: {
         title: mapTitleToRoutePath(storiesData.Title),
@@ -64,7 +70,7 @@ export async function getStaticPaths({ locales }) {
     };
   });
 
-  const successStoriesARPaths = successStoriesAR.map(storiesData => {
+  const successStoriesARPaths = successStoriesAR.map((storiesData) => {
     return {
       params: {
         title: mapTitleToRoutePath(storiesData.Title),
@@ -96,6 +102,22 @@ export async function getStaticProps(context) {
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
   // successStoriesAR,
   const [
+    successMediaRes,
+    storiesRes,
+    successStoriesARRes,
+    projectTitleRes,
+    projectArRes,
+    bannerImageRes,
+  ] = await Promise.all([
+    await fetch(successMediaUrl),
+    await fetch(storiesUrl),
+    await fetch(storiesArUrl),
+    await fetch(projectTitleUrl),
+    await fetch(projectTitleArUrl),
+    await fetch(bannerImageUrl),
+  ]);
+
+  const [
     successMedia,
     stories,
     successStoriesAR,
@@ -103,21 +125,22 @@ export async function getStaticProps(context) {
     projectAr,
     bannerImage,
   ] = await Promise.all([
-    await fetchService(successMediaUrl, CONST.API_METHOD.GET),
-    await fetchService(storiesUrl, CONST.API_METHOD.GET),
-    await fetchService(storiesArUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleUrl, CONST.API_METHOD.GET),
-    await fetchService(projectTitleArUrl, CONST.API_METHOD.GET),
-    await fetchService(bannerImageUrl, CONST.API_METHOD.GET),
+    await successMediaRes.json(),
+    await storiesRes.json(),
+    await successStoriesARRes.json(),
+    await projectTitleRes.json(),
+    await projectArRes.json(),
+    await bannerImageRes.json(),
   ]);
+
   const path = context.params.title;
 
   const storiesDetailsProp = stories.find(
-    storiesData =>
-      storiesData.Title.toLowerCase() === mapRoutePathToTitle(path),
+    (storiesData) =>
+      storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
   );
   const storiesArDetailsProp = successStoriesAR.find(
-    storiesData => storiesData.Title === mapRoutePathToTitleAR(path),
+    (storiesData) => storiesData.Title === mapRoutePathToTitleAR(path)
   );
   //|| storiesArDetailsProp;
   const storiesProps = storiesDetailsProp || storiesArDetailsProp;
@@ -138,7 +161,7 @@ export async function getStaticProps(context) {
       ...(await serverSideTranslations(
         context.locale,
         ["common"],
-        nextI18NextConfig,
+        nextI18NextConfig
       )),
       successMedia,
       storiesProps,

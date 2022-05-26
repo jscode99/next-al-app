@@ -33,7 +33,7 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["http://alaqsafunduat-api.isdb.org"],
+    domains: ["alaqsafunduat-api.isdb.org"],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],

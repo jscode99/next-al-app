@@ -23,7 +23,9 @@ function MyApp({ Component, pageProps }) {
     fLinkClick: false,
     // successStoriesAR: null,
   });
-  // useEffect(() => {}, []);
+  useEffect(() => {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  }, []);
 
   const ErrorFallback = ({ error, resetErrorBoundary }) => {
     console.log("ErrorFallback", router.pathname);

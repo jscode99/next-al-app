@@ -26,6 +26,9 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
   }, []);
+  
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  
 
   const ErrorFallback = ({ error, resetErrorBoundary }) => {
     console.log("ErrorFallback", router.pathname);

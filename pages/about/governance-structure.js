@@ -53,32 +53,43 @@ export async function getStaticProps({ locale }) {
     rejectUnauthorized: false,
   });
 
-  const [
-    staticSiteRes,
-    staticSiteArRes,
-    projectTitleRes,
-    projectArRes,
-    bannerImageRes,
-  ] = await Promise.all([
-    await axios.get(staticSiteUrl, { httpAgent }),
-    await axios.get(staticSiteArUrl, { httpAgent }),
-    await axios.get(projectTitleUrl, { httpAgent }),
-    await axios.get(projectTitleArUrl, { httpAgent }),
-    await axios.get(bannerImageUrl, { httpAgent }),
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  const staticSiteRes = await axios.get(staticSiteUrl, { httpAgent });
+  const staticSiteArRes = await axios.get(staticSiteArUrl, { httpAgent });
+  const projectTitleRes = await axios.get(projectTitleUrl, { httpAgent });
+  const projectArRes = await axios.get(projectTitleArUrl, { httpAgent });
+  const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
 
-  const [staticSite, staticSiteAr, projectTitle, projectAr, bannerImage] =
-    await Promise.all([
-      await staticSiteRes.data,
-      await staticSiteArRes.data,
-      await projectTitleRes.data,
-      await projectArRes.data,
-      await bannerImageRes.data,
-    ]).catch(function (error) {
-      console.log("Error: " + error);
-    });
+  // const [
+  //   staticSiteRes,
+  //   staticSiteArRes,
+  //   projectTitleRes,
+  //   projectArRes,
+  //   bannerImageRes,
+  // ] = await Promise.all([
+  //   await axios.get(staticSiteUrl, { httpAgent }),
+  //   await axios.get(staticSiteArUrl, { httpAgent }),
+  //   await axios.get(projectTitleUrl, { httpAgent }),
+  //   await axios.get(projectTitleArUrl, { httpAgent }),
+  //   await axios.get(bannerImageUrl, { httpAgent }),
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
+  const staticSite = await staticSiteRes.data;
+  const staticSiteAr = await staticSiteArRes.data;
+  const projectTitle = await projectTitleRes.data;
+  const projectAr = await projectArRes.data;
+  const bannerImage = await bannerImageRes.data;
+
+  // const [staticSite, staticSiteAr, projectTitle, projectAr, bannerImage] =
+  //   await Promise.all([
+  //     await staticSiteRes.data,
+  //     await staticSiteArRes.data,
+  //     await projectTitleRes.data,
+  //     await projectArRes.data,
+  //     await bannerImageRes.data,
+  //   ]).catch(function (error) {
+  //     console.log("Error: " + error);
+  //   });
 
   return {
     props: {

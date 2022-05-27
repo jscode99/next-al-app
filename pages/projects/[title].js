@@ -131,45 +131,61 @@ export async function getStaticProps(context) {
     rejectUnauthorized: false,
   });
 
-  const [
-    projectTitleDataRes,
-    projectArRes,
-    projectDataRes,
-    projectDataArRes,
-    sectorRes,
-    sectorArRes,
-    bannerImageRes,
-  ] = await Promise.all([
-    await axios.get(projectTitleUrl, { httpAgent }),
-    await axios.get(projectTitleArUrl, { httpAgent }),
-    await axios.get(projectDetailsUrl, { httpAgent }),
-    await axios.get(projectDetailsArUrl, { httpAgent }),
-    await axios.get(sectorUrl, { httpAgent }),
-    await axios.get(sectorArUrl, { httpAgent }),
-    await axios.get(bannerImageUrl, { httpAgent }),
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  const projectTitleDataRes = await axios.get(projectTitleUrl, { httpAgent });
+  const projectArRes = await axios.get(projectTitleArUrl, { httpAgent });
+  const projectDataRes = await axios.get(projectDetailsUrl, { httpAgent });
+  const projectDataArRes = await axios.get(projectDetailsArUrl, { httpAgent });
+  const sectorRes = await axios.get(sectorUrl, { httpAgent });
+  const sectorArRes = await axios.get(sectorArUrl, { httpAgent });
+  const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
 
-  const [
-    projectTitleData,
-    projectAr,
-    projectData,
-    projectDataAr,
-    sector,
-    sectorAr,
-    bannerImage,
-  ] = await Promise.all([
-    await projectTitleDataRes.data,
-    await projectArRes.data,
-    await projectDataRes.data,
-    await projectDataArRes.data,
-    await sectorRes.data,
-    await sectorArRes.data,
-    await bannerImageRes.data,
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  // const [
+  //   projectTitleDataRes,
+  //   projectArRes,
+  //   projectDataRes,
+  //   projectDataArRes,
+  //   sectorRes,
+  //   sectorArRes,
+  //   bannerImageRes,
+  // ] = await Promise.all([
+  //   await axios.get(projectTitleUrl, { httpAgent }),
+  //   await axios.get(projectTitleArUrl, { httpAgent }),
+  //   await axios.get(projectDetailsUrl, { httpAgent }),
+  //   await axios.get(projectDetailsArUrl, { httpAgent }),
+  //   await axios.get(sectorUrl, { httpAgent }),
+  //   await axios.get(sectorArUrl, { httpAgent }),
+  //   await axios.get(bannerImageUrl, { httpAgent }),
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
+
+  const projectTitleData = await projectTitleDataRes.data;
+  const projectAr = await projectArRes.data;
+  const projectData = await projectDataRes.data;
+  const projectDataAr = await projectDataArRes.data;
+  const sector = await sectorRes.data;
+  const sectorAr = await sectorArRes.data;
+  const bannerImage = await bannerImageRes.data;
+
+  // const [
+  //   projectTitleData,
+  //   projectAr,
+  //   projectData,
+  //   projectDataAr,
+  //   sector,
+  //   sectorAr,
+  //   bannerImage,
+  // ] = await Promise.all([
+  //   await projectTitleDataRes.data,
+  //   await projectArRes.data,
+  //   await projectDataRes.data,
+  //   await projectDataArRes.data,
+  //   await sectorRes.data,
+  //   await sectorArRes.data,
+  //   await bannerImageRes.data,
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
 
   const projectDetailsEnProp = projectData.filter(
     (data) => data.projectTitle.toLowerCase() === mapRoutePathToTitle(path)

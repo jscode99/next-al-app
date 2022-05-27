@@ -57,19 +57,24 @@ export async function getStaticPaths({ locales }) {
     rejectUnauthorized: false,
   });
 
-  const [storiesRes, successStoriesARRes] = await Promise.all([
-    await axios.get(storiesUrl, { httpAgent }),
-    await axios.get(storiesArUrl, { httpAgent }),
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  // const [storiesRes, successStoriesARRes] = await Promise.all([
+  //   await axios.get(storiesUrl, { httpAgent }),
+  //   await axios.get(storiesArUrl, { httpAgent }),
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
 
-  const [stories, successStoriesAR] = await Promise.all([
-    await storiesRes.data,
-    await successStoriesARRes.data,
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  const storiesRes = await axios.get(storiesUrl, { httpAgent });
+  const successStoriesARRes = await axios.get(storiesArUrl, { httpAgent });
+
+  // const [stories, successStoriesAR] = await Promise.all([
+  //   await storiesRes.data,
+  //   await successStoriesARRes.data,
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
+  const stories = await storiesRes.data;
+  const successStoriesAR = await successStoriesARRes.data;
 
   //path
   const storiesPaths = stories.map((storiesData) => {
@@ -117,41 +122,55 @@ export async function getStaticProps(context) {
     rejectUnauthorized: false,
   });
 
-  const [
-    successMediaRes,
-    storiesRes,
-    successStoriesARRes,
-    projectTitleRes,
-    projectArRes,
-    bannerImageRes,
-  ] = await Promise.all([
-    await axios.get(successMediaUrl, { httpAgent }),
-    await axios.get(storiesUrl, { httpAgent }),
-    await axios.get(storiesArUrl, { httpAgent }),
-    await axios.get(projectTitleUrl, { httpAgent }),
-    await axios.get(projectTitleArUrl, { httpAgent }),
-    await axios.get(bannerImageUrl, { httpAgent }),
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  // const [
+  //   successMediaRes,
+  //   storiesRes,
+  //   successStoriesARRes,
+  //   projectTitleRes,
+  //   projectArRes,
+  //   bannerImageRes,
+  // ] = await Promise.all([
+  //   await axios.get(successMediaUrl, { httpAgent }),
+  //   await axios.get(storiesUrl, { httpAgent }),
+  //   await axios.get(storiesArUrl, { httpAgent }),
+  //   await axios.get(projectTitleUrl, { httpAgent }),
+  //   await axios.get(projectTitleArUrl, { httpAgent }),
+  //   await axios.get(bannerImageUrl, { httpAgent }),
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
 
-  const [
-    successMedia,
-    stories,
-    successStoriesAR,
-    projectTitle,
-    projectAr,
-    bannerImage,
-  ] = await Promise.all([
-    await successMediaRes.data,
-    await storiesRes.data,
-    await successStoriesARRes.data,
-    await projectTitleRes.data,
-    await projectArRes.data,
-    await bannerImageRes.data,
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  const successMediaRes = await axios.get(successMediaUrl, { httpAgent });
+  const storiesRes = await axios.get(storiesUrl, { httpAgent });
+  const successStoriesARRes = await axios.get(storiesArUrl, { httpAgent });
+  const projectTitleRes = await axios.get(projectTitleUrl, { httpAgent });
+  const projectArRes = await axios.get(projectTitleArUrl, { httpAgent });
+  const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
+
+  // const [
+  //   successMedia,
+  //   stories,
+  //   successStoriesAR,
+  //   projectTitle,
+  //   projectAr,
+  //   bannerImage,
+  // ] = await Promise.all([
+  //   await successMediaRes.data,
+  //   await storiesRes.data,
+  //   await successStoriesARRes.data,
+  //   await projectTitleRes.data,
+  //   await projectArRes.data,
+  //   await bannerImageRes.data,
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
+
+  const successMedia = await successMediaRes.data;
+  const stories = await storiesRes.data;
+  const successStoriesAR = await successStoriesARRes.data;
+  const projectTitle = await projectTitleRes.data;
+  const projectAr = await projectArRes.data;
+  const bannerImage = await bannerImageRes.data;
 
   const path = context.params.title;
 

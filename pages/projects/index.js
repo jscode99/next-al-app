@@ -64,45 +64,61 @@ export async function getStaticProps({ locale }) {
     rejectUnauthorized: false,
   });
 
-  const [
-    projectTitleRes,
-    projectArRes,
-    projectDataRes,
-    projectDataArRes,
-    bannerImageRes,
-    arabRes,
-    arabArRes,
-  ] = await Promise.all([
-    await axios.get(projectTitleUrl, { httpAgent }),
-    await axios.get(projectTitleArUrl, { httpAgent }),
-    await axios.get(projectDetailsUrl, { httpAgent }),
-    await axios.get(projectDetailsArUrl, { httpAgent }),
-    await axios.get(bannerImageUrl, { httpAgent }),
-    await axios.get(arabFundUrl, { httpAgent }),
-    await axios.get(arabFundArUrl, { httpAgent }),
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  const projectTitleRes = await axios.get(projectTitleUrl, { httpAgent });
+  const projectArRes = await axios.get(projectTitleArUrl, { httpAgent });
+  const projectDataRes = await axios.get(projectDetailsUrl, { httpAgent });
+  const projectDataArRes = await axios.get(projectDetailsArUrl, { httpAgent });
+  const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
+  const arabRes = await axios.get(arabFundUrl, { httpAgent });
+  const arabArRes = await axios.get(arabFundArUrl, { httpAgent });
 
-  const [
-    projectTitle,
-    projectAr,
-    projectData,
-    projectDataAr,
-    bannerImage,
-    arab,
-    arabAr,
-  ] = await Promise.all([
-    await projectTitleRes.data,
-    await projectArRes.data,
-    await projectDataRes.data,
-    await projectDataArRes.data,
-    await bannerImageRes.data,
-    await arabRes.data,
-    await arabArRes.data,
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  // const [
+  //   projectTitleRes,
+  //   projectArRes,
+  //   projectDataRes,
+  //   projectDataArRes,
+  //   bannerImageRes,
+  //   arabRes,
+  //   arabArRes,
+  // ] = await Promise.all([
+  //   await axios.get(projectTitleUrl, { httpAgent }),
+  //   await axios.get(projectTitleArUrl, { httpAgent }),
+  //   await axios.get(projectDetailsUrl, { httpAgent }),
+  //   await axios.get(projectDetailsArUrl, { httpAgent }),
+  //   await axios.get(bannerImageUrl, { httpAgent }),
+  //   await axios.get(arabFundUrl, { httpAgent }),
+  //   await axios.get(arabFundArUrl, { httpAgent }),
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
+
+  const projectTitle = await projectTitleRes.data;
+  const projectAr = await projectArRes.data;
+  const projectData = await projectDataRes.data;
+  const projectDataAr = await projectDataArRes.data;
+  const bannerImage = await bannerImageRes.data;
+  const arab = await arabRes.data;
+  const arabAr = await arabArRes.data;
+
+  // const [
+  //   projectTitle,
+  //   projectAr,
+  //   projectData,
+  //   projectDataAr,
+  //   bannerImage,
+  //   arab,
+  //   arabAr,
+  // ] = await Promise.all([
+  //   await projectTitleRes.data,
+  //   await projectArRes.data,
+  //   await projectDataRes.data,
+  //   await projectDataArRes.data,
+  //   await bannerImageRes.data,
+  //   await arabRes.data,
+  //   await arabArRes.data,
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
 
   return {
     props: {

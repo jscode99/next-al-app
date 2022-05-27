@@ -68,35 +68,49 @@ export async function getStaticProps({ locale }) {
     rejectUnauthorized: false,
   });
 
-  const [
-    projectTitleRes,
-    projectArRes,
-    bannerImageRes,
-    membersRes,
-    membersArRes,
-    flagRes,
-  ] = await Promise.all([
-    await axios.get(projectTitleUrl, { httpAgent }),
-    await axios.get(projectTitleArUrl, { httpAgent }),
-    await axios.get(bannerImageUrl, { httpAgent }),
-    await axios.get(membersUrl, { httpAgent }),
-    await axios.get(membersArUrl, { httpAgent }),
-    await axios.get(flagUrl, { httpAgent }),
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  const projectTitleRes = await axios.get(projectTitleUrl, { httpAgent });
+  const projectArRes = await axios.get(projectTitleArUrl, { httpAgent });
+  const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
+  const membersRes = await axios.get(membersUrl, { httpAgent });
+  const membersArRes = await axios.get(membersArUrl, { httpAgent });
+  const flagRes = await axios.get(flagUrl, { httpAgent });
 
-  const [projectTitle, projectAr, bannerImage, members, membersAr, flag] =
-    await Promise.all([
-      await projectTitleRes.data,
-      await projectArRes.data,
-      await bannerImageRes.data,
-      await membersRes.data,
-      await membersArRes.data,
-      await flagRes.data,
-    ]).catch(function (error) {
-      console.log("Error: " + error);
-    });
+  // const [
+  //   projectTitleRes,
+  //   projectArRes,
+  //   bannerImageRes,
+  //   membersRes,
+  //   membersArRes,
+  //   flagRes,
+  // ] = await Promise.all([
+  //   await axios.get(projectTitleUrl, { httpAgent }),
+  //   await axios.get(projectTitleArUrl, { httpAgent }),
+  //   await axios.get(bannerImageUrl, { httpAgent }),
+  //   await axios.get(membersUrl, { httpAgent }),
+  //   await axios.get(membersArUrl, { httpAgent }),
+  //   await axios.get(flagUrl, { httpAgent }),
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
+
+  const projectTitle = await projectTitleRes.data;
+  const projectAr = await projectArRes.data;
+  const bannerImage = await bannerImageRes.data;
+  const members = await membersRes.data;
+  const membersAr = await membersArRes.data;
+  const flag = await flagRes.data;
+
+  // const [projectTitle, projectAr, bannerImage, members, membersAr, flag] =
+  //   await Promise.all([
+  //     await projectTitleRes.data,
+  //     await projectArRes.data,
+  //     await bannerImageRes.data,
+  //     await membersRes.data,
+  //     await membersArRes.data,
+  //     await flagRes.data,
+  //   ]).catch(function (error) {
+  //     console.log("Error: " + error);
+  //   });
 
   return {
     props: {

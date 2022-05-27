@@ -64,45 +64,69 @@ export async function getStaticProps({ locale }) {
     rejectUnauthorized: false,
   });
 
-  const [
-    arabContributionsRes,
-    arabArContributionsRes,
-    overallContributionsRes,
-    overallArContributionsRes,
-    projectTitleRes,
-    projectArRes,
-    bannerImageRes,
-  ] = await Promise.all([
-    await axios.get(arabContributionsUrl, { httpAgent }),
-    await axios.get(arabArContributionsUrl, { httpAgent }),
-    await axios.get(overallContributionsUrl, { httpAgent }),
-    await axios.get(overallArContributionsUrl, { httpAgent }),
-    await axios.get(projectTitleUrl, { httpAgent }),
-    await axios.get(projectTitleArUrl, { httpAgent }),
-    await axios.get(bannerImageUrl, { httpAgent }),
-  ]).catch(function (error) {
-    console.log("Error: " + error);
+  const arabContributionsRes = await axios.get(arabContributionsUrl, {
+    httpAgent,
   });
+  const arabArContributionsRes = await axios.get(arabArContributionsUrl, {
+    httpAgent,
+  });
+  const overallContributionsRes = await axios.get(overallContributionsUrl, {
+    httpAgent,
+  });
+  const overallArContributionsRes = await axios.get(overallArContributionsUrl, {
+    httpAgent,
+  });
+  const projectTitleRes = await axios.get(projectTitleUrl, { httpAgent });
+  const projectArRes = await axios.get(projectTitleArUrl, { httpAgent });
+  const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
 
-  const [
-    arabContributions,
-    arabArContributions,
-    overallContributions,
-    overallArContributions,
-    projectTitle,
-    projectAr,
-    bannerImage,
-  ] = await Promise.all([
-    await arabContributionsRes.data,
-    await arabArContributionsRes.data,
-    await overallContributionsRes.data,
-    await overallArContributionsRes.data,
-    await projectTitleRes.data,
-    await projectArRes.data,
-    await bannerImageRes.data,
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  // const [
+  //   arabContributionsRes,
+  //   arabArContributionsRes,
+  //   overallContributionsRes,
+  //   overallArContributionsRes,
+  //   projectTitleRes,
+  //   projectArRes,
+  //   bannerImageRes,
+  // ] = await Promise.all([
+  //   await axios.get(arabContributionsUrl, { httpAgent }),
+  //   await axios.get(arabArContributionsUrl, { httpAgent }),
+  //   await axios.get(overallContributionsUrl, { httpAgent }),
+  //   await axios.get(overallArContributionsUrl, { httpAgent }),
+  //   await axios.get(projectTitleUrl, { httpAgent }),
+  //   await axios.get(projectTitleArUrl, { httpAgent }),
+  //   await axios.get(bannerImageUrl, { httpAgent }),
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
+
+  const arabContributions = await arabContributionsRes.data;
+  const arabArContributions = await arabArContributionsRes.data;
+  const overallContributions = await overallContributionsRes.data;
+  const overallArContributions = await overallArContributionsRes.data;
+  const projectTitle = await projectTitleRes.data;
+  const projectAr = await projectArRes.data;
+  const bannerImage = await bannerImageRes.data;
+
+  // const [
+  //   arabContributions,
+  //   arabArContributions,
+  //   overallContributions,
+  //   overallArContributions,
+  //   projectTitle,
+  //   projectAr,
+  //   bannerImage,
+  // ] = await Promise.all([
+  //   await arabContributionsRes.data,
+  //   await arabArContributionsRes.data,
+  //   await overallContributionsRes.data,
+  //   await overallArContributionsRes.data,
+  //   await projectTitleRes.data,
+  //   await projectArRes.data,
+  //   await bannerImageRes.data,
+  // ]).catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
 
   return {
     props: {

@@ -1,6 +1,8 @@
 import React from "react";
 import PolicyContainer from "../app/container/policy";
 import { useRouter } from "next/router";
+import axios from "axios";
+import https from "https";
 //Constants
 import { CONST } from "../app/services/constants";
 //Services
@@ -41,16 +43,21 @@ export async function getStaticProps({ locale }) {
   let projectTitleArUrl =
     process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
+
+  const httpAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   const [projectTitleRes, projectArRes, bannerImageRes] = await Promise.all([
-    await fetch(projectTitleUrl),
-    await fetch(projectTitleArUrl),
-    await fetch(bannerImageUrl),
+    await axios.get(projectTitleUrl, { httpAgent }),
+    await axios.get(projectTitleArUrl, { httpAgent }),
+    await axios.get(bannerImageUrl, { httpAgent }),
   ]);
 
   const [projectTitle, projectAr, bannerImage] = await Promise.all([
-    await projectTitleRes.json(),
-    await projectArRes.json(),
-    await bannerImageRes.json(),
+    await projectTitleRes.data,
+    await projectArRes.data,
+    await bannerImageRes.data,
   ]);
   return {
     props: {

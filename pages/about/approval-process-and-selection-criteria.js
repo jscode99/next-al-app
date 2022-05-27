@@ -1,3 +1,5 @@
+import axios from "axios";
+import https from "https";
 //Constant
 import { CONST } from "../../app/services/constants";
 //Services
@@ -49,6 +51,10 @@ export async function getStaticProps({ locale }) {
     process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
+  const httpAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   const [
     staticSiteRes,
     staticSiteArRes,
@@ -56,20 +62,20 @@ export async function getStaticProps({ locale }) {
     projectArRes,
     bannerImageRes,
   ] = await Promise.all([
-    await fetch(staticSiteUrl),
-    await fetch(staticSiteArUrl),
-    await fetch(projectTitleUrl),
-    await fetch(projectTitleArUrl),
-    await fetch(bannerImageUrl),
+    await axios.get(staticSiteUrl, { httpAgent }),
+    await axios.get(staticSiteArUrl, { httpAgent }),
+    await axios.get(projectTitleUrl, { httpAgent }),
+    await axios.get(projectTitleArUrl, { httpAgent }),
+    await axios.get(bannerImageUrl, { httpAgent }),
   ]);
 
   const [staticSite, staticSiteAr, projectTitle, projectAr, bannerImage] =
     await Promise.all([
-      await staticSiteRes.json(),
-      await staticSiteArRes.json(),
-      await projectTitleRes.json(),
-      await projectArRes.json(),
-      await bannerImageRes.json(),
+      await staticSiteRes.data,
+      await staticSiteArRes.data,
+      await projectTitleRes.data,
+      await projectArRes.data,
+      await bannerImageRes.data,
     ]);
 
   return {

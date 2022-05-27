@@ -1,4 +1,6 @@
 import { useRouter } from "next/router";
+import axios from "axios";
+import https from "https";
 //Constants
 import { CONST } from "../app/services/constants";
 //Services
@@ -58,6 +60,11 @@ export async function getStaticProps({ locale }) {
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
   let publicationArUrl =
     process.env.BASE_URL + process.env.PATH.PUBLICATION + "?_locale=ar-001";
+
+  const httpAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   const [
     publicationRes,
     publicationArRes,
@@ -65,20 +72,20 @@ export async function getStaticProps({ locale }) {
     projectArRes,
     bannerImageRes,
   ] = await Promise.all([
-    await fetch(publicationUrl),
-    await fetch(publicationArUrl),
-    await fetch(projectTitleUrl),
-    await fetch(projectTitleArUrl),
-    await fetch(bannerImageUrl),
+    await axios.get(publicationUrl, { httpAgent }),
+    await axios.get(publicationArUrl, { httpAgent }),
+    await axios.get(projectTitleUrl, { httpAgent }),
+    await axios.get(projectTitleArUrl, { httpAgent }),
+    await axios.get(bannerImageUrl, { httpAgent }),
   ]);
 
   const [publication, publicationAr, projectTitle, projectAr, bannerImage] =
     await Promise.all([
-      await publicationRes.json(),
-      await publicationArRes.json(),
-      await projectTitleRes.json(),
-      await projectArRes.json(),
-      await bannerImageRes.json(),
+      await publicationRes.data,
+      await publicationArRes.data,
+      await projectTitleRes.data,
+      await projectArRes.data,
+      await bannerImageRes.data,
     ]);
 
   return {

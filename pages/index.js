@@ -1,5 +1,7 @@
 import { useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
+import https from "https";
 //Constants
 import { CONST } from "../app/services/constants";
 //Services
@@ -129,6 +131,10 @@ export async function getStaticProps({ locale }) {
   let isdbManagesArUrl =
     process.env.BASE_URL + process.env.PATH.ISDB_MANAGES + "?_locale=ar-001";
 
+  const httpAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   const [
     staticSiteRes,
     staticSiteArRes,
@@ -150,25 +156,25 @@ export async function getStaticProps({ locale }) {
     isdbManageRes,
     isdbManageArRes,
   ] = await Promise.all([
-    await fetch(staticSiteUrl),
-    await fetch(staticSiteArUrl),
-    await fetch(projectDetailsUrl),
-    await fetch(projectDetailsArUrl),
-    await fetch(sectorUrl),
-    await fetch(sectorArUrl),
-    await fetch(projectTitleUrl),
-    await fetch(projectTitleArUrl),
-    await fetch(alAqsaFundUrl),
-    await fetch(alAqsaFundArUrl),
-    await fetch(arabFundUrl),
-    await fetch(arabFundArUrl),
-    await fetch(yearlyApprovalUrl),
-    await fetch(yearlyApprovalArUrl),
-    await fetch(bannerImageUrl),
-    await fetch(flagUrl),
-    await fetch(flagArUrl),
-    await fetch(isdbManagesUrl),
-    await fetch(isdbManagesArUrl),
+    await axios.get(staticSiteUrl, { httpAgent }),
+    await axios.get(staticSiteArUrl, { httpAgent }),
+    await axios.get(projectDetailsUrl, { httpAgent }),
+    await axios.get(projectDetailsArUrl, { httpAgent }),
+    await axios.get(sectorUrl, { httpAgent }),
+    await axios.get(sectorArUrl, { httpAgent }),
+    await axios.get(projectTitleUrl, { httpAgent }),
+    await axios.get(projectTitleArUrl, { httpAgent }),
+    await axios.get(alAqsaFundUrl, { httpAgent }),
+    await axios.get(alAqsaFundArUrl, { httpAgent }),
+    await axios.get(arabFundUrl, { httpAgent }),
+    await axios.get(arabFundArUrl, { httpAgent }),
+    await axios.get(yearlyApprovalUrl, { httpAgent }),
+    await axios.get(yearlyApprovalArUrl, { httpAgent }),
+    await axios.get(bannerImageUrl, { httpAgent }),
+    await axios.get(flagUrl, { httpAgent }),
+    await axios.get(flagArUrl, { httpAgent }),
+    await axios.get(isdbManagesUrl, { httpAgent }),
+    await axios.get(isdbManagesArUrl, { httpAgent }),
   ]);
 
   const [
@@ -192,25 +198,25 @@ export async function getStaticProps({ locale }) {
     isdbManage,
     isdbManageAr,
   ] = await Promise.all([
-    await staticSiteRes.json(),
-    await staticSiteArRes.json(),
-    await projectDataRes.json(),
-    await projectDataArRes.json(),
-    await sectorRes.json(),
-    await sectorArRes.json(),
-    await projectTitleRes.json(),
-    await projectArRes.json(),
-    await alAqsaRes.json(),
-    await alAqsaArRes.json(),
-    await arabRes.json(),
-    await arabArRes.json(),
-    await yearlyRes.json(),
-    await yearlyArRes.json(),
-    await bannerImageRes.json(),
-    await flagRes.json(),
-    await flagArRes.json(),
-    await isdbManageRes.json(),
-    await isdbManageArRes.json(),
+    await staticSiteRes.data,
+    await staticSiteArRes.data,
+    await projectDataRes.data,
+    await projectDataArRes.data,
+    await sectorRes.data,
+    await sectorArRes.data,
+    await projectTitleRes.data,
+    await projectArRes.data,
+    await alAqsaRes.data,
+    await alAqsaArRes.data,
+    await arabRes.data,
+    await arabArRes.data,
+    await yearlyRes.data,
+    await yearlyArRes.data,
+    await bannerImageRes.data,
+    await flagRes.data,
+    await flagArRes.data,
+    await isdbManageRes.data,
+    await isdbManageArRes.data,
   ]);
 
   return {

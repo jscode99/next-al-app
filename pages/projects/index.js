@@ -2,6 +2,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../../i18n";
 import { useTranslation } from "next-i18next";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+import https from "https";
 //Constant
 import { CONST } from "../../app/services/constants";
 //Services
@@ -58,6 +60,10 @@ export async function getStaticProps({ locale }) {
   let arabFundArUrl =
     process.env.BASE_URL + process.env.PATH.ARAB_FUND + "?_locale=ar-001";
 
+  const httpAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   const [
     projectTitleRes,
     projectArRes,
@@ -67,13 +73,13 @@ export async function getStaticProps({ locale }) {
     arabRes,
     arabArRes,
   ] = await Promise.all([
-    await fetch(projectTitleUrl),
-    await fetch(projectTitleArUrl),
-    await fetch(projectDetailsUrl),
-    await fetch(projectDetailsArUrl),
-    await fetch(bannerImageUrl),
-    await fetch(arabFundUrl),
-    await fetch(arabFundArUrl),
+    await axios.get(projectTitleUrl, { httpAgent }),
+    await axios.get(projectTitleArUrl, { httpAgent }),
+    await axios.get(projectDetailsUrl, { httpAgent }),
+    await axios.get(projectDetailsArUrl, { httpAgent }),
+    await axios.get(bannerImageUrl, { httpAgent }),
+    await axios.get(arabFundUrl, { httpAgent }),
+    await axios.get(arabFundArUrl, { httpAgent }),
   ]);
 
   const [
@@ -85,13 +91,13 @@ export async function getStaticProps({ locale }) {
     arab,
     arabAr,
   ] = await Promise.all([
-    await projectTitleRes.json(),
-    await projectArRes.json(),
-    await projectDataRes.json(),
-    await projectDataArRes.json(),
-    await bannerImageRes.json(),
-    await arabRes.json(),
-    await arabArRes.json(),
+    await projectTitleRes.data,
+    await projectArRes.data,
+    await projectDataRes.data,
+    await projectDataArRes.data,
+    await bannerImageRes.data,
+    await arabRes.data,
+    await arabArRes.data,
   ]);
 
   return {

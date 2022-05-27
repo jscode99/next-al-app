@@ -2,6 +2,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "../../i18n";
 import { useTranslation } from "next-i18next";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+import https from "https";
 //Constant
 import { CONST } from "../../app/services/constants";
 //Services
@@ -59,14 +61,19 @@ export async function getStaticPaths({ locales }) {
     process.env.PATH.PROJECT_DATA +
     "?_locale=ar-001" +
     "&&_limit=-1";
+
+  const httpAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   const [projectDataRes, projectDataArRes] = await Promise.all([
-    await fetch(projectDetailsUrl),
-    await fetch(projectDetailsArUrl),
+    await axios.get(projectDetailsUrl, { httpAgent }),
+    await axios.get(projectDetailsArUrl, { httpAgent }),
   ]);
 
   const [projectData, projectDataAr] = await Promise.all([
-    await projectDataRes.json(),
-    await projectDataArRes.json(),
+    await projectDataRes.data,
+    await projectDataArRes.data,
   ]);
 
   //path
@@ -116,6 +123,10 @@ export async function getStaticProps(context) {
     "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
+  const httpAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   const [
     projectTitleDataRes,
     projectArRes,
@@ -125,13 +136,13 @@ export async function getStaticProps(context) {
     sectorArRes,
     bannerImageRes,
   ] = await Promise.all([
-    await fetch(projectTitleUrl),
-    await fetch(projectTitleArUrl),
-    await fetch(projectDetailsUrl),
-    await fetch(projectDetailsArUrl),
-    await fetch(sectorUrl),
-    await fetch(sectorArUrl),
-    await fetch(bannerImageUrl),
+    await axios.get(projectTitleUrl, { httpAgent }),
+    await axios.get(projectTitleArUrl, { httpAgent }),
+    await axios.get(projectDetailsUrl, { httpAgent }),
+    await axios.get(projectDetailsArUrl, { httpAgent }),
+    await axios.get(sectorUrl, { httpAgent }),
+    await axios.get(sectorArUrl, { httpAgent }),
+    await axios.get(bannerImageUrl, { httpAgent }),
   ]);
 
   const [
@@ -143,13 +154,13 @@ export async function getStaticProps(context) {
     sectorAr,
     bannerImage,
   ] = await Promise.all([
-    await projectTitleDataRes.json(),
-    await projectArRes.json(),
-    await projectDataRes.json(),
-    await projectDataArRes.json(),
-    await sectorRes.json(),
-    await sectorArRes.json(),
-    await bannerImageRes.json(),
+    await projectTitleDataRes.data,
+    await projectArRes.data,
+    await projectDataRes.data,
+    await projectDataArRes.data,
+    await sectorRes.data,
+    await sectorArRes.data,
+    await bannerImageRes.data,
   ]);
 
   const projectDetailsEnProp = projectData.filter(

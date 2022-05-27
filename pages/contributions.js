@@ -1,3 +1,5 @@
+import axios from "axios";
+import https from "https";
 //Constants
 import { CONST } from "../app/services/constants";
 //Services
@@ -58,6 +60,10 @@ export async function getStaticProps({ locale }) {
     process.env.BASE_URL + process.env.PATH.PROJECT_TITLE + "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
 
+  const httpAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   const [
     arabContributionsRes,
     arabArContributionsRes,
@@ -67,13 +73,13 @@ export async function getStaticProps({ locale }) {
     projectArRes,
     bannerImageRes,
   ] = await Promise.all([
-    await fetch(arabContributionsUrl),
-    await fetch(arabArContributionsUrl),
-    await fetch(overallContributionsUrl),
-    await fetch(overallArContributionsUrl),
-    await fetch(projectTitleUrl),
-    await fetch(projectTitleArUrl),
-    await fetch(bannerImageUrl),
+    await axios.get(arabContributionsUrl, { httpAgent }),
+    await axios.get(arabArContributionsUrl, { httpAgent }),
+    await axios.get(overallContributionsUrl, { httpAgent }),
+    await axios.get(overallArContributionsUrl, { httpAgent }),
+    await axios.get(projectTitleUrl, { httpAgent }),
+    await axios.get(projectTitleArUrl, { httpAgent }),
+    await axios.get(bannerImageUrl, { httpAgent }),
   ]);
 
   const [
@@ -85,13 +91,13 @@ export async function getStaticProps({ locale }) {
     projectAr,
     bannerImage,
   ] = await Promise.all([
-    await arabContributionsRes.json(),
-    await arabArContributionsRes.json(),
-    await overallContributionsRes.json(),
-    await overallArContributionsRes.json(),
-    await projectTitleRes.json(),
-    await projectArRes.json(),
-    await bannerImageRes.json(),
+    await arabContributionsRes.data,
+    await arabArContributionsRes.data,
+    await overallContributionsRes.data,
+    await overallArContributionsRes.data,
+    await projectTitleRes.data,
+    await projectArRes.data,
+    await bannerImageRes.data,
   ]);
 
   return {

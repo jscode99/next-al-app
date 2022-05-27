@@ -1,4 +1,6 @@
 import { useRouter } from "next/router";
+import axios from "axios";
+import https from "https";
 //Constant
 import { CONST } from "../../app/services/constants";
 //Services
@@ -62,6 +64,10 @@ export async function getStaticProps({ locale }) {
     process.env.BASE_URL + process.env.PATH.MEMBERS + "?_locale=ar-001";
   let flagUrl = process.env.BASE_URL + process.env.PATH.FLAG;
 
+  const httpAgent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
   const [
     projectTitleRes,
     projectArRes,
@@ -70,22 +76,22 @@ export async function getStaticProps({ locale }) {
     membersArRes,
     flagRes,
   ] = await Promise.all([
-    await fetch(projectTitleUrl),
-    await fetch(projectTitleArUrl),
-    await fetch(bannerImageUrl),
-    await fetch(membersUrl),
-    await fetch(membersArUrl),
-    await fetch(flagUrl),
+    await axios.get(projectTitleUrl, { httpAgent }),
+    await axios.get(projectTitleArUrl, { httpAgent }),
+    await axios.get(bannerImageUrl, { httpAgent }),
+    await axios.get(membersUrl, { httpAgent }),
+    await axios.get(membersArUrl, { httpAgent }),
+    await axios.get(flagUrl, { httpAgent }),
   ]);
 
   const [projectTitle, projectAr, bannerImage, members, membersAr, flag] =
     await Promise.all([
-      await projectTitleRes.json(),
-      await projectArRes.json(),
-      await bannerImageRes.json(),
-      await membersRes.json(),
-      await membersArRes.json(),
-      await flagRes.json(),
+      await projectTitleRes.data,
+      await projectArRes.data,
+      await bannerImageRes.data,
+      await membersRes.data,
+      await membersArRes.data,
+      await flagRes.data,
     ]);
 
   return {

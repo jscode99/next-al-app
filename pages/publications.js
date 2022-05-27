@@ -77,7 +77,9 @@ export async function getStaticProps({ locale }) {
     await axios.get(projectTitleUrl, { httpAgent }),
     await axios.get(projectTitleArUrl, { httpAgent }),
     await axios.get(bannerImageUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [publication, publicationAr, projectTitle, projectAr, bannerImage] =
     await Promise.all([
@@ -86,7 +88,9 @@ export async function getStaticProps({ locale }) {
       await projectTitleRes.data,
       await projectArRes.data,
       await bannerImageRes.data,
-    ]);
+    ]).catch(function (error) {
+      console.log("Error: " + error);
+    });
 
   return {
     props: {

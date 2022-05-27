@@ -82,7 +82,9 @@ export async function getStaticProps({ locale }) {
     await axios.get(membersUrl, { httpAgent }),
     await axios.get(membersArUrl, { httpAgent }),
     await axios.get(flagUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [projectTitle, projectAr, bannerImage, members, membersAr, flag] =
     await Promise.all([
@@ -92,7 +94,9 @@ export async function getStaticProps({ locale }) {
       await membersRes.data,
       await membersArRes.data,
       await flagRes.data,
-    ]);
+    ]).catch(function (error) {
+      console.log("Error: " + error);
+    });
 
   return {
     props: {

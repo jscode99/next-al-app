@@ -69,12 +69,16 @@ export async function getStaticPaths({ locales }) {
   const [projectDataRes, projectDataArRes] = await Promise.all([
     await axios.get(projectDetailsUrl, { httpAgent }),
     await axios.get(projectDetailsArUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [projectData, projectDataAr] = await Promise.all([
     await projectDataRes.data,
     await projectDataArRes.data,
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   //path
   const pathsEn = projectData.map((projectD) => {
@@ -143,7 +147,9 @@ export async function getStaticProps(context) {
     await axios.get(sectorUrl, { httpAgent }),
     await axios.get(sectorArUrl, { httpAgent }),
     await axios.get(bannerImageUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [
     projectTitleData,
@@ -161,7 +167,9 @@ export async function getStaticProps(context) {
     await sectorRes.data,
     await sectorArRes.data,
     await bannerImageRes.data,
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const projectDetailsEnProp = projectData.filter(
     (data) => data.projectTitle.toLowerCase() === mapRoutePathToTitle(path)

@@ -77,7 +77,9 @@ export async function getStaticProps({ locale }) {
     await axios.get(bannerImageUrl, { httpAgent }),
     await axios.get(flagUrl, { httpAgent }),
     await axios.get(flagArUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [
     staticSite,
@@ -95,7 +97,9 @@ export async function getStaticProps({ locale }) {
     await bannerImageRes.data,
     await flagRes.data,
     await flagArRes.data,
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   return {
     props: {

@@ -60,12 +60,16 @@ export async function getStaticPaths({ locales }) {
   const [storiesRes, successStoriesARRes] = await Promise.all([
     await axios.get(storiesUrl, { httpAgent }),
     await axios.get(storiesArUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [stories, successStoriesAR] = await Promise.all([
     await storiesRes.data,
     await successStoriesARRes.data,
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   //path
   const storiesPaths = stories.map((storiesData) => {
@@ -127,7 +131,9 @@ export async function getStaticProps(context) {
     await axios.get(projectTitleUrl, { httpAgent }),
     await axios.get(projectTitleArUrl, { httpAgent }),
     await axios.get(bannerImageUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [
     successMedia,
@@ -143,7 +149,9 @@ export async function getStaticProps(context) {
     await projectTitleRes.data,
     await projectArRes.data,
     await bannerImageRes.data,
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const path = context.params.title;
 

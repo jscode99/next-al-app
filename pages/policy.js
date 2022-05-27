@@ -52,13 +52,18 @@ export async function getStaticProps({ locale }) {
     await axios.get(projectTitleUrl, { httpAgent }),
     await axios.get(projectTitleArUrl, { httpAgent }),
     await axios.get(bannerImageUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [projectTitle, projectAr, bannerImage] = await Promise.all([
     await projectTitleRes.data,
     await projectArRes.data,
     await bannerImageRes.data,
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
+  
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"], nextI18NextConfig)),

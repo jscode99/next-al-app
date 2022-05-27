@@ -175,7 +175,9 @@ export async function getStaticProps({ locale }) {
     await axios.get(flagArUrl, { httpAgent }),
     await axios.get(isdbManagesUrl, { httpAgent }),
     await axios.get(isdbManagesArUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [
     staticSite,
@@ -217,7 +219,9 @@ export async function getStaticProps({ locale }) {
     await flagArRes.data,
     await isdbManageRes.data,
     await isdbManageArRes.data,
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   return {
     props: {

@@ -80,7 +80,9 @@ export async function getStaticProps({ locale }) {
     await axios.get(bannerImageUrl, { httpAgent }),
     await axios.get(arabFundUrl, { httpAgent }),
     await axios.get(arabFundArUrl, { httpAgent }),
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   const [
     projectTitle,
@@ -98,7 +100,9 @@ export async function getStaticProps({ locale }) {
     await bannerImageRes.data,
     await arabRes.data,
     await arabArRes.data,
-  ]);
+  ]).catch(function (error) {
+    console.log("Error: " + error);
+  });
 
   return {
     props: {

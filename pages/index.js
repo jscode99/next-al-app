@@ -42,8 +42,8 @@ export default function Home({
   //   "==================================================>",
   //   appContext.fLinkClick
   // );
-  console.log("flag", flag);
-  console.log("PROJECT", projectData);
+  // console.log("flag", flag);
+  // console.log("PROJECT", projectData);
   useEffect(() => {
     if (appContext && appContext.fLinkClick) {
       setAppContext({
@@ -134,6 +134,8 @@ export async function getStaticProps({ locale }) {
   const httpAgent = new https.Agent({
     rejectUnauthorized: false,
   });
+
+
   const staticSiteRes = await axios.get(staticSiteUrl, { httpAgent });
   const staticSiteArRes = await axios.get(staticSiteArUrl, { httpAgent });
   const projectDataRes = await axios.get(projectDetailsUrl, { httpAgent });

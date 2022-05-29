@@ -66,19 +66,30 @@ export async function getStaticPaths({ locales }) {
     rejectUnauthorized: false,
   });
 
-  const [projectDataRes, projectDataArRes] = await Promise.all([
-    await axios.get(projectDetailsUrl, { httpAgent }),
-    await axios.get(projectDetailsArUrl, { httpAgent }),
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  // const [projectDataRes, projectDataArRes] = await Promise.all([
+  //   await axios.get(projectDetailsUrl, { httpAgent }),
+  //   await axios.get(projectDetailsArUrl, { httpAgent }),
+  // ]);
 
-  const [projectData, projectDataAr] = await Promise.all([
-    await projectDataRes.data,
-    await projectDataArRes.data,
-  ]).catch(function (error) {
-    console.log("Error: " + error);
-  });
+  const projectDataRes=await axios.get(projectDetailsUrl, { httpAgent });
+  const projectDataArRes=await axios.get(projectDetailsArUrl, { httpAgent });
+  
+  // .catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
+
+  // const [projectData, projectDataAr] = await Promise.all([
+  //   await projectDataRes.data,
+  //   await projectDataArRes.data,
+  // ])
+
+  const projectData=await projectDataRes.data;
+  const projectDataAr=await projectDataArRes.data;
+
+  
+  // .catch(function (error) {
+  //   console.log("Error: " + error);
+  // });
 
   //path
   const pathsEn = projectData.map((projectD) => {

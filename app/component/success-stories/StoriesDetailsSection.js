@@ -5,6 +5,7 @@ export default function StoriesDetailsComponent({
   successMedia,
   storiesProps,
 }) {
+  // let jsonStories = JSON.parse(storiesProps);
   return (
     <>
       <SuccessStoriesDetails

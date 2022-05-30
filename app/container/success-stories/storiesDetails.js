@@ -2,7 +2,7 @@
 import Layout from "../layout";
 import StoriesDetailsComponent from "../../component/success-stories/StoriesDetailsSection";
 import { useRouter } from "next/router";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 export default function StoriesDetailsContainer({
   successMedia,
@@ -12,9 +12,6 @@ export default function StoriesDetailsContainer({
   bannerImage,
 }) {
   const router = useRouter();
-  // useEffect(() => {
-  //   if (!storiesProps) router.push("/success-stories");
-  // }, [storiesProps]);
   return (
     <Layout
       heroImage={bannerImage}

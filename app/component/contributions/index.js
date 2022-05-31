@@ -20,21 +20,22 @@ export default function Contributions({
   const { t } = useTranslation("common");
 
   useEffect(() => {
+    // `${}`
     setCardData([
       {
-        // amount: `$${summitAmount.cairoSummitTotal}`,
+        // amount: Math.floor(summitAmount.cairoSummitTotal),
         amount: 542400000,
         subTitle: t("cairo summit"),
         bg: style.bg_theme_sky_blue_color,
       },
       {
-        // amount: `$${summitAmount.beirutSirteSummitTotal}`,
+        // amount: `${summitAmount.beirutSirteSummitTotal}`,
         amount: 222220230,
         subTitle: t("beirut & sirte summit"),
         bg: style.bg_theme_golden_color,
       },
       {
-        // amount: `$${summitAmount.deadSeaSummitTotal}`,
+        // amount: `${summitAmount.deadSeaSummitTotal}`,
         amount: 111421000,
         subTitle: t("dead sea summit"),
         bg: style.bg_primary_color,
@@ -42,6 +43,7 @@ export default function Contributions({
     ]);
   }, [summitAmount]);
   console.log("cardData", cardData);
+  console.log("summitAmount--->",typeof summitAmount.beirutSirteSummitTotal);
   return (
     <>
       <ContributionsCard

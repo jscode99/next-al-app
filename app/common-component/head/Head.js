@@ -23,7 +23,7 @@ export default function AppHead() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css"
         integrity="sha512-Po8rrCwchD03Wo+2ibHFielZ8luDAVoCyE9i6iFMPyn9+V1tIhGk5wl8iKC9/JfDah5Oe9nV8QzE8HHgjgzp3g=="
-        crossorigin="anonymous"
+        crossOrigin="anonymous"
         referrerpolicy="no-referrer"
       />
       <link

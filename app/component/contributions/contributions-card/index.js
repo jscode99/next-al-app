@@ -44,10 +44,12 @@ export default function ContributionsCard({ cardData, grandTotal }) {
       >
         <Row gutter={[16, 16]} className={`w-100`}>
           {router.locale === "en"
-            ? cardData.map((data) => <IntroCard data={data} />)
+            ? cardData.map((data, index) => (
+                <IntroCard key={index} data={data} />
+              ))
             : new Array(...cardData)
                 .reverse()
-                .map((data) => <IntroCard data={data} />)}
+                .map((data, index) => <IntroCard key={index} data={data} />)}
         </Row>
       </div>
     </div>

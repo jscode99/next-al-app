@@ -18,11 +18,17 @@ export default function StoriesDetailsContainer({
       page={"success-stories"}
       pageName={"success stories"}
       projectTitle={router.locale === "en" ? projectTitle : projectAr}
-      title={storiesProps.Title}
+      title={
+        storiesProps &&
+        Object.keys(storiesProps).length > 0 &&
+        storiesProps.Title
+      }
     >
       <StoriesDetailsComponent
         successMedia={successMedia}
-        storiesProps={storiesProps}
+        storiesProps={
+          storiesProps && Object.keys(storiesProps).length > 0 && storiesProps
+        }
       />
     </Layout>
   );

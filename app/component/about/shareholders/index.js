@@ -8,6 +8,7 @@ import style from "./index.module.sass";
 export default function ShareHolder({ flagData }) {
   const { t } = useTranslation("common");
   const router = useRouter();
+  console.log("FlagDat", flagData);
   useEffect(() => {
     // console.log("scroll", document.getElementById("scroll").scrollLeft);
     // document.getElementById("scroll").scrollLeft = "20%"; //1000; //1400;
@@ -24,33 +25,35 @@ export default function ShareHolder({ flagData }) {
           id="scroll"
           className={`${style.shareHolder_scrollable} d-flex align-items-center `}
         >
-          {flagData.map(data => (
-            <>
-              <div>
-                <div
-                  className={`${style.flag_container} d-flex justify-content-center align-items-center flex-column`}
-                >
-                  <div className={`${style.flag_image} rounded-circle`}>
-                    <Image
-                      src={process.env.BASE_URL + data.Flag.url}
-                      alt={`Flags`}
-                      height="80px"
-                      width="80px"
-                    />
-                  </div>
-                  <p
-                    className={`${
-                      router.locale === "en"
-                        ? style.shareHolder_labels
-                        : style.shareHolder_labels_AR
-                    } text-capitalize text-center`}
+          {flagData
+            .sort((a, b) => b.Country - a.Country)
+            .map((data) => (
+              <>
+                <div>
+                  <div
+                    className={`${style.flag_container} d-flex justify-content-center align-items-center flex-column`}
                   >
-                    {data.Country}
-                  </p>
+                    <div className={`${style.flag_image} rounded-circle`}>
+                      <Image
+                        src={process.env.BASE_URL + data.Flag.url}
+                        alt={`Flags`}
+                        height="80px"
+                        width="80px"
+                      />
+                    </div>
+                    <p
+                      className={`${
+                        router.locale === "en"
+                          ? style.shareHolder_labels
+                          : style.shareHolder_labels_AR
+                      } text-capitalize text-center`}
+                    >
+                      {data.Country}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </>
-          ))}
+              </>
+            ))}
         </div>
       </div>
     </div>

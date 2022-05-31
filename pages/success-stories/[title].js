@@ -45,10 +45,11 @@ export default function StoriesDetails({
             storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
         );
         setStoriesData(storiesDetailsProp);
-        // console.log("test story details------------------", storiesDetailsProp);
       }
     }
-  }, [stories, successStoriesAR, path, context]);
+  }, [stories, successStoriesAR]);
+
+  console.log("test story details------------------", storiesData);
 
   const { t } = useTranslation("common");
   return (

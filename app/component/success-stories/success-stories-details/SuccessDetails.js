@@ -28,9 +28,9 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
       Object.keys(storiesProps).length > 0
     ) {
       let media = successMedia.filter(
-        value => value.successID.toString() === storiesProps.id.toString(),
+        (value) => value.successID.toString() === storiesProps.id.toString()
       );
-      let medias = media.map(value => {
+      let medias = media.map((value) => {
         return {
           multimedia: value.multimedia[0].url,
           successID: value.successID,
@@ -90,9 +90,26 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                       {storiesProps.FundSource}
                     </Col>
                   </Row>
-                  <p className={`${styles.stories_details_des} pr-4`}>
+                  <Row className={`mb-5`}>
+                    <Col
+                      span={7}
+                      className={`${styles.stories_amount_heading}`}
+                    >
+                      Overview
+                    </Col>
+                    <Col
+                      span={1}
+                      className={`${styles.stories_amount_heading}`}
+                    >
+                      {`:`}
+                    </Col>
+                    <Col span={16} className={`${styles.stories_amount}`}>
+                      <p className="text-justify">{storiesProps.Overview}</p>
+                    </Col>
+                  </Row>
+                  {/* : <p className={`${styles.stories_details_des} pr-4`}>
                     {storiesProps.Overview}
-                  </p>
+                  </p> */}
                 </Col>
                 <Col
                   xs={24}
@@ -113,7 +130,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                     >
                       {media &&
                         media.length > 0 &&
-                        media.map(imageData => (
+                        media.map((imageData) => (
                           <>
                             {!isImage(imageData.multimedia) && (
                               <div
@@ -151,7 +168,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                       <div className={`d-flex`}>
                         {media &&
                           media.length > 0 &&
-                          media.map(imageData => (
+                          media.map((imageData) => (
                             <>
                               <div
                                 className={`mx-3 ${styles.image_cont} position-relative`}
@@ -216,7 +233,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                     >
                       {media &&
                         media.length > 0 &&
-                        media.map(imageData => (
+                        media.map((imageData) => (
                           <>
                             {!isImage(imageData.multimedia) && (
                               <div
@@ -252,7 +269,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                       <div className={`d-flex`}>
                         {media &&
                           media.length > 0 &&
-                          media.map(imageData => (
+                          media.map((imageData) => (
                             <>
                               <div
                                 className={`mx-3 ${styles.image_cont} position-relative`}

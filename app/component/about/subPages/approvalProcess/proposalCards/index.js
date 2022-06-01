@@ -102,7 +102,7 @@ export default function ProposalCard({ data }) {
                     </div>
                     <p
                       className={`${style.ProposalCard_des} ${
-                        router.locale === "en" ? `` : `text-end`
+                        router.locale === "en" ? `text-justify` : `text-end`
                       } m-0`}
                     >
                       {data.des}
@@ -150,7 +150,7 @@ export default function ProposalCard({ data }) {
                     </div>
                     <p
                       className={`${style.ProposalCard_des} ${
-                        router.locale === "en" ? `` : `text-end`
+                        router.locale === "en" ? `text-justify` : `text-end`
                       } m-0`}
                     >
                       {data.des}

@@ -9,7 +9,7 @@ import MembersList from "./membersList";
 import style from "./index.module.sass";
 
 export default function Members({ members, flag }) {
-  // console.log("members", members);
+  console.log("members", members);
   // console.log("flag", flag);
   const [activeData, setActiveData] = useState(true);
   const [buttonActive, setButtonActive] = useState(true);
@@ -37,19 +37,23 @@ export default function Members({ members, flag }) {
           label: members[index].label,
           reputation: members[index].reputation,
           type: members[index].type,
-          // url: url,
+          priority: members[index].Priority,
         });
       }
     }
     if (resultMem.length > 0) {
-      let SCMembers = resultMem.filter(
-        membersData => membersData.type.toLowerCase() === "supreme council",
-      );
-      let CMMembers = resultMem.filter(
-        membersData =>
-          membersData.type.toLowerCase() === "management committee",
-      );
-      // console.log("SCMembers", SCMembers);
+      let SCMembers = resultMem
+        .sort((a, b) => a.priority - b.priority)
+        .filter(
+          (membersData) => membersData.type.toLowerCase() === "supreme council"
+        );
+      let CMMembers = resultMem
+        .sort((a, b) => a.priority - b.priority)
+        .filter(
+          (membersData) =>
+            membersData.type.toLowerCase() === "management committee"
+        );
+      console.log("SCMembers", SCMembers);
       setSupremeMembersList(SCMembers);
       // console.log("CMMembers", CMMembers);
       setManagementMembersList(CMMembers);

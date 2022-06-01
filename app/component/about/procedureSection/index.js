@@ -43,7 +43,7 @@ export default function ProcedureSection({ data }) {
         </p>
         <p
           className={`${style.procedure_description} pb-2 ${
-            router.locale === "en" ? `` : `text-end`
+            router.locale === "en" ? `text-justify` : `text-end`
           }`}
         >
           {data && Object.keys(data).length > 0 && data.description}

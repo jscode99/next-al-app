@@ -29,7 +29,7 @@ export default function ResourceChart({
   // console.log("alAqsaAr", alAqsaAr);
   // console.log("arab", arab);
   // console.log("arabAr", arabAr);
-  // console.log("yearly direct", yearly);
+  console.log("yearly direct", yearly);
   // console.log("yearlyAr", yearlyAr);
   // console.log("flag", flag);
   // console.log("flagAr", flagAr);
@@ -55,7 +55,7 @@ export default function ResourceChart({
   const [xDataAl, setXdataAl] = useState(null);
   const [showChart, setShowChart] = useState(true);
 
-  console.log("xDataAr------>", xDataAr);
+  console.log("xDataYr------>", xDataYr);
 
   // useEffect(() => {
   //   if (!showChart)
@@ -539,13 +539,13 @@ export default function ResourceChart({
         router.locale === "en"
           ? [
               ...yearly.sort(function (x, y) {
-                return x.id - y.id;
+                return x.Year - y.Year;
               }),
             ]
           : [
               ...yearly
                 .sort(function (x, y) {
-                  return x.id - y.id;
+                  return x.Year - y.Year;
                 })
                 .reverse(),
             ];
@@ -571,8 +571,16 @@ export default function ResourceChart({
           totalYrDis += Math.round(
             parseFloat(yearlySorted[index].DisbursementAmount)
           );
-          optionsYr.xaxis.categories.push(yearlySorted[index].Year);
-          XAxisDataYr.push(yearlySorted[index].Year);
+          optionsYr.xaxis.categories.push(
+            yearlySorted[index].Year === "2001"
+              ? `From 2001 to 2010`
+              : yearlySorted[index].Year
+          );
+          XAxisDataYr.push(
+            yearlySorted[index].Year === "2001"
+              ? `From 2001 to 2010`
+              : yearlySorted[index].Year
+          );
         }
         // console.log("seriesYr", seriesYr);
         setXdataYr(XAxisDataYr);

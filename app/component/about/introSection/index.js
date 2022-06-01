@@ -6,9 +6,9 @@ export default function IntroSection({ data }) {
   return (
     <div className={`${style.intro_container}`}>
       <p
-        className={`${style.intro_description} my-3 px-5 ${
-          router.locale === "en" ? `text-start` : `text-end`
-        }`}
+        className={`${style.intro_description} my-3 px-5 
+        ${router.locale === "en" ? `text-justify` : `text-end`}
+        `}
       >
         {data.description &&
           Object.keys(data.description).length > 0 &&

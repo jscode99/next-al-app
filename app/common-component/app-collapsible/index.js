@@ -99,7 +99,7 @@ export default function AppCollapsible({ keys, data }) {
                         &#8226;
                       </span>
 
-                      <p className={`${style.collapsible_des} mt-2 pt-1 h6`}>
+                      <p className={`${style.collapsible_des} text-justify mt-2 pt-1 h6`}>
                         {data.title}
                       </p>
                     </>

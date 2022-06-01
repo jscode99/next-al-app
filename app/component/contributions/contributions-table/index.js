@@ -10,6 +10,7 @@ import CommonTable from "../../../common-component/common-table/CommonTable";
 import style from "./index.module.sass";
 
 export default function ContributionsTable({ tData, setSummitAmount }) {
+  console.log("overallArContributions", tData);
   const [countryContribution, setCountryContribution] = useState([]);
   let router = useRouter();
   const { t } = useTranslation("common");
@@ -23,7 +24,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "Country",
-      render: Country => (
+      render: (Country) => (
         <p className={`${style.table_name} fw-bold text-start text-capitalize`}>
           {Country}
         </p>
@@ -38,7 +39,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "CairoSummitContribution",
-      render: Cairo => (
+      render: (Cairo) => (
         <p className={`${style.table_name} text-center m-1 text-capitalize`}>
           {Cairo}
         </p>
@@ -53,7 +54,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "BeirutSirteSummitContribution",
-      render: Beirut => (
+      render: (Beirut) => (
         <p className={`${style.table_name} text-center m-1 text-capitalize`}>
           {Beirut}
         </p>
@@ -68,7 +69,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "DeadSeaSummitContribution",
-      render: Beirut => (
+      render: (Beirut) => (
         <p className={`${style.table_name} text-center m-1 text-capitalize`}>
           {Beirut}
         </p>
@@ -83,7 +84,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "totalPayed",
-      render: total => (
+      render: (total) => (
         <p className={`${style.table_name} text-capitalize text-center m-1`}>
           {total}
         </p>
@@ -101,7 +102,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "totalPayed",
-      render: name => (
+      render: (name) => (
         <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
@@ -114,7 +115,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "DeadSeaSummitContribution",
-      render: name => (
+      render: (name) => (
         <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
@@ -127,7 +128,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "BeirutSirteSummitContribution",
-      render: name => (
+      render: (name) => (
         <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
@@ -140,7 +141,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "CairoSummitContribution",
-      render: name => (
+      render: (name) => (
         <p className={`d-flex justify-content-center m-0 pe-3`}>{name}</p>
       ),
     },
@@ -153,7 +154,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         </p>
       ),
       dataIndex: "Country",
-      render: Country => (
+      render: (Country) => (
         <p
           className={`${style.table_name} fw-bold d-flex justify-content-end m-0 pe-3`}
         >
@@ -168,22 +169,32 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     let beirutSirteSummitTotal = 0;
     let deadSeaSummitTotal = 0;
     let rowTotal = 0;
-    tData.forEach((value, index) => {
-      if (!Number.isNaN(parseInt(value.CairoSummitContribution)))
-        cairoSummitTotal += parseInt(
-          value.CairoSummitContribution.split(",").join(""),
-        );
+    tData
+      .sort((a, b) => {
+        if (a.Country < b.Country) {
+          return -1;
+        }
+        if (a.Country > b.Country) {
+          return 1;
+        }
+        return 0;
+      })
+      .forEach((value, index) => {
+        if (!Number.isNaN(parseInt(value.CairoSummitContribution)))
+          cairoSummitTotal += parseInt(
+            value.CairoSummitContribution.split(",").join("")
+          );
 
-      if (!Number.isNaN(parseInt(value.BeirutSirteSummitContribution)))
-        beirutSirteSummitTotal += parseInt(
-          value.BeirutSirteSummitContribution.split(",").join(""),
-        );
+        if (!Number.isNaN(parseInt(value.BeirutSirteSummitContribution)))
+          beirutSirteSummitTotal += parseInt(
+            value.BeirutSirteSummitContribution.split(",").join("")
+          );
 
-      if (!Number.isNaN(parseInt(value.DeadSeaSummitContribution)))
-        deadSeaSummitTotal += parseInt(
-          value.DeadSeaSummitContribution.split(",").join(""),
-        );
-    });
+        if (!Number.isNaN(parseInt(value.DeadSeaSummitContribution)))
+          deadSeaSummitTotal += parseInt(
+            value.DeadSeaSummitContribution.split(",").join("")
+          );
+      });
     // console.log("testing", tData[tData.length - 1].Country.props.children);
     if (
       tData[tData.length - 1].Country &&
@@ -199,7 +210,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
         cairoSummitTotal = new Intl.NumberFormat().format(cairoSummitTotal);
       if (beirutSirteSummitTotal)
         beirutSirteSummitTotal = new Intl.NumberFormat().format(
-          beirutSirteSummitTotal,
+          beirutSirteSummitTotal
         );
       if (deadSeaSummitTotal)
         deadSeaSummitTotal = new Intl.NumberFormat().format(deadSeaSummitTotal);
@@ -225,23 +236,23 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
           value.BeirutSirteSummitContribution &&
             value.BeirutSirteSummitContribution.props
             ? value.BeirutSirteSummitContribution.props.children
-            : value.BeirutSirteSummitContribution,
-        ),
+            : value.BeirutSirteSummitContribution
+        )
       );
       let cairo = getNumericValue(
         stringToNumberConverter(
           value.CairoSummitContribution && value.CairoSummitContribution.props
             ? value.CairoSummitContribution.props.children
-            : value.CairoSummitContribution,
-        ),
+            : value.CairoSummitContribution
+        )
       );
       let dead = getNumericValue(
         stringToNumberConverter(
           value.DeadSeaSummitContribution &&
             value.DeadSeaSummitContribution.props
             ? value.DeadSeaSummitContribution.props.children
-            : value.DeadSeaSummitContribution,
-        ),
+            : value.DeadSeaSummitContribution
+        )
       );
       console.log("beirut", beirut);
       // console.log(
@@ -279,14 +290,14 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
 
       return {
         BeirutSirteSummitContribution: getInternationalSeparator(
-          value.BeirutSirteSummitContribution,
+          value.BeirutSirteSummitContribution
         ),
         CairoSummitContribution: getInternationalSeparator(
-          value.CairoSummitContribution,
+          value.CairoSummitContribution
         ),
         Country: value.Country,
         DeadSeaSummitContribution: getInternationalSeparator(
-          value.DeadSeaSummitContribution,
+          value.DeadSeaSummitContribution
         ),
         totalPayed:
           value.BeirutSirteSummitContribution &&
@@ -305,13 +316,13 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     setCountryContribution(mapedData);
   }, []);
 
-  const getNumericValue = value => {
+  const getNumericValue = (value) => {
     return !Number.isNaN(parseInt(value))
       ? parseInt(typeof value === "string" ? value.split(",").join("") : value)
       : 0;
   };
 
-  const getInternationalSeparator = value => {
+  const getInternationalSeparator = (value) => {
     return !Number.isNaN(parseInt(value))
       ? Number.isNaN(parseInt(new Intl.NumberFormat().format(value)))
         ? value

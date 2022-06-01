@@ -26,7 +26,7 @@ export default function MissionSection({ data }) {
                   {t("mission")}
                 </h3>
               </div>
-              <p className={`${style.mission_description}`}>
+              <p className={`${style.mission_description} text-justify`}>
                 {data && Object.keys(data).length > 0 && data.description}
               </p>
             </Col>

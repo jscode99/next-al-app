@@ -13,7 +13,7 @@ export default function Contributions({
   overallContributions,
   overallArContributions,
 }) {
-  console.log("overallContributions", overallArContributions);
+  // console.log("overallContributions", overallArContributions);
   const [summitAmount, setSummitAmount] = useState({});
   const [cardData, setCardData] = useState([]);
   const router = useRouter();

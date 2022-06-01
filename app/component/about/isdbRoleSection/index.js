@@ -33,14 +33,14 @@ export default function IsdbRoleSection({ data }) {
                 </p>
                 <p
                   className={`${style.role_description} mb-4 ${
-                    router.locale === "en" ? `` : `text-end`
+                    router.locale === "en" ? `text-justify` : `text-end`
                   }`}
                 >
                   {data && Object.keys(data).length > 0 && data.description}
                 </p>
                 <p
                   className={`${style.role_description} ${
-                    router.locale === "en" ? `` : `text-end`
+                    router.locale === "en" ? `text-justify` : `text-end`
                   }`}
                 >
                   {data &&
@@ -53,14 +53,16 @@ export default function IsdbRoleSection({ data }) {
                 </p>
                 {listData &&
                   listData.length > 0 &&
-                  listData.map(data => (
+                  listData.map((data) => (
                     <>
                       {router.locale === "en" ? (
                         <div className={`d-flex align-item-start`}>
                           <span className={`${style.role_bullet_point} mx-2`}>
                             &#8226;
                           </span>
-                          <p className={`${style.role_description} mt-2 m-0`}>
+                          <p
+                            className={`${style.role_description} text-justify mt-2 m-0`}
+                          >
                             {data.title}
                           </p>
                         </div>
@@ -95,14 +97,14 @@ export default function IsdbRoleSection({ data }) {
                 </p>
                 <p
                   className={`${style.role_description} mb-4 ${
-                    router.locale === "en" ? `` : `text-end`
+                    router.locale === "en" ? `text-justify` : `text-end`
                   }`}
                 >
                   {data && Object.keys(data).length > 0 && data.description}
                 </p>
                 <p
                   className={`${style.role_description} ${
-                    router.locale === "en" ? `` : `text-end`
+                    router.locale === "en" ? `text-justify` : `text-end`
                   }`}
                 >
                   {data &&
@@ -115,14 +117,16 @@ export default function IsdbRoleSection({ data }) {
                 </p>
                 {listData &&
                   listData.length > 0 &&
-                  listData.map(data => (
+                  listData.map((data) => (
                     <>
                       {router.locale === "en" ? (
                         <div className={`d-flex align-item-start`}>
                           <span className={`${style.role_bullet_point} mx-2`}>
                             &#8226;
                           </span>
-                          <p className={`${style.role_description} mt-2 m-0`}>
+                          <p
+                            className={`${style.role_description} text-justify mt-2 m-0`}
+                          >
                             {data.title}
                           </p>
                         </div>
@@ -157,14 +161,14 @@ export default function IsdbRoleSection({ data }) {
                 </p>
                 <p
                   className={`${style.role_description} mb-4 ${
-                    router.locale === "en" ? `` : `text-end`
+                    router.locale === "en" ? `text-justify` : `text-end`
                   }`}
                 >
                   {data && Object.keys(data).length > 0 && data.description}
                 </p>
                 <p
                   className={`${style.role_description} ${
-                    router.locale === "en" ? `` : `text-end`
+                    router.locale === "en" ? `text-justify` : `text-end`
                   }`}
                 >
                   {data &&
@@ -177,14 +181,16 @@ export default function IsdbRoleSection({ data }) {
                 </p>
                 {listData &&
                   listData.length > 0 &&
-                  listData.map(data => (
+                  listData.map((data) => (
                     <>
                       {router.locale === "en" ? (
                         <div className={`d-flex align-item-start`}>
                           <span className={`${style.role_bullet_point} mx-2`}>
                             &#8226;
                           </span>
-                          <p className={`${style.role_description} mt-2 m-0`}>
+                          <p
+                            className={`${style.role_description} text-justify mt-2 m-0`}
+                          >
                             {data.title}
                           </p>
                         </div>

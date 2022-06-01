@@ -79,7 +79,7 @@ export default function CardSection({ data }) {
                       </h4>
                       <p
                         className={`text-muted ${style.card_des} m-0 ${
-                          router.locale === "en" ? `text-start` : `text-end`
+                          router.locale === "en" ? `text-justify` : `text-end`
                         }`}
                       >
                         {data.des}
@@ -117,7 +117,7 @@ export default function CardSection({ data }) {
                       </h4>
                       <p
                         className={`text-muted ${style.card_des} m-0 ${
-                          router.locale === "en" ? `text-start` : `text-end`
+                          router.locale === "en" ? `text-justify` : `text-end`
                         }`}
                       >
                         {data.des}
@@ -159,7 +159,7 @@ export default function CardSection({ data }) {
                       </h4>
                       <p
                         className={`text-muted ${style.card_des} m-0 ${
-                          router.locale === "en" ? `text-start` : `text-end`
+                          router.locale === "en" ? `text-justify` : `text-end`
                         }`}
                       >
                         {data.des}
@@ -203,7 +203,7 @@ export default function CardSection({ data }) {
                       </h4>
                       <p
                         className={`text-muted ${style.card_des} m-0 ${
-                          router.locale === "en" ? `text-start` : `text-end`
+                          router.locale === "en" ? `text-justify` : `text-end`
                         }`}
                       >
                         {data.des}
@@ -241,7 +241,7 @@ export default function CardSection({ data }) {
                       </h4>
                       <p
                         className={`text-muted ${style.card_des} m-0 ${
-                          router.locale === "en" ? `text-start` : `text-end`
+                          router.locale === "en" ? `text-justify` : `text-end`
                         }`}
                       >
                         {data.des}
@@ -283,7 +283,7 @@ export default function CardSection({ data }) {
                       </h4>
                       <p
                         className={`text-muted ${style.card_des} m-0 ${
-                          router.locale === "en" ? `text-start` : `text-end`
+                          router.locale === "en" ? `text-justify` : `text-end`
                         }`}
                       >
                         {data.des}

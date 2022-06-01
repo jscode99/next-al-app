@@ -26,7 +26,15 @@ export default function ShareHolder({ flagData }) {
           className={`${style.shareHolder_scrollable} d-flex align-items-center `}
         >
           {flagData
-            .sort((a, b) => b.Country - a.Country)
+            .sort((a, b) => {
+              if (a.Country < b.Country) {
+                return -1;
+              }
+              if (a.Country > b.Country) {
+                return 1;
+              }
+              return 0;
+            })
             .map((data) => (
               <>
                 <div>

@@ -6,12 +6,13 @@ import FundIndicator from "./FundIndicator";
 import style from "./index.module.sass";
 
 export default function FundResource({ data }) {
+  // console.log("Fund Data----->", data);
   const [fundData, setFundData] = useState([]);
   const router = useRouter();
   //Translation lib
   const { t } = useTranslation("common");
 
-  const getProperty = priority => {
+  const getProperty = (priority) => {
     switch (priority) {
       case "1":
         return [style.primary_bg, style.primary_font];
@@ -24,7 +25,7 @@ export default function FundResource({ data }) {
 
   useEffect(() => {
     let fund = data.sort((x, y) => x.priority - y.priority);
-    let fundData = fund.map(data => {
+    let fundData = fund.map((data) => {
       return {
         text: t(data.title.toLowerCase()),
         count: data.amount,
@@ -50,12 +51,12 @@ export default function FundResource({ data }) {
               {router.locale === "en"
                 ? fundData &&
                   fundData.length > 0 &&
-                  fundData.map(data => <FundIndicator data={data} />)
+                  fundData.map((data) => <FundIndicator data={data} />)
                 : fundData &&
                   fundData.length > 0 &&
                   new Array(...fundData)
                     .reverse()
-                    .map(data => <FundIndicator data={data} />)}
+                    .map((data) => <FundIndicator data={data} />)}
             </Row>
           </div>
         </div>

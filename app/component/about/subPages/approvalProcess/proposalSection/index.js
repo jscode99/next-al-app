@@ -23,7 +23,7 @@ export default function ProposalSection({ data }) {
               <hr className={`${style.proposal_under_line} my-3`} />
               <p
                 className={`${style.proposal_des} ${
-                  router.locale === "en" ? "text-start" : "text-end"
+                  router.locale === "en" ? "text-justify" : "text-end"
                 }`}
               >
                 {data &&

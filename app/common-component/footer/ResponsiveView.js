@@ -207,17 +207,26 @@ export default function ResponsiveView({ view, logo }) {
                     Other Resources
                   </li>
                   <li>
-                    <p href={"/"}>Terms and Conditions</p>
+                    <p onClick={() => router.push("/terms")}>
+                      Terms and Conditions
+                    </p>
                   </li>
                   <li>
-                    <p 
-                     onClick={() => {
-                      router.push("/policy")
-                    }}
-                    >Privacy Policy</p>
+                    <p
+                      onClick={() => {
+                        router.push("/policy");
+                      }}
+                    >
+                      Privacy Policy
+                    </p>
                   </li>
                   <li>
-                    <p href={"/"}>Sitemap</p>
+                    <p
+                      target="_blank"
+                      href="https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
+                    >
+                      Sitemap
+                    </p>
                   </li>
                   {/* {otResource && otResource.length > 0
                   ? otResource.map((data) => (
@@ -244,17 +253,25 @@ export default function ResponsiveView({ view, logo }) {
                     {t("other resources")}
                   </li>
                   <li>
-                    <p className={`mb-0`} href={"/"}>
+                    <p className={`mb-0`} onClick={() => router.push("/terms")}>
                       {t("terms and conditions")}
                     </p>
                   </li>
                   <li>
-                    <a className={`mb-0`} href={"/policy"}>
+                    <a
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/policy");
+                      }}
+                    >
                       {t("privacy policy")}
                     </a>
                   </li>
                   <li>
-                    <p className={`mb-0`} href={"/"}>
+                    <p
+                      target="_blank"
+                      href="https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
+                    >
                       {t("sitemap")}
                     </p>
                   </li>
@@ -489,17 +506,25 @@ export default function ResponsiveView({ view, logo }) {
                     {t("other resources")}
                   </li>
                   <li>
-                    <p className={`mb-0`} href={"/"}>
+                    <p className={`mb-0`} onClick={() => router.push("/terms")}>
                       {t("terms and conditions")}
                     </p>
                   </li>
                   <li>
-                    <p className={`mb-0`} href={"/"}>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/policy");
+                      }}
+                    >
                       {t("privacy policy")}
                     </p>
                   </li>
                   <li>
-                    <p className={`mb-0`} href={"/"}>
+                    <p
+                      target="_blank"
+                      href="https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
+                    >
                       {t("sitemap")}
                     </p>
                   </li>

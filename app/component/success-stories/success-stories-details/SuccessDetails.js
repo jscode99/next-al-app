@@ -364,7 +364,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <p
                 className={`${styles.stories_details_des} px-5 mt-5 ${
-                  router.locale === "en" ? `text-start` : `text-end`
+                  router.locale === "en" ? `text-justify` : `text-end`
                 }`}
               >
                 {storiesProps.Description}

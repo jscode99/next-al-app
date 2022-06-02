@@ -1,5 +1,5 @@
 import React from "react";
-import PolicyContainer from "../app/container/policy";
+import TermContainer from "../app/container/terms";
 import { useRouter } from "next/router";
 import axios from "axios";
 import https from "https";
@@ -20,20 +20,20 @@ export default function Terms({ projectTitle, projectAr, bannerImage }) {
   return router.locale === "en" ? (
     <>
       <Helmet>
-        <title>{t("policy")}</title>
+        <title>{t("Terms and Conditions")}</title>
         <meta property="og:title" content={t("al aqsa fund")} />
         <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
       </Helmet>
-      <PolicyContainer projectTitle={projectTitle} bannerImage={bannerImage} />
+      <TermContainer projectTitle={projectTitle} bannerImage={bannerImage} />
     </>
   ) : (
     <>
       <Helmet>
-        <title>{t("policy")}</title>
+        <title>{t("Terms and Conditions")}</title>
         <meta property="og:title" content={t("al aqsa fund")} />
         <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
       </Helmet>
-      <PolicyContainer projectTitle={projectAr} bannerImage={bannerImage} />
+      <TermContainer projectTitle={projectAr} bannerImage={bannerImage} />
     </>
   );
 }

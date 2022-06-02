@@ -29,7 +29,7 @@ export default function ResourceChart({
   // console.log("alAqsaAr", alAqsaAr);
   // console.log("arab", arab);
   // console.log("arabAr", arabAr);
-  console.log("yearly direct", yearly);
+  // console.log("yearly direct", yearly);
   // console.log("yearlyAr", yearlyAr);
   // console.log("flag", flag);
   // console.log("flagAr", flagAr);
@@ -55,7 +55,7 @@ export default function ResourceChart({
   const [xDataAl, setXdataAl] = useState(null);
   const [showChart, setShowChart] = useState(true);
 
-  console.log("xDataYr------>", xDataYr);
+  // console.log("xDataYr------>", xDataYr);
 
   // useEffect(() => {
   //   if (!showChart)
@@ -582,7 +582,7 @@ export default function ResourceChart({
               : yearlySorted[index].Year
           );
         }
-        // console.log("seriesYr", seriesYr);
+        // console.log("yearlySorted", yearlySorted);
         setXdataYr(XAxisDataYr);
         setYearlyApproval(seriesYr);
         setYearlyOption(optionsYr);

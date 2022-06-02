@@ -6,8 +6,9 @@ import FundIndicator from "./FundIndicator";
 import style from "./index.module.sass";
 
 export default function FundResource({ data }) {
-  // console.log("Fund Data----->", data);
   const [fundData, setFundData] = useState([]);
+  console.log("Fund Data----->", fundData);
+
   const router = useRouter();
   //Translation lib
   const { t } = useTranslation("common");

@@ -36,7 +36,7 @@ export default function Contributions({
       },
       {
         // amount: `${summitAmount.deadSeaSummitTotal}`,
-        amount: 111421000,
+        amount: 112500000,
         subTitle: t("dead sea summit"),
         bg: style.bg_primary_color,
       },

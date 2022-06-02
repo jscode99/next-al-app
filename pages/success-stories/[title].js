@@ -31,8 +31,8 @@ export default function StoriesDetails({
   bannerImage,
   context,
 }) {
-  console.log("test-------------------------------->", storiesProps);
-  console.log("test path--------------------------------", path);
+  // console.log("test-------------------------------->", storiesProps);
+  // console.log("test path--------------------------------", path);
 
   const [storiesData, setStoriesData] = useState([]);
 

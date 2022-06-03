@@ -95,14 +95,14 @@ function MyApp({ Component, pageProps }) {
   // console.log("Myapp", router.pathname);
   return (
     <AppContext.Provider value={{ appContext, setAppContext }}>
-      <ErrorBoundary
+      {/* <ErrorBoundary
         FallbackComponent={ErrorFallback}
         onReset={() => {
           router.reload();
         }}
-      >
-        <Component {...pageProps} />
-      </ErrorBoundary>
+      > */}
+      <Component {...pageProps} />
+      {/* </ErrorBoundary> */}
     </AppContext.Provider>
   );
 }

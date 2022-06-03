@@ -147,8 +147,9 @@ export default function SectorAllocations({
         // console.log("calc", chartData);
         if (
           sectorData[index].title.toLowerCase() ===
-            projectData[innerIndex].Sector &&
-          projectData[innerIndex].Sector.toLowerCase()
+          projectData[innerIndex].Sector
+            ? projectData[innerIndex].Sector.toLowerCase()
+            : `failed`
         ) {
           //No: of projects
           chartData[projectData[0].projectTitle.toLowerCase()][

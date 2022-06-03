@@ -64,15 +64,15 @@ export default function StoriesDetails({
         <meta property="og:title" content={t("al aqsa fund")} />
         <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
       </Helmet>
-      {/* {storiesData && Object.keys(storiesData).length > 0 && ( */}
-      <StoriesDetailsContainer
-        successMedia={successMedia}
-        storiesProps={storiesProps}
-        projectTitle={projectTitle}
-        projectAr={projectAr}
-        bannerImage={bannerImage}
-      />
-      {/* )} */}
+      {storiesData && (
+        <StoriesDetailsContainer
+          successMedia={successMedia}
+          storiesProps={storiesData}
+          projectTitle={projectTitle}
+          projectAr={projectAr}
+          bannerImage={bannerImage}
+        />
+      )}
     </>
   );
 }

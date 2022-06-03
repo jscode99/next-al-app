@@ -30,27 +30,31 @@ export default function StoriesDetails({
   projectAr,
   bannerImage,
   context,
-  storiesProps,
 }) {
   // console.log("test-------------------------------->", storiesProps);
   // console.log("test path--------------------------------", path);
 
-  // const [storiesData, setStoriesData] = useState([]);
+  const [storiesData, setStoriesData] = useState([]);
 
-  // useEffect(() => {
-  //   if (context.locale) {
-  //     let storiesProps = context.locale === "en" ? stories : successStoriesAR;
-  //     if (storiesProps && storiesProps.length > 0) {
-  //       const storiesDetailsProp = storiesProps.find(
-  //         (storiesData) =>
-  //           storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
-  //       );
-  //       setStoriesData(storiesDetailsProp);
-  //     }
-  //   }
-  // }, [stories, successStoriesAR, path, context]);
+  useEffect(() => {
+    if (context.locale === "en") {
+      if (stories && stories.length > 0) {
+        const storiesDetailsProp = stories.find(
+          (storiesData) =>
+            storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
+        );
+        setStoriesData(storiesDetailsProp);
+      }
+    } else if (successStoriesAR && successStoriesAR.length > 0) {
+      const storiesDetailsProp = successStoriesAR.find(
+        (storiesData) =>
+          storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
+      );
+      setStoriesData(storiesDetailsProp);
+    }
+  }, [stories, successStoriesAR, path, context]);
 
-  console.log("test story details------------------", context);
+  console.log("test story details------------------", storiesData);
 
   const { t } = useTranslation("common");
   return (
@@ -197,17 +201,17 @@ export async function getStaticProps(context) {
   const path = context.params.title;
   // // console.log("Path------->", path);
 
-  const storiesDetailsProp = stories.find(
-    (storiesData) =>
-      storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
-  );
+  // const storiesDetailsProp = stories.find(
+  //   (storiesData) =>
+  //     storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
+  // );
 
-  const storiesArDetailsProp = successStoriesAR.find(
-    (storiesData) => storiesData.Title === mapRoutePathToTitleAR(path)
-  );
+  // const storiesArDetailsProp = successStoriesAR.find(
+  //   (storiesData) => storiesData.Title === mapRoutePathToTitleAR(path)
+  // );
 
   //|| storiesArDetailsProp;
-  const storiesProps = storiesDetailsProp || storiesArDetailsProp;
+  // const storiesProps = storiesDetailsProp || storiesArDetailsProp;
   // const storiesProps = storiesPropsInitial;
 
   // Not path
@@ -236,7 +240,6 @@ export async function getStaticProps(context) {
       projectAr,
       bannerImage,
       context,
-      storiesProps,
     },
     revalidate: 10,
   };

@@ -147,6 +147,7 @@ export default function SectorAllocations({
         // console.log("calc", chartData);
         if (
           sectorData[index].title.toLowerCase() ===
+            projectData[innerIndex].Sector &&
           projectData[innerIndex].Sector.toLowerCase()
         ) {
           //No: of projects

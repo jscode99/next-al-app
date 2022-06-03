@@ -71,9 +71,9 @@ export async function getStaticPaths({ locales }) {
   //   await axios.get(projectDetailsArUrl, { httpAgent }),
   // ]);
 
-  const projectDataRes=await axios.get(projectDetailsUrl, { httpAgent });
-  const projectDataArRes=await axios.get(projectDetailsArUrl, { httpAgent });
-  
+  const projectDataRes = await axios.get(projectDetailsUrl, { httpAgent });
+  const projectDataArRes = await axios.get(projectDetailsArUrl, { httpAgent });
+
   // .catch(function (error) {
   //   console.log("Error: " + error);
   // });
@@ -83,10 +83,9 @@ export async function getStaticPaths({ locales }) {
   //   await projectDataArRes.data,
   // ])
 
-  const projectData=await projectDataRes.data;
-  const projectDataAr=await projectDataArRes.data;
+  const projectData = await projectDataRes.data;
+  const projectDataAr = await projectDataArRes.data;
 
-  
   // .catch(function (error) {
   //   console.log("Error: " + error);
   // });

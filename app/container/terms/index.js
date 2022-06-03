@@ -1,15 +1,11 @@
-import React from 'react'
+import React from "react";
 import { useEffect, useContext } from "react";
-import Terms from '../../component/terms';
+import Terms from "../../component/terms";
 import Layout from "../layout/index";
 
 import AppContext from "../../AppContext";
 
-
-export default function TermContainer({
-  projectTitle,
-  bannerImage
-}) {
+export default function TermContainer({ projectTitle, bannerImage }) {
   let { appContext, setAppContext } = useContext(AppContext);
   useEffect(() => {
     if (appContext && !appContext.fLinkClick)
@@ -19,16 +15,15 @@ export default function TermContainer({
       });
   }, [appContext.fLinkClick]);
 
-    return (
-        <Layout
-        page={""}
-        pageName={""}
-        projectTitle={projectTitle}
-        title={""}
-        heroImage={bannerImage}
-        >
-            <Terms />
-         </Layout>
-    );
+  return (
+    <Layout
+      page={""}
+      pageName={""}
+      projectTitle={projectTitle}
+      title={""}
+      heroImage={bannerImage}
+    >
+      <Terms />
+    </Layout>
+  );
 }
-

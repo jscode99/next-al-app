@@ -8,11 +8,13 @@ import style from "./index.module.sass";
 export default function ShareHolder({ flagData }) {
   const { t } = useTranslation("common");
   const router = useRouter();
-  console.log("FlagDat", flagData);
-  useEffect(() => {
-    // console.log("scroll", document.getElementById("scroll").scrollLeft);
-    // document.getElementById("scroll").scrollLeft = "20%"; //1000; //1400;
-  }, []);
+  console.log(
+    "FlagDat",
+    flagData.sort((a, b) => a.Country.localeCompare(b.Country, ["ar"]))
+  );
+
+  useEffect(() => {}, []);
+
   return (
     <div className={`${style.bg} pb-5`}>
       <div className={`${style.shareHolder_container} overflow-hidden px-5`}>
@@ -24,16 +26,18 @@ export default function ShareHolder({ flagData }) {
         <div
           id="scroll"
           className={`${style.shareHolder_scrollable} d-flex align-items-center `}
+          style={{ transform: router.locale === "ar" ? `scaleX(-1)` : `` }}
         >
           {flagData
             .sort((a, b) => {
-              if (a.Country < b.Country) {
-                return -1;
+              if (router.locale === "ar") {
+                a.Country.localeCompare(b.Country, ["ar"]);
+              } else {
+                //  ( a.Country < b.Country ? -1 : a.Country > b.Country ? 1 : 0)
+                if (a.Country < b.Country) {
+                  return -1;
+                } else if (a.Country > b.Country) return 1;
               }
-              if (a.Country > b.Country) {
-                return 1;
-              }
-              return 0;
             })
             .map((data) => (
               <>

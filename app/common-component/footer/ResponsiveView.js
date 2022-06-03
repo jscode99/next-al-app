@@ -135,8 +135,8 @@ export default function ResponsiveView({ view, logo }) {
                   >
                     Quick Links
                   </li>
-                  {fLinks.map((link) => (
-                    <li>
+                  {fLinks.map((link, index) => (
+                    <li key={index}>
                       <p
                         className={`mb-0`}
                         onClick={() => {
@@ -207,13 +207,25 @@ export default function ResponsiveView({ view, logo }) {
                     Other Resources
                   </li>
                   <li>
-                    <p onClick={() => router.push("/terms")}>
+                    <p
+                      onClick={() => {
+                        setAppContext({
+                          ...appContext,
+                          fLinkClick: true,
+                        });
+                        router.push("/terms");
+                      }}
+                    >
                       Terms and Conditions
                     </p>
                   </li>
                   <li>
                     <p
                       onClick={() => {
+                        setAppContext({
+                            ...appContext,
+                            fLinkClick: true,
+                          });
                         router.push("/policy");
                       }}
                     >
@@ -221,11 +233,17 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                    <p
-                      target="_blank"
-                      href="https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
-                    >
-                      Sitemap
+                    <p>
+                      <Link
+                        className={style.sitemap}
+                        href={
+                          "https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
+                        }
+                      >
+                        <a className={style.sitemap} target="_blank">
+                          Sitemap
+                        </a>
+                      </Link>
                     </p>
                   </li>
                   {/* {otResource && otResource.length > 0
@@ -268,11 +286,17 @@ export default function ResponsiveView({ view, logo }) {
                     </a>
                   </li>
                   <li>
-                    <p
-                      target="_blank"
-                      href="https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
-                    >
-                      {t("sitemap")}
+                    <p>
+                      <Link
+                        className={style.sitemap}
+                        href={
+                          "https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
+                        }
+                      >
+                        <a className={style.sitemap} target="_blank">
+                          {t("Sitemap")}
+                        </a>
+                      </Link>
                     </p>
                   </li>
                 </ul>
@@ -521,11 +545,17 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                    <p
-                      target="_blank"
-                      href="https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
-                    >
-                      {t("sitemap")}
+                    <p>
+                      <Link
+                        className={style.sitemap}
+                        href={
+                          "https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
+                        }
+                      >
+                        <a className={style.sitemap} target="_blank">
+                          {t("Sitemap")}
+                        </a>
+                      </Link>
                     </p>
                   </li>
                 </ul>

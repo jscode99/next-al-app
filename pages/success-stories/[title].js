@@ -30,26 +30,27 @@ export default function StoriesDetails({
   projectAr,
   bannerImage,
   context,
+  storiesProps,
 }) {
   // console.log("test-------------------------------->", storiesProps);
   // console.log("test path--------------------------------", path);
 
-  const [storiesData, setStoriesData] = useState([]);
+  // const [storiesData, setStoriesData] = useState([]);
 
-  useEffect(() => {
-    if (context.locale) {
-      let storiesProps = context.locale === "en" ? stories : successStoriesAR;
-      if (storiesProps && storiesProps.length > 0) {
-        const storiesDetailsProp = storiesProps.find(
-          (storiesData) =>
-            storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
-        );
-        setStoriesData(storiesDetailsProp);
-      }
-    }
-  }, [stories, successStoriesAR]);
+  // useEffect(() => {
+  //   if (context.locale) {
+  //     let storiesProps = context.locale === "en" ? stories : successStoriesAR;
+  //     if (storiesProps && storiesProps.length > 0) {
+  //       const storiesDetailsProp = storiesProps.find(
+  //         (storiesData) =>
+  //           storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
+  //       );
+  //       setStoriesData(storiesDetailsProp);
+  //     }
+  //   }
+  // }, [stories, successStoriesAR, path, context]);
 
-  console.log("test story details------------------", storiesData);
+  console.log("test story details------------------", context);
 
   const { t } = useTranslation("common");
   return (
@@ -59,15 +60,15 @@ export default function StoriesDetails({
         <meta property="og:title" content={t("al aqsa fund")} />
         <meta property="og:image" content={"/images/common/alAqsaHead.png"} />
       </Helmet>
-      {storiesData && Object.keys(storiesData).length > 0 && (
-        <StoriesDetailsContainer
-          successMedia={successMedia}
-          storiesProps={storiesData}
-          projectTitle={projectTitle}
-          projectAr={projectAr}
-          bannerImage={bannerImage}
-        />
-      )}
+      {/* {storiesData && Object.keys(storiesData).length > 0 && ( */}
+      <StoriesDetailsContainer
+        successMedia={successMedia}
+        storiesProps={storiesProps}
+        projectTitle={projectTitle}
+        projectAr={projectAr}
+        bannerImage={bannerImage}
+      />
+      {/* )} */}
     </>
   );
 }
@@ -83,19 +84,21 @@ export async function getStaticPaths({ locales }) {
     rejectUnauthorized: false,
   });
 
-  const [storiesRes, successStoriesARRes] = await Promise.all([
-    await axios.get(storiesUrl, { httpAgent }),
-    await axios.get(storiesArUrl, { httpAgent }),
-  ]);
-  // const storiesRes = await axios.get(storiesUrl, { httpAgent });
-  // const successStoriesARRes = await axios.get(storiesArUrl, { httpAgent });
+  // const [storiesRes, successStoriesARRes] = await Promise.all([
+  //   await axios.get(storiesUrl, { httpAgent }),
+  //   await axios.get(storiesArUrl, { httpAgent }),
+  // ]);
 
-  const [stories, successStoriesAR] = await Promise.all([
-    await storiesRes.data,
-    await successStoriesARRes.data,
-  ]);
-  // const stories = await storiesRes.data;
-  // const successStoriesAR = await successStoriesARRes.data;
+  const storiesRes = await axios.get(storiesUrl, { httpAgent });
+  const successStoriesARRes = await axios.get(storiesArUrl, { httpAgent });
+
+  // const [stories, successStoriesAR] = await Promise.all([
+  //   await storiesRes.data,
+  //   await successStoriesARRes.data,
+  // ]);
+
+  const stories = await storiesRes.data;
+  const successStoriesAR = await successStoriesARRes.data;
 
   //path
   const storiesPaths = stories.map((storiesData) => {
@@ -146,64 +149,65 @@ export async function getStaticProps(context) {
     rejectUnauthorized: false,
   });
 
-  const [
-    successMediaRes,
-    storiesRes,
-    successStoriesARRes,
-    projectTitleRes,
-    projectArRes,
-    bannerImageRes,
-  ] = await Promise.all([
-    await axios.get(successMediaUrl, { httpAgent }),
-    await axios.get(storiesUrl, { httpAgent }),
-    await axios.get(storiesArUrl, { httpAgent }),
-    await axios.get(projectTitleUrl, { httpAgent }),
-    await axios.get(projectTitleArUrl, { httpAgent }),
-    await axios.get(bannerImageUrl, { httpAgent }),
-  ]);
-  // const successMediaRes = await axios.get(successMediaUrl, { httpAgent });
-  // const storiesRes = await axios.get(storiesUrl, { httpAgent });
-  // const successStoriesARRes = await axios.get(storiesArUrl, { httpAgent });
-  // const projectTitleRes = await axios.get(projectTitleUrl, { httpAgent });
-  // const projectArRes = await axios.get(projectTitleArUrl, { httpAgent });
-  // const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
+  // const [
+  //   successMediaRes,
+  //   storiesRes,
+  //   successStoriesARRes,
+  //   projectTitleRes,
+  //   projectArRes,
+  //   bannerImageRes,
+  // ] = await Promise.all([
+  //   await axios.get(successMediaUrl, { httpAgent }),
+  //   await axios.get(storiesUrl, { httpAgent }),
+  //   await axios.get(storiesArUrl, { httpAgent }),
+  //   await axios.get(projectTitleUrl, { httpAgent }),
+  //   await axios.get(projectTitleArUrl, { httpAgent }),
+  //   await axios.get(bannerImageUrl, { httpAgent }),
+  // ]);
+  const successMediaRes = await axios.get(successMediaUrl, { httpAgent });
+  const storiesRes = await axios.get(storiesUrl, { httpAgent });
+  const successStoriesARRes = await axios.get(storiesArUrl, { httpAgent });
+  const projectTitleRes = await axios.get(projectTitleUrl, { httpAgent });
+  const projectArRes = await axios.get(projectTitleArUrl, { httpAgent });
+  const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
 
-  const [
-    successMedia,
-    stories,
-    successStoriesAR,
-    projectTitle,
-    projectAr,
-    bannerImage,
-  ] = await Promise.all([
-    await successMediaRes.data,
-    await storiesRes.data,
-    await successStoriesARRes.data,
-    await projectTitleRes.data,
-    await projectArRes.data,
-    await bannerImageRes.data,
-  ]);
-  // const successMedia = await successMediaRes.data;
-  // const stories = await storiesRes.data;
-  // const successStoriesAR = await successStoriesARRes.data;
-  // const projectTitle = await projectTitleRes.data;
-  // const projectAr = await projectArRes.data;
-  // const bannerImage = await bannerImageRes.data;
+  // const [
+  //   successMedia,
+  //   stories,
+  //   successStoriesAR,
+  //   projectTitle,
+  //   projectAr,
+  //   bannerImage,
+  // ] = await Promise.all([
+  //   await successMediaRes.data,
+  //   await storiesRes.data,
+  //   await successStoriesARRes.data,
+  //   await projectTitleRes.data,
+  //   await projectArRes.data,
+  //   await bannerImageRes.data,
+  // ]);
+
+  const successMedia = await successMediaRes.data;
+  const stories = await storiesRes.data;
+  const successStoriesAR = await successStoriesARRes.data;
+  const projectTitle = await projectTitleRes.data;
+  const projectAr = await projectArRes.data;
+  const bannerImage = await bannerImageRes.data;
 
   const path = context.params.title;
   // // console.log("Path------->", path);
 
-  // const storiesDetailsProp = stories.find(
-  //   (storiesData) =>
-  //     storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
-  // );
+  const storiesDetailsProp = stories.find(
+    (storiesData) =>
+      storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
+  );
 
-  // const storiesArDetailsProp = successStoriesAR.find(
-  //   (storiesData) => storiesData.Title === mapRoutePathToTitleAR(path)
-  // );
+  const storiesArDetailsProp = successStoriesAR.find(
+    (storiesData) => storiesData.Title === mapRoutePathToTitleAR(path)
+  );
 
   //|| storiesArDetailsProp;
-  // const storiesPropsInitial = stories || successStoriesAR;
+  const storiesProps = storiesDetailsProp || storiesArDetailsProp;
   // const storiesProps = storiesPropsInitial;
 
   // Not path
@@ -232,6 +236,7 @@ export async function getStaticProps(context) {
       projectAr,
       bannerImage,
       context,
+      storiesProps,
     },
     revalidate: 10,
   };

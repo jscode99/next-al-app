@@ -19,8 +19,8 @@ export default function Project({
   arab,
   arabAr,
 }) {
-  // console.log("projectData", projectData);
-  // console.log("projectDataAr", projectDataAr);
+  console.log("projectData", projectData);
+  console.log("projectDataAr", projectDataAr);
   const { t } = useTranslation("common");
 
   return (

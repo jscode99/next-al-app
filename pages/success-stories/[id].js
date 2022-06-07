@@ -40,15 +40,13 @@ export default function StoriesDetails({
     if (context.locale === "en") {
       if (stories && stories.length > 0) {
         const storiesDetailsProp = stories.find(
-          (storiesData) =>
-            storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
+          (storiesData) => storiesData.id.toString() === path
         );
         setStoriesData(storiesDetailsProp);
       }
     } else if (successStoriesAR && successStoriesAR.length > 0) {
       const storiesDetailsProp = successStoriesAR.find(
-        (storiesData) =>
-          storiesData.Title.toLowerCase() === mapRoutePathToTitle(path)
+        (storiesData) => storiesData.id.toString() === path
       );
       setStoriesData(storiesDetailsProp);
     }
@@ -108,7 +106,7 @@ export async function getStaticPaths({ locales }) {
   const storiesPaths = stories.map((storiesData) => {
     return {
       params: {
-        title: mapTitleToRoutePath(storiesData.Title),
+        id: storiesData.id.toString(),
       },
       locale: locales[1],
     };
@@ -117,7 +115,7 @@ export async function getStaticPaths({ locales }) {
   const successStoriesARPaths = successStoriesAR.map((storiesData) => {
     return {
       params: {
-        title: mapTitleToRoutePath(storiesData.Title),
+        id: storiesData.id.toString(),
       },
       locale: locales[0],
     };
@@ -198,7 +196,7 @@ export async function getStaticProps(context) {
   const projectAr = await projectArRes.data;
   const bannerImage = await bannerImageRes.data;
 
-  const path = context.params.title;
+  const path = context.params.id;
   // // console.log("Path------->", path);
 
   // const storiesDetailsProp = stories.find(

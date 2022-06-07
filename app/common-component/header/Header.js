@@ -25,7 +25,7 @@ export default function AppHeader({ pageName, projectTitle }) {
     setVisible(false);
   };
 
-  console.log("projectTitle", projectTitle);
+  // console.log("projectTitle", projectTitle);
   const { t } = useTranslation("common");
   // let { appContext } = useContext(AppContext);
   const router = useRouter();
@@ -79,24 +79,27 @@ export default function AppHeader({ pageName, projectTitle }) {
 
   const navProject = (
     <Menu className={`${style.dd_list}`}>
-      {projectTitle.map((data) => (
-        <Menu.Item key={data.id}>
-          {/* <Link href={`/projects/${mapTitleToRoutePath(data.title)}`}> */}
-          <div
-            onClick={() => {
-              router.push(`/projects/${mapTitleToRoutePath(data.title)}`);
-            }}
-            className={`d-flex ${
-              router.locale === "en"
-                ? `justify-content-start`
-                : `justify-content-end`
-            } align-items-center py-2`}
-          >
-            <p className={`m-0`}>{data.title}</p>
-          </div>
-          {/* </Link> */}
-        </Menu.Item>
-      ))}
+      {projectTitle &&
+        projectTitle
+          .sort((a, b) => a.title.localeCompare(b.title))
+          .map((data) => (
+            <Menu.Item key={data.id}>
+              {/* <Link href={`/projects/${mapTitleToRoutePath(data.title)}`}> */}
+              <div
+                onClick={() => {
+                  router.push(`/projects/${mapTitleToRoutePath(data.title)}`);
+                }}
+                className={`d-flex ${
+                  router.locale === "en"
+                    ? `justify-content-start`
+                    : `justify-content-end`
+                } align-items-center py-2`}
+              >
+                <p className={`m-0`}>{data.title}</p>
+              </div>
+              {/* </Link> */}
+            </Menu.Item>
+          ))}
     </Menu>
   );
 

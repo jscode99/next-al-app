@@ -32,7 +32,7 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
       <Row gutter={[16, 16]} className={`px-3 pt-3`}>
         {paginatedListData &&
           paginatedListData.length > 0 &&
-          paginatedListData.map(data => (
+          paginatedListData.map((data) => (
             <>
               {/* {console.log("data", data)} */}
               <Col
@@ -48,9 +48,7 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
                   style={{ cursor: "pointer" }}
                   onClick={() => {
                     router.push({
-                      pathname: `/success-stories/${mapTitleToRoutePath(
-                        data.Title,
-                      )}`,
+                      pathname: `/success-stories/${data.id}`,
                       query: { ...router.query },
                     });
                   }}

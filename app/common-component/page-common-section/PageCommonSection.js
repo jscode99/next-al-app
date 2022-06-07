@@ -11,9 +11,10 @@ export default function PageCommonSection({ title, handlePrint }) {
   let router = useRouter();
   const [breadcrumList, setBreadcrumList] = useState([]);
   const [socialMediaList, setSocialMediaList] = useState([]);
+  console.log("Title in breadCrum", title);
   useEffect(() => {
     // console.log("path", router);
-    setBreadcrumList(getBreadcrumData(router));
+    setBreadcrumList(getBreadcrumData(router,title));
     let socialMediaList = [
       { className: "fas fa-print", link: null, btn: handlePrint },
       {

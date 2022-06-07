@@ -78,7 +78,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
         chartData[projectData[0].projectTitle.toLowerCase()] = {
           ...chartData[projectData[0].projectTitle.toLowerCase()],
           totalApprovedAmount: Number.isNaN(
-            parseFloat(projectData[innerIndex].approvedAmount),
+            parseFloat(projectData[innerIndex].approvedAmount)
           )
             ? chartData[projectData[0].projectTitle.toLowerCase()]
                 .totalApprovedAmount + 0
@@ -86,7 +86,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
                 .totalApprovedAmount +
               parseFloat(projectData[innerIndex].approvedAmount),
           totalDisbursementAmount: Number.isNaN(
-            parseFloat(projectData[innerIndex].disbursementAmount),
+            parseFloat(projectData[innerIndex].disbursementAmount)
           )
             ? chartData[projectData[0].projectTitle.toLowerCase()]
                 .totalDisbursementAmount + 0
@@ -187,7 +187,10 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
         if (
           sector[index].title
             .toLowerCase()
-            .match(projectData[innerIndex].Sector.toLowerCase()) !== null
+            .match(
+              projectData[innerIndex].Sector &&
+                projectData[innerIndex].Sector.toLowerCase()
+            ) !== null
         ) {
           //No: of projects
           chartData[projectData[0].projectTitle.toLowerCase()][
@@ -247,6 +250,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       chartDataPriority[i].priority = +i + 1;
     }
     //Setting chart data state
+    console.log("Final Chart Dat->",chartDataPriority);
     setFinalChartData(chartDataPriority);
     // console.log("finalChartData", finalChartData);
   }, [projectData, projectTitle, sector]);

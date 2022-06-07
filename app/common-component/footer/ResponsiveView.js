@@ -276,14 +276,14 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                    <a
+                    <p
                       className={`mb-0`}
                       onClick={() => {
                         router.push("/policy");
                       }}
                     >
                       {t("privacy policy")}
-                    </a>
+                    </p>
                   </li>
                   <li>
                     <p>
@@ -294,7 +294,7 @@ export default function ResponsiveView({ view, logo }) {
                         }
                       >
                         <a className={style.sitemap} target="_blank">
-                          {t("Sitemap")}
+                          {t("sitemap")}
                         </a>
                       </Link>
                     </p>
@@ -553,7 +553,7 @@ export default function ResponsiveView({ view, logo }) {
                         }
                       >
                         <a className={style.sitemap} target="_blank">
-                          {t("Sitemap")}
+                          {t("sitemap")}
                         </a>
                       </Link>
                     </p>

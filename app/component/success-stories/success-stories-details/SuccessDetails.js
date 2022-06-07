@@ -164,7 +164,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                       media && media.length > 3 && `w-100`
                     } overflow-hidden`}
                   >
-                    <div className={`d-flex overflow-auto`}>
+                    <div className={`d-flex overflow-auto justify-content-center`}>
                       <div className={`d-flex`}>
                         {media &&
                           media.length > 0 &&
@@ -265,7 +265,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                   <div
                     className={`${styles.thumbnail_container} w-100 overflow-hidden`}
                   >
-                    <div className={`d-flex overflow-auto`}>
+                    <div className={`d-flex overflow-auto justify-content-center`}>
                       <div className={`d-flex`}>
                         {media &&
                           media.length > 0 &&

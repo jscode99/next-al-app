@@ -9,18 +9,28 @@ import ProjectFundChart from "./projectFundChart";
 //styles
 import style from "./index.module.sass";
 
-export default function Projects({ projectTitle, projectData, arab, arabAr }) {
+export default function Projects({
+  projectTitle,
+  projectData,
+  arab,
+  arabAr,
+  reserve,
+}) {
   const router = useRouter();
 
-  // console.log("projectData  PROJECT INNER", projectData);
+  console.log("INNER", reserve);
   const [finalChartData, setFinalChartData] = useState([]);
   const { t } = useTranslation("common");
 
   let cardData = [
     {
-      amount: finalChartData.reduce(function (accumulator, item) {
-        return accumulator + item.totalApprovedAmount;
-      }, 0),
+      amount:
+        reserve.reduce(function (accumulator, item) {
+          return parseInt(accumulator) + parseInt(item.Amount);
+        }, 0) +
+        finalChartData.reduce(function (accumulator, item) {
+          return accumulator + item.totalApprovedAmount;
+        }, 0),
       subTitle: t("total approvals"),
       bg: style.bg_theme_sky_blue_color,
       url: "/images/card/pen.webp",
@@ -34,6 +44,8 @@ export default function Projects({ projectTitle, projectData, arab, arabAr }) {
       url: "/images/card/book.webp",
     },
   ];
+
+  console.log("CardData--->", cardData);
 
   useEffect(() => {
     let chartData = {};
@@ -56,7 +68,7 @@ export default function Projects({ projectTitle, projectData, arab, arabAr }) {
           chartData[projectTitle[index].title.toLowerCase()] = {
             ...chartData[projectTitle[index].title.toLowerCase()],
             totalApprovedAmount: Number.isNaN(
-              parseFloat(projectData[innerIndex].approvedAmount),
+              parseFloat(projectData[innerIndex].approvedAmount)
             )
               ? chartData[projectTitle[index].title.toLowerCase()]
                   .totalApprovedAmount + 0
@@ -64,7 +76,7 @@ export default function Projects({ projectTitle, projectData, arab, arabAr }) {
                   .totalApprovedAmount +
                 parseFloat(projectData[innerIndex].approvedAmount),
             totalDisbursementAmount: Number.isNaN(
-              parseFloat(projectData[innerIndex].disbursementAmount),
+              parseFloat(projectData[innerIndex].disbursementAmount)
             )
               ? chartData[projectTitle[index].title.toLowerCase()]
                   .totalDisbursementAmount + 0
@@ -153,9 +165,7 @@ export default function Projects({ projectTitle, projectData, arab, arabAr }) {
       {router.locale === "en" ? (
         <ProjectRouteCard finalChartData={finalChartData} />
       ) : (
-        <ProjectRouteCard
-          finalChartData={finalChartData}
-        />
+        <ProjectRouteCard finalChartData={finalChartData} />
       )}
       {router.locale === "en" ? (
         <ProjectFundChart finalChartData={finalChartData} />

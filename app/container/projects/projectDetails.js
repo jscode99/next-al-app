@@ -14,9 +14,11 @@ export default function ProjectDetailsContainer({
   sector,
   sectorAr,
   bannerImage,
+  reserve,
+  reserverAr,
 }) {
   const router = useRouter();
-  // console.log("projectDetailsEnProp CONTAINER", projectDetailsEnProp);
+  console.log("reserve---->", reserve);
   return (
     <Layout
       heroImage={bannerImage}
@@ -39,6 +41,7 @@ export default function ProjectDetailsContainer({
           router.locale === "en" ? projectDetailsEnProp : projectDetailsArProp
         }
         sector={router.locale === "en" ? sector : sectorAr}
+        reserve={router.locale === "en" ? reserve : reserverAr}
       />
     </Layout>
   );

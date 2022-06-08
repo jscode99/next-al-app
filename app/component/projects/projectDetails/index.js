@@ -9,21 +9,25 @@ import ProjectDetailsTable from "./projectDetailsTable";
 //styles
 import style from "./index.module.sass";
 
-export default function ProjectDetails({ projectTitle, projectData, sector }) {
-  console.log("sector", sector);
+export default function ProjectDetails({
+  projectTitle,
+  projectData,
+  sector,
+  reserve,
+}) {
+  console.log("reserve", reserve);
   // console.log("projectData  INNER COMPONENT", projectData);
   // console.log("projectTitle  INNER COMPONENT", projectTitle);
 
   const [finalChartData, setFinalChartData] = useState([]);
+  const [totalApprovedAmount, setTotalApprovedAmount] = useState(0);
   const [sectorData, setSectorData] = useState([]);
   let router = useRouter();
   const { t } = useTranslation("common");
 
   const cardData = [
     {
-      amount: finalChartData.reduce(function (accumulator, item) {
-        return accumulator + item.totalApprovedAmount;
-      }, 0),
+      amount: totalApprovedAmount && totalApprovedAmount,
       subTitle: t("total approvals"),
       bg: style.bg_theme_sky_blue_color,
       url: "/images/card/pen.webp",
@@ -45,6 +49,30 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       url: "/images/card/projects.webp",
     },
   ];
+
+  useEffect(() => {
+    let totalAmount = 0;
+    if (
+      finalChartData &&
+      finalChartData.length > 0 &&
+      reserve &&
+      reserve.length > 0
+    ) {
+      console.log("Data--->outside", finalChartData);
+      reserve.map((data) => {
+        if (data.ProjectTitle.toLowerCase() === finalChartData[0].title) {
+          console.log("Data--->Inside", data);
+          totalAmount =
+            parseInt(data.Amount) +
+            finalChartData.reduce(function (accumulator, item) {
+              return accumulator + item.totalApprovedAmount;
+            }, 0);
+        }
+      });
+    }
+    setTotalApprovedAmount(totalAmount);
+    console.log("TotalAmount---->", totalAmount);
+  }, [finalChartData, reserve]);
 
   useEffect(() => {
     let chartData = {};
@@ -226,7 +254,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       };
     }
     setSectorData(chartData);
-    // console.log("chartData1==================>", chartData);
+    console.log("chartData1==================>", chartData);
 
     let chartDataPriority = [];
     for (let index in chartData) {
@@ -250,7 +278,7 @@ export default function ProjectDetails({ projectTitle, projectData, sector }) {
       chartDataPriority[i].priority = +i + 1;
     }
     //Setting chart data state
-    console.log("Final Chart Dat->",chartDataPriority);
+    console.log("Final Chart Dat->", chartDataPriority);
     setFinalChartData(chartDataPriority);
     // console.log("finalChartData", finalChartData);
   }, [projectData, projectTitle, sector]);

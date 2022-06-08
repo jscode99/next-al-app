@@ -18,6 +18,8 @@ export default function Project({
   bannerImage,
   arab,
   arabAr,
+  reserve,
+  reserverAr,
 }) {
   console.log("projectData", projectData);
   console.log("projectDataAr", projectDataAr);
@@ -38,6 +40,8 @@ export default function Project({
         bannerImage={bannerImage}
         arab={arab}
         arabAr={arabAr}
+        reserve={reserve}
+        reserverAr={reserverAr}
       />
     </>
   );
@@ -59,6 +63,10 @@ export async function getStaticProps({ locale }) {
     process.env.BASE_URL + process.env.PATH.ARAB_FUND + `?_limit=-1`;
   let arabFundArUrl =
     process.env.BASE_URL + process.env.PATH.ARAB_FUND + "?_locale=ar-001";
+  let projectReserveUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_RESERVE;
+  let projectReserveArUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_RESERVE + "?_locale=ar-001";
 
   const httpAgent = new https.Agent({
     rejectUnauthorized: false,
@@ -71,6 +79,8 @@ export async function getStaticProps({ locale }) {
   const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
   const arabRes = await axios.get(arabFundUrl, { httpAgent });
   const arabArRes = await axios.get(arabFundArUrl, { httpAgent });
+  const reserveRes = await axios.get(projectReserveUrl, { httpAgent });
+  const reserveArRes = await axios.get(projectReserveArUrl, { httpAgent });
 
   // const [
   //   projectTitleRes,
@@ -99,6 +109,8 @@ export async function getStaticProps({ locale }) {
   const bannerImage = await bannerImageRes.data;
   const arab = await arabRes.data;
   const arabAr = await arabArRes.data;
+  const reserve = await reserveRes.data;
+  const reserverAr = await reserveArRes.data;
 
   // const [
   //   projectTitle,
@@ -130,6 +142,8 @@ export async function getStaticProps({ locale }) {
       bannerImage,
       arab,
       arabAr,
+      reserve,
+      reserverAr,
     },
     revalidate: 10,
   };

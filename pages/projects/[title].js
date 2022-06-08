@@ -27,9 +27,11 @@ export default function ProjectDetails({
   sector,
   sectorAr,
   bannerImage,
+  reserve,
+  reserverAr,
 }) {
   const { t } = useTranslation("common");
-
+  console.log("test--->", reserve);
   return (
     <>
       <Helmet>
@@ -47,6 +49,8 @@ export default function ProjectDetails({
         sector={sector}
         sectorAr={sectorAr}
         bannerImage={bannerImage}
+        reserve={reserve}
+        reserverAr={reserverAr}
       />
     </>
   );
@@ -136,6 +140,10 @@ export async function getStaticProps(context) {
     process.env.PATH.SECTOR_ALLOCATION +
     "?_locale=ar-001";
   let bannerImageUrl = process.env.BASE_URL + process.env.PATH.BANNER_IMAGE;
+  let projectReserveUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_RESERVE;
+  let projectReserveArUrl =
+    process.env.BASE_URL + process.env.PATH.PROJECT_RESERVE + "?_locale=ar-001";
 
   const httpAgent = new https.Agent({
     rejectUnauthorized: false,
@@ -148,6 +156,8 @@ export async function getStaticProps(context) {
   const sectorRes = await axios.get(sectorUrl, { httpAgent });
   const sectorArRes = await axios.get(sectorArUrl, { httpAgent });
   const bannerImageRes = await axios.get(bannerImageUrl, { httpAgent });
+  const reserveRes = await axios.get(projectReserveUrl, { httpAgent });
+  const reserveArRes = await axios.get(projectReserveArUrl, { httpAgent });
 
   // const [
   //   projectTitleDataRes,
@@ -176,6 +186,8 @@ export async function getStaticProps(context) {
   const sector = await sectorRes.data;
   const sectorAr = await sectorArRes.data;
   const bannerImage = await bannerImageRes.data;
+  const reserve = await reserveRes.data;
+  const reserverAr = await reserveArRes.data;
 
   // const [
   //   projectTitleData,
@@ -242,6 +254,8 @@ export async function getStaticProps(context) {
       sector,
       sectorAr,
       bannerImage,
+      reserve,
+      reserverAr,
     },
     revalidate: 10,
   };

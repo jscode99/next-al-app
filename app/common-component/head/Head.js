@@ -26,6 +26,18 @@ export default function AppHead() {
         crossOrigin="anonymous"
         referrerpolicy="no-referrer"
       />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
       <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500;900&display=swap"
         rel="stylesheet"
@@ -39,7 +51,7 @@ export default function AppHead() {
       <script
         type="text/javascript"
         src="https://www.gstatic.com/charts/loader.js"
-      ></script>
+      />
     </Head>
   );
 }

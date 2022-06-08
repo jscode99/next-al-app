@@ -29,6 +29,7 @@ module.exports = {
       AL_AQSA_FUND: "/aqsa-funds",
       ARAB_FUND: "/arab-funds",
       YEARLY_APPROVAL: "/yearly-approvals",
+      PROJECT_RESERVE: "/reserves",
     },
   },
   reactStrictMode: true,

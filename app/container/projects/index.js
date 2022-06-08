@@ -13,6 +13,8 @@ export default function ProjectsContainer({
   bannerImage,
   arab,
   arabAr,
+  reserve,
+  reserverAr,
 }) {
   const router = useRouter();
   let { appContext, setAppContext } = useContext(AppContext);
@@ -37,6 +39,7 @@ export default function ProjectsContainer({
         projectData={router.locale === "en" ? projectData : projectDataAr}
         arab={arab}
         arabAr={arabAr}
+        reserve={router.locale === "en" ? reserve : reserverAr}
       />
     </Layout>
   );

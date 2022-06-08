@@ -58,16 +58,39 @@ export default function ResourceChart({
   // console.log("xDataYr------>", xDataYr);
 
   // useEffect(() => {
-  //   if (!showChart)
-  //     setTimeout(() => {
-  //       setShowChart(true);
-  //     }, 5000);
-  // }, [showChart]);
+  // //   // function scrollHorizontally() {
+  // //   // console.log("text",e);
+  // //   // e = window.event || e;
+  // //   // var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+  //   setTimeout(() => {
+  // //     if (typeof window === "object") {
+  //       document.getElementById("aqsaScroll").scrollLeft = 1000;
+  // //       console.log(
+  // //         "Document",
+  // //         (document.getElementById("aqsaScroll").scrollLeft = 1000)
+  // //       );
+  // //     }
+  //   }, 6000);
+  // //   // e.preventDefault();
+  // //   // }
+  // }, []);
+
+  // const asd = () => {
+  //   document.getElementById("aqsaScroll").scrollLeft = 1000;
+  //   console.log(
+  //     "Document",
+  //     (document.getElementById("aqsaScroll").scrollLeft = 1000)
+  //   );
+  // };
 
   useEffect(() => {
     if (showChart) {
       setTimeout(() => {
         // let fundChartElement1 = document.getElementsByTagName("rect")[0];
+        if (router.locale === "ar") {
+          document.getElementById("aqsaScroll").scrollLeft = 150000;
+          document.getElementById("aqsaScrollM").scrollLeft = 150000;
+        }
         let apexChart =
           document.getElementsByClassName(
             "apexcharts-xaxis"
@@ -1018,7 +1041,7 @@ export default function ResourceChart({
                 </>
               )}
               {/* <div id="fund_chart"></div> */}
-              <div className={`${style.horz_scroll}`}>
+              <div id={`aqsaScroll`} className={`${style.horz_scroll}`}>
                 {showChart && (
                   <div className={`${style.bar_chart}`}>
                     {activeData === "aqsa" &&
@@ -1133,7 +1156,10 @@ export default function ResourceChart({
                   {activeData === "aqsa" && xAxisWidth && (
                     <div
                       className={`d-flex justify-content-around align-items-start`}
-                      style={{ width: xAxisWidth, marginLeft: "12px" }}
+                      style={{
+                        width: xAxisWidth,
+                        marginLeft: "12px",
+                      }}
                     >
                       {xDataAl.map((data, index) => (
                         <div
@@ -1370,7 +1396,7 @@ export default function ResourceChart({
                 </>
               )}
               {/* <div id="fund_chart"></div> */}
-              <div className={`${style.horz_scroll}`}>
+              <div id={`aqsaScrollM`} className={`${style.horz_scroll}`}>
                 {showChart && (
                   <div className={`${style.bar_chart}`}>
                     {activeData === "aqsa" &&

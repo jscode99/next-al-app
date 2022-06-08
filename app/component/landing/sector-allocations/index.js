@@ -26,7 +26,10 @@ export default function SectorAllocations({
     threshold: 1,
   });
 
-  console.log("========>", sectorData);
+  console.log(
+    "========>",
+    new Array(...sectorData).sort((a, b) => a.percentage - b.percentage)
+  );
 
   useEffect(() => {
     let chartData = {};
@@ -274,134 +277,282 @@ export default function SectorAllocations({
                 </Col>
               </Row>
               <Row gutter={[4, 4]}>
-                {active &&
-                  sectorData
-                    .sort((a, b) => b.percentage - a.percentage)
-                    .map((data) => (
-                      <Col xs={24} sm={24} md={24} lg={8} xl={0} key={data.id}>
-                        <div
-                          className={`position-relative d-flex justify-content-center align-items-center`}
+                {active && router.locale === "ar"
+                  ? new Array(...sectorData)
+                      .sort((a, b) => a.percentage - b.percentage)
+                      .map((data) => (
+                        <Col
+                          xs={24}
+                          sm={24}
+                          md={24}
+                          lg={8}
+                          xl={0}
                           key={data.id}
                         >
                           <div
-                            className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
-                            style={{ color: data.color }}
+                            className={`position-relative d-flex justify-content-center align-items-center`}
+                            key={data.id}
                           >
-                            {isVisible ? (
-                              <CountUp
-                                value={Math.round(
-                                  parseFloat(data.percentage)
-                                ).toString()}
-                                floatLength={0}
-                                formatMoney={false}
-                              />
-                            ) : (
-                              Math.round(parseFloat(data.percentage))
-                            )}
-                            %
-                          </div>
-                          <Chart
-                            width={"180px"}
-                            height={"180px"}
-                            chartType="PieChart"
-                            loader={<div>Loading Chart</div>}
-                            data={[
-                              ["", "Approved"],
-                              [
-                                data.title,
-                                Math.round(parseInt(data.percentage)),
-                              ],
-                              [
-                                "Others",
-                                100 - Math.round(parseInt(data.percentage)),
-                              ],
-                            ]}
-                            options={{
-                              // title: "My Daily Activities",
-                              legend: { position: "none" },
-                              slices: [
-                                { color: data.color },
-                                { color: `#2C555F` },
-                              ],
-                              tooltip: { trigger: "none" },
-                              backgroundColor: { fill: "transparent" },
-                              pieSliceText: "none",
-                              pieSliceBorderColor: "none",
-                              // Just add this option
-                              pieHole: 0.7,
-                            }}
-                            rootProps={{ "data-testid": "3" }}
-                          />
-                        </div>
-                        <div
-                          className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
-                        >
-                          {t(data.title)}
-                        </div>
-                      </Col>
-                    ))}
-                {sectorData
-                  .sort((a, b) => b.percentage - a.percentage)
-                  .map((data) => (
-                    <Col xs={0} sm={0} md={0} lg={0} xl={8} key={data.id}>
-                      <div
-                        className={`position-relative d-flex justify-content-center align-items-center`}
-                        key={data.id}
-                      >
-                        <div
-                          className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
-                          style={{ color: data.color }}
-                        >
-                          {isVisible ? (
-                            <CountUp
-                              value={Math.round(
-                                parseFloat(data.percentage)
-                              ).toString()}
-                              floatLength={0}
-                              formatMoney={false}
+                            <div
+                              className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
+                              style={{ color: data.color }}
+                            >
+                              {isVisible ? (
+                                <CountUp
+                                  value={Math.round(
+                                    parseFloat(data.percentage)
+                                  ).toString()}
+                                  floatLength={0}
+                                  formatMoney={false}
+                                />
+                              ) : (
+                                Math.round(parseFloat(data.percentage))
+                              )}
+                              %
+                            </div>
+                            <Chart
+                              width={"180px"}
+                              height={"180px"}
+                              chartType="PieChart"
+                              loader={<div>Loading Chart</div>}
+                              data={[
+                                ["", "Approved"],
+                                [
+                                  data.title,
+                                  Math.round(parseInt(data.percentage)),
+                                ],
+                                [
+                                  "Others",
+                                  100 - Math.round(parseInt(data.percentage)),
+                                ],
+                              ]}
+                              options={{
+                                // title: "My Daily Activities",
+                                legend: { position: "none" },
+                                slices: [
+                                  { color: data.color },
+                                  { color: `#2C555F` },
+                                ],
+                                tooltip: { trigger: "none" },
+                                backgroundColor: { fill: "transparent" },
+                                pieSliceText: "none",
+                                pieSliceBorderColor: "none",
+                                // Just add this option
+                                pieHole: 0.7,
+                              }}
+                              rootProps={{ "data-testid": "3" }}
                             />
-                          ) : (
-                            Math.round(parseFloat(data.percentage))
-                          )}
-                          %
-                        </div>
-                        <Chart
-                          width={"180px"}
-                          height={"180px"}
-                          chartType="PieChart"
-                          loader={<div>Loading Chart</div>}
-                          data={[
-                            ["", "Approved"],
-                            [data.title, Math.round(parseInt(data.percentage))],
-                            [
-                              "Others",
-                              100 - Math.round(parseInt(data.percentage)),
-                            ],
-                          ]}
-                          options={{
-                            // title: "My Daily Activities",
-                            legend: { position: "none" },
-                            slices: [
-                              { color: data.color },
-                              { color: `#2C555F` },
-                            ],
-                            tooltip: { trigger: "none" },
-                            backgroundColor: { fill: "transparent" },
-                            pieSliceText: "none",
-                            pieSliceBorderColor: "none",
-                            // Just add this option
-                            pieHole: 0.7,
-                          }}
-                          rootProps={{ "data-testid": "3" }}
-                        />
-                      </div>
-                      <div
-                        className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
-                      >
-                        {t(data.title)}
-                      </div>
-                    </Col>
-                  ))}
+                          </div>
+                          <div
+                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                          >
+                            {t(data.title)}
+                          </div>
+                        </Col>
+                      ))
+                  : sectorData
+                      .sort((a, b) => b.percentage - a.percentage)
+                      .map((data) => (
+                        <Col
+                          xs={24}
+                          sm={24}
+                          md={24}
+                          lg={8}
+                          xl={0}
+                          key={data.id}
+                        >
+                          <div
+                            className={`position-relative d-flex justify-content-center align-items-center`}
+                            key={data.id}
+                          >
+                            <div
+                              className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
+                              style={{ color: data.color }}
+                            >
+                              {isVisible ? (
+                                <CountUp
+                                  value={Math.round(
+                                    parseFloat(data.percentage)
+                                  ).toString()}
+                                  floatLength={0}
+                                  formatMoney={false}
+                                />
+                              ) : (
+                                Math.round(parseFloat(data.percentage))
+                              )}
+                              %
+                            </div>
+                            <Chart
+                              width={"180px"}
+                              height={"180px"}
+                              chartType="PieChart"
+                              loader={<div>Loading Chart</div>}
+                              data={[
+                                ["", "Approved"],
+                                [
+                                  data.title,
+                                  Math.round(parseInt(data.percentage)),
+                                ],
+                                [
+                                  "Others",
+                                  100 - Math.round(parseInt(data.percentage)),
+                                ],
+                              ]}
+                              options={{
+                                // title: "My Daily Activities",
+                                legend: { position: "none" },
+                                slices: [
+                                  { color: data.color },
+                                  { color: `#2C555F` },
+                                ],
+                                tooltip: { trigger: "none" },
+                                backgroundColor: { fill: "transparent" },
+                                pieSliceText: "none",
+                                pieSliceBorderColor: "none",
+                                // Just add this option
+                                pieHole: 0.7,
+                              }}
+                              rootProps={{ "data-testid": "3" }}
+                            />
+                          </div>
+                          <div
+                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                          >
+                            {t(data.title)}
+                          </div>
+                        </Col>
+                      ))}
+                {active && router.locale === "en"
+                  ? sectorData
+                      .sort((a, b) => b.percentage - a.percentage)
+                      .map((data) => (
+                        <Col xs={0} sm={0} md={0} lg={0} xl={8} key={data.id}>
+                          <div
+                            className={`position-relative d-flex justify-content-center align-items-center`}
+                            key={data.id}
+                          >
+                            <div
+                              className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
+                              style={{ color: data.color }}
+                            >
+                              {isVisible ? (
+                                <CountUp
+                                  value={Math.round(
+                                    parseFloat(data.percentage)
+                                  ).toString()}
+                                  floatLength={0}
+                                  formatMoney={false}
+                                />
+                              ) : (
+                                Math.round(parseFloat(data.percentage))
+                              )}
+                              %
+                            </div>
+                            <Chart
+                              width={"180px"}
+                              height={"180px"}
+                              chartType="PieChart"
+                              loader={<div>Loading Chart</div>}
+                              data={[
+                                ["", "Approved"],
+                                [
+                                  data.title,
+                                  Math.round(parseInt(data.percentage)),
+                                ],
+                                [
+                                  "Others",
+                                  100 - Math.round(parseInt(data.percentage)),
+                                ],
+                              ]}
+                              options={{
+                                // title: "My Daily Activities",
+                                legend: { position: "none" },
+                                slices: [
+                                  { color: data.color },
+                                  { color: `#2C555F` },
+                                ],
+                                tooltip: { trigger: "none" },
+                                backgroundColor: { fill: "transparent" },
+                                pieSliceText: "none",
+                                pieSliceBorderColor: "none",
+                                // Just add this option
+                                pieHole: 0.7,
+                              }}
+                              rootProps={{ "data-testid": "3" }}
+                            />
+                          </div>
+                          <div
+                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                          >
+                            {t(data.title)}
+                          </div>
+                        </Col>
+                      ))
+                  : sectorData
+                      .sort((a, b) => a.percentage - b.percentage)
+                      .map((data) => (
+                        <Col xs={0} sm={0} md={0} lg={0} xl={8} key={data.id}>
+                          <div
+                            className={`position-relative d-flex justify-content-center align-items-center`}
+                            key={data.id}
+                          >
+                            <div
+                              className={`${style.chart_percent} position-absolute d-flex justify-content-center align-items-center w-100 h-100`}
+                              style={{ color: data.color }}
+                            >
+                              {isVisible ? (
+                                <CountUp
+                                  value={Math.round(
+                                    parseFloat(data.percentage)
+                                  ).toString()}
+                                  floatLength={0}
+                                  formatMoney={false}
+                                />
+                              ) : (
+                                Math.round(parseFloat(data.percentage))
+                              )}
+                              %
+                            </div>
+                            <Chart
+                              width={"180px"}
+                              height={"180px"}
+                              chartType="PieChart"
+                              loader={<div>Loading Chart</div>}
+                              data={[
+                                ["", "Approved"],
+                                [
+                                  data.title,
+                                  Math.round(parseInt(data.percentage)),
+                                ],
+                                [
+                                  "Others",
+                                  100 - Math.round(parseInt(data.percentage)),
+                                ],
+                              ]}
+                              options={{
+                                // title: "My Daily Activities",
+                                legend: { position: "none" },
+                                slices: [
+                                  { color: data.color },
+                                  { color: `#2C555F` },
+                                ],
+                                tooltip: { trigger: "none" },
+                                backgroundColor: { fill: "transparent" },
+                                pieSliceText: "none",
+                                pieSliceBorderColor: "none",
+                                // Just add this option
+                                pieHole: 0.7,
+                              }}
+                              rootProps={{ "data-testid": "3" }}
+                            />
+                          </div>
+                          <div
+                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                          >
+                            {t(data.title)}
+                          </div>
+                        </Col>
+                      ))}
               </Row>
             </div>
           </div>
@@ -470,7 +621,7 @@ export default function SectorAllocations({
               <Row gutter={[4, 4]}>
                 {active &&
                   sectorData
-                    .sort((a, b) => b.percentage - a.percentage)
+                    .sort((a, b) => a.percentage - b.percentage)
                     .map((data) => (
                       <Col xs={12} sm={12} md={8} lg={8} xl={8} key={data.id}>
                         <div

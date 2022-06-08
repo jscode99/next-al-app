@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import style from "./index.module.sass";
 
 export default function AppStep({ textAlign, step, defaultActiveStep }) {
+  const router = useRouter();
   const [defaultActive, setDefaultActive] = useState(defaultActiveStep - 1);
   return (
     <div className="d-flex flex-column w-100">
@@ -30,17 +32,19 @@ export default function AppStep({ textAlign, step, defaultActiveStep }) {
           <div className={`d-flex flex-column w-75`}>
             <h5
               className={`${style.step_title} ${
-                textAlign === "right" ? "text-start" : "text-start"
+                textAlign === "right" ? "text-justify" : "text-justify"
               } ${defaultActive === index ? `fw-bold` : ``} cursor-pointer`}
+              dir={router.locale === "ar" ? "rtl" : ""}
             >
               {data.title}
             </h5>
             <p
               className={` ${
-                textAlign === "right" ? "text-justify" : "text-start"
+                textAlign === "right" ? "text-justify" : "text-justify"
               } ${defaultActive === index ? "fw-bold" : ""} ${
                 style.description
               } mb-5 cursor-pointer`}
+              dir={router.locale === "ar" ? "rtl" : ""}
             >
               {data.description}
             </p>

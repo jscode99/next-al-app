@@ -19,6 +19,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
   const { t } = useTranslation("common");
   const router = useRouter();
   const base_url = process.env.BASE_URL;
+  console.log("Media---->", media);
   useEffect(() => {
     if (
       successMedia &&
@@ -30,12 +31,18 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
       let media = successMedia.filter(
         (value) => value.successID.toString() === storiesProps.id.toString()
       );
+      console.log("Media", media);
       let medias = media.map((value) => {
+        console.log("Value", value);
         return {
-          multimedia: value.multimedia[0].url,
+          multimedia: new Array(...value.multimedia).map(
+            (data, index) => data.url
+          ),
           successID: value.successID,
           videoPreview:
-            value.videoPreview.length > 0 ? value.videoPreview[0].url : null,
+            value.videoPreview.length > 0
+              ? new Array(value.videoPreview).map((data, index) => data.url)
+              : null,
         };
       });
       setMedia(medias);
@@ -73,7 +80,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                       ${storiesProps.TotalApproved}
                     </Col>
                   </Row>
-                  <Row className={`mb-5`}>
+                  <Row className={`mb-4`}>
                     <Col
                       span={7}
                       className={`${styles.stories_amount_heading}`}
@@ -90,23 +97,17 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                       {storiesProps.FundSource}
                     </Col>
                   </Row>
-                  <Row className={`mb-5`}>
+                  <Row className={`mb-2`}>
                     <Col
-                      span={7}
-                      className={`${styles.stories_amount_heading}`}
+                      span={24}
+                      className={`${styles.stories_overview_heading}`}
                     >
                       Overview
                     </Col>
-                    <Col
-                      span={1}
-                      className={`${styles.stories_amount_heading}`}
-                    >
-                      {`:`}
-                    </Col>
-                    <Col span={16} className={`${styles.stories_amount}`}>
-                      <p className="text-justify">{storiesProps.Overview}</p>
-                    </Col>
                   </Row>
+                  <p className={`${styles.stories_details_des} text-justify`}>
+                    {storiesProps.Overview}
+                  </p>
                   {/* : <p className={`${styles.stories_details_des} pr-4`}>
                     {storiesProps.Overview}
                   </p> */}
@@ -130,9 +131,9 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                     >
                       {media &&
                         media.length > 0 &&
-                        media.map((imageData) => (
+                        media[0].multimedia.map((imageData) => (
                           <>
-                            {!isImage(imageData.multimedia) && (
+                            {!isImage(imageData) && (
                               <div
                                 className={`d-flex position-absolute h-100 justify-content-center align-items-center`}
                                 style={{
@@ -146,9 +147,9 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                             )}
                             <Image
                               src={
-                                isImage(imageData.multimedia)
-                                  ? base_url + imageData.multimedia
-                                  : base_url + imageData.videoPreview
+                                isImage(imageData)
+                                  ? base_url + imageData
+                                  : base_url + imageData.videoPreview[0].url
                               }
                               alt="ssc"
                               width="500"
@@ -161,20 +162,22 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                   </div>
                   <div
                     className={`${styles.thumbnail_container} ${
-                      media && media.length > 3 && `w-100`
+                      media && media[0].multimedia.length > 3 && `w-100`
                     } overflow-hidden`}
                   >
-                    <div className={`d-flex overflow-auto justify-content-center`}>
+                    <div
+                      className={`d-flex overflow-auto justify-content-center`}
+                    >
                       <div className={`d-flex`}>
                         {media &&
                           media.length > 0 &&
-                          media.map((imageData) => (
+                          media[0].multimedia.map((imageData) => (
                             <>
                               <div
                                 className={`mx-3 ${styles.image_cont} position-relative`}
                                 onClick={() => setGalleryView(true)}
                               >
-                                {!isImage(imageData.multimedia) && (
+                                {!isImage(imageData) && (
                                   <div
                                     className={`d-flex position-absolute  justify-content-center align-items-center`}
                                     style={{
@@ -195,9 +198,10 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                                 >
                                   <Image
                                     src={
-                                      isImage(imageData.multimedia)
-                                        ? base_url + imageData.multimedia
-                                        : base_url + imageData.videoPreview
+                                      isImage(imageData)
+                                        ? base_url + imageData
+                                        : base_url +
+                                          imageData.videoPreview[0].url
                                     }
                                     alt="ssc"
                                     width="100"
@@ -233,9 +237,9 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                     >
                       {media &&
                         media.length > 0 &&
-                        media.map((imageData) => (
+                        media[0].multimedia.map((imageData) => (
                           <>
-                            {!isImage(imageData.multimedia) && (
+                            {!isImage(imageData) && (
                               <div
                                 className={`d-flex position-absolute h-100 justify-content-center align-items-center`}
                                 style={{
@@ -249,9 +253,9 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                             )}
                             <Image
                               src={
-                                isImage(imageData.multimedia)
-                                  ? base_url + imageData.multimedia
-                                  : base_url + imageData.videoPreview
+                                isImage(imageData)
+                                  ? base_url + imageData
+                                  : base_url + imageData.videoPreview[0].url
                               }
                               alt="ssc"
                               width="500"
@@ -265,17 +269,19 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                   <div
                     className={`${styles.thumbnail_container} w-100 overflow-hidden`}
                   >
-                    <div className={`d-flex overflow-auto justify-content-center`}>
+                    <div
+                      className={`d-flex overflow-auto justify-content-center`}
+                    >
                       <div className={`d-flex`}>
                         {media &&
                           media.length > 0 &&
-                          media.map((imageData) => (
+                          media[0].multimedia.map((imageData) => (
                             <>
                               <div
                                 className={`mx-3 ${styles.image_cont} position-relative`}
                                 onClick={() => setGalleryView(true)}
                               >
-                                {!isImage(imageData.multimedia) && (
+                                {!isImage(imageData) && (
                                   <div
                                     className={`d-flex position-absolute  justify-content-center align-items-center`}
                                     style={{
@@ -296,9 +302,10 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                                 >
                                   <Image
                                     src={
-                                      isImage(imageData.multimedia)
-                                        ? base_url + imageData.multimedia
-                                        : base_url + imageData.videoPreview
+                                      isImage(imageData)
+                                        ? base_url + imageData
+                                        : base_url +
+                                          imageData.videoPreview[0].url
                                     }
                                     alt="ssc"
                                     width="100"
@@ -313,7 +320,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                   </div>
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={10} xl={12}>
-                  <Row className={`my-4`}>
+                  <Row className={`pt-5 my-3`}>
                     <Col
                       span={16}
                       className={`${styles.stories_amount} text-end`}
@@ -328,12 +335,12 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                     </Col>
                     <Col
                       span={7}
-                      className={`${styles.stories_amount_heading} text-capitalize text-end`}
+                      className={`${styles.stories_amount_heading} text-end`}
                     >
                       {t("total approved")}
                     </Col>
                   </Row>
-                  <Row className={`mb-5`}>
+                  <Row className={`mb-4`}>
                     <Col
                       span={16}
                       className={`${styles.stories_amount} text-end`}
@@ -348,12 +355,23 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                     </Col>
                     <Col
                       span={7}
-                      className={`${styles.stories_amount_heading} text-capitalize text-end`}
+                      className={`${styles.stories_amount_heading} text-end`}
                     >
                       {t("source of funds")}
                     </Col>
                   </Row>
-                  <p className={`${styles.stories_details_des} text-end pr-4`}>
+                  <Row className={`mb-2`}>
+                    <Col
+                      span={24}
+                      className={`${styles.stories_overview_heading} text-end`}
+                    >
+                      {t("overview")}
+                    </Col>
+                  </Row>
+                  <p
+                    className={`${styles.stories_details_des} text-justify pr-4`}
+                    dir="rtl"
+                  >
                     {storiesProps.Overview}
                   </p>
                 </Col>
@@ -363,11 +381,13 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
           <Row>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <p
-                className={`${styles.stories_details_des} px-5 mt-5 ${
-                  router.locale === "en" ? `text-justify` : `text-end`
-                }`}
+                className={`${styles.stories_details_des} px-5 mt-5 text-justify`}
+                dir={router.locale === "ar" ? `rtl` : ``}
               >
                 {storiesProps.Description}
+              </p>
+              <p className={`${styles.endStar} mt-5 mb-4`}>
+                ****************************************
               </p>
             </Col>
           </Row>
@@ -398,16 +418,16 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
             <Row gutter={[8, 8]} className="w-100">
               {media &&
                 media.length > 0 &&
-                media.map((imageData, index) => (
+                media[0].multimedia.map((imageData, index) => (
                   <Col xs={24} sm={24} md={12} lg={8} xl={8} key={index}>
                     <div
                       className={`overflow-hidden`}
-                      onClick={() => setViewUrl(imageData.multimedia)}
+                      onClick={() => setViewUrl(imageData)}
                     >
                       <div
                         className={`overflow-hidden ${styles.gallery_image_container} position-relative`}
                       >
-                        {!isImage(imageData.multimedia) && (
+                        {!isImage(imageData) && (
                           <div
                             className={`d-flex position-absolute  justify-content-center align-items-center ${styles.modal_video_playIcon}`}
                             style={{
@@ -426,9 +446,9 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                           <img
                             className={`${styles.modal_image}`}
                             src={
-                              isImage(imageData.multimedia)
-                                ? base_url + imageData.multimedia
-                                : base_url + imageData.videoPreview
+                              isImage(imageData)
+                                ? base_url + imageData
+                                : base_url + imageData.videoPreview[0].url
                             }
                             alt="ssc"
                             width="100%"

@@ -25,23 +25,20 @@ export default function IsdbRoleSection({ data }) {
             <div className={`${style.role_details_conatiner} shadow`}>
               <div className={`p-5`}>
                 <p
-                  className={`${style.role_title} text-capitalize mb-4 ${
-                    router.locale === "en" ? `` : `text-end`
-                  } `}
+                  className={`${style.role_title} text-capitalize mb-4 text-justify `}
+                  dir={router.locale === "ar" ? "rtl" : ""}
                 >
                   {t("role of isdb")}
                 </p>
                 <p
-                  className={`${style.role_description} mb-4 ${
-                    router.locale === "en" ? `text-justify` : `text-end`
-                  }`}
+                  className={`${style.role_description} mb-4 text-justify`}
+                  dir={router.locale === "ar" ? "rtl" : ""}
                 >
                   {data && Object.keys(data).length > 0 && data.description}
                 </p>
                 <p
-                  className={`${style.role_description} ${
-                    router.locale === "en" ? `text-justify` : `text-end`
-                  }`}
+                  className={`${style.role_description} text-justify`}
+                  dir={router.locale === "ar" ? "rtl" : ""}
                 >
                   {data &&
                     Object.keys(data).length > 0 &&

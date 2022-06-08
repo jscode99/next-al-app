@@ -115,7 +115,7 @@
     "country":"الدولة",
     "total payed":"اجمالي المدفوعات",
     "criteria":"المعايير",
-    "approvals":"الموافقات",
+    "approvals":"الاعتمادات",
     "bn":"مليار ",
     "mn":"مليون ",
     "status":"نسبة الصرف",
@@ -123,6 +123,7 @@
     "please enter a valid email.":" الرجاء إدخال البريد الإلكتروني",
     "please enter a valid phone number or try adding your country code.":" الرجاء إدخال رقم الهاتف او محاولة إدخال المفتاح الدولي لدولتك",
     "please enter a valid subject.":" الرجاء كتابة الموضوع",
-    "please enter a valid message.":" الرجاء كتابة الرسالة"
+    "please enter a valid message.":" الرجاء كتابة الرسالة",
+    "overview":"ملخص"
 }
 

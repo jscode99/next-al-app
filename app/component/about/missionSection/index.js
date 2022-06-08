@@ -15,13 +15,7 @@ export default function MissionSection({ data }) {
         {router.locale === "en" ? (
           <>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-              <div
-                className={`d-flex ${
-                  router.locale === "en"
-                    ? `justify-content-start`
-                    : `justify-content-end`
-                } py-3`}
-              >
+              <div className={`d-flex justify-content-start py-3`}>
                 <h3 className={`${style.mission_title} text-capitalize`}>
                   {t("mission")}
                 </h3>
@@ -58,16 +52,13 @@ export default function MissionSection({ data }) {
               </div>
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-              <div
-                className={`d-flex ${
-                  router.locale === "en"
-                    ? `justify-content-start`
-                    : `justify-content-end`
-                } py-3`}
-              >
+              <div className={`d-flex justify-content-end py-3`}>
                 <h3 className={`fw-bold text-capitalize`}>{t("mission")}</h3>
               </div>
-              <p className={`h6 text-end`}>
+              <p
+                className={`text-justify`}
+                dir={router.locale === "ar" ? "rtl" : ""}
+              >
                 {data && Object.keys(data).length > 0 && data.description}
               </p>
             </Col>

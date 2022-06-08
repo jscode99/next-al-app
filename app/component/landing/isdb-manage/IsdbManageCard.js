@@ -1,7 +1,9 @@
 import Image from "next/image";
 import style from "./index.module.sass";
+import { useRouter } from "next/router";
 
 export default function IsdbManageCard({ data }) {
+  const router = useRouter();
   return (
     <div className={`${style.isdb_manage_card} shadow mx-3 bg-white mb-3`}>
       <div
@@ -17,7 +19,10 @@ export default function IsdbManageCard({ data }) {
       <p className={`text-center ${style.isdb_manage_card_text} mb-2`}>
         {data.title}
       </p>
-      <p className={`text-center ${style.isdb_manage_card_amount} mb-2`}>
+      <p
+        style={{ direction: router.locale === "ar" ? "rtl" : "ltr" }}
+        className={`text-center ${style.isdb_manage_card_amount} mb-2`}
+      >
         {data.amount}
       </p>
     </div>

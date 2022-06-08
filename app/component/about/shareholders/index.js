@@ -13,7 +13,10 @@ export default function ShareHolder({ flagData }) {
     flagData.sort((a, b) => a.Country.localeCompare(b.Country, ["ar"]))
   );
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (router.locale === "ar")
+      document.getElementById("scroll").scrollLeft = 150000;
+  }, [flagData]);
 
   return (
     <div className={`${style.bg} pb-5`}>
@@ -26,19 +29,14 @@ export default function ShareHolder({ flagData }) {
         <div
           id="scroll"
           className={`${style.shareHolder_scrollable} d-flex align-items-center `}
-          style={{ transform: router.locale === "ar" ? `scaleX(-1)` : `` }}
+          // style={{ transform: router.locale === "ar" ? `scaleX(-1)` : `` }}
         >
           {flagData
-            .sort((a, b) => {
-              if (router.locale === "ar") {
-                a.Country.localeCompare(b.Country, ["ar"]);
-              } else {
-                //  ( a.Country < b.Country ? -1 : a.Country > b.Country ? 1 : 0)
-                if (a.Country < b.Country) {
-                  return -1;
-                } else if (a.Country > b.Country) return 1;
-              }
-            })
+            .sort((a, b) =>
+              router.locale === "en"
+                ? a.priority - b.priority
+                : b.priority - a.priority
+            )
             .map((data) => (
               <>
                 <div>

@@ -17,10 +17,10 @@ export default function PolicyContainer({ projectTitle, bannerImage }) {
 
   return (
     <Layout
-      page={"policy"}
-      pageName={"policy"}
+      page={""}
+      pageName={""}
       projectTitle={projectTitle}
-      title={"privacy policy"}
+      title={""}
       heroImage={bannerImage}
     >
       <Policy />

@@ -5,7 +5,10 @@ export default function Policy() {
   return (
     <>
       <div className={style.card}>
-         <h2 className={`d-flex justify-content-center m-2 fw-bold`}>Privacy Policy</h2>
+        <div className={style.container}>
+          <h2 className={`d-flex justify-content-center m-2 fw-bold`}>
+            Privacy Policy
+          </h2>
           <h3>Introduction</h3>
           <p>
             This privacy statement sets out the data processing practices
@@ -47,7 +50,7 @@ export default function Policy() {
             Registration related information (such as your name, home or work
             address, telephone number, etc.).
           </p>
-          <p>Information about the searches you carry out;  </p>
+          <p>Information about the searches you carry out; </p>
           <p>Information about your visits to the Fund website.</p>
           <p>
             Please note that no personally identifiable information is collected
@@ -140,7 +143,7 @@ export default function Policy() {
             Email TFD@isdb.org
           </p>
           <p className={style.endStar}>***************************</p>
-        
+        </div>
       </div>
     </>
   );

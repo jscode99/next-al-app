@@ -276,11 +276,13 @@ export default function SectorAllocations({
                   </div>
                 </Col>
               </Row>
-              <Row gutter={[4, 4]}>
+              <Row
+                gutter={[4, 4]}
+                className={router.locale === "ar" ? "flex-row-reverse" : ""}
+              >
                 {active && router.locale === "ar"
                   ? new Array(...sectorData)
                       .sort((a, b) => b.percentage - a.percentage)
-                      .reverse()
                       .map((data) => (
                         <Col
                           xs={24}
@@ -291,7 +293,7 @@ export default function SectorAllocations({
                           key={data.id}
                         >
                           <div
-                            className={`position-relative d-flex justify-content-center align-items-center`}
+                            className={`position-relative  d-flex justify-content-center align-items-center`}
                             key={data.id}
                           >
                             <div
@@ -491,7 +493,6 @@ export default function SectorAllocations({
                       ))
                   : sectorData
                       .sort((a, b) => b.percentage - a.percentage)
-                      .reverse()
                       .map((data) => (
                         <Col xs={0} sm={0} md={0} lg={0} xl={8} key={data.id}>
                           <div
@@ -620,11 +621,13 @@ export default function SectorAllocations({
                 </Col>
               </Row>
 
-              <Row gutter={[4, 4]}>
+              <Row
+                gutter={[4, 4]}
+                className={router.locale === "ar" ? "flex-row-reverse" : ""}
+              >
                 {active && router.locale === "ar"
                   ? sectorData
                       .sort((a, b) => b.percentage - a.percentage)
-                      .reverse()
                       .map((data) => (
                         <Col xs={12} sm={12} md={8} lg={8} xl={8} key={data.id}>
                           <div

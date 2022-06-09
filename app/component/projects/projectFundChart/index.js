@@ -128,12 +128,18 @@ export default function ProjectFundChart({ finalChartData }) {
       },
       fill: {
         type: "gradient",
-        colors: ["#ed6961", "#12ab97"],
+        colors:
+          router.locale === "en"
+            ? ["#12ab97", "#ed6961"]
+            : ["#ed6961", "#12ab97"],
         gradient: {
           shade: "light",
           type: "vertical",
           shadeIntensity: 0.75,
-          gradientToColors: ["#ffb28e", "#a7e05f"],
+          gradientToColors:
+            router.locale === "en"
+              ? ["#a7e05f", "#ffb28e"]
+              : ["#ffb28e", "#a7e05f"],
           inverseColors: true,
           opacityFrom: 1,
           opacityTo: 1,
@@ -152,12 +158,22 @@ export default function ProjectFundChart({ finalChartData }) {
         chartData.length === 0) */
     ) {
       for (let index = 0; index < Object.keys(finalChartData).length; index++) {
-        series[0].data.push(
-          Math.round(parseFloat(finalChartData[index].totalApprovedAmount))
-        );
-        series[1].data.push(
-          Math.round(parseFloat(finalChartData[index].totalDisbursementAmount))
-        );
+        if(router.locale === "en") {
+          series[0].data.push(
+            Math.round(parseFloat(finalChartData[index].totalApprovedAmount))
+          );
+          series[1].data.push(
+            Math.round(parseFloat(finalChartData[index].totalDisbursementAmount))
+          );
+        }else{
+          series[1].data.push(
+            Math.round(parseFloat(finalChartData[index].totalApprovedAmount))
+          );
+          series[0].data.push(
+            Math.round(parseFloat(finalChartData[index].totalDisbursementAmount))
+          );
+        }
+        
         options.xaxis.categories.push(finalChartData[index].title);
         chartData.push({
           title: finalChartData[index].title,
@@ -169,16 +185,16 @@ export default function ProjectFundChart({ finalChartData }) {
       setOption(options);
       setChartData(chartData);
     }
-  }, [finalChartData, /* chartSeriesData, option, chartData */]);
+  }, [finalChartData /* chartSeriesData, option, chartData */]);
 
   const legendData = [
     {
       color: `linear-gradient(to bottom, #ffb28e, #ed6961)`,
-      text: t("approved"),
+      text: t("disbursed"),
     },
     {
       color: `linear-gradient(to bottom, #a7e05f, #12ab97)`,
-      text: t("disbursed"),
+      text: t("approved"),
     },
   ];
 

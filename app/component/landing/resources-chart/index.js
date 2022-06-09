@@ -203,12 +203,18 @@ export default function ResourceChart({
         },
         fill: {
           type: "gradient",
-          colors: ["#12ab97","#ed6961"],
+          colors:
+            router.locale === "en"
+              ? ["#12ab97", "#ed6961"]
+              : ["#ed6961", "#12ab97"],
           gradient: {
             shade: "light",
             type: "vertical",
             shadeIntensity: 0.75,
-            gradientToColors: ["#a7e05f","#ffb28e"],
+            gradientToColors:
+              router.locale === "en"
+                ? ["#a7e05f", "#ffb28e"]
+                : ["#ffb28e", "#a7e05f"],
             inverseColors: true,
             opacityFrom: 1,
             opacityTo: 1,
@@ -312,12 +318,18 @@ export default function ResourceChart({
         },
         fill: {
           type: "gradient",
-          colors: ["#12ab97","#ed6961",],
+          colors:
+            router.locale === "en"
+              ? ["#12ab97", "#ed6961"]
+              : ["#ed6961", "#12ab97"],
           gradient: {
             shade: "light",
             type: "vertical",
             shadeIntensity: 0.75,
-            gradientToColors: [ "#a7e05f","#ffb28e"],
+            gradientToColors:
+              router.locale === "en"
+                ? ["#a7e05f", "#ffb28e"]
+                : ["#ffb28e", "#a7e05f"],
             inverseColors: true,
             opacityFrom: 1,
             opacityTo: 1,
@@ -519,12 +531,22 @@ export default function ResourceChart({
       ) {
         let XAxisDataAqLocal = [];
         for (let index = 0; index < ArabSorted.length; index++) {
-          seriesAr[0].data.push(
-            Math.round(parseFloat(ArabSorted[index].Grants))
-          );
-          seriesAr[1].data.push(
-            Math.round(parseFloat(ArabSorted[index].DisbursementAmount))
-          );
+          if (router.locale === "en") {
+            seriesAr[0].data.push(
+              Math.round(parseFloat(ArabSorted[index].Grants))
+            );
+            seriesAr[1].data.push(
+              Math.round(parseFloat(ArabSorted[index].DisbursementAmount))
+            );
+          } else {
+            seriesAr[1].data.push(
+              Math.round(parseFloat(ArabSorted[index].Grants))
+            );
+            seriesAr[0].data.push(
+              Math.round(parseFloat(ArabSorted[index].DisbursementAmount))
+            );
+          }
+
           totalAr += Math.round(parseFloat(ArabSorted[index].Grants));
           totalArDis += Math.round(
             parseFloat(ArabSorted[index].DisbursementAmount)
@@ -584,12 +606,21 @@ export default function ResourceChart({
           totalYrDisbursed.length === 0)
       ) {
         for (let index = 0; index < yearlySorted.length; index++) {
-          seriesYr[0].data.push(
-            Math.round(parseFloat(yearlySorted[index].ApprovedAmount))
-          );
-          seriesYr[1].data.push(
-            Math.round(parseFloat(yearlySorted[index].DisbursementAmount))
-          );
+          if (router.locale === "en") {
+            seriesYr[0].data.push(
+              Math.round(parseFloat(yearlySorted[index].ApprovedAmount))
+            );
+            seriesYr[1].data.push(
+              Math.round(parseFloat(yearlySorted[index].DisbursementAmount))
+            );
+          } else {
+            seriesYr[1].data.push(
+              Math.round(parseFloat(yearlySorted[index].ApprovedAmount))
+            );
+            seriesYr[0].data.push(
+              Math.round(parseFloat(yearlySorted[index].DisbursementAmount))
+            );
+          }
           totalYr += Math.round(parseFloat(yearlySorted[index].ApprovedAmount));
           totalYrDis += Math.round(
             parseFloat(yearlySorted[index].DisbursementAmount)

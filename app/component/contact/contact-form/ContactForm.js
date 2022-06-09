@@ -36,7 +36,7 @@ export default function ContactForm() {
   const { handleSubmit, handleInputChange, inputs, errors } = UseContactForm(
     fromObject,
     errorObj,
-    setRegisterDone,
+    setRegisterDone
   );
 
   return (
@@ -46,24 +46,23 @@ export default function ContactForm() {
           <Col xs={0} sm={0} md={24} lg={24} xl={24}>
             <Row className={`px-4`}>
               <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                <AppInput
-                  sm={true}
-                  label={t("first name")}
-                  placeholder={t("enter first name")}
-                  name="firstName"
-                  errorText={t("please enter a valid name.")}
-                  errorCheck={
-                    errors.firstName !== null && !errors.firstName
-                      ? true
-                      : false
-                  }
-                  value={inputs.firstName}
-                  error={errors.firstName}
-                  onChange={handleInputChange}
-                />
-              </Col>
-              <Col xs={0} sm={0} md={12} lg={12} xl={12}>
-                <div className={`d-flex justify-content-end w-100`}>
+                {router.locale === "en" ? (
+                  <AppInput
+                    sm={true}
+                    label={t("first name")}
+                    placeholder={t("enter first name")}
+                    name="firstName"
+                    errorText={t("please enter a valid name.")}
+                    errorCheck={
+                      errors.firstName !== null && !errors.firstName
+                        ? true
+                        : false
+                    }
+                    value={inputs.firstName}
+                    error={errors.firstName}
+                    onChange={handleInputChange}
+                  />
+                ) : (
                   <AppInput
                     sm={true}
                     label={t("last name (optional)")}
@@ -72,6 +71,36 @@ export default function ContactForm() {
                     value={inputs.lastName}
                     onChange={handleInputChange}
                   />
+                )}
+              </Col>
+              <Col xs={0} sm={0} md={12} lg={12} xl={12}>
+                <div className={`d-flex justify-content-end w-100`}>
+                  {router.locale === "en" ? (
+                    <AppInput
+                      sm={true}
+                      label={t("last name (optional)")}
+                      placeholder={t("enter last name")}
+                      name="lastName"
+                      value={inputs.lastName}
+                      onChange={handleInputChange}
+                    />
+                  ) : (
+                    <AppInput
+                      sm={true}
+                      label={t("first name")}
+                      placeholder={t("enter first name")}
+                      name="firstName"
+                      errorText={t("please enter a valid name.")}
+                      errorCheck={
+                        errors.firstName !== null && !errors.firstName
+                          ? true
+                          : false
+                      }
+                      value={inputs.firstName}
+                      error={errors.firstName}
+                      onChange={handleInputChange}
+                    />
+                  )}
                 </div>
               </Col>
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
@@ -108,7 +137,7 @@ export default function ContactForm() {
                     label={t("phone number")}
                     placeholder={t("enter phone number")}
                     errorText={t(
-                      "please enter a valid phone number or try adding your country code.",
+                      "please enter a valid phone number or try adding your country code."
                     )}
                     errorCheck={
                       errors.phoneNumber !== null && !errors.phoneNumber
@@ -128,7 +157,7 @@ export default function ContactForm() {
                   label={t("phone number")}
                   placeholder={t("enter phone number")}
                   errorText={t(
-                    "please enter a valid phone number or try adding your country code.",
+                    "please enter a valid phone number or try adding your country code."
                   )}
                   errorCheck={
                     errors.phoneNumber !== null && !errors.phoneNumber
@@ -252,7 +281,7 @@ export default function ContactForm() {
                     label={t("phone number")}
                     placeholder={t("enter phone number")}
                     errorText={t(
-                      "please enter a valid phone number or try adding your country code.",
+                      "please enter a valid phone number or try adding your country code."
                     )}
                     errorCheck={
                       errors.phoneNumber !== null && !errors.phoneNumber
@@ -272,7 +301,7 @@ export default function ContactForm() {
                   label={t("phone number")}
                   placeholder={t("enter phone number")}
                   errorText={t(
-                    "please enter a valid phone number or try adding your country code.",
+                    "please enter a valid phone number or try adding your country code."
                   )}
                   errorCheck={
                     errors.phoneNumber !== null && !errors.phoneNumber

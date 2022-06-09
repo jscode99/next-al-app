@@ -203,12 +203,12 @@ export default function ResourceChart({
         },
         fill: {
           type: "gradient",
-          colors: ["#ed6961", "#12ab97"],
+          colors: ["#12ab97","#ed6961"],
           gradient: {
             shade: "light",
             type: "vertical",
             shadeIntensity: 0.75,
-            gradientToColors: ["#ffb28e", "#a7e05f"],
+            gradientToColors: ["#a7e05f","#ffb28e"],
             inverseColors: true,
             opacityFrom: 1,
             opacityTo: 1,
@@ -312,12 +312,12 @@ export default function ResourceChart({
         },
         fill: {
           type: "gradient",
-          colors: ["#ed6961", "#12ab97"],
+          colors: ["#12ab97","#ed6961",],
           gradient: {
             shade: "light",
             type: "vertical",
             shadeIntensity: 0.75,
-            gradientToColors: ["#ffb28e", "#a7e05f"],
+            gradientToColors: [ "#a7e05f","#ffb28e"],
             inverseColors: true,
             opacityFrom: 1,
             opacityTo: 1,
@@ -642,21 +642,21 @@ export default function ResourceChart({
   const legendDataAr = [
     {
       color: `linear-gradient(to bottom, #ffb28e, #ed6961)`,
-      text: t("approved"),
+      text: t("disbursed"),
     },
     {
       color: `linear-gradient(to bottom, #a7e05f, #12ab97)`,
-      text: t("disbursed"),
+      text: t("approved"),
     },
   ];
   const legendDataYr = [
     {
       color: `linear-gradient(to bottom, #ffb28e, #ed6961)`,
-      text: t("approved"),
+      text: t("disbursed"),
     },
     {
       color: `linear-gradient(to bottom, #a7e05f, #12ab97)`,
-      text: t("disbursed"),
+      text: t("approved"),
     },
   ];
   console.log("=====>", aqsaResource, aqsaOption, xDataAl, totalAqsa);

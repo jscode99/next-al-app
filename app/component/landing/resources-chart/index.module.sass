@@ -11,7 +11,7 @@
 .resource_selected_title
     @extend %font_size_25
     color: $primary_color $important
-    font-weight: $nine_hundred $important
+    font-weight: 800 $important
 
 .resource_subtitle
     font-family: "oswald",roboto
@@ -20,9 +20,23 @@
     font-weight: $five_hundred
     letter-spacing: 1px
 
+.resource_subtitle_ar
+    font-family: $noto_kufi
+    font-size: 23px $important
+    color: $grey_color
+    font-weight: $five_hundred
+
 .resource_chart_indicator
     font-family: "oswald",roboto
     font-size: 20px $important
+    @extend %font_size_22
+    color: $grey_color
+    font-weight: $five_hundred
+    letter-spacing: .5px
+
+.resource_chart_indicator_ar
+    font-family: $noto_kufi
+    font-size: 19px $important
     @extend %font_size_22
     color: $grey_color
     font-weight: $five_hundred
@@ -36,11 +50,23 @@
     font-size: 10px
     letter-spacing: .3px
 
+.resource_chart_labels_ar
+    font-family: $noto_kufi
+    font-size: 10px
+    letter-spacing: .3px
+
+
 .fund_chart_indicator
     width: 25px
     height: 20px
 
 .indicator_text
+    @extend %font_size_18
+    font-weight: $five_hundred
+    letter-spacing: .5px
+
+.indicator_text_ar
+    font-family: $noto_kufi
     @extend %font_size_18
     font-weight: $five_hundred
     letter-spacing: .5px
@@ -71,16 +97,19 @@
     .resource_container
         @include container_padding_tabScreen
 
-    .resource_subtitle
+    .resource_subtitle,
+    .resource_subtitle_ar
         text-align: center
         @include font_size_22
 
 @media only screen and (max-width: 500px)
-    .resource_chart_indicator
+    .resource_chart_indicator,
+    .resource_chart_indicator_ar
         font-size: 15px $important
     .resource_container
         @include container_padding_smScreen
 
-    .resource_subtitle
+    .resource_subtitle,
+    .resource_subtitle_ar
         text-align: center
         @include font_size_18

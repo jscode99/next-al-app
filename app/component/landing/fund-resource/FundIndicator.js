@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { Col } from "antd";
 import { useInView } from "react-hook-inview";
 import CountUp from "../../../common-component/app-animation/count-up";
@@ -5,6 +6,8 @@ import { splitLetterNumberService } from "../../../services/commonService";
 import style from "./index.module.sass";
 
 export default function FundIndicator({ data }) {
+  const router = useRouter();
+
   const [ref, isVisible] = useInView({
     threshold: 1,
   });
@@ -34,7 +37,9 @@ export default function FundIndicator({ data }) {
           })}
         </div>
         <p
-          className={`${style.fund_title} ${data.font} text-center text-capitalize`}
+          className={`${
+            router.locale === "en" ? style.fund_title : style.fund_title_ar
+          } text-center text-capitalize`}
         >
           {data.text}
         </p>

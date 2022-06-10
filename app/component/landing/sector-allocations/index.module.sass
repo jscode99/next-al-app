@@ -19,9 +19,21 @@
     font-weight: $nine_hundred
     letter-spacing: 1px
 
+.sector_title_ar
+    @extend %font_size_32
+    font-family: $noto_kufi
+    font-weight: $nine_hundred
+    letter-spacing: 1px
+
 .sector_subtitle
     @extend %font_size_18
     font-family: "oswald",roboto
+    color: rgba(255, 255, 255, 0.87)
+    letter-spacing: .5px
+
+.sector_subtitle_ar
+    @extend %font_size_18
+    font-family: $noto_kufi
     color: rgba(255, 255, 255, 0.87)
     letter-spacing: .5px
 
@@ -47,6 +59,13 @@
     color: #c3c5c6
     letter-spacing: .5px
 
+.sector_chart_title_ar
+    font-size: 17px !important
+    font-family: $noto_kufi
+    font-weight: $seven_hundred
+    color: #c3c5c6
+
+
 @media only screen and (max-width: 1440px)
     .sector_chart_container
         width: 75%
@@ -62,5 +81,6 @@
     //     display: flex
 
 @media only screen and (max-width: 500px)
-    .sector_chart_title
+    .sector_chart_title,
+    .sector_chart_title_ar
         @include font_size_14

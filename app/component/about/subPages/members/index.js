@@ -76,7 +76,9 @@ export default function Members({ members, flag }) {
                 >
                   <p
                     className={`px-2 py-2 m-0 ${
-                      style.member_intro_button_title
+                      router.locale === "en"
+                        ? style.member_intro_button_title
+                        : style.member_intro_button_title_ar
                     } text-capitalize ${
                       activeData === true ? style.selected : ``
                     }`}
@@ -92,10 +94,10 @@ export default function Members({ members, flag }) {
                 >
                   <p
                     className={`text-capitalize px-2 py-2 m-0 ${
-                      style.member_intro_button_title
-                    } ${style.member_intro_button_title} ${
-                      activeData === false ? style.selected : ``
-                    }`}
+                      router.locale === "en"
+                        ? style.member_intro_button_title
+                        : style.member_intro_button_title_ar
+                    } ${activeData === false ? style.selected : ``}`}
                   >
                     {t("management committee")}
                   </p>
@@ -111,10 +113,10 @@ export default function Members({ members, flag }) {
                 >
                   <p
                     className={`text-capitalize px-2 py-2 m-0 ${
-                      style.member_intro_button_title
-                    } ${style.member_intro_button_title} ${
-                      activeData === false ? style.selected : ``
-                    }`}
+                      router.locale === "en"
+                        ? style.member_intro_button_title
+                        : style.member_intro_button_title_ar
+                    }  ${activeData === false ? style.selected : ``}`}
                   >
                     {t("management committee")}
                   </p>
@@ -127,10 +129,10 @@ export default function Members({ members, flag }) {
                 >
                   <p
                     className={`text-capitalize px-2 py-2 m-0 ${
-                      style.member_intro_button_title
-                    } ${style.member_intro_button_title} ${
-                      activeData === true ? style.selected : ``
-                    }`}
+                      router.locale === "en"
+                        ? style.member_intro_button_title
+                        : style.member_intro_button_title_ar
+                    }  ${activeData === true ? style.selected : ``}`}
                   >
                     {t("supreme council")}
                   </p>
@@ -195,10 +197,10 @@ export default function Members({ members, flag }) {
                 >
                   <p
                     className={`text-capitalize px-4 py-2 m-0 ${
-                      style.member_intro_button_title
-                    } ${style.member_intro_button_title} ${
-                      activeData === false ? style.selected : ``
-                    }`}
+                      router.locale === "en"
+                        ? style.member_intro_button_title
+                        : style.member_intro_button_title_ar
+                    }  ${activeData === false ? style.selected : ``}`}
                   >
                     {t("management committee")}
                   </p>
@@ -211,10 +213,10 @@ export default function Members({ members, flag }) {
                 >
                   <p
                     className={`text-capitalize px-4 py-2 m-0 ${
-                      style.member_intro_button_title
-                    } ${style.member_intro_button_title} ${
-                      activeData === true ? style.selected : ``
-                    }`}
+                      router.locale === "en"
+                        ? style.member_intro_button_title
+                        : style.member_intro_button_title_ar
+                    }  ${activeData === true ? style.selected : ``}`}
                   >
                     {t("supreme council")}
                   </p>

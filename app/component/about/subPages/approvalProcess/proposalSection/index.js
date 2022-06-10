@@ -16,15 +16,22 @@ export default function ProposalSection({ data }) {
           <div className={`${style.proposal_container} shadow mb-5`}>
             <div className={`p-4`}>
               <h3
-                className={`${style.proposal_title} text-center w-100 text-capitalize`}
+                className={`${
+                  router.locale === "en"
+                    ? style.proposal_title
+                    : style.proposal_title_ar
+                } text-center w-100 text-capitalize`}
               >
                 {t("proposal selection criteria")}
               </h3>
               <hr className={`${style.proposal_under_line} my-3`} />
               <p
-                className={`${style.proposal_des} ${
-                  router.locale === "en" ? "text-justify" : "text-end"
-                }`}
+                className={`${
+                  router.locale === "en"
+                    ? style.proposal_des
+                    : style.proposal_des_ar
+                } text-justify`}
+                dir={router.locale === "ar" ? "rtl" : ""}
               >
                 {data &&
                   Object.keys(data).length > 0 &&
@@ -41,15 +48,22 @@ export default function ProposalSection({ data }) {
           <div className={`${style.proposal_container} shadow mb-5 mx-2`}>
             <div className={`p-4`}>
               <h3
-                className={`${style.proposal_title} text-center w-100 text-capitalize`}
+                className={`${
+                  router.locale === "en"
+                    ? style.proposal_title
+                    : style.proposal_title_ar
+                } text-center w-100 text-capitalize`}
               >
                 {t("proposal selection criteria")}
               </h3>
               <hr className={`${style.proposal_under_line} my-3`} />
               <p
-                className={`${style.proposal_des} ${
-                  router.locale === "en" ? "text-start" : "text-end"
-                }`}
+                className={`${
+                  router.locale === "en"
+                    ? style.proposal_des
+                    : style.proposal_des_ar
+                } text-justify`}
+                dir={router.locale === "ar" ? "rtl" : ""}
               >
                 {data && data.length > 0 && data.description}
               </p>

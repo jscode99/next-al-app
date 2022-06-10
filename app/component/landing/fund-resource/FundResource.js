@@ -43,7 +43,11 @@ export default function FundResource({ data }) {
       <div className={`${style.fund_resource_container}`}>
         <div className="py-4">
           <h3
-            className={`${style.fund_resource_title} text-capitalize text-center mb-4 `}
+            className={`${
+              router.locale === "en"
+                ? style.fund_resource_title
+                : style.fund_resource_title_ar
+            } text-capitalize text-center mb-4 `}
           >
             {t("al aqsa fund resources")}
           </h3>

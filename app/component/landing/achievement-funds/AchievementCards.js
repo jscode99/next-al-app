@@ -77,7 +77,11 @@ export default function AchievementCards({ data }) {
           </>
         )}
         <p
-          className={`${style.achievement_card_title} text-center m-0 text-capitalize`}
+          className={`${
+            router.locale === "en"
+              ? style.achievement_card_title
+              : style.achievement_card_title_ar
+          } text-center m-0 text-capitalize`}
         >
           {data.title}
         </p>

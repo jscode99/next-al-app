@@ -56,7 +56,7 @@ export default function Selection({ data }) {
               </Col>
               <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                 <h4
-                  className={`mb-5 ${style.selection_imp} d-flex justify-content-start ms-5 ps-3 text-capitalize`}
+                  className={`mb-5 ${style.selection_imp_ar} d-flex justify-content-start ms-5 ps-3 text-capitalize`}
                 >
                   {t("implementation")}
                 </h4>

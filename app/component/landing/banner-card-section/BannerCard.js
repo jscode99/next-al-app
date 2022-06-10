@@ -70,7 +70,7 @@ export default function BannerCard({ data }) {
       >
         {countUpArray &&
           countUpArray.length > 0 &&
-          countUpArray.map(value => {
+          countUpArray.map((value) => {
             if (Number.isNaN(parseFloat(value))) {
               return value;
             } else {
@@ -87,7 +87,11 @@ export default function BannerCard({ data }) {
           })}
       </h3>
       <p
-        className={`${style.banner_card_subtitle} ${data.ftColor} text-center`}
+        className={`${
+          router.locale === "en"
+            ? style.banner_card_subtitle
+            : style.banner_card_subtitle_ar
+        } ${data.ftColor} text-center`}
       >
         {subtitleFunc()}
       </p>

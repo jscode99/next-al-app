@@ -223,14 +223,22 @@ export default function SectorAllocations({
               <Row>
                 <Col xs={0} sm={0} md={0} lg={20} xl={20}>
                   <p
-                    className={`${style.sector_title} ${
+                    className={`${
+                      router.locale === "en"
+                        ? style.sector_title
+                        : style.sector_title_ar
+                    } ${
                       router.locale === "ar" ? "text-end" : "text-start"
                     } text-white mb-2 text-capitalize`}
                   >
                     {t("sector allocations")}
                   </p>
                   <p
-                    className={`${style.sector_subtitle} ${
+                    className={`${
+                      router.locale === "en"
+                        ? style.sector_subtitle
+                        : style.sector_subtitle_ar
+                    } ${
                       router.locale === "ar" ? "text-end" : "text-start"
                     } m-0 text-capitalize`}
                   >
@@ -347,7 +355,11 @@ export default function SectorAllocations({
                             />
                           </div>
                           <div
-                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.sector_chart_title
+                                : style.sector_chart_title_ar
+                            } d-flex justify-content-center text-capitalize text-center flex-row px-3`}
                           >
                             {t(data.title)}
                           </div>
@@ -419,7 +431,11 @@ export default function SectorAllocations({
                             />
                           </div>
                           <div
-                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.sector_chart_title
+                                : style.sector_chart_title_ar
+                            } d-flex justify-content-center text-capitalize text-center flex-row px-3`}
                           >
                             {t(data.title)}
                           </div>
@@ -485,7 +501,11 @@ export default function SectorAllocations({
                             />
                           </div>
                           <div
-                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.sector_chart_title
+                                : style.sector_chart_title_ar
+                            } d-flex justify-content-center text-capitalize text-center flex-row px-3`}
                           >
                             {t(data.title)}
                           </div>
@@ -550,7 +570,11 @@ export default function SectorAllocations({
                             />
                           </div>
                           <div
-                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.sector_chart_title
+                                : style.sector_chart_title_ar
+                            } d-flex justify-content-center text-capitalize text-center flex-row px-3`}
                           >
                             {t(data.title)}
                           </div>
@@ -567,14 +591,22 @@ export default function SectorAllocations({
               <Row>
                 <Col xs={24} sm={20} md={20} lg={0} xl={0}>
                   <p
-                    className={`${style.sector_title} ${
+                    className={`${
+                      router.locale === "en"
+                        ? style.sector_title
+                        : style.sector_title_ar
+                    } ${
                       router.locale === "ar" ? "text-end" : "text-start"
                     } text-white mb-2 text-capitalize`}
                   >
                     {t("sector allocations")}
                   </p>
                   <p
-                    className={`${style.sector_subtitle} ${
+                    className={`${
+                      router.locale === "en"
+                        ? style.sector_subtitle
+                        : style.sector_subtitle_ar
+                    } ${
                       router.locale === "ar" ? "text-end" : "text-start"
                     } mb-2 text-capitalize`}
                   >
@@ -685,7 +717,11 @@ export default function SectorAllocations({
                             />
                           </div>
                           <div
-                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.sector_chart_title
+                                : style.sector_chart_title_ar
+                            } d-flex justify-content-center text-capitalize text-center flex-row px-3`}
                           >
                             {t(data.title)}
                           </div>
@@ -750,7 +786,11 @@ export default function SectorAllocations({
                             />
                           </div>
                           <div
-                            className={`${style.sector_chart_title} d-flex justify-content-center text-capitalize text-center flex-row px-3`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.sector_chart_title
+                                : style.sector_chart_title_ar
+                            } d-flex justify-content-center text-capitalize text-center flex-row px-3`}
                           >
                             {t(data.title)}
                           </div>

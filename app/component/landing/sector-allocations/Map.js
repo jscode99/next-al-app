@@ -417,8 +417,8 @@ export default function MapSvg({ finalChartData }) {
                   transform="translate(0 9)"
                   fill="#fff"
                   fontSize="18"
-                  fontFamily="GeezaPro-Bold, Geeza Pro"
-                  fontWeight="700"
+                  fontFamily="Noto Kufi Arabic, sans-serif"
+                  fontWeight="600"
                   letterSpacing="0em"
                 >
                   <tspan x="0" y="0">
@@ -494,8 +494,8 @@ export default function MapSvg({ finalChartData }) {
                   transform="translate(0 10)"
                   fill="#fff"
                   fontSize="18"
-                  fontFamily="GeezaPro-Bold, Geeza Pro"
-                  fontWeight="700"
+                  fontFamily="Noto Kufi Arabic, sans-serif"
+                  fontWeight="600"
                   letterSpacing="0.002em"
                 >
                   <tspan x="0" y="0">
@@ -571,8 +571,8 @@ export default function MapSvg({ finalChartData }) {
                   transform="translate(0 9)"
                   fill="#fff"
                   fontSize="18"
-                  fontFamily="GeezaPro-Bold, Geeza Pro"
-                  fontWeight="700"
+                  fontFamily="Noto Kufi Arabic, sans-serif"
+                  fontWeight="600"
                   letterSpacing="-0.005em"
                 >
                   <tspan x="0" y="0">

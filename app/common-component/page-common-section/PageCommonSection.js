@@ -14,7 +14,7 @@ export default function PageCommonSection({ title, handlePrint }) {
   console.log("Title in breadCrum", title);
   useEffect(() => {
     // console.log("path", router);
-    setBreadcrumList(getBreadcrumData(router,title));
+    setBreadcrumList(getBreadcrumData(router, title));
     let socialMediaList = [
       { className: "fas fa-print", link: null, btn: handlePrint },
       {
@@ -94,7 +94,11 @@ export default function PageCommonSection({ title, handlePrint }) {
                     <Row>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>
                         <h1
-                          className={`${style.page_common_section_title} text-capitalize`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.page_common_section_title
+                              : style.page_common_section_title_ar
+                          } text-capitalize`}
                         >
                           {title}
                         </h1>
@@ -161,7 +165,11 @@ export default function PageCommonSection({ title, handlePrint }) {
                       </Col>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>
                         <h1
-                          className={`${style.page_common_section_title} text-end text-capitalize`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.page_common_section_title
+                              : style.page_common_section_title_ar
+                          } text-end text-capitalize`}
                         >
                           {title}
                         </h1>
@@ -207,7 +215,11 @@ export default function PageCommonSection({ title, handlePrint }) {
                     <Row>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>
                         <h1
-                          className={`${style.page_common_section_title} text-capitalize`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.page_common_section_title
+                              : style.page_common_section_title_ar
+                          } text-capitalize`}
                         >
                           {title}
                         </h1>
@@ -285,7 +297,11 @@ export default function PageCommonSection({ title, handlePrint }) {
                       </Col>
                       <Col xs={20} sm={20} md={14} lg={16} xl={16}>
                         <h1
-                          className={`${style.page_common_section_title} text-end text-capitalize`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.page_common_section_title
+                              : style.page_common_section_title_ar
+                          } text-end text-capitalize`}
                         >
                           {title}
                         </h1>

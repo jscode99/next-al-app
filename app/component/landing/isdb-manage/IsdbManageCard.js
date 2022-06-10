@@ -16,7 +16,13 @@ export default function IsdbManageCard({ data }) {
           width="95px"
         />
       </div>
-      <p className={`text-center ${style.isdb_manage_card_text} mb-2`}>
+      <p
+        className={`text-center ${
+          router.locale === "en"
+            ? style.isdb_manage_card_text
+            : style.isdb_manage_card_text_ar
+        } mb-2 mx-2`}
+      >
         {data.title}
       </p>
       <p

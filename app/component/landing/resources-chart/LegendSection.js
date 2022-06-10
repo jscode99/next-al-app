@@ -13,8 +13,9 @@ export default function LegendSection({ legendData }) {
       <div
         className={`d-flex flex-wrap justify-content-center align-items-center py-2`}
       >
-        {legendData.map(data => (
+        {legendData.map((data, index) => (
           <div
+            key={index}
             className={`${style.legend_container} d-flex justify-content-start
             }
                
@@ -26,7 +27,13 @@ export default function LegendSection({ legendData }) {
               className={`${style.fund_chart_indicator} mx-3`}
               style={{ backgroundImage: data.color }}
             ></div>
-            <div className={`${style.indicator_text} text-capitalize`}>
+            <div
+              className={`${
+                router.locale === "en"
+                  ? style.indicator_text
+                  : style.indicator_text_ar
+              } text-capitalize`}
+            >
               {data.text}
             </div>
           </div>

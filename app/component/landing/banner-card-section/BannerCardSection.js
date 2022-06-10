@@ -186,7 +186,11 @@ export default function BannerCardSection({ data, projectData, projectTitle }) {
             <div className={`d-flex justify-content-center align-items-center`}>
               <div className={`${style.inner_container} h-100 py-5 `}>
                 <TweenOne
-                  className={`${style.banner_card_section_title} ${
+                  className={`${
+                    router.locale === "en"
+                      ? style.banner_card_section_title
+                      : style.banner_card_section_title_ar
+                  } ${
                     router.locale === "en" ? "" : `d-flex justify-content-end`
                   } text-white mb-2 text-capitalize`}
                   animation={{ y: -30, opacity: 0, type: "from", delay: 50 }}
@@ -194,7 +198,11 @@ export default function BannerCardSection({ data, projectData, projectTitle }) {
                   {t("al aqsa fund")}
                 </TweenOne>
                 <TweenOne
-                  className={`${style.banner_card_section_subtitle} ${
+                  className={`${
+                    router.locale === "en"
+                      ? style.banner_card_section_subtitle
+                      : style.banner_card_section_subtitle_ar
+                  } ${
                     router.locale === "en" ? "" : `d-flex justify-content-end`
                   } mb-5 text-capitalize`}
                   animation={{ y: 30, opacity: 0, type: "from", delay: 150 }}
@@ -217,7 +225,11 @@ export default function BannerCardSection({ data, projectData, projectTitle }) {
             <div className={`d-flex justify-content-center align-items-center`}>
               <div className={`${style.inner_container} h-100 py-5`}>
                 <TweenOne
-                  className={`${style.banner_card_section_title} ${
+                  className={`${
+                    router.locale === "en"
+                      ? style.banner_card_section_title
+                      : style.banner_card_section_title_ar
+                  } ${
                     router.locale === "en" ? "" : `d-flex justify-content-end`
                   } text-white mb-2 text-capitalize`}
                   animation={{ y: 30, opacity: 0, type: "from", delay: 50 }}
@@ -225,7 +237,11 @@ export default function BannerCardSection({ data, projectData, projectTitle }) {
                   {t("al aqsa fund")}
                 </TweenOne>
                 <TweenOne
-                  className={`${style.banner_card_section_subtitle} ${
+                  className={`${
+                    router.locale === "en"
+                      ? style.banner_card_section_subtitle
+                      : style.banner_card_section_subtitle_ar
+                  } ${
                     router.locale === "en" ? "" : `d-flex justify-content-end`
                   } mb-5 text-capitalize`}
                   animation={{ y: 30, opacity: 0, type: "from", delay: 150 }}

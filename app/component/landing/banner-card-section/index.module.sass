@@ -17,12 +17,24 @@
     font-weight: $nine_hundred
     letter-spacing: 2px
 
+.banner_card_section_title_ar
+    font-size: 3.1vw
+    font-family: $noto_kufi
+    font-weight: $nine_hundred
+    letter-spacing: 2px
+
 .banner_card_section_subtitle
     font-size: 2vw
     font-family: "oswald",roboto
     color: $lite_white_color
     font-weight: $nine_hundred
     letter-spacing: 1px
+
+.banner_card_section_subtitle_ar
+    font-size: 1.5vw
+    font-family: $noto_kufi
+    color: $lite_white_color
+    font-weight: $seven_hundred
 
 .banner_card
     height: 100px
@@ -49,11 +61,23 @@
     font-family: "oswald"
     letter-spacing: 1px
 
+.banner_card_title_ar
+    @extend %font_size_25
+    font-weight: $nine_hundred
+    font-family: $noto_kufi
+    letter-spacing: 1px
+
 .banner_card_subtitle
     font-size: 15px
     font-weight: $five_hundred
     font-family: roboto
     letter-spacing: .5px
+
+.banner_card_subtitle_ar
+    font-size: 14px
+    font-weight: $five_hundred
+    font-family: $noto_kufi
+
 
 .bg_primary_color
     background-color: $primary_color
@@ -100,6 +124,8 @@
     .banner_card_section
         @include container_padding_smScreen
     .banner_card_section_title,
-    .banner_card_section_subtitle
+    .banner_card_section_title_ar,
+    .banner_card_section_subtitle,
+    .banner_card_section_subtitle_ar
         text-align: center
 

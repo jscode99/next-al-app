@@ -15,7 +15,11 @@ export default function BreadCrumb({ breadcrumList }) {
           return (
             <>
               <Breadcrumb.Item
-                className={`${style.breadcrumb_item}`}
+                className={`${
+                  router.locale === "en"
+                    ? style.breadcrumb_item
+                    : style.breadcrumb_item_ar
+                }`}
                 href={router.locale === "en" ? "/" : "/ar"}
               >
                 {router.locale === "en" ? "Home" : "الرئيسية"}
@@ -31,7 +35,11 @@ export default function BreadCrumb({ breadcrumList }) {
           if (index === breadcrumList.length - 1) {
             return (
               <Breadcrumb.Item
-                className={`${style.breadcrumb_item} ${style.primary_color}`}
+                className={`${
+                  router.locale === "en"
+                    ? style.breadcrumb_item
+                    : style.breadcrumb_item_ar
+                } ${style.primary_color}`}
               >
                 {router.locale === "en"
                   ? t(data).length > 30
@@ -46,7 +54,11 @@ export default function BreadCrumb({ breadcrumList }) {
             return (
               <>
                 <Breadcrumb.Item
-                  className={`${style.breadcrumb_item}`}
+                  className={`${
+                    router.locale === "en"
+                      ? style.breadcrumb_item
+                      : style.breadcrumb_item_ar
+                  }`}
                   href={`${
                     router.locale === "en"
                       ? `/en/${mapTitleToRoutePath(data)}`

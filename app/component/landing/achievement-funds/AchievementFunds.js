@@ -11,7 +11,7 @@ export default function AchievementFunds({ data }) {
   //Trans Lib
   const { t } = useTranslation("common");
 
-  const getProperty = priority => {
+  const getProperty = (priority) => {
     switch (priority) {
       case "1":
         return [
@@ -55,7 +55,7 @@ export default function AchievementFunds({ data }) {
   useEffect(() => {
     let achievement = data.sort((x, y) => x.priority - y.priority);
     console.log("achievement", achievement);
-    let cardData = achievement.map(data => {
+    let cardData = achievement.map((data) => {
       return {
         title: data.title,
         count: data.count,
@@ -72,7 +72,11 @@ export default function AchievementFunds({ data }) {
       <div className={`${style.achievement_container}`}>
         <div className="py-4 d-flex justify-content align-items-center flex-column">
           <h3
-            className={`${style.achievement_title} text-center py-3 text-capitalize`}
+            className={`${
+              router.locale === "en"
+                ? style.achievement_title
+                : style.achievement_title_ar
+            } text-center py-3 text-capitalize`}
           >
             {t("achievements of al-aqsa fund")}
           </h3>
@@ -81,10 +85,10 @@ export default function AchievementFunds({ data }) {
           </p> */}
           <Row className="w-100" gutter={[32, 32]}>
             {router.locale === "en"
-              ? cardData.map(data => <AchievementCards data={data} />)
+              ? cardData.map((data) => <AchievementCards data={data} />)
               : new Array(...cardData)
                   .reverse()
-                  .map(data => <AchievementCards data={data} />)}
+                  .map((data) => <AchievementCards data={data} />)}
           </Row>
         </div>
       </div>

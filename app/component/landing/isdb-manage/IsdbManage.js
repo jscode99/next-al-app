@@ -13,15 +13,21 @@ export default function IsdbManage({ isdbManage, isdbManageAr }) {
     <div className={`${style.isdb_manage_bg}`}>
       <div className={`${style.isdb_manage_container}`}>
         <div className="py-4">
-          <h3 className={`${style.isdb_manage_title} text-center mb-4`}>
+          <h3
+            className={`${
+              router.locale === "en"
+                ? style.isdb_manage_title
+                : style.isdb_manage_title_ar
+            } text-center mb-4`}
+          >
             {t("isdb also manages")}
           </h3>
           <div className="w-100 d-flex justify-content-center flex-wrap align-items-center">
             {router.locale === "en"
-              ? isdbManage.map(data => <IsdbManageCard data={data} />)
+              ? isdbManage.map((data) => <IsdbManageCard data={data} />)
               : new Array(...isdbManageAr)
                   .reverse()
-                  .map(data => <IsdbManageCard data={data} />)}
+                  .map((data) => <IsdbManageCard data={data} />)}
           </div>
         </div>
       </div>

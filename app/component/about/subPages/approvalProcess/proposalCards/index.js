@@ -38,7 +38,7 @@ export default function ProposalCard({ data }) {
       return {
         no: data.priority,
         title: data.title,
-        des: data.description,
+        des: data.des,
         color: getProperty(data.priority),
       };
     });
@@ -51,7 +51,11 @@ export default function ProposalCard({ data }) {
     <div className={`${style.ProposalCard_bg} pb-5`}>
       <div className={`${style.ProposalCard_container} `}>
         <h3
-          className={`${style.ProposalCard_title} text-capitalize text-center py-4 m-0`}
+          className={`${
+            router.locale === "en"
+              ? style.ProposalCard_title
+              : style.ProposalCard_title_ar
+          } text-capitalize text-center py-4 m-0`}
         >
           {t("criteria")}
         </h3>
@@ -78,7 +82,13 @@ export default function ProposalCard({ data }) {
                           <div
                             className={`d-flex justify-content-start w-75 ps-2`}
                           >
-                            <h4 className={`${style.ProposalCard_card_title}`}>
+                            <h4
+                              className={`${
+                                router.locale === "en"
+                                  ? style.ProposalCard_card_title
+                                  : style.ProposalCard_card_title_ar
+                              }`}
+                            >
                               {data.title}
                             </h4>
                           </div>
@@ -86,7 +96,10 @@ export default function ProposalCard({ data }) {
                       ) : (
                         <>
                           <div className={`text-end w-75 pe-2`}>
-                            <h4 className={`${style.ProposalCard_card_title}`}>
+                            <h4
+                              className={`${style.ProposalCard_card_title_ar}`}
+                              dir={`rtl`}
+                            >
                               {data.title}
                             </h4>
                           </div>
@@ -101,9 +114,8 @@ export default function ProposalCard({ data }) {
                       )}
                     </div>
                     <p
-                      className={`${style.ProposalCard_des} ${
-                        router.locale === "en" ? `text-justify` : `text-end`
-                      } m-0`}
+                      className={`${style.ProposalCard_des_ar} text-justify m-0`}
+                      dir={`rtl`}
                     >
                       {data.des}
                     </p>
@@ -126,7 +138,13 @@ export default function ProposalCard({ data }) {
                           <div
                             className={`d-flex justify-content-start w-75 ps-2`}
                           >
-                            <h4 className={`${style.ProposalCard_card_title}`}>
+                            <h4
+                              className={`${
+                                router.locale === "en"
+                                  ? style.ProposalCard_card_title
+                                  : style.ProposalCard_card_title_ar
+                              }`}
+                            >
                               {data.title}
                             </h4>
                           </div>
@@ -134,7 +152,13 @@ export default function ProposalCard({ data }) {
                       ) : (
                         <>
                           <div className={`text-end w-75 pe-2`}>
-                            <h4 className={`${style.ProposalCard_card_title}`}>
+                            <h4
+                              className={`${
+                                router.locale === "en"
+                                  ? style.ProposalCard_card_title
+                                  : style.ProposalCard_card_title_ar
+                              }`}
+                            >
                               {data.title}
                             </h4>
                           </div>
@@ -149,9 +173,14 @@ export default function ProposalCard({ data }) {
                       )}
                     </div>
                     <p
-                      className={`${style.ProposalCard_des} ${
-                        router.locale === "en" ? `text-justify` : `text-end`
+                      className={`${
+                        router.locale === "en"
+                          ? style.ProposalCard_des
+                          : style.ProposalCard_des_ar
+                      } ${
+                        router.locale === "en" ? `text-justify` : `text-justify`
                       } m-0`}
+                      dir={`rtl`}
                     >
                       {data.des}
                     </p>

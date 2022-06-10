@@ -707,7 +707,9 @@ export default function ResourceChart({
                 }}
                 style={{ cursor: "pointer" }}
                 className={`${
-                  style.resource_subtitle
+                  router.locale === "en"
+                    ? style.resource_subtitle
+                    : style.resource_subtitle_ar
                 } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 } ${
@@ -722,7 +724,9 @@ export default function ResourceChart({
                 }}
                 style={{ cursor: "pointer" }}
                 className={`${
-                  style.resource_subtitle
+                  router.locale === "en"
+                    ? style.resource_subtitle
+                    : style.resource_subtitle_ar
                 } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 }  ${
@@ -737,7 +741,9 @@ export default function ResourceChart({
                 }}
                 style={{ cursor: "pointer" }}
                 className={`${
-                  style.resource_subtitle
+                  router.locale === "en"
+                    ? style.resource_subtitle
+                    : style.resource_subtitle_ar
                 } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 } ${
@@ -760,7 +766,9 @@ export default function ResourceChart({
                 }}
                 style={{ cursor: "pointer" }}
                 className={`${
-                  style.resource_subtitle
+                  router.locale === "en"
+                    ? style.resource_subtitle
+                    : style.resource_subtitle_ar
                 } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 } ${
@@ -775,7 +783,9 @@ export default function ResourceChart({
                 }}
                 style={{ cursor: "pointer" }}
                 className={`${
-                  style.resource_subtitle
+                  router.locale === "en"
+                    ? style.resource_subtitle
+                    : style.resource_subtitle_ar
                 } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 }  ${
@@ -790,7 +800,9 @@ export default function ResourceChart({
                 }}
                 style={{ cursor: "pointer" }}
                 className={`${
-                  style.resource_subtitle
+                  router.locale === "en"
+                    ? style.resource_subtitle
+                    : style.resource_subtitle_ar
                 } text-capitalize text-nowrap ${
                   router.locale === "ar" ? "text-end" : "text-start"
                 } ${
@@ -814,7 +826,11 @@ export default function ResourceChart({
                       <div className={`d-flex justify-content-end w-100`}>
                         {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize m-0`}
                         >
                           {t("total Amount")} :{" "}
                           <span>{`$${
@@ -836,7 +852,11 @@ export default function ResourceChart({
                       <div className={`d-flex justify-content-end w-100`}>
                         {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           {t("total disbursement")} :{" "}
                           <span>{`$${
@@ -847,7 +867,11 @@ export default function ResourceChart({
                           {/* {router.locale === "ar" ? <span>$</span>:''} */}
                         </p>
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           {t("total approved")} :{" "}
                           <span>{`$${
@@ -869,7 +893,11 @@ export default function ResourceChart({
                       <div className={`d-flex justify-content-end w-100`}>
                         {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           {t("total disbursed")} :{" "}
                           <span>{`$${
@@ -882,7 +910,11 @@ export default function ResourceChart({
                         {/* </Col> */}
                         {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           {t("total approved")} :{" "}
                           <span>{`$${
@@ -908,7 +940,11 @@ export default function ResourceChart({
                         {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
                         {router.locale === "en" ? (
                           <p
-                            className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.resource_chart_indicator
+                                : style.resource_chart_indicator_ar
+                            } text-capitalize m-0`}
                           >
                             {t("total Amount")} :{" "}
                             <span>{`$${
@@ -920,7 +956,11 @@ export default function ResourceChart({
                           </p>
                         ) : (
                           <p
-                            className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.resource_chart_indicator
+                                : style.resource_chart_indicator_ar
+                            } text-capitalize m-0`}
                           >
                             <span>{`$${
                               activeData === "aqsa"
@@ -945,7 +985,11 @@ export default function ResourceChart({
                         {router.locale === "en" ? (
                           <>
                             <p
-                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_indicator
+                                  : style.resource_chart_indicator_ar
+                              } text-capitalize px-2 m-0`}
                             >
                               {t("total disbursed")} :{" "}
                               <span>{`$${
@@ -958,7 +1002,11 @@ export default function ResourceChart({
                               {/* {router.locale === "ar" ? <span>$</span>:''} */}
                             </p>
                             <p
-                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_indicator
+                                  : style.resource_chart_indicator_ar
+                              } text-capitalize px-2 m-0`}
                             >
                               {t("total approved")} :{" "}
                               <span>{`$${
@@ -972,7 +1020,11 @@ export default function ResourceChart({
                         ) : (
                           <>
                             <p
-                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_indicator
+                                  : style.resource_chart_indicator_ar
+                              } text-capitalize px-2 m-0`}
                             >
                               <span>{`$${
                                 activeData === "arab"
@@ -985,7 +1037,11 @@ export default function ResourceChart({
                               {/* {router.locale === "ar" ? <span>$</span>:''} */}
                             </p>
                             <p
-                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_indicator
+                                  : style.resource_chart_indicator_ar
+                              } text-capitalize px-2 m-0`}
                             >
                               <span>{`$${
                                 activeData === "arab"
@@ -1011,7 +1067,11 @@ export default function ResourceChart({
                         {router.locale === "en" ? (
                           <>
                             <p
-                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_indicator
+                                  : style.resource_chart_indicator_ar
+                              } text-capitalize px-2 m-0`}
                             >
                               {t("total disbursed")} :{" "}
                               <span>{`$${
@@ -1025,7 +1085,11 @@ export default function ResourceChart({
                             </p>
 
                             <p
-                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_indicator
+                                  : style.resource_chart_indicator_ar
+                              } text-capitalize px-2 m-0`}
                             >
                               {t("total approved")} :{" "}
                               <span>{`$${
@@ -1038,7 +1102,11 @@ export default function ResourceChart({
                         ) : (
                           <>
                             <p
-                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_indicator
+                                  : style.resource_chart_indicator_ar
+                              } text-capitalize px-2 m-0`}
                             >
                               <span>{`$${
                                 activeData === "yearly"
@@ -1050,7 +1118,11 @@ export default function ResourceChart({
                               : {t("total disbursed")}
                             </p>
                             <p
-                              className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_indicator
+                                  : style.resource_chart_indicator_ar
+                              } text-capitalize px-2 m-0`}
                             >
                               <span>{`$${
                                 activeData === "yearly"
@@ -1141,7 +1213,11 @@ export default function ResourceChart({
                         </div> */}
 
                             <div
-                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_labels
+                                  : style.resource_chart_labels_ar
+                              } text-center fw-bold text-wrap`}
                             >
                               {data}
                             </div>
@@ -1174,7 +1250,11 @@ export default function ResourceChart({
                             </div>
 
                             <div
-                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_labels
+                                  : style.resource_chart_labels_ar
+                              } text-center fw-bold text-wrap`}
                             >
                               {data.title}
                             </div>
@@ -1213,7 +1293,11 @@ export default function ResourceChart({
                             </div>
 
                             <div
-                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_labels
+                                  : style.resource_chart_labels_ar
+                              } text-center fw-bold text-wrap`}
                             >
                               {data.title}
                             </div>
@@ -1226,7 +1310,11 @@ export default function ResourceChart({
                   {!xAxisWidth && (
                     <div
                       style={{ width: "100%" }}
-                      className={`${style.resource_chart_labels} d-flex justify-content-center align-items-center`}
+                      className={`${
+                        router.locale === "en"
+                          ? style.resource_chart_labels
+                          : style.resource_chart_labels_ar
+                      } d-flex justify-content-center align-items-center`}
                     >
                       Loading...
                     </div>
@@ -1246,7 +1334,11 @@ export default function ResourceChart({
                       <div className={`d-flex justify-content-end w-100`}>
                         {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize m-0`}
                         >
                           {t("total Amount")} :{" "}
                           <span>{`$${
@@ -1268,7 +1360,11 @@ export default function ResourceChart({
                       <div className={`d-flex justify-content-end w-100`}>
                         {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           {t("total disbursement")} :{" "}
                           <span>{`$${
@@ -1279,7 +1375,11 @@ export default function ResourceChart({
                           {/* {router.locale === "ar" ? <span>$</span>:''} */}
                         </p>
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           {t("total granted")} :{" "}
                           <span>{`$${
@@ -1301,7 +1401,11 @@ export default function ResourceChart({
                       <div className={`d-flex justify-content-end w-100`}>
                         {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           {t("total disbursed")} :{" "}
                           <span>{`$${
@@ -1314,7 +1418,11 @@ export default function ResourceChart({
                         {/* </Col> */}
                         {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           {t("total Approved")} :{" "}
                           <span>{`$${
@@ -1339,7 +1447,11 @@ export default function ResourceChart({
                       <div className={`d-flex justify-content-start w-100`}>
                         {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize m-0`}
                         >
                           <span>{`$${
                             activeData === "aqsa"
@@ -1361,7 +1473,11 @@ export default function ResourceChart({
                       <div className={`d-flex justify-content-end w-100`}>
                         {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           <span>{`$${
                             activeData === "arab"
@@ -1372,7 +1488,11 @@ export default function ResourceChart({
                           {/* {router.locale === "ar" ? <span>$</span>:''} */}
                         </p>
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           <span>{`$${
                             activeData === "arab"
@@ -1394,7 +1514,11 @@ export default function ResourceChart({
                       <div className={`d-flex justify-content-end w-100`}>
                         {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           <span>{`$${
                             activeData === "yearly"
@@ -1407,7 +1531,11 @@ export default function ResourceChart({
                         {/* </Col> */}
                         {/* <Col xs={24} sm={24} md={24} lg={12} xl={12}> */}
                         <p
-                          className={`${style.resource_chart_indicator} text-capitalize px-2 m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.resource_chart_indicator
+                              : style.resource_chart_indicator_ar
+                          } text-capitalize px-2 m-0`}
                         >
                           <span>{`$${
                             activeData === "yearly"
@@ -1496,7 +1624,11 @@ export default function ResourceChart({
                         </div> */}
 
                             <div
-                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_labels
+                                  : style.resource_chart_labels_ar
+                              } text-center fw-bold text-wrap`}
                             >
                               {data}
                             </div>
@@ -1529,7 +1661,11 @@ export default function ResourceChart({
                             </div>
 
                             <div
-                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_labels
+                                  : style.resource_chart_labels_ar
+                              } text-center fw-bold text-wrap`}
                             >
                               {data.title}
                             </div>
@@ -1565,7 +1701,11 @@ export default function ResourceChart({
                             </div>
 
                             <div
-                              className={`${style.resource_chart_labels} text-center fw-bold text-wrap`}
+                              className={`${
+                                router.locale === "en"
+                                  ? style.resource_chart_labels
+                                  : style.resource_chart_labels_ar
+                              } text-center fw-bold text-wrap`}
                             >
                               {data.title}
                             </div>
@@ -1578,7 +1718,11 @@ export default function ResourceChart({
                   {!xAxisWidth && (
                     <div
                       style={{ width: "100%" }}
-                      className={`${style.resource_chart_labels} d-flex justify-content-center align-items-center`}
+                      className={`${
+                        router.locale === "en"
+                          ? style.resource_chart_labels
+                          : style.resource_chart_labels_ar
+                      } d-flex justify-content-center align-items-center`}
                     >
                       Loading...
                     </div>

@@ -78,7 +78,9 @@ export default function AppHeader({ pageName, projectTitle }) {
   };
 
   const navProject = (
-    <Menu className={`${style.dd_list}`}>
+    <Menu
+      className={`${router.locale === "en" ? style.dd_list : style.dd_list_ar}`}
+    >
       {projectTitle &&
         projectTitle
           .sort((a, b) => a.title.localeCompare(b.title))
@@ -104,7 +106,9 @@ export default function AppHeader({ pageName, projectTitle }) {
   );
 
   const nav = (
-    <Menu className={`${style.dd_list}`}>
+    <Menu
+      className={`${router.locale === "en" ? style.dd_list : style.dd_list_ar}`}
+    >
       <Menu.Item>
         <Link href="/about/governance-structure">
           <div
@@ -150,7 +154,9 @@ export default function AppHeader({ pageName, projectTitle }) {
   );
 
   const menu = (
-    <Menu className={`${style.dd_list}`}>
+    <Menu
+      className={`${router.locale === "en" ? style.dd_list : style.dd_list_ar}`}
+    >
       {language.map((value, index) => (
         <Menu.Item key={index}>
           <Link
@@ -202,7 +208,15 @@ export default function AppHeader({ pageName, projectTitle }) {
                   width="20"
                   alt="Flag Image"
                 /> */}
-                  <span className={`${style.language_text} text-capitalize`}>
+                  <span
+                    className={`${style.language_text} text-capitalize`}
+                    style={{
+                      fontFamily:
+                        router.locale === "ar"
+                          ? "Noto Kufi Arabic, sans-serif"
+                          : "",
+                    }}
+                  >
                     {t(getLanguageDataFromCode(router.locale).language)}
                   </span>
                   <DownOutlined className={`${style.language_dd_icon}`} />
@@ -231,7 +245,11 @@ export default function AppHeader({ pageName, projectTitle }) {
                         />
                         <div className={`d-flex align-items-center`}>
                           <p
-                            className={`${style.app_header_logo_title} text-capitalize m-0`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.app_header_logo_title
+                                : style.app_header_logo_title_ar
+                            } text-capitalize m-0`}
                           >
                             {t("al aqsa fund")}
                           </p>
@@ -240,7 +258,11 @@ export default function AppHeader({ pageName, projectTitle }) {
                     </Col>
                     <Col xs={0} sm={0} md={0} lg={18} xl={18}>
                       <div
-                        className={`${style.app_header_nav_section} d-flex justify-content-end align-items-center`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.app_header_nav_section
+                            : style.app_header_nav_section_ar
+                        } d-flex justify-content-end align-items-center`}
                       >
                         {routePath.map((route, index) => (
                           <Dropdown
@@ -276,7 +298,11 @@ export default function AppHeader({ pageName, projectTitle }) {
                   <Row>
                     <Col xs={0} sm={0} md={0} lg={18} xl={18}>
                       <div
-                        className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.app_header_nav_section
+                            : style.app_header_nav_section_ar
+                        } d-flex justify-content-start align-items-center`}
                       >
                         {routePath.map((route, index) => (
                           <Dropdown
@@ -382,7 +408,11 @@ export default function AppHeader({ pageName, projectTitle }) {
                       >
                         <div className={`d-flex align-items-center`}>
                           <p
-                            className={`${style.app_header_logo_title} text-capitalize m-0`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.app_header_logo_title
+                                : style.app_header_logo_title_ar
+                            } text-capitalize m-0`}
                           >
                             {t("al aqsa fund")}
                           </p>
@@ -420,7 +450,11 @@ export default function AppHeader({ pageName, projectTitle }) {
                       />
                       <div className={`d-flex align-items-center`}>
                         <p
-                          className={`${style.app_header_logo_title} text-capitalize m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.app_header_logo_title
+                              : style.app_header_logo_title_ar
+                          } text-capitalize m-0`}
                         >
                           {t("al aqsa fund")}
                         </p>
@@ -429,7 +463,11 @@ export default function AppHeader({ pageName, projectTitle }) {
                   </Col>
                   <Col xs={8} sm={8} md={14} lg={18} xl={18}>
                     <div
-                      className={`${style.app_header_nav_section} d-flex justify-content-end align-items-center`}
+                      className={`${
+                        router.locale === "en"
+                          ? style.app_header_nav_section
+                          : style.app_header_nav_section_ar
+                      } d-flex justify-content-end align-items-center`}
                     >
                       <Button
                         type="text"
@@ -446,7 +484,14 @@ export default function AppHeader({ pageName, projectTitle }) {
                         closable={false}
                         visible={visible}
                       >
-                        <Menu mode="inline" className={`${style.dd_list}`}>
+                        <Menu
+                          mode="inline"
+                          className={`${
+                            router.locale === "en"
+                              ? style.dd_list
+                              : style.dd_list_ar
+                          }`}
+                        >
                           {/* route.navigation === false ? ( */}
                           {routePath.map((route, index) => (
                             <Menu.Item key={index}>
@@ -454,7 +499,9 @@ export default function AppHeader({ pageName, projectTitle }) {
                                 <p
                                   className={`${
                                     route.name.toLowerCase() === pageName &&
-                                    style.mobile_selected_menu
+                                    router.locale === "en"
+                                      ? style.mobile_selected_menu
+                                      : style.mobile_selected_menu_ar
                                   } m-0 ps-2`}
                                 >
                                   {t(route.name)}
@@ -490,7 +537,11 @@ export default function AppHeader({ pageName, projectTitle }) {
                 <Row>
                   <Col xs={0} sm={0} md={0} lg={18} xl={18}>
                     <div
-                      className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
+                      className={`${
+                        router.locale === "en"
+                          ? style.app_header_nav_section
+                          : style.app_header_nav_section_ar
+                      } d-flex justify-content-start align-items-center`}
                     >
                       {routePath.map((route, index) => (
                         <Dropdown
@@ -523,7 +574,11 @@ export default function AppHeader({ pageName, projectTitle }) {
                   </Col>
                   <Col xs={8} sm={8} md={14} lg={0} xl={0}>
                     <div
-                      className={`${style.app_header_nav_section} d-flex justify-content-start align-items-center`}
+                      className={`${
+                        router.locale === "en"
+                          ? style.app_header_nav_section
+                          : style.app_header_nav_section_ar
+                      } d-flex justify-content-start align-items-center`}
                     >
                       <Button
                         type="text"
@@ -540,7 +595,14 @@ export default function AppHeader({ pageName, projectTitle }) {
                         closable={false}
                         visible={visible}
                       >
-                        <Menu mode="inline" className={`${style.dd_list}`}>
+                        <Menu
+                          mode="inline"
+                          className={`${
+                            router.locale === "en"
+                              ? style.dd_list
+                              : style.dd_list_ar
+                          }`}
+                        >
                           {new Array(...routePath)
                             .reverse()
                             .map((route, index) => (
@@ -549,7 +611,9 @@ export default function AppHeader({ pageName, projectTitle }) {
                                   <p
                                     className={`${
                                       route.name.toLowerCase() === pageName &&
-                                      style.mobile_selected_menu
+                                      router.locale === "en"
+                                        ? style.mobile_selected_menu
+                                        : style.mobile_selected_menu_ar
                                     } m-0 text-end pe-2`}
                                   >
                                     {t(route.name)}
@@ -572,7 +636,11 @@ export default function AppHeader({ pageName, projectTitle }) {
                     >
                       <div className={`d-flex align-items-center`}>
                         <p
-                          className={`${style.app_header_logo_title} text-capitalize m-0`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.app_header_logo_title
+                              : style.app_header_logo_title_ar
+                          } text-capitalize m-0`}
                         >
                           {t("al aqsa fund")}
                         </p>

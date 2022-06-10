@@ -6,7 +6,11 @@ export default function IntroSection({ data }) {
   return (
     <div className={`${style.intro_container}`}>
       <p
-        className={`${style.intro_description} my-3 px-5 text-justify
+        className={`${
+          router.locale === "en"
+            ? style.intro_description
+            : style.intro_description_ar
+        } my-3 px-5 text-justify
         `}
         dir={router.locale === "ar" ? "rtl" : ""}
       >

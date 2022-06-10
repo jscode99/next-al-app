@@ -31,9 +31,11 @@ export default function AppStep({ textAlign, step, defaultActiveStep }) {
           )}
           <div className={`d-flex flex-column w-75`}>
             <h5
-              className={`${style.step_title} ${
-                textAlign === "right" ? "text-justify" : "text-justify"
-              } ${defaultActive === index ? `fw-bold` : ``} cursor-pointer`}
+              className={`${
+                router.locale === "en" ? style.step_title : style.step_title_ar
+              } ${textAlign === "right" ? "text-justify" : "text-justify"} ${
+                defaultActive === index ? `fw-bold` : ``
+              } cursor-pointer`}
               dir={router.locale === "ar" ? "rtl" : ""}
             >
               {data.title}
@@ -42,7 +44,9 @@ export default function AppStep({ textAlign, step, defaultActiveStep }) {
               className={` ${
                 textAlign === "right" ? "text-justify" : "text-justify"
               } ${defaultActive === index ? "fw-bold" : ""} ${
-                style.description
+                router.locale === "en"
+                  ? style.description
+                  : style.description_ar
               } mb-5 cursor-pointer`}
               dir={router.locale === "ar" ? "rtl" : ""}
             >

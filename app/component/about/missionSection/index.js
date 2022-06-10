@@ -20,7 +20,13 @@ export default function MissionSection({ data }) {
                   {t("mission")}
                 </h3>
               </div>
-              <p className={`${style.mission_description} text-justify`}>
+              <p
+                className={`${
+                  router.locale === "en"
+                    ? style.mission_description
+                    : style.mission_description_ar
+                } text-justify`}
+              >
                 {data && Object.keys(data).length > 0 && data.description}
               </p>
             </Col>
@@ -53,10 +59,22 @@ export default function MissionSection({ data }) {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <div className={`d-flex justify-content-end py-3`}>
-                <h3 className={`fw-bold text-capitalize`}>{t("mission")}</h3>
+                <h3
+                  className={`${
+                    router.locale === "en"
+                      ? style.mission_title
+                      : style.mission_title_ar
+                  }  fw-bold text-capitalize`}
+                >
+                  {t("mission")}
+                </h3>
               </div>
               <p
-                className={`text-justify`}
+                className={`${
+                  router.locale === "en"
+                    ? style.mission_description
+                    : style.mission_description_ar
+                } text-justify`}
                 dir={router.locale === "ar" ? "rtl" : ""}
               >
                 {data && Object.keys(data).length > 0 && data.description}

@@ -21,6 +21,11 @@
     font-weight: $nine_hundred
     letter-spacing: 1.5px
 
+.page_common_section_title_ar
+    font-family: $noto_kufi
+    font-size: 28px !important
+    font-weight: $seven_hundred
+
 .primary_color
     color: $primary_color
 
@@ -32,6 +37,12 @@
     font-weight: $five_hundred
     font-family: roboto
     @extend %font_size_18
+
+.breadcrumb_item_ar
+    text-transform: capitalize
+    font-weight: $five_hundred
+    font-family: $noto_kufi
+    font-size: 16px !important
 
 .social_media_container
     background-color: $primary_color
@@ -61,10 +72,12 @@
     .container,
     .card
         height: auto
-    .page_common_section_title
+    .page_common_section_title,
+    .page_common_section_title_ar
         @include font_size_25
         margin-bottom: 5px
     .breadcrumb_item,
+    .breadcrumb_item_ar,
     .page_common_section_breadcrum,
     .separator
         display: none $important

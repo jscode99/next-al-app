@@ -15,7 +15,13 @@ export default function Approval({ data }) {
       <div className={`${style.container} px-5`}>
         <Row className={`h-100 px-3`}>
           <div className={`d-flex w-100 justify-content-center my-5`}>
-            <h3 className={`${style.approval_title} text-capitalize`}>
+            <h3
+              className={`${
+                router.locale === "en"
+                  ? style.approval_title
+                  : style.approval_title_ar
+              } text-capitalize`}
+            >
               {t("project approval and implementation process")}
             </h3>
           </div>
@@ -50,7 +56,7 @@ export default function Approval({ data }) {
             <>
               <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                 <h4
-                  className={`${style.approval_initiation} d-flex justify-content-end me-5 pe-3 mb-5 text-capitalize`}
+                  className={`${style.approval_initiation_ar} d-flex justify-content-end me-5 pe-3 mb-5 text-capitalize`}
                 >
                   {t("initiation")}
                 </h4>

@@ -41,7 +41,11 @@ export default function ContactForm() {
 
   return (
     <div className={`${style.bg} py-4`}>
-      <div className={`${style.form_container} px-5`}>
+      <div
+        className={`${router.locale === "ar" ? style.input_box : ""} ${
+          style.form_container
+        } px-5`}
+      >
         <Row>
           <Col xs={0} sm={0} md={24} lg={24} xl={24}>
             <Row className={`px-4`}>

@@ -14,7 +14,7 @@ import convertToInternationalCurrencySystem from "../../../services/internationa
 //styles
 import style from "./index.module.sass";
 
-export default function ProjectFundChart({ finalChartData }) {
+export default function ProjectFundChart({ finalChartData, reserve }) {
   const base_url = process.env.BASE_URL;
   // console.log("finalChartData", finalChartData);
   const [xAxisWidth, setXAxisWidth] = useState(0);
@@ -158,22 +158,43 @@ export default function ProjectFundChart({ finalChartData }) {
         chartData.length === 0) */
     ) {
       for (let index = 0; index < Object.keys(finalChartData).length; index++) {
-        if(router.locale === "en") {
-          series[0].data.push(
-            Math.round(parseFloat(finalChartData[index].totalApprovedAmount))
-          );
-          series[1].data.push(
-            Math.round(parseFloat(finalChartData[index].totalDisbursementAmount))
-          );
-        }else{
-          series[1].data.push(
-            Math.round(parseFloat(finalChartData[index].totalApprovedAmount))
-          );
-          series[0].data.push(
-            Math.round(parseFloat(finalChartData[index].totalDisbursementAmount))
-          );
+        for (let item = 0; item < reserve.length; item++) {
+          if (router.locale === "en") {
+            if (
+              reserve[item].ProjectTitle.toLowerCase() ===
+              finalChartData[index].title.toLowerCase()
+            ) {
+              series[0].data.push(
+                Math.round(
+                  parseFloat(finalChartData[index].totalApprovedAmount) +
+                    parseFloat(reserve[item].Amount)
+                )
+              );
+              series[1].data.push(
+                Math.round(
+                  parseFloat(finalChartData[index].totalDisbursementAmount)
+                )
+              );
+            }
+          } else {
+            if (
+              reserve[item].ProjectTitle.toLowerCase() ===
+              finalChartData[index].title.toLowerCase()
+            ) {
+              series[1].data.push(
+                Math.round(
+                  parseFloat(finalChartData[index].totalApprovedAmount) +
+                    parseFloat(reserve[item].Amount)
+                )
+              );
+              series[0].data.push(
+                Math.round(
+                  parseFloat(finalChartData[index].totalDisbursementAmount)
+                )
+              );
+            }
+          }
         }
-        
         options.xaxis.categories.push(finalChartData[index].title);
         chartData.push({
           title: finalChartData[index].title,
@@ -225,7 +246,11 @@ export default function ProjectFundChart({ finalChartData }) {
         <Row>
           <Col xs={0} sm={0} md={0} lg={24} xl={24}>
             <h3
-              className={`${style.chart_container_title} text-center mb-4 pt-4 m-0 text-capitalize`}
+              className={`${
+                router.locale === "en"
+                  ? style.chart_container_title
+                  : style.chart_container_title_ar
+              } text-center mb-4 pt-4 m-0 text-capitalize`}
             >
               {t("al aqsa arab funds – approved vs disbursements")}
             </h3>
@@ -271,7 +296,11 @@ export default function ProjectFundChart({ finalChartData }) {
                           </div>
                         </div>
                         <div
-                          className={`${style.xAxis_title} text-center fw-bold`}
+                          className={`${
+                            router.locale === "en"
+                              ? style.xAxis_title
+                              : style.xAxis_title_ar
+                          } text-center fw-bold`}
                         >
                           {data.title}
                         </div>
@@ -291,7 +320,11 @@ export default function ProjectFundChart({ finalChartData }) {
           </Col>
           <Col xs={0} sm={0} md={24} lg={0} xl={0}>
             <h3
-              className={`${style.chart_container_title} text-center mb-4 pt-4 m-0 text-capitalize`}
+              className={`${
+                router.locale === "en"
+                  ? style.chart_container_title
+                  : style.chart_container_title_ar
+              } text-center mb-4 pt-4 m-0 text-capitalize`}
             >
               {t("al aqsa arab funds – approved vs disbursements")}
             </h3>
@@ -338,7 +371,11 @@ export default function ProjectFundChart({ finalChartData }) {
                             </div>
                           </div>
                           <div
-                            className={`${style.xAxis_title} text-center fw-bold text-wrap`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.xAxis_title
+                                : style.xAxis_title_ar
+                            } text-center fw-bold text-wrap`}
                           >
                             {data.title}
                           </div>
@@ -359,7 +396,11 @@ export default function ProjectFundChart({ finalChartData }) {
           </Col>
           <Col xs={24} sm={24} md={0} lg={0} xl={0}>
             <h3
-              className={`${style.chart_container_title} text-center mb-4 pt-4 m-0 text-capitalize`}
+              className={`${
+                router.locale === "en"
+                  ? style.chart_container_title
+                  : style.chart_container_title_ar
+              } text-center mb-4 pt-4 m-0 text-capitalize`}
             >
               {t("al aqsa arab funds – approved vs disbursements")}
             </h3>
@@ -406,7 +447,11 @@ export default function ProjectFundChart({ finalChartData }) {
                             </div>
                           </div>
                           <div
-                            className={`${style.xAxis_title} text-center fw-bold text-wrap`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.xAxis_title
+                                : style.xAxis_title_ar
+                            } text-center fw-bold text-wrap`}
                           >
                             {data.title}
                           </div>

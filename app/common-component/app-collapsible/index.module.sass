@@ -10,11 +10,21 @@
     letter-spacing: 1px
     font-size: 16px
 
-.pannel_container
+.collapsible_title_ar
     display: inline-block
     width: 95%
+    font-family: $noto_kufi $important
+    font-size: 16px
+
+.pannel_container
+    display: inline-block
+    width: 100%
 
 .collapsible_des
+    font-size: 14px
+
+.collapsible_des_ar
+    font-family: $noto_kufi $important
     font-size: 14px
 
 @media only screen and (max-width: 1024px)
@@ -22,10 +32,13 @@
 @media only screen and (max-width: 768px)
 
 @media only screen and (max-width: 500px)
-    .collapsible_title
+    .collapsible_title,
+    .collapsible_title_ar
         font-size: 10px
-    .collapsible_des
+    .collapsible_des,
+    .collapsible_des_ar
         font-size: 8px
     .collapsible_title,
+    .collapsible_title_ar,
     .pannel_container
         width: 85%

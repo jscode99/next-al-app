@@ -36,7 +36,11 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       {listData && listData.Title ? (
                         <>
                           <p
-                            className={`${style.publication_list_title} d-flex justify-content-start px-4 m-0`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_title
+                                : style.publication_list_title_ar
+                            } d-flex justify-content-start px-4 m-0`}
                           >
                             {listData.Title}
                           </p>
@@ -53,12 +57,20 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       {listData && listData.Date ? (
                         <>
                           <p
-                            className={`${style.publication_list_label} d-flex justify-content-center align-items-center mb-2`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_label
+                                : style.publication_list_label_ar
+                            } d-flex justify-content-center align-items-center mb-2`}
                           >
                             Date
                           </p>
                           <p
-                            className={`${style.publication_list_title} d-flex justify-content-center align-items-center m-0`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_title
+                                : style.publication_list_title_ar
+                            } d-flex justify-content-center align-items-center m-0`}
                           >
                             {listData.Date}
                           </p>
@@ -82,7 +94,11 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                           <Button
                             type="text"
                             shape="round"
-                            className={`${style.publication_list_button}`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_button
+                                : style.publication_list_button_ar
+                            }`}
                           >
                             Download
                           </Button>
@@ -106,7 +122,11 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                           <Button
                             type="text"
                             shape="round"
-                            className={`${style.publication_list_button}`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_button
+                                : style.publication_list_button_ar
+                            }`}
                           >
                             <i className="fas fa-download"></i>
                           </Button>
@@ -151,7 +171,11 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                           <Button
                             type="text"
                             shape="round"
-                            className={`${style.publication_list_button} text-capitalize`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_button
+                                : style.publication_list_button_ar
+                            } text-capitalize`}
                           >
                             {t("download")}
                           </Button>
@@ -175,7 +199,11 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                           <Button
                             type="text"
                             shape="round"
-                            className={`${style.publication_list_button}`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_button
+                                : style.publication_list_button_ar
+                            }`}
                           >
                             <i className="fas fa-download"></i>
                           </Button>
@@ -192,12 +220,20 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       {listData && listData.Date ? (
                         <>
                           <p
-                            className={`${style.publication_list_label} d-flex justify-content-end align-items-center mb-2 w-100 text-capitalize`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_label
+                                : style.publication_list_label_ar
+                            } d-flex justify-content-end align-items-center mb-2 w-100 text-capitalize`}
                           >
                             {t("date")}
                           </p>
                           <p
-                            className={`${style.publication_list_title} d-flex justify-content-center align-items-center text-end m-0 w-100`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_title
+                                : style.publication_list_title_ar
+                            } d-flex justify-content-center align-items-center text-end m-0 w-100`}
                           >
                             {listData.Date}
                           </p>
@@ -214,7 +250,11 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       {listData && listData.Title ? (
                         <>
                           <p
-                            className={`${style.publication_list_title} text-end d-flex justify-content-start px-4 m-0`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.publication_list_title
+                                : style.publication_list_title_ar
+                            } text-end d-flex justify-content-start px-4 m-0`}
                           >
                             {listData.Title}
                           </p>

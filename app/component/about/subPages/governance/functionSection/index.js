@@ -16,7 +16,7 @@ export default function FunctionSection({ data }) {
   const { t } = useTranslation("common");
   const [listData, setListData] = useState(null);
 
-  const getProperty = priority => {
+  const getProperty = (priority) => {
     switch (priority) {
       case "1":
         return [
@@ -40,8 +40,8 @@ export default function FunctionSection({ data }) {
   };
 
   useEffect(() => {
-    let bulletGroupNameList = Object.keys(data).filter(data =>
-      data.match("bulletGroup"),
+    let bulletGroupNameList = Object.keys(data).filter((data) =>
+      data.match("bulletGroup")
     );
     let bulletGroupList = bulletGroupNameList.map((item, index) => {
       return {
@@ -49,7 +49,7 @@ export default function FunctionSection({ data }) {
       };
       item;
     });
-    const list = bulletGroupList.map(data => {
+    const list = bulletGroupList.map((data) => {
       return {
         title: data.bulletTitle,
         iconBg: getProperty(data.priority)[0],
@@ -68,7 +68,11 @@ export default function FunctionSection({ data }) {
           <div className={`${style.function_container}`}>
             <div className={`px-5 py-3`}>
               <h4
-                className={`${style.function_title} text-capitalize mx-4 my-4 ${
+                className={`${
+                  router.locale === "en"
+                    ? style.function_title
+                    : style.function_title_ar
+                } text-capitalize mx-4 my-4 ${
                   router.locale === "en" ? `text-start` : `text-end`
                 } fw-bold`}
               >
@@ -88,7 +92,11 @@ export default function FunctionSection({ data }) {
           <div className={`${style.function_container}`}>
             <div className={`p-3`}>
               <h4
-                className={`${style.function_title} text-capitalize mx-4 my-4 ${
+                className={`${
+                  router.locale === "en"
+                    ? style.function_title
+                    : style.function_title_ar
+                } text-capitalize mx-4 my-4 ${
                   router.locale === "en" ? `text-start` : `text-end`
                 } fw-bold`}
               >

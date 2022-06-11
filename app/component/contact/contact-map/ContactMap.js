@@ -28,9 +28,9 @@ export default function ContactMap() {
           <Col xs={0} sm={0} md={24} lg={24} xl={24}>
             <div className={`${style.container} px-5`}>
               <h3
-                className={`${style.map_title} ${
-                  router.locale === "en" ? "" : "text-end"
-                } my-3`}
+                className={`${
+                  router.locale === "en" ? style.map_title : style.map_title_ar
+                } ${router.locale === "en" ? "" : "text-end"} my-3`}
               >
                 {t("isdb hq")}
               </h3>
@@ -56,9 +56,9 @@ export default function ContactMap() {
           <Col xs={24} sm={24} md={0} lg={0} xl={0}>
             <div className={`${style.container} px-5`}>
               <h3
-                className={`${style.map_title} ${
-                  router.locale === "en" ? "" : "text-end"
-                } my-3`}
+                className={`${
+                  router.locale === "en" ? style.map_title : style.map_title_ar
+                } ${router.locale === "en" ? "" : "text-end"} my-3`}
               >
                 {t("isdb hq")}
               </h3>

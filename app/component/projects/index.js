@@ -163,15 +163,16 @@ export default function Projects({
       )}
 
       {router.locale === "en" ? (
-        <ProjectRouteCard finalChartData={finalChartData} />
+        <ProjectRouteCard finalChartData={finalChartData} reserve={reserve} />
       ) : (
-        <ProjectRouteCard finalChartData={finalChartData} />
+        <ProjectRouteCard finalChartData={finalChartData} reserve={reserve} />
       )}
       {router.locale === "en" ? (
-        <ProjectFundChart finalChartData={finalChartData} />
+        <ProjectFundChart finalChartData={finalChartData} reserve={reserve} />
       ) : (
         <ProjectFundChart
           finalChartData={new Array(...finalChartData).reverse()}
+          reserve={reserve}
         />
       )}
     </>

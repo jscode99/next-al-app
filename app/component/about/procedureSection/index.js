@@ -12,8 +12,8 @@ export default function ProcedureSection({ data }) {
   const { t } = useTranslation("common");
   const [collapseDetails, setCollapseDetails] = useState(null);
   useEffect(() => {
-    let bulletGroupNameList = Object.keys(data).filter(data =>
-      data.match("bulletGroup"),
+    let bulletGroupNameList = Object.keys(data).filter((data) =>
+      data.match("bulletGroup")
     );
     let bulletGroupList = bulletGroupNameList.map((item, index) => {
       return {
@@ -21,7 +21,7 @@ export default function ProcedureSection({ data }) {
       };
       item;
     });
-    const collapseDetails = bulletGroupList.map(data => {
+    const collapseDetails = bulletGroupList.map((data) => {
       return {
         title: data.bulletTitle,
         color: "#d32050",
@@ -35,16 +35,22 @@ export default function ProcedureSection({ data }) {
     <div className={`${style.procedure_bg} py-4`}>
       <div className={`${style.procedure_container} px-5`}>
         <p
-          className={`${style.procedure_title} text-capitalize ${
-            router.locale === "en" ? `` : `text-end`
-          }`}
+          className={`${
+            router.locale === "en"
+              ? style.procedure_title
+              : style.procedure_title_ar
+          } text-capitalize ${router.locale === "en" ? `` : `text-end`}`}
         >
           {t("procedures")}
         </p>
         <p
-          className={`${style.procedure_description} pb-2 ${
-            router.locale === "en" ? `text-justify` : `text-end`
+          className={`${
+            router.locale === "en"
+              ? style.procedure_description
+              : style.procedure_description_ar
+          } pb-2 text-justify
           }`}
+          dir={`rtl`}
         >
           {data && Object.keys(data).length > 0 && data.description}
         </p>

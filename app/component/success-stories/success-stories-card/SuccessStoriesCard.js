@@ -60,13 +60,21 @@ export default function SuccessStoriesCard({ listData, listSize, pageNumber }) {
                       className={`${styles.stories_img_des_container} position-absolute d-flex justify-content-end h-100 flex-column`}
                     >
                       <p
-                        className={`${styles.stories_img_des1} d-flex justify-content-center text-center text-white px-5 `}
+                        className={`${
+                          router.locale === "en"
+                            ? styles.stories_img_des1
+                            : styles.stories_img_des1_ar
+                        } d-flex justify-content-center text-center text-white px-5 `}
                       >
                         {data.Title}
                       </p>
                       <hr className={`${styles.stories_under_line} mb-1`} />
                       <p
-                        className={`${styles.stories_img_des2} d-flex justify-content-center text-white px-3 py-1 text-capitalize`}
+                        className={`${
+                          router.locale === "en"
+                            ? styles.stories_img_des2
+                            : styles.stories_img_des2_ar
+                        } d-flex justify-content-center text-white px-3 py-1 text-capitalize`}
                       >
                         {router.locale === "en"
                           ? `total approved : $${data.TotalApproved}`

@@ -223,9 +223,9 @@ export default function ResponsiveView({ view, logo }) {
                     <p
                       onClick={() => {
                         setAppContext({
-                            ...appContext,
-                            fLinkClick: true,
-                          });
+                          ...appContext,
+                          fLinkClick: true,
+                        });
                         router.push("/policy");
                       }}
                     >
@@ -233,17 +233,13 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                    <p>
-                      <Link
-                        className={style.sitemap}
-                        href={
-                          "https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
-                        }
-                      >
-                        <a className={style.sitemap} target="_blank">
-                          Sitemap
-                        </a>
-                      </Link>
+                  <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/sitemap");
+                      }}
+                    >
+                      {t("sitemap")}
                     </p>
                   </li>
                   {/* {otResource && otResource.length > 0
@@ -263,9 +259,11 @@ export default function ResponsiveView({ view, logo }) {
           <div>
             <Row>
               <Col xs={0} sm={0} md={5} lg={6} xl={6}>
-                <ul className={`${style.footer_list} text-end text-capitalize`}>
+                <ul
+                  className={`${style.footer_list_ar} text-end text-capitalize`}
+                >
                   <li
-                    className={`${style.footer_list_header} ${style.footer_list_cursor_auto}
+                    className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto}
                    `}
                   >
                     {t("other resources")}
@@ -286,26 +284,24 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                    <p>
-                      <Link
-                        className={style.sitemap}
-                        href={
-                          "https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
-                        }
-                      >
-                        <a className={style.sitemap} target="_blank">
-                          {t("sitemap")}
-                        </a>
-                      </Link>
+                  <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/sitemap");
+                      }}
+                    >
+                      {t("sitemap")}
                     </p>
                   </li>
                 </ul>
               </Col>
 
               <Col xs={0} sm={0} md={6} lg={6} xl={6}>
-                <ul className={`${style.footer_list} text-end text-capitalize`}>
+                <ul
+                  className={`${style.footer_list_ar} text-end text-capitalize`}
+                >
                   <li
-                    className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
+                    className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto} `}
                   >
                     {t("quick links")}
                   </li>
@@ -367,9 +363,9 @@ export default function ResponsiveView({ view, logo }) {
                 </ul>
               </Col>
               <Col xs={0} sm={0} md={6} lg={7} xl={7}>
-                <ul className={`${style.footer_list} text-end`}>
+                <ul className={`${style.footer_list_ar} text-end`}>
                   <li
-                    className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
+                    className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto} `}
                   >
                     مجموعة البنك الإسلامي للتنمية
                   </li>
@@ -412,16 +408,18 @@ export default function ResponsiveView({ view, logo }) {
                   height="100px"
                   width="100px"
                 />
-                <p className={`${style.logo_title} text-capitalize text-white`}>
+                <p
+                  className={`${style.logo_title_ar} text-capitalize text-white`}
+                >
                   {t("al aqsa fund")}
                 </p>
               </Col>
             </Row>
             <Row>
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-                <ul className={`${style.footer_list} text-center`}>
+                <ul className={`${style.footer_list_ar} text-center`}>
                   <li
-                    className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
+                    className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto} `}
                   >
                     مجموعة البنك الإسلامي للتنمية
                   </li>
@@ -447,10 +445,10 @@ export default function ResponsiveView({ view, logo }) {
 
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
                 <ul
-                  className={`${style.footer_list} text-center text-capitalize`}
+                  className={`${style.footer_list_ar} text-center text-capitalize`}
                 >
                   <li
-                    className={`${style.footer_list_header} ${style.footer_list_cursor_auto} `}
+                    className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto} `}
                   >
                     {t("quick links")}
                   </li>
@@ -521,10 +519,10 @@ export default function ResponsiveView({ view, logo }) {
 
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
                 <ul
-                  className={`${style.footer_list} text-center text-capitalize`}
+                  className={`${style.footer_list_ar} text-center text-capitalize`}
                 >
                   <li
-                    className={`${style.footer_list_header} ${style.footer_list_cursor_auto}
+                    className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto}
                    `}
                   >
                     {t("other resources")}
@@ -545,17 +543,13 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                    <p>
-                      <Link
-                        className={style.sitemap}
-                        href={
-                          "https://www.google.com/maps?ll=21.475867,39.201798&z=17&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=13485734704728704443"
-                        }
-                      >
-                        <a className={style.sitemap} target="_blank">
-                          {t("sitemap")}
-                        </a>
-                      </Link>
+                  <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        router.push("/sitemap");
+                      }}
+                    >
+                      {t("sitemap")}
                     </p>
                   </li>
                 </ul>

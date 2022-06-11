@@ -82,7 +82,7 @@ export default function AboutUsCard({ cardData }) {
                               </div>
                             </div>
                             <p
-                              className={`${style.aboutCard_title} text-end w-75 mb-0 me-4 text-capitalize`}
+                              className={`${style.aboutCard_title_ar} text-end w-75 mb-0 me-4 text-capitalize`}
                             >
                               {data.title}
                             </p>

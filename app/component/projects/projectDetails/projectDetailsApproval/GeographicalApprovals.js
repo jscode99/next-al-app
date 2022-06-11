@@ -114,7 +114,7 @@ export default function GeographicalApprovals({ projectData }) {
       ) : (
         <>
           <h4
-            className={`${style.geographical_approval_title} text-capitalize text-end w-100`}
+            className={`${style.geographical_approval_title_ar} text-capitalize text-end w-100`}
           >
             {t("geographical distribution of approvals")}
           </h4>
@@ -122,17 +122,17 @@ export default function GeographicalApprovals({ projectData }) {
             className={`d-flex justify-content-center align-items-center my-2 w-100`}
           >
             <p
-              className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}
+              className={`${style.sector_labels_ar} w-25 text-capitalize text-secondary text-center m-0`}
             >
               {t("% total Portfolio")}
             </p>
             <p
-              className={`${style.sector_labels} w-25 text-capitalize text-secondary text-center m-0`}
+              className={`${style.sector_labels_ar} w-25 text-capitalize text-secondary text-center m-0`}
             >
               {t("projects")}
             </p>
             <p
-              className={`${style.sector_labels} w-50 text-capitalize text-secondary text-end me-3 m-0`}
+              className={`${style.sector_labels_ar} w-50 text-capitalize text-secondary text-end me-3 m-0`}
             >
               {t("location")}
             </p>
@@ -140,7 +140,7 @@ export default function GeographicalApprovals({ projectData }) {
           {geoSector.map((data, index) => (
             <div
               key={index}
-              className={`${style.common_sectoral_list} shadow d-flex justify-content-center align-items-center bg-white my-1 w-100`}
+              className={`${style.common_sectoral_list_ar} shadow d-flex justify-content-center align-items-center bg-white my-1 w-100`}
             >
               <div
                 className={`d-flex justify-content-center align-items-center w-25`}
@@ -163,7 +163,7 @@ export default function GeographicalApprovals({ projectData }) {
                 {data.totalProject}
               </p>
               <p
-                className={`${style.title} w-50 me-3 fw-bold m-0 text-end text-capitalize`}
+                className={`${style.title_ar} w-50 me-3 fw-bold m-0 text-end text-capitalize`}
               >
                 {t(data.title)}
               </p>

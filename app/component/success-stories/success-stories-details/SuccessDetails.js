@@ -329,13 +329,13 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                     </Col>
                     <Col
                       span={1}
-                      className={`${styles.stories_amount_heading} ps-2`}
+                      className={`${styles.stories_amount_heading_ar} ps-2`}
                     >
                       {`:`}
                     </Col>
                     <Col
                       span={7}
-                      className={`${styles.stories_amount_heading} text-end`}
+                      className={`${styles.stories_amount_heading_ar} text-end`}
                     >
                       {t("total approved")}
                     </Col>
@@ -343,19 +343,20 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                   <Row className={`mb-4`}>
                     <Col
                       span={16}
-                      className={`${styles.stories_amount} text-end`}
+                      className={`${styles.stories_amount_heading_ar} text-end`}
+                      style={{color:"black"}}
                     >
                       {storiesProps.FundSource}
                     </Col>
                     <Col
                       span={1}
-                      className={`${styles.stories_amount_heading} ps-2`}
+                      className={`${styles.stories_amount_heading_ar} ps-2`}
                     >
                       {`:`}
                     </Col>
                     <Col
                       span={7}
-                      className={`${styles.stories_amount_heading} text-end`}
+                      className={`${styles.stories_amount_heading_ar} text-end`}
                     >
                       {t("source of funds")}
                     </Col>
@@ -363,13 +364,13 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                   <Row className={`mb-2`}>
                     <Col
                       span={24}
-                      className={`${styles.stories_overview_heading} text-end`}
+                      className={`${styles.stories_overview_heading_ar} text-end`}
                     >
                       {t("overview")}
                     </Col>
                   </Row>
                   <p
-                    className={`${styles.stories_details_des} text-justify pr-4`}
+                    className={`${styles.stories_details_des_ar} text-justify pr-4`}
                     dir="rtl"
                   >
                     {storiesProps.Overview}
@@ -381,7 +382,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
           <Row>
             <Col xs={24} sm={24} md={24} lg={24} xl={24}>
               <p
-                className={`${styles.stories_details_des} px-5 mt-5 text-justify`}
+                className={`${styles.stories_details_des_ar} px-5 mt-5 text-justify`}
                 dir={router.locale === "ar" ? `rtl` : ``}
               >
                 {storiesProps.Description}

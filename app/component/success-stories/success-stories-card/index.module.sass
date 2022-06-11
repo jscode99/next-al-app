@@ -18,6 +18,12 @@
     font-weight: $five_hundred
     letter-spacing: .8px
 
+.stories_img_des1_ar
+    font-size: 15px
+    font-family: $noto_kufi $important
+    font-weight: $five_hundred
+    letter-spacing: .8px
+
 .stories_under_line
     width: 60px
     margin: 0 $auto
@@ -28,6 +34,11 @@
 .stories_img_des2
     font-size: 12px
     font-family: roboto
+    letter-spacing: .5px
+
+.stories_img_des2_ar
+    font-size: 12px
+    font-family: $noto_kufi $important
     letter-spacing: .5px
 
 @media only screen and (max-width: 1024px)
@@ -41,7 +52,9 @@
 @media only screen and (max-width: 500px)
     .stories_card_container
         @include container_padding_smScreen
-    .stories_img_des1
+    .stories_img_des1,
+    .stories_img_des1_ar
         @include font_size_14
-    .stories_img_des2
+    .stories_img_des2,
+    .stories_img_des2_ar
         font-size: 8px $important

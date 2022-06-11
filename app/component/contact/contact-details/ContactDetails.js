@@ -35,12 +35,16 @@ export default function ContactDetails({ data }) {
                   } fa-3x faa-slow animated mb-2`}
                 ></i>
                 <p
-                  className={`text-center text-uppercase text-white ${style.key} mb-1`}
+                  className={`text-center text-uppercase text-white ${
+                    router.locale === "en" ? style.key : style.key_ar
+                  } mb-1`}
                 >
                   {t(keys)}
                 </p>
                 <p
-                  className={`text-center text-white text-uppercase ${style.value} mb-1`}
+                  className={`text-center text-white text-uppercase ${
+                    router.locale === "en" ? style.value : style.value_ar
+                  } mb-1`}
                 >
                   {data[0][keys]}
                 </p>
@@ -74,12 +78,16 @@ export default function ContactDetails({ data }) {
                   } fa-3x faa-slow animated mb-2`}
                 ></i>
                 <p
-                  className={`text-center text-uppercase text-white text-secondary ${style.key} mb-1`}
+                  className={`text-center text-uppercase text-white text-secondary ${
+                    router.locale === "en" ? style.key : style.key_ar
+                  } mb-1`}
                 >
                   {t(keys)}
                 </p>
                 <p
-                  className={`text-center text-white text-uppercase ${style.value} mb-1`}
+                  className={`text-center text-white text-uppercase ${
+                    router.locale === "en" ? style.value : style.value_ar
+                  } mb-1`}
                 >
                   {data[0][keys]}
                 </p>
@@ -109,12 +117,16 @@ export default function ContactDetails({ data }) {
                   } fa-3x faa-slow animated mb-2`}
                 ></i>
                 <p
-                  className={`text-center text-uppercase text-white text-secondary ${style.key} mb-1`}
+                  className={`text-center text-uppercase text-white text-secondary ${
+                    router.locale === "en" ? style.key : style.key_ar
+                  } mb-1`}
                 >
                   {t(keys)}
                 </p>
                 <p
-                  className={`text-center text-uppercase text-white ${style.value} mb-1`}
+                  className={`text-center text-uppercase text-white ${
+                    router.locale === "en" ? style.value : style.value_ar
+                  } mb-1`}
                 >
                   {data[0][keys]}
                 </p>

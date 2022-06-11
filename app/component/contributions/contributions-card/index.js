@@ -23,7 +23,13 @@ export default function ContributionsCard({ cardData, grandTotal }) {
           router.locale === "ar" && `flex-row-reverse`
         }`}
       >
-        <span className={`${style.contribution_total_title}`}>
+        <span
+          className={`${
+            router.locale === "en"
+              ? style.contribution_total_title
+              : style.contribution_total_title_ar
+          }`}
+        >
           {t("overall contribution")}
         </span>
         <span className={`${style.contribution_total_title} px-1`}>:</span>

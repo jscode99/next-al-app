@@ -23,7 +23,11 @@ export default function Footer({ logo }) {
         </Col>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <div
-            className={`${style.rights_reserved} d-flex justify-content-center align-items-center`}
+            className={`${
+              router.locale === "en"
+                ? style.rights_reserved
+                : style.rights_reserved_ar
+            } d-flex justify-content-center align-items-center`}
           >
             <div>
               {router.locale === "en"

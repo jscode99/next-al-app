@@ -40,10 +40,38 @@
       font-weight: $five_hundred
       letter-spacing: 0.5px
 
+.footer_list_ar
+  font-family: $noto_kufi
+  list-style-type: none
+  color: $white_color
+  &> li
+    // @extend %font_size_14
+    margin-bottom: 8px
+    opacity: .7
+    // font-family: $roboto
+    cursor: pointer
+    font-weight: $five_hundred
+    font-size: 12px
+    &> a
+      color: $white_color $important
+      // @extend %font_size_14
+      margin-bottom: 8px
+      opacity: .7
+      // font-family: $roboto
+      cursor: pointer
+      font-weight: $five_hundred
+      letter-spacing: 0.5px
+
 .footer_list_header
   font-size: 19px $important
   opacity: 1 $important
   letter-spacing: 0.5px
+
+.footer_list_header_ar
+  font-size: 17px $important
+  opacity: 1 $important
+  letter-spacing: 0.5px
+  font-family: $noto_kufi
 
 .sitemap
   text-decoration: none !important
@@ -66,6 +94,15 @@
     font-family: roboto
     letter-spacing: 0.5px
 
+.rights_reserved_ar
+  background-color: #213053
+  height: 70px
+  &> div
+    color: $white_color
+    opacity: 0.8
+    font-weight: 200
+    font-family: $noto_kufi
+
 .p_footer_logo
   padding: 0 30px 0 30px
 
@@ -74,6 +111,11 @@
   font-family: "oswald",roboto
   font-weight: $nine_hundred
   letter-spacing: 1.5px
+
+.logo_title_ar
+  font-size: 20px $important
+  font-family: $noto_kufi
+  font-weight: $seven_hundred
 
 @media only screen and (max-width: 1024px)
   .navigation_container
@@ -88,11 +130,13 @@
     &> div
       width: 100%
 
-  .footer_list_header
+  .footer_list_header,
+  .footer_list_header_ar
     @include font_size_18
     opacity: 1 $important
 
-  .footer_list
+  .footer_list,
+  .footer_list_ar
     &> li
       font-size: 13px
       margin-bottom: 6px
@@ -103,7 +147,8 @@
         opacity: .7
 
 @media only screen and (max-width: 500px)
-  .footer_list
+  .footer_list,
+  .footer_list_ar
     padding: 0px
 
   .logo

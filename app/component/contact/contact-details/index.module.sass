@@ -14,9 +14,20 @@
   font-family: "oswald",roboto
   letter-spacing: 1px
 
+.details_title_primary_ar
+  @extend %font_size_32
+  font-weight: $five_hundred
+  font-family: $noto_kufi
+
 .details_para
   @extend %font_size_22
   font-family: roboto
+  font-weight: $five_hundred
+  letter-spacing: 0.8px
+
+.details_para_ar
+  @extend %font_size_22
+  font-family: $noto_kufi
   font-weight: $five_hundred
   letter-spacing: 0.8px
 
@@ -34,10 +45,22 @@
   font-family: roboto
   letter-spacing: 0.8px
 
+.key_ar
+  @extend %font_size_18
+  font-weight: $seven_hundred
+  font-family: $noto_kufi
+  letter-spacing: 0.8px
+
 .value
   @extend %font_size_22
   font-weight: $five_hundred
   font-family: "oswald"
+  letter-spacing: 0.5px
+
+.value_ar
+  @extend %font_size_22
+  font-weight: $five_hundred
+  font-family: $noto_kufi
   letter-spacing: 0.5px
 
 .icon
@@ -61,27 +84,27 @@
 
 @-webkit-keyframes rotateY
   0%
-    transform: rotateY( 33deg)
+  transform: rotateY( 33deg)
   10%
-    transform: rotateY( 66deg)
+  transform: rotateY( 66deg)
   20%
-    transform: rotateY( 99deg)
+  transform: rotateY( 99deg)
   30%
-    transform: rotateY( 132deg)
+  transform: rotateY( 132deg)
   40%
-    transform: rotateY( 165deg)
+  transform: rotateY( 165deg)
   50%
-    transform: rotateY( 198deg)
+  transform: rotateY( 198deg)
   60%
-    transform: rotateY( 231deg)
+  transform: rotateY( 231deg)
   70%
-    transform: rotateY( 264deg)
+  transform: rotateY( 264deg)
   80%
-    transform: rotateY( 297deg)
+  transform: rotateY( 297deg)
   90%
-    transform: rotateY( 330deg)
+  transform: rotateY( 330deg)
   100%
-    transform: rotateY( 360deg)
+  transform: rotateY( 360deg)
 
 @media only screen and (max-width: 1024px)
   .container

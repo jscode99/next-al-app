@@ -17,6 +17,11 @@
     font-weight: $nine_hundred
     letter-spacing: 1px
 
+.chart_container_title_ar
+    font-size: 24px $important
+    font-family: $noto_kufi
+    font-weight: $seven_hundred
+
 .fund_chart_indicator
     width: 25px
     height: 20px
@@ -41,18 +46,24 @@
     font-size: 10px
     letter-spacing: .5px
 
+.xAxis_title_ar
+    text-transform: capitalize
+    font-family: $noto_kufi
+    font-size: 9px
+    letter-spacing: .5px
+
 .horz_scroll
     overflow: auto
     white-space: nowrap
 
 @media only screen and (max-width: 1024px)
-  .container
+.container
     @include container_padding_lapScreen
 
 @media only screen and (max-width: 768px)
-  .container
+.container
     @include container_padding_tabScreen
 
 @media only screen and (max-width: 500px)
-  .container
+.container
     @include container_padding_smScreen

@@ -15,10 +15,25 @@
     -webkit-line-clamp: 2
     -webkit-box-orient: vertical
 
+.publication_list_title_ar
+    font-size: 17px
+    font-family: $noto_kufi $important
+    font-weight: $five_hundred
+    overflow: hidden
+    display: -webkit-box $important
+    -webkit-line-clamp: 2
+    -webkit-box-orient: vertical
+
 .publication_list_label
     color: $grey_color
     @extend %font_size_14
     font-weight: $five_hundred
+
+.publication_list_label_ar
+    color: $grey_color
+    @extend %font_size_14
+    font-weight: $five_hundred
+    font-family: $noto_kufi $important
 
 .publication_list_button
     font-family: "oswald",roboto
@@ -34,6 +49,20 @@
         background-color: #12328E4D
         color: $primary_color
 
+.publication_list_button_ar
+    font-family: $noto_kufi $important
+    width: 170px
+    height: 55px
+    background-color: #12328E4D
+    color: $primary_color
+    font-size: 16px $important
+    font-weight: $five_hundred
+    letter-spacing: 0.5px
+    &:hover,
+    &:focus
+        background-color: #12328E4D
+        color: $primary_color
+
 @media only screen and (max-width: 1024px)
     .publication_list_container
         @include container_padding_lapScreen
@@ -41,17 +70,22 @@
 @media only screen and (max-width: 768px)
     .publication_list_container
         @include container_padding_tabScreen
-    .publication_list_button
+    .publication_list_button,
+    .publication_list_button_ar
         width: 150px
-    .publication_list_label
+    .publication_list_label,
+    .publication_list_label_ar
         @include font_size_14
-    .publication_list_title
+    .publication_list_title,
+    .publication_list_title_ar
         @include font_size_18
 
 @media only screen and (max-width: 500px)
     .publication_list_container
         @include container_padding_smScreen
-    .publication_list_button
+    .publication_list_button,
+    .publication_list_button_ar
         width: 55px
-    .publication_list_title
+    .publication_list_title,
+    .publication_list_title_ar
         font-size: 12px

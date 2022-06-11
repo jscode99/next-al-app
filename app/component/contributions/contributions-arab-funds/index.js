@@ -23,7 +23,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
         </p>
       ),
       dataIndex: "Name",
-      render: name => (
+      render: (name) => (
         <p
           className={`${style.table_name} text-capitalize fw-bold text-start m-1`}
         >
@@ -40,7 +40,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
         </p>
       ),
       dataIndex: "Allocation",
-      render: name => (
+      render: (name) => (
         <p className={`${style.table_name} text-capitalize text-center m-1`}>
           {name}
         </p>
@@ -51,28 +51,28 @@ export default function ContributionsArabFunds({ arabContributions }) {
     {
       title: (
         <p
-          className={`${style.table_title} fw-bold d-flex justify-content-center m-1 pe-3`}
+          className={`${style.table_title_ar} fw-bold d-flex justify-content-center m-1 pe-3`}
         >
           {t("allocation (in 000)")}
         </p>
       ),
       dataIndex: "Allocation",
-      render: name => (
+      render: (name) => (
         <p className={`d-flex justify-content-center m-1 pe-3`}>{name}</p>
       ),
     },
     {
       title: (
         <p
-          className={`${style.table_title} fw-bold d-flex justify-content-end m-1 pe-3`}
+          className={`${style.table_title_ar} fw-bold d-flex justify-content-end m-1 pe-3`}
         >
           {t("name Of funds")}
         </p>
       ),
       dataIndex: "Name",
-      render: name => (
+      render: (name) => (
         <p
-          className={`${style.table_name} fw-bold d-flex justify-content-end m-1 pe-3`}
+          className={`${style.table_name_ar} fw-bold d-flex justify-content-end m-1 pe-3`}
         >
           {name}
         </p>
@@ -85,15 +85,15 @@ export default function ContributionsArabFunds({ arabContributions }) {
     let contribution = arabContributions.sort(
       (a, b) =>
         parseFloat(b.Allocation.split(",").join("")) -
-        parseFloat(a.Allocation.split(",").join("")),
+        parseFloat(a.Allocation.split(",").join(""))
     );
-    let data = contribution.map(value => {
+    let data = contribution.map((value) => {
       totalValue += parseInt(value.Allocation.split(",").join(""));
       return {
         Allocation:
           "$" +
           new Intl.NumberFormat().format(
-            parseInt(value.Allocation.split(",").join("")),
+            parseInt(value.Allocation.split(",").join(""))
           ),
         Name: value.Name,
       };
@@ -114,7 +114,11 @@ export default function ContributionsArabFunds({ arabContributions }) {
     <div className={`${style.bg} pt-2 pb-5`}>
       <div className={`${style.container} px-5`}>
         <h3
-          className={`${style.contribution_table_title} text-center text-capitalize mb-4`}
+          className={`${
+            router.locale === "en"
+              ? style.contribution_table_title
+              : style.contribution_table_title_ar
+          } text-center text-capitalize mb-4`}
         >
           {t("arab funds contributions")}
         </h3>

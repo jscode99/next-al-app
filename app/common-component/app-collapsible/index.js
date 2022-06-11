@@ -43,7 +43,11 @@ export default function AppCollapsible({ keys, data }) {
             className={`d-flex justify-content-center align-items-center w-100`}
           >
             <h6
-              className={`${style.collapsible_title} text-capitalize ${
+              className={`${
+                router.locale === "en"
+                  ? style.collapsible_title
+                  : style.collapsible_title_ar
+              } text-capitalize ${
                 router.locale === "en" ? `text-start` : `text-end`
               } fw-bold m-2 ms-2`}
             >
@@ -61,7 +65,11 @@ export default function AppCollapsible({ keys, data }) {
     } else {
       return (
         <div
-          className={`${style.collapsible_title} text-capitalize fw-bold ${
+          className={`${
+            router.locale === "en"
+              ? style.collapsible_title
+              : style.collapsible_title_ar
+          } text-capitalize fw-bold ${
             router.locale === "en" ? `text-start` : `text-end`
           }`}
         >
@@ -81,7 +89,7 @@ export default function AppCollapsible({ keys, data }) {
           expandIconPosition={router.locale === "en" ? `right` : `left`}
         >
           <Panel header={Icon()} key={keys.toString()}>
-            {data.des.map(data => (
+            {data.des.map((data) => (
               <>
                 <div
                   className={`d-flex ${
@@ -99,14 +107,17 @@ export default function AppCollapsible({ keys, data }) {
                         &#8226;
                       </span>
 
-                      <p className={`${style.collapsible_des} text-justify mt-2 pt-1 h6`}>
+                      <p
+                        className={`${style.collapsible_des} text-justify mt-2 pt-1 h6`}
+                      >
                         {data.title}
                       </p>
                     </>
                   ) : (
                     <>
                       <p
-                        className={`${style.collapsible_des} mt-2 pt-1 h6 text-end`}
+                        className={`${style.collapsible_des} mt-2 pt-1 h6 text-justify`}
+                        dir={`rtl`}
                       >
                         {data.title}
                       </p>

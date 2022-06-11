@@ -14,6 +14,18 @@
         font-family: roboto
         letter-spacing: .5px
 
+.app_input_ar
+    background-color: $lite_grey_color $important
+    height: 60px $important
+    border-radius: 8px $important
+    box-shadow: inset 3px 3px 5px 0 rgba(0, 0, 0, 0.2),inset -3px -3px 5px 0 rgba(255, 255, 255, 0.5)
+    &::placeholder
+        color: $grey_color
+        font-weight: $five_hundred
+        font-family: $noto_kufi $important
+        font-size: 11px $important
+        letter-spacing: .5px
+
 .app_text_area
     background-color: $lite_grey_color $important
     border-radius: 8px $important
@@ -25,10 +37,28 @@
         font-family: roboto
         letter-spacing: .5px
 
+.app_text_area_ar
+    background-color: $lite_grey_color $important
+    border-radius: 8px $important
+    padding-top: 20px
+    box-shadow: inset 3px 3px 5px 0 rgba(0, 0, 0, 0.2),inset -3px -3px 5px 0 rgba(255, 255, 255, 0.5)
+    &::placeholder
+        color: $grey_color
+        font-weight: $five_hundred
+        font-family: $noto_kufi $important
+        font-size: 11px $important
+        letter-spacing: .5px
+
 .app_label
     @extend %font_size_14
     font-weight: $five_hundred
     font-family: roboto
+    letter-spacing: .5px
+
+.app_label_ar
+    @extend %font_size_14
+    font-weight: $five_hundred
+    font-family: $noto_kufi $important
     letter-spacing: .5px
 
 .app_button
@@ -48,12 +78,34 @@
         color: $white_color
         background-image: linear-gradient(74deg, #233671 0%, #41AC37 100%)
 
+.app_button_ar
+    width: 180px
+    height: 55px
+    border-radius: 8px
+    border: 0px $important
+    color: $white_color
+    @extend %font_size_18
+    font-family: $noto_kufi
+    font-weight: $five_hundred
+    background-image: linear-gradient(74deg, #41AC37 0%, #233671 100%)
+    letter-spacing: .5px
+    &:hover,
+    &:active,
+    &:focus
+        color: $white_color
+        background-image: linear-gradient(74deg, #233671 0%, #41AC37 100%)
+
 .visibility
     visibility: hidden
 
 .error
     font-weight: $five_hundred
     font-family: roboto
+    font-size: 12px
+
+.error_ar
+    font-weight: $five_hundred
+    font-family: $noto_kufi $important
     font-size: 12px
 
 @media only screen and (max-width: 768px)

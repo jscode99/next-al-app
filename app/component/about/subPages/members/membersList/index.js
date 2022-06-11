@@ -52,7 +52,11 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_button
+                            : style.members_list_button_ar
+                        } rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
                         // style={{ width: "240px" }}
                       >
                         {data.reputation}
@@ -105,7 +109,11 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_button
+                            : style.members_list_button_ar
+                        } rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
                         // style={{ width: "240px" }}
                       >
                         {data.reputation}
@@ -118,12 +126,20 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-end h-100 flex-column`}
                     >
                       <p
-                        className={`${style.members_list_title} d-flex justify-content-center text-end align-items-center m-0`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_title
+                            : style.members_list_title_ar
+                        } d-flex justify-content-center text-end align-items-center m-0`}
                       >
                         {data.title}
                       </p>
                       <p
-                        className={`${style.members_list_label} d-flex justify-content-center text-end align-items-center mb-2`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_label
+                            : style.members_list_label_ar
+                        } d-flex justify-content-center text-end align-items-center mb-2`}
                       >
                         {data.label}
                       </p>
@@ -149,7 +165,11 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_button
+                            : style.members_list_button_ar
+                        } rounded-pill d-flex justify-content-center align-items-center px-5 text-center`}
                         // style={{ width: "240px" }}
                       >
                         {data.reputation}
@@ -161,12 +181,20 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-end h-100 flex-column px-4`}
                     >
                       <p
-                        className={`${style.members_list_title} d-flex justify-content-center text-end align-items-center m-0`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_title
+                            : style.members_list_title_ar
+                        } d-flex justify-content-center text-end align-items-center m-0`}
                       >
                         {data.title}
                       </p>
                       <p
-                        className={`${style.members_list_label} d-flex justify-content-center text-end align-items-center mb-2`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_label
+                            : style.members_list_label_ar
+                        } d-flex justify-content-center text-end align-items-center mb-2`}
                       >
                         {data.label}
                       </p>
@@ -217,7 +245,11 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-3 text-center`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_button
+                            : style.members_list_button_ar
+                        } rounded-pill d-flex justify-content-center align-items-center px-3 text-center`}
                         // style={{ width: "240px" }}
                       >
                         {data.reputation}
@@ -248,7 +280,11 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-3 text-center`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_button
+                            : style.members_list_button_ar
+                        } rounded-pill d-flex justify-content-center align-items-center px-3 text-center`}
                       >
                         {data.reputation}
                       </div>
@@ -270,7 +306,11 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-3 text-center`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_button
+                            : style.members_list_button_ar
+                        } rounded-pill d-flex justify-content-center align-items-center px-3 text-center`}
                         // style={{ width: "240px" }}
                       >
                         {data.reputation}
@@ -283,12 +323,20 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-end h-100 flex-column`}
                     >
                       <p
-                        className={`${style.members_list_title} d-flex justify-content-center align-items-center m-0`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_title
+                            : style.members_list_title_ar
+                        } d-flex justify-content-center align-items-center m-0`}
                       >
                         {data.title}
                       </p>
                       <p
-                        className={`${style.members_list_label} d-flex justify-content-center align-items-center mb-2`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_label
+                            : style.members_list_label_ar
+                        } d-flex justify-content-center align-items-center mb-2`}
                       >
                         {data.label}
                       </p>
@@ -314,7 +362,11 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       <div
-                        className={`${style.members_list_button} rounded-pill d-flex justify-content-center align-items-center px-3 text-center`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_button
+                            : style.members_list_button_ar
+                        } rounded-pill d-flex justify-content-center align-items-center px-3 text-center`}
                         // style={{ width: "240px" }}
                       >
                         {data.reputation}
@@ -326,12 +378,20 @@ export default function MembersList({ data }) {
                       className={`d-flex justify-content-center align-items-end h-100 flex-column px-4`}
                     >
                       <p
-                        className={`${style.members_list_title} d-flex justify-content-center align-items-center text-end m-0`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_title
+                            : style.members_list_title_ar
+                        } d-flex justify-content-center align-items-center text-end m-0`}
                       >
                         {data.title}
                       </p>
                       <p
-                        className={`${style.members_list_label} d-flex justify-content-center align-items-center text-end mb-2`}
+                        className={`${
+                          router.locale === "en"
+                            ? style.members_list_label
+                            : style.members_list_label_ar
+                        } d-flex justify-content-center align-items-center text-end mb-2`}
                       >
                         {data.label}
                       </p>

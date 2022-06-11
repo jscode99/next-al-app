@@ -14,7 +14,7 @@ export default function CardSection({ data }) {
   //router
   let router = useRouter();
 
-  const getProperty = priority => {
+  const getProperty = (priority) => {
     switch (priority) {
       case "1":
         return [style.secondary_color, "/images/about/Governance/Star.webp"];
@@ -29,7 +29,7 @@ export default function CardSection({ data }) {
   };
 
   useEffect(() => {
-    const list = data.map(data => {
+    const list = data.map((data) => {
       return {
         title: t(data.title.toLowerCase()),
         des: data.description,
@@ -50,7 +50,9 @@ export default function CardSection({ data }) {
             cardData.map((data, index) => (
               <>
                 <Col xs={0} sm={0} md={0} lg={8} xl={8} key={index}>
-                  <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
+                  <div
+                    className={`${style.card_container} shadow bg-white p-3 mx-2`}
+                  >
                     <div
                       className={`d-flex ${
                         router.locale === "en"
@@ -88,7 +90,9 @@ export default function CardSection({ data }) {
                   </div>
                 </Col>
                 <Col xs={0} sm={0} md={8} lg={0} xl={0} key={index}>
-                  <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
+                  <div
+                    className={`${style.card_container} shadow bg-white p-3 mx-2`}
+                  >
                     <div
                       className={`d-flex ${
                         router.locale === "en"
@@ -174,7 +178,9 @@ export default function CardSection({ data }) {
             new Array(...cardData).reverse().map((data, index) => (
               <>
                 <Col xs={0} sm={0} md={0} lg={8} xl={8} key={index}>
-                  <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
+                  <div
+                    className={`${style.card_container} shadow bg-white p-3 mx-2`}
+                  >
                     <div
                       className={`d-flex ${
                         router.locale === "en"
@@ -195,16 +201,16 @@ export default function CardSection({ data }) {
                     </div>
                     <div>
                       <h4
-                        className={`mb-4 ${style.card_title} fw-bold ${
+                        className={`mb-4 ${style.card_title_ar} fw-bold ${
                           router.locale === "en" ? `text-start` : `text-end`
                         } text-capitalize`}
                       >
                         {data.title}
                       </h4>
                       <p
-                        className={`text-muted ${style.card_des} m-0 ${
-                          router.locale === "en" ? `text-justify` : `text-end`
+                        className={`text-muted ${style.card_des_ar} m-0 text-justify
                         }`}
+                        dir={`rtl`}
                       >
                         {data.des}
                       </p>
@@ -212,7 +218,9 @@ export default function CardSection({ data }) {
                   </div>
                 </Col>
                 <Col xs={0} sm={0} md={8} lg={0} xl={0} key={index}>
-                  <div className={`${style.card_container} shadow bg-white p-3 mx-2`}>
+                  <div
+                    className={`${style.card_container} shadow bg-white p-3 mx-2`}
+                  >
                     <div
                       className={`d-flex ${
                         router.locale === "en"
@@ -233,16 +241,16 @@ export default function CardSection({ data }) {
                     </div>
                     <div>
                       <h4
-                        className={`mb-4 ${style.card_title} fw-bold ${
+                        className={`mb-4 ${style.card_title_ar} fw-bold ${
                           router.locale === "en" ? `text-start` : `text-end`
                         } text-capitalize`}
                       >
                         {data.title}
                       </h4>
                       <p
-                        className={`text-muted ${style.card_des} m-0 ${
-                          router.locale === "en" ? `text-justify` : `text-end`
-                        }`}
+                        className={`text-muted ${style.card_des_ar} m-0 text-justify
+                      }`}
+                        dir={`rtl`}
                       >
                         {data.des}
                       </p>
@@ -274,7 +282,7 @@ export default function CardSection({ data }) {
                     <div>
                       <h4
                         className={`mb-4 ${
-                          style.card_title
+                          style.card_title_ar
                         } text-capitalize fw-bold ${
                           router.locale === "en" ? `text-start` : `text-end`
                         } text-capitalize`}
@@ -282,9 +290,9 @@ export default function CardSection({ data }) {
                         {data.title}
                       </h4>
                       <p
-                        className={`text-muted ${style.card_des} m-0 ${
-                          router.locale === "en" ? `text-justify` : `text-end`
-                        }`}
+                        className={`text-muted ${style.card_des_ar} m-0 text-justify
+                      }`}
+                        dir={`rtl`}
                       >
                         {data.des}
                       </p>

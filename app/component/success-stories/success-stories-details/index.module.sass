@@ -28,6 +28,13 @@
     font-family: roboto
     color: $grey_color
 
+.stories_amount_heading_ar
+    font-weight: $five_hundred
+    font-family: $noto_kufi $important
+    color: $grey_color
+    @extend %font_size_18
+    letter-spacing: -0.5px
+
 .stories_amount_heading,
 .stories_amount
     font-family: roboto
@@ -38,10 +45,16 @@
     font-weight: $five_hundred
     font-family: roboto
     color: $grey_color
-    font-family: roboto
     @extend %font_size_22
     letter-spacing: -0.5px
-    
+
+.stories_overview_heading_ar
+    font-weight: $five_hundred
+    font-family: $noto_kufi $important
+    color: $grey_color
+    @extend %font_size_22
+    letter-spacing: -0.5px
+
 .endStar
     display: flex
     justify-content: center
@@ -56,6 +69,12 @@
 
 .stories_details_des
     font-family: roboto
+    font-size: 16px
+    word-break: 2px
+    color: #00000095
+
+.stories_details_des_ar
+    font-family: $noto_kufi $important
     font-size: 16px
     word-break: 2px
     color: #00000095
@@ -88,6 +107,7 @@
         @include container_padding_tabScreen
 
     .stories_amount_heading,
+    .stories_amount_heading_ar,
     .stories_amount
         @include font_size_14
 
@@ -96,6 +116,7 @@
         @include container_padding_smScreen
 
     .stories_amount_heading,
+    .stories_amount_heading_ar,
     .stories_amount
         @include font_size_14
 

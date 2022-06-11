@@ -15,11 +15,25 @@
     font-weight: $nine_hundred
     letter-spacing: 0.5px
 
+.geographical_approval_title_ar
+    color: $secondary_color
+    font-size: 24px $important
+    font-family: $noto_kufi
+    font-weight: $seven_hundred
+    letter-spacing: 0.5px
+
 .sectoral_approval_title
     color: $primary_color
     @extend %font_size_32
     font-family: "oswald",roboto
     font-weight: $nine_hundred
+    letter-spacing: 0.5px
+
+.sectoral_approval_title_ar
+    color: $primary_color
+    font-size: 24px $important
+    font-family: $noto_kufi
+    font-weight: $seven_hundred
     letter-spacing: 0.5px
 
 .common_sectoral_list
@@ -29,8 +43,19 @@
     border-radius: 8px
     letter-spacing: 0.2px
 
+.common_sectoral_list_ar
+    font-family: $noto_kufi
+    height: 60px
+    width: 520px
+    border-radius: 8px
+    letter-spacing: 0.2px
+
 .sector_labels
     font-family: roboto
+    letter-spacing: 0.2px
+
+.sector_labels_ar
+    font-family: $noto_kufi
     letter-spacing: 0.2px
 
 .number_of_projects,
@@ -40,19 +65,20 @@
     font-weight: $five_hundred
 
 @media only screen and (max-width: 1024px)
-  .container
-    @include container_padding_lapScreen
+    .container
+        @include container_padding_lapScreen
 
 @media only screen and (max-width: 768px)
-  .container
-    @include container_padding_tabScreen
+    .container
+        @include container_padding_tabScreen
 
 @media only screen and (max-width: 500px)
-  .container
-    @include container_padding_smScreen
-  .sector_labels
-      font-size: 10px
-  .number_of_projects,
-  .percentage,
-  .title
-    font-size: 12px
+    .container
+        @include container_padding_smScreen
+        .sector_labels,
+        .sector_labels_ar
+            font-size: 10px
+        .number_of_projects,
+        .percentage,
+        .title
+            font-size: 12px

@@ -25,19 +25,31 @@ export default function IsdbRoleSection({ data }) {
             <div className={`${style.role_details_conatiner} shadow`}>
               <div className={`p-5`}>
                 <p
-                  className={`${style.role_title} text-capitalize mb-4 text-justify `}
+                  className={`${
+                    router.locale === "en"
+                      ? style.role_title
+                      : style.role_title_ar
+                  } text-capitalize mb-4 text-justify `}
                   dir={router.locale === "ar" ? "rtl" : ""}
                 >
                   {t("role of isdb")}
                 </p>
                 <p
-                  className={`${style.role_description} mb-4 text-justify`}
+                  className={`${
+                    router.locale === "en"
+                      ? style.role_description
+                      : style.role_description_ar
+                  } mb-4 text-justify`}
                   dir={router.locale === "ar" ? "rtl" : ""}
                 >
                   {data && Object.keys(data).length > 0 && data.description}
                 </p>
                 <p
-                  className={`${style.role_description} text-justify`}
+                  className={`${
+                    router.locale === "en"
+                      ? style.role_description
+                      : style.role_description_ar
+                  } text-justify`}
                   dir={router.locale === "ar" ? "rtl" : ""}
                 >
                   {data &&
@@ -66,7 +78,11 @@ export default function IsdbRoleSection({ data }) {
                       ) : (
                         <div className={`d-flex justify-content-end`}>
                           <p
-                            className={`${style.role_description} mt-2 mb-0 text-end`}
+                            className={`${
+                              router.locale === "en"
+                                ? style.role_description
+                                : style.role_description_ar
+                            } mt-2 mb-0 text-end`}
                           >
                             {data.title}
                           </p>
@@ -86,7 +102,11 @@ export default function IsdbRoleSection({ data }) {
             <div className={`${style.role_details_conatiner}`}>
               <div className={`p-5`}>
                 <p
-                  className={`${style.role_title} text-capitalize mb-4 ${
+                  className={`${
+                    router.locale === "en"
+                      ? style.role_title
+                      : style.role_title_ar
+                  } text-capitalize mb-4 ${
                     router.locale === "en" ? `` : `text-end`
                   } `}
                 >
@@ -150,7 +170,11 @@ export default function IsdbRoleSection({ data }) {
             <div className={`${style.role_details_conatiner}`}>
               <div className={`p-3`}>
                 <p
-                  className={`${style.role_title} text-capitalize mb-4 ${
+                  className={`${
+                    router.locale === "en"
+                      ? style.role_title
+                      : style.role_title_ar
+                  } text-capitalize mb-4 ${
                     router.locale === "en" ? `` : `text-end`
                   } `}
                 >

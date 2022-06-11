@@ -23,6 +23,12 @@
     font-weight: $nine_hundred
     letter-spacing: 0.8px
 
+.aboutCard_title_ar
+    font-family: $noto_kufi
+    @extend %font_size_18
+    font-weight: $seven_hundred
+    letter-spacing: 0.8px
+
 .card_route
     cursor: pointer
     height: 60px
@@ -43,7 +49,8 @@
         @include container_padding_tabScreen
     .aboutUsCard_container
         height: 140px
-    .aboutCard_title
+    .aboutCard_title,
+    .aboutCard_title_ar
         font-size: 12px $important
     .card_route
         height: 40px
@@ -64,5 +71,6 @@
         width: 30px
     .aboutCard_nav_arrow
         font-size: 12px $important
-    .aboutCard_title
+    .aboutCard_title,
+    .aboutCard_title_ar
         font-size: 9px $important

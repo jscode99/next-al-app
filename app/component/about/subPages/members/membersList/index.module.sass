@@ -16,7 +16,7 @@
 
 .members_list_title_ar
     font-family: $noto_kufi
-    @extend %font_size_22
+    font-size:20px $important
     font-weight: $five_hundred
     overflow: hidden
     display: -webkit-box $important
@@ -29,6 +29,12 @@
     @extend %font_size_14
     font-weight: $five_hundred
 
+.members_list_label_ar
+    font-family: $noto_kufi
+    color: $grey_color
+    font-size: 12px $important
+    font-weight: $five_hundred
+
 .members_list_button
     font-family: "oswald",roboto
     height: 55px
@@ -36,21 +42,34 @@
     @extend %font_size_18
     font-weight: $five_hundred
 
+.members_list_button_ar
+    font-family: $noto_kufi
+    height: 55px
+    background-color: rgba(208, 208, 208, 0.3)
+    font-size: 16px $important
+    font-weight: $five_hundred
+
 @media only screen and (max-width: 1024px)
 
 
 @media only screen and (max-width: 768px)
-    .members_list_title
+    .members_list_title,
+    .members_list_title_ar
         @include font_size_18
-    .members_list_label
+    .members_list_label,
+    .members_list_label_ar
         font-size: 12px $important
-    .members_list_button
+    .members_list_button,
+    .members_list_button_ar
         @include font_size_14
 
 @media only screen and (max-width: 500px)
-    .members_list_title
+    .members_list_title,
+    .members_list_title_ar
         font-size: 16px $important
-    .members_list_label
+    .members_list_label,
+    .members_list_label_ar
         font-size: 8px $important
-    .members_list_button
+    .members_list_button,
+    .members_list_button_ar
         font-size: 10px $important

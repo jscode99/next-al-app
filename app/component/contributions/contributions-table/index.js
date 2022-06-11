@@ -96,7 +96,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
+          className={`${style.table_title_ar} d-flex justify-content-end m-0 pe-3`}
         >
           {t("total payed")}
         </p>
@@ -109,7 +109,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
+          className={`${style.table_title_ar} d-flex justify-content-end m-0 pe-3`}
         >
           {t("dead sea summit")}
         </p>
@@ -122,7 +122,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
+          className={`${style.table_title_ar} d-flex justify-content-end m-0 pe-3`}
         >
           {t("beirut & sirte summit")}
         </p>
@@ -135,7 +135,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
+          className={`${style.table_title_ar} d-flex justify-content-end m-0 pe-3`}
         >
           {t("cairo summit")}
         </p>
@@ -148,7 +148,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
     {
       title: (
         <p
-          className={`${style.table_title} d-flex justify-content-end m-0 pe-3`}
+          className={`${style.table_title_ar} d-flex justify-content-end m-0 pe-3`}
         >
           {t("country")}
         </p>
@@ -156,7 +156,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
       dataIndex: "Country",
       render: (Country) => (
         <p
-          className={`${style.table_name} fw-bold d-flex justify-content-end m-0 pe-3`}
+          className={`${style.table_name_ar} d-flex justify-content-end m-0 pe-3`}
         >
           {Country}
         </p>
@@ -335,7 +335,9 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
       <div className={`${style.container} px-5`}>
         <Row className={`pb-5`}>
           <h3
-            className={`${style.donor_title} text-center mb-4 w-100 text-capitalize`}
+            className={`${
+              router.locale === "en" ? style.donor_title : style.donor_title_ar
+            } text-center mb-4 w-100 text-capitalize`}
           >
             {t("donor countries contributions")}
           </h3>

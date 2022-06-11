@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useInView } from "react-hook-inview";
 import { useTranslation } from "next-i18next";
 //Antd
@@ -12,6 +13,7 @@ export default function IntroCard({ data }) {
     threshold: 1,
   });
   const { t } = useTranslation("common");
+  const router = useRouter();
   return (
     <>
       <Col xs={0} sm={0} md={8} lg={8} xl={8}>
@@ -56,7 +58,11 @@ export default function IntroCard({ data }) {
                 )}
               </p>
               <p
-                className={`${style.contribution_amount_subtitle} d-flex justify-content-end mb-4 text-capitalize`}
+                className={`${
+                  router.locale === "en"
+                    ? style.contribution_amount_subtitle
+                    : style.contribution_amount_subtitle_ar
+                } d-flex justify-content-end mb-4 text-capitalize`}
               >
                 {data.subTitle}
               </p>
@@ -106,7 +112,11 @@ export default function IntroCard({ data }) {
                 )}
               </p>
               <p
-                className={`${style.contribution_amount_subtitle} d-flex justify-content-end mb-4 text-capitalize`}
+                className={`${
+                  router.locale === "en"
+                    ? style.contribution_amount_subtitle
+                    : style.contribution_amount_subtitle_ar
+                } d-flex justify-content-end mb-4 text-capitalize`}
               >
                 {data.subTitle}
               </p>

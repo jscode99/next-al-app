@@ -20,7 +20,13 @@ export default function Sitemap({ projectTitle }) {
       >
         <div>
           <div className="my-3">
-            <p className={`${styles.SiteMapAtag} text-capitalize`} style={{ textDecoration: 'none' }} href="/">
+            <p
+              className={`${styles.SiteMapAtag} text-capitalize`}
+              style={{ textDecoration: "none" }}
+              onClick={() => {
+                router.push("/");
+              }}
+            >
               {t("front page of islamic development bank")}
             </p>
           </div>
@@ -30,7 +36,12 @@ export default function Sitemap({ projectTitle }) {
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
-            <p className={`${styles.SiteMapAtag}`} href="/">
+            <p
+              className={`${styles.SiteMapAtag}`}
+              onClick={() => {
+                router.push("/");
+              }}
+            >
               {t("home")}
             </p>
           </div>
@@ -41,7 +52,12 @@ export default function Sitemap({ projectTitle }) {
               <i className="fa fa-circle px-2"></i>
             </div>
             <div className={`${styles.SiteMapMainHead}`}>
-              <p className={`${styles.SiteMapAtag}`} href="/about">
+              <p
+                className={`${styles.SiteMapAtag}`}
+                onClick={() => {
+                  router.push("/about");
+                }}
+              >
                 {t("about")}
               </p>
             </div>
@@ -51,7 +67,9 @@ export default function Sitemap({ projectTitle }) {
             <span>
               <p
                 className={`${styles.SiteMapAtag}`}
-                href="/about/governance-structure"
+                onClick={() => {
+                  router.push("/about/governance-structure");
+                }}
               >
                 {t("governance structure")}
               </p>
@@ -60,7 +78,12 @@ export default function Sitemap({ projectTitle }) {
           <div className={`${styles.departmentHomeRouteDot} mx-4 d-flex`}>
             <i className="fa fa-circle-o p-1"></i>
             <span>
-              <p className={`${styles.SiteMapAtag}`} href="/about/members">
+              <p
+                className={`${styles.SiteMapAtag}`}
+                onClick={() => {
+                  router.push("/about/members");
+                }}
+              >
                 {t("members")}
               </p>
             </span>
@@ -70,7 +93,9 @@ export default function Sitemap({ projectTitle }) {
             <span>
               <p
                 className={`${styles.SiteMapAtag}`}
-                href="/about/approval-process-and-selection-criteria"
+                onClick={() => {
+                  router.push("/about/approval-process-and-selection-criteria");
+                }}
               >
                 {t("approval process and selection criteria")}
               </p>
@@ -82,7 +107,12 @@ export default function Sitemap({ projectTitle }) {
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
-            <p className={`${styles.SiteMapAtag}`} href="/contributions">
+            <p
+              className={`${styles.SiteMapAtag}`}
+              onClick={() => {
+                router.push("/contributions");
+              }}
+            >
               {t("contributions")}
             </p>
           </div>
@@ -93,7 +123,12 @@ export default function Sitemap({ projectTitle }) {
               <i className="fa fa-circle px-2"></i>
             </div>
             <div className={`${styles.SiteMapMainHead}`}>
-              <p className={`${styles.SiteMapAtag}`} href="/projects">
+              <p
+                className={`${styles.SiteMapAtag}`}
+                onClick={() => {
+                  router.push("/projects");
+                }}
+              >
                 {t("projects")}
               </p>
             </div>
@@ -129,7 +164,12 @@ export default function Sitemap({ projectTitle }) {
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
-            <p className={`${styles.SiteMapAtag}`} href="/success-stories">
+            <p
+              className={`${styles.SiteMapAtag}`}
+              onClick={() => {
+                router.push("/success-stories");
+              }}
+            >
               {t("success stories")}
             </p>
           </div>
@@ -139,7 +179,12 @@ export default function Sitemap({ projectTitle }) {
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
-            <p className={`${styles.SiteMapAtag}`} href="/publications">
+            <p
+              className={`${styles.SiteMapAtag}`}
+              onClick={() => {
+                router.push("/publications");
+              }}
+            >
               {t("publications")}
             </p>
           </div>
@@ -149,7 +194,12 @@ export default function Sitemap({ projectTitle }) {
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
-            <p className={`${styles.SiteMapAtag}`} href="/contact">
+            <p
+              className={`${styles.SiteMapAtag}`}
+              onClick={() => {
+                router.push("/contact");
+              }}
+            >
               {t("contact")}
             </p>
           </div>

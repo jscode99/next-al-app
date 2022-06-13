@@ -19,7 +19,7 @@ export default function ContributionsCard({ cardData, grandTotal }) {
   return (
     <div className={`${style.container}`}>
       <div
-        className={`d-flex text-capitalize justify-content-center ${
+        className={`d-flex text-capitalize align-items-center justify-content-center ${
           router.locale === "ar" && `flex-row-reverse`
         }`}
       >

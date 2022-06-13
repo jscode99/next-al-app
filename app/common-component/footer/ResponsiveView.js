@@ -233,13 +233,17 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                  <p
+                    <p
                       className={`mb-0`}
                       onClick={() => {
+                        setAppContext({
+                          ...appContext,
+                          fLinkClick: true,
+                        });
                         router.push("/sitemap");
                       }}
                     >
-                      {t("sitemap")}
+                      SiteMap
                     </p>
                   </li>
                   {/* {otResource && otResource.length > 0
@@ -284,7 +288,7 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                  <p
+                    <p
                       className={`mb-0`}
                       onClick={() => {
                         router.push("/sitemap");
@@ -528,7 +532,16 @@ export default function ResponsiveView({ view, logo }) {
                     {t("other resources")}
                   </li>
                   <li>
-                    <p className={`mb-0`} onClick={() => router.push("/terms")}>
+                    <p
+                      className={`mb-0`}
+                      onClick={() => {
+                        setAppContext({
+                          ...appContext,
+                          fLinkClick: true,
+                        });
+                        router.push("/terms");
+                      }}
+                    >
                       {t("terms and conditions")}
                     </p>
                   </li>
@@ -536,6 +549,10 @@ export default function ResponsiveView({ view, logo }) {
                     <p
                       className={`mb-0`}
                       onClick={() => {
+                        setAppContext({
+                          ...appContext,
+                          fLinkClick: true,
+                        });
                         router.push("/policy");
                       }}
                     >
@@ -543,9 +560,13 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                   <li>
-                  <p
+                    <p
                       className={`mb-0`}
                       onClick={() => {
+                        setAppContext({
+                          ...appContext,
+                          fLinkClick: true,
+                        });
                         router.push("/sitemap");
                       }}
                     >

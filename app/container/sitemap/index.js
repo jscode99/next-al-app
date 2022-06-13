@@ -23,7 +23,7 @@ export default function SitemapContainer({ projectTitle, bannerImage }) {
       title={""}
       heroImage={bannerImage}
     >
-      <Sitemap />
+      <Sitemap projectTitle={projectTitle} />
     </Layout>
   );
 }

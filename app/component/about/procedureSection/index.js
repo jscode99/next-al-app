@@ -50,7 +50,7 @@ export default function ProcedureSection({ data }) {
               : style.procedure_description_ar
           } pb-2 text-justify
           }`}
-          dir={`rtl`}
+          dir={router.locale === "ar" ? `rtl` : ``}
         >
           {data && Object.keys(data).length > 0 && data.description}
         </p>

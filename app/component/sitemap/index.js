@@ -8,7 +8,6 @@ export default function Sitemap({}) {
         <div>
           <div>
             <Link className={`${styles.SiteMapAtag}`} href="/">
-              {" "}
               Front page of Islamic Development Bank
             </Link>
           </div>

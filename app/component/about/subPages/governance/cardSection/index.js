@@ -73,7 +73,7 @@ export default function CardSection({ data }) {
                     </div>
                     <div>
                       <h4
-                        className={`mb-4 ${style.card_title} fw-bold ${
+                        className={`mb-4 ${style.card_title} ${
                           router.locale === "en" ? `text-start` : `text-end`
                         } text-capitalize`}
                       >

@@ -8,7 +8,7 @@ export default function SocialMedia({ className, link, btn }) {
       className={`${style.social_media_container} rounded-circle d-flex justify-content-center align-items-center mx-2 cursor-pointer`}
       onClick={() => (link ? window.open(link) : btn())}
     >
-      <i class={`${className} fa-lg text-white`}></i>
+      <i className={`${className} fa-lg text-white`}></i>
     </div>
   );
 }

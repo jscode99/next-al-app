@@ -100,7 +100,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                   <Row className={`mb-2`}>
                     <Col
                       span={24}
-                      className={`${styles.stories_overview_heading}`}
+                      className={`${styles.stories_amount_heading}`}
                     >
                       Overview
                     </Col>
@@ -364,7 +364,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                   <Row className={`mb-2`}>
                     <Col
                       span={24}
-                      className={`${styles.stories_overview_heading_ar} text-end`}
+                      className={`${styles.stories_amount_heading_ar} text-end`}
                     >
                       {t("overview")}
                     </Col>

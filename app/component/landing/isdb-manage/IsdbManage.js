@@ -18,9 +18,9 @@ export default function IsdbManage({ isdbManage, isdbManageAr }) {
               router.locale === "en"
                 ? style.isdb_manage_title
                 : style.isdb_manage_title_ar
-            } text-center mb-4`}
+            } text-center mb-4 text-capitalize`}
           >
-            {t("isdb also manages")}
+            {t("other funds managed by isdb")}
           </h3>
           <div className="w-100 d-flex justify-content-center flex-wrap align-items-center">
             {router.locale === "en"

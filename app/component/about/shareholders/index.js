@@ -22,7 +22,11 @@ export default function ShareHolder({ flagData }) {
     <div className={`${style.bg} pb-5`}>
       <div className={`${style.shareHolder_container} overflow-hidden px-5`}>
         <p
-          className={`${style.shareHolder_title} text-capitalize text-center py-4 m-0`}
+          className={`${
+            router.locale === "en"
+              ? style.shareHolder_title
+              : style.shareHolder_title
+          } text-capitalize text-center py-4 m-0`}
         >
           {t("shareHolders")}
         </p>

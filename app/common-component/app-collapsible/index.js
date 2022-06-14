@@ -116,7 +116,7 @@ export default function AppCollapsible({ keys, data }) {
                   ) : (
                     <>
                       <p
-                        className={`${style.collapsible_des} mt-2 pt-1 h6 text-justify`}
+                        className={`${style.collapsible_des_ar} mt-2 pt-1 h6 text-justify`}
                         dir={`rtl`}
                       >
                         {data.title}

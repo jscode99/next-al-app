@@ -82,7 +82,7 @@ export default function ResponsiveView({ view, logo }) {
               router.push("/");
             }}
           >
-            <Row>
+            <Row gutter={[24, 24]}>
               <Col
                 xs={24}
                 sm={24}
@@ -261,8 +261,15 @@ export default function ResponsiveView({ view, logo }) {
           </div>
         ) : (
           <div>
-            <Row>
-              <Col xs={0} sm={0} md={5} lg={6} xl={6}>
+            <Row gutter={[24, 24]}>
+              <Col
+                xs={0}
+                sm={0}
+                md={5}
+                lg={6}
+                xl={6}
+                style={{ paddingRight: "2px" }}
+              >
                 <ul
                   className={`${style.footer_list_ar} text-end text-capitalize`}
                 >
@@ -300,7 +307,14 @@ export default function ResponsiveView({ view, logo }) {
                 </ul>
               </Col>
 
-              <Col xs={0} sm={0} md={6} lg={6} xl={6}>
+              <Col
+                xs={0}
+                sm={0}
+                md={6}
+                lg={6}
+                xl={6}
+                style={{ paddingRight: "45x", paddingLeft: "2px" }}
+              >
                 <ul
                   className={`${style.footer_list_ar} text-end text-capitalize`}
                 >

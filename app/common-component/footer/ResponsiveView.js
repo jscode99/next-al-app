@@ -315,6 +315,7 @@ export default function ResponsiveView({ view, logo }) {
                 xl={6}
                 style={{ paddingRight: "45x", paddingLeft: "2px" }}
               >
+                <div className="d-flex justify-content-center">
                 <ul
                   className={`${style.footer_list_ar} text-end text-capitalize`}
                 >
@@ -379,6 +380,7 @@ export default function ResponsiveView({ view, logo }) {
                     </p>
                   </li>
                 </ul>
+                </div>
               </Col>
               <Col xs={0} sm={0} md={6} lg={7} xl={7}>
                 <ul className={`${style.footer_list_ar} text-end`}>

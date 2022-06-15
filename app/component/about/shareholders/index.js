@@ -25,7 +25,7 @@ export default function ShareHolder({ flagData }) {
           className={`${
             router.locale === "en"
               ? style.shareHolder_title
-              : style.shareHolder_title
+              : style.shareHolder_title_ar
           } text-capitalize text-center py-4 m-0`}
         >
           {t("shareHolders")}

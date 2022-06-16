@@ -9,7 +9,7 @@ module.exports = {
   i18n,
   env: {
     // DOMAIN: "al-aqsa-testing.vercel.app",
-    BASE_URL: "https://f5d1-20-74-161-164.in.ngrok.io",
+    BASE_URL: "https://5513-20-74-161-164.in.ngrok.io",
     // "https://z24eee497-ze87c794b-gtw.qovery.io" /* "https://z966c6ddc-z1680a652-gtw.qovery.io" */,
     PATH: {
       STATIC_SITE: "/static-stites",
@@ -34,7 +34,7 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["f5d1-20-74-161-164.in.ngrok.io"],
+    domains: ["5513-20-74-161-164.in.ngrok.io"],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],

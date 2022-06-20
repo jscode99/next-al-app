@@ -3,6 +3,7 @@ import style from "./index.module.sass";
 import { useRouter } from "next/router";
 
 export default function IsdbManageCard({ data }) {
+  console.log("ISDB Manages--->",data);
   const router = useRouter();
   return (
     <div className={`${style.isdb_manage_card} shadow mx-3 bg-white mb-3`}>

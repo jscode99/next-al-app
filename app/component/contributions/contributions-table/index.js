@@ -10,8 +10,9 @@ import CommonTable from "../../../common-component/common-table/CommonTable";
 import style from "./index.module.sass";
 
 export default function ContributionsTable({ tData, setSummitAmount }) {
-  console.log("overallArContributions", tData);
   const [countryContribution, setCountryContribution] = useState([]);
+  console.log("overallArContributions", countryContribution);
+
   let router = useRouter();
   const { t } = useTranslation("common");
   let columnData = [
@@ -312,8 +313,35 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
           ),
       };
     });
-    console.log("mapedData", mapedData);
-    setCountryContribution(mapedData);
+    if (mapedData && mapedData.length > 0) {
+      let sortedData = mapedData.sort((a, b) => {
+        if (
+          typeof a.totalPayed === "string" &&
+          typeof b.totalPayed === "string"
+        ) {
+          console.log(
+            "Testing TotalPayed",
+            parseInt(a.totalPayed.split("$").join("").split(",").join("")),
+            b.totalPayed
+          );
+          if (
+            parseFloat(a.totalPayed.split("$").join("").split(",").join("")) <
+            parseFloat(b.totalPayed.split("$").join("").split(",").join(""))
+          ) {
+            return 1;
+          }
+          if (
+            parseFloat(a.totalPayed.split("$").join("").split(",").join("")) >
+            parseFloat(b.totalPayed.split("$").join("").split(",").join(""))
+          ) {
+            return -1;
+          }
+          return 0;
+        }
+      });
+      // console.log("Sorted data: ", sortedData);
+    setCountryContribution(sortedData);
+    }
   }, []);
 
   const getNumericValue = (value) => {

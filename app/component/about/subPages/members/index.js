@@ -42,17 +42,13 @@ export default function Members({ members, flag }) {
       }
     }
     if (resultMem.length > 0) {
-      let SCMembers = resultMem
-        .sort((a, b) => a.priority - b.priority)
-        .filter(
-          (membersData) => membersData.type.toLowerCase() === "supreme council"
-        );
-      let CMMembers = resultMem
-        .sort((a, b) => a.priority - b.priority)
-        .filter(
-          (membersData) =>
-            membersData.type.toLowerCase() === "management committee"
-        );
+      let SCMembers = resultMem.filter(
+        (membersData) => membersData.type.toLowerCase() === "supreme council"
+      );
+      let CMMembers = resultMem.filter(
+        (membersData) =>
+          membersData.type.toLowerCase() === "management committee"
+      );
       console.log("SCMembers", SCMembers);
       setSupremeMembersList(SCMembers);
       // console.log("CMMembers", CMMembers);
@@ -140,12 +136,14 @@ export default function Members({ members, flag }) {
               </div>
             )}
             {activeData === true
-              ? supremeMembersList.map((data, index) => (
-                  <MembersList key={index} data={data} />
-                ))
-              : managementMembersList.map((data, index) => (
-                  <MembersList key={index} data={data} />
-                ))}
+              ? supremeMembersList
+                  .sort((a, b) => a.priority - b.priority)
+                  .map((data, index) => <MembersList key={index} data={data} />)
+              : managementMembersList
+                  .sort((a, b) => a.priority - b.priority)
+                  .map((data, index) => (
+                    <MembersList key={index} data={data} />
+                  ))}
           </div>
         </Col>
         <Col xs={24} sm={24} md={0} lg={0} xl={0}>
@@ -224,12 +222,14 @@ export default function Members({ members, flag }) {
               </div>
             )}
             {activeData === true
-              ? supremeMembersList.map((data, index) => (
-                  <MembersList key={index} data={data} />
-                ))
-              : managementMembersList.map((data, index) => (
-                  <MembersList key={index} data={data} />
-                ))}
+              ? supremeMembersList
+                  .sort((a, b) => a.priority - b.priority)
+                  .map((data, index) => <MembersList key={index} data={data} />)
+              : managementMembersList
+                  .sort((a, b) => a.priority - b.priority)
+                  .map((data, index) => (
+                    <MembersList key={index} data={data} />
+                  ))}
           </div>
         </Col>
       </Row>

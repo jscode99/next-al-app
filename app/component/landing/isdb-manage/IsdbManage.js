@@ -24,10 +24,14 @@ export default function IsdbManage({ isdbManage, isdbManageAr }) {
           </h3>
           <div className="w-100 d-flex justify-content-center flex-wrap align-items-center">
             {router.locale === "en"
-              ? isdbManage.map((data) => <IsdbManageCard data={data} />)
+              ? isdbManage.map((data, index) => (
+                  <IsdbManageCard key={index} data={data} />
+                ))
               : new Array(...isdbManageAr)
                   .reverse()
-                  .map((data) => <IsdbManageCard data={data} />)}
+                  .map((data, index) => (
+                    <IsdbManageCard key={index} data={data} />
+                  ))}
           </div>
         </div>
       </div>

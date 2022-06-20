@@ -20,30 +20,46 @@ export default function Contributions({
   const { t } = useTranslation("common");
 
   useEffect(() => {
-    // `${}`
+    let cairoSummitTotal = 0;
+    let beirutSirteSummitTotal = 0;
+    let deadSeaSummitTotal = 0;
+    overallContributions.forEach((value, index) => {
+      console.log("Testing Value--->", value);
+      if (!Number.isNaN(parseInt(value.CairoSummitContribution)))
+        cairoSummitTotal += parseInt(
+          value.CairoSummitContribution.split(",").join("")
+        );
+
+      if (!Number.isNaN(parseInt(value.BeirutSirteSummitContribution)))
+        beirutSirteSummitTotal += parseInt(
+          value.BeirutSirteSummitContribution.split(",").join("")
+        );
+
+      if (!Number.isNaN(parseInt(value.DeadSeaSummitContribution)))
+        deadSeaSummitTotal += parseInt(
+          value.DeadSeaSummitContribution.split(",").join("")
+        );
+    });
+
     setCardData([
       {
-        // amount: Math.floor(summitAmount.cairoSummitTotal),
-        amount: 542400000,
+        amount: cairoSummitTotal,
         subTitle: t("cairo summit"),
         bg: style.bg_theme_sky_blue_color,
       },
       {
-        // amount: `${summitAmount.beirutSirteSummitTotal}`,
-        amount: 222220230,
+        amount: beirutSirteSummitTotal,
         subTitle: t("beirut & sirte summit"),
         bg: style.bg_theme_golden_color,
       },
       {
-        // amount: `${summitAmount.deadSeaSummitTotal}`,
-        amount: 112500000,
+        amount: deadSeaSummitTotal,
         subTitle: t("dead sea summit"),
         bg: style.bg_primary_color,
       },
     ]);
-  }, [summitAmount]);
-  console.log("cardData", cardData);
-  console.log("summitAmount--->",typeof summitAmount.beirutSirteSummitTotal);
+  }, [overallContributions, t]);
+
   return (
     <>
       <ContributionsCard

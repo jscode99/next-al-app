@@ -26,72 +26,72 @@ function MyApp({ Component, pageProps }) {
     fLinkClick: false,
     // successStoriesAR: null,
   });
-  useEffect(() => {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-  }, []);
+  // useEffect(() => {
+  //   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  // }, []);
 
-  process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
+  // process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
-  const ErrorFallback = ({ error, resetErrorBoundary }) => {
-    console.log("ErrorFallback", router.pathname);
-    return (
-      <div
-        className={`d-flex justify-content-center align-items-center`}
-        style={{
-          width: "100vw",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        role="alert"
-      >
-        <div>
-          <div
-            style={{
-              width: "50vw",
-              height: "5px",
-              backgroundColor: "#99999950",
-            }}
-          >
-            <div
-              style={{
-                width: "25vw",
-                height: "5px",
-                backgroundColor: "#061BCF",
-              }}
-            ></div>
-          </div>
-          <div
-            style={{
-              textAlign: "center",
-              color: "#061BCF",
-            }}
-          >
-            Loading...
-          </div>
-        </div>
+  // const ErrorFallback = ({ error, resetErrorBoundary }) => {
+  //   console.log("ErrorFallback", router.pathname);
+  //   return (
+  //     <div
+  //       className={`d-flex justify-content-center align-items-center`}
+  //       style={{
+  //         width: "100vw",
+  //         height: "100vh",
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //       }}
+  //       role="alert"
+  //     >
+  //       <div>
+  //         <div
+  //           style={{
+  //             width: "50vw",
+  //             height: "5px",
+  //             backgroundColor: "#99999950",
+  //           }}
+  //         >
+  //           <div
+  //             style={{
+  //               width: "25vw",
+  //               height: "5px",
+  //               backgroundColor: "#061BCF",
+  //             }}
+  //           ></div>
+  //         </div>
+  //         <div
+  //           style={{
+  //             textAlign: "center",
+  //             color: "#061BCF",
+  //           }}
+  //         >
+  //           Loading...
+  //         </div>
+  //       </div>
 
-        {/* <button
-          onClick={() => {
-            console.log("btn", router.pathname);
-            resetErrorBoundary();
-          }}
-        >
-          Click
-        </button> */}
-        <div
-          style={{
-            visibility: "hidden",
-          }}
-        >
-          {setTimeout(() => {
-            resetErrorBoundary();
-          }, 200)}
-        </div>
-      </div>
-    );
-  };
+  //       {/* <button
+  //         onClick={() => {
+  //           console.log("btn", router.pathname);
+  //           resetErrorBoundary();
+  //         }}
+  //       >
+  //         Click
+  //       </button> */}
+  //       <div
+  //         style={{
+  //           visibility: "hidden",
+  //         }}
+  //       >
+  //         {setTimeout(() => {
+  //           resetErrorBoundary();
+  //         }, 200)}
+  //       </div>
+  //     </div>
+  //   );
+  // };
   // console.log("Myapp", router.pathname);
   return (
     <AppContext.Provider value={{ appContext, setAppContext }}>

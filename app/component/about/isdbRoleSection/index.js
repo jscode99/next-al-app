@@ -78,11 +78,7 @@ export default function IsdbRoleSection({ data }) {
                       ) : (
                         <div className={`d-flex justify-content-end`}>
                           <p
-                            className={`${
-                              router.locale === "en"
-                                ? style.role_description
-                                : style.role_description_ar
-                            } mt-2 mb-0 text-end`}
+                            className={`${style.role_description_ar} mt-2 mb-0 text-end`}
                           >
                             {data.title}
                           </p>
@@ -113,16 +109,22 @@ export default function IsdbRoleSection({ data }) {
                   {t("role of isdb")}
                 </p>
                 <p
-                  className={`${style.role_description} mb-4 ${
+                  className={`${
+                    router.locale === "en"
+                      ? style.role_description
+                      : style.role_description_ar
+                  } mb-4 ${
                     router.locale === "en" ? `text-justify` : `text-end`
                   }`}
                 >
                   {data && Object.keys(data).length > 0 && data.description}
                 </p>
                 <p
-                  className={`${style.role_description} ${
-                    router.locale === "en" ? `text-justify` : `text-end`
-                  }`}
+                  className={`${
+                    router.locale === "en"
+                      ? style.role_description
+                      : style.role_description_ar
+                  } ${router.locale === "en" ? `text-justify` : `text-end`}`}
                 >
                   {data &&
                     Object.keys(data).length > 0 &&
@@ -150,7 +152,7 @@ export default function IsdbRoleSection({ data }) {
                       ) : (
                         <div className={`d-flex justify-content-end`}>
                           <p
-                            className={`${style.role_description} mt-2 mb-0 text-end`}
+                            className={`${style.role_description_ar} mt-2 mb-0 text-end`}
                           >
                             {data.title}
                           </p>
@@ -181,14 +183,22 @@ export default function IsdbRoleSection({ data }) {
                   {t("role of isdb")}
                 </p>
                 <p
-                  className={`${style.role_description} mb-4 ${
+                  className={`${
+                    router.locale === "en"
+                      ? style.role_description
+                      : style.role_description_ar
+                  } mb-4 ${
                     router.locale === "en" ? `text-justify` : `text-end`
                   }`}
                 >
                   {data && Object.keys(data).length > 0 && data.description}
                 </p>
                 <p
-                  className={`${style.role_description} ${
+                  className={`${
+                    router.locale === "en"
+                      ? style.role_description
+                      : style.role_description_ar
+                  } ${
                     router.locale === "en" ? `text-justify` : `text-end`
                   }`}
                 >
@@ -218,7 +228,7 @@ export default function IsdbRoleSection({ data }) {
                       ) : (
                         <div className={`d-flex justify-content-end`}>
                           <p
-                            className={`${style.role_description} mt-2 mb-0 text-end`}
+                            className={`${style.role_description_ar} mt-2 mb-0 text-end`}
                           >
                             {data.title}
                           </p>

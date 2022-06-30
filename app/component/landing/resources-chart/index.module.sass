@@ -40,7 +40,6 @@
     @extend %font_size_22
     color: $grey_color
     font-weight: $five_hundred
-    letter-spacing: .5px
 
 .resource_chart_indicator span
     color: $secondary_color
@@ -53,7 +52,6 @@
 .resource_chart_labels_ar
     font-family: $noto_kufi
     font-size: 10px
-    letter-spacing: .3px
 
 
 .fund_chart_indicator
@@ -69,7 +67,6 @@
     font-family: $noto_kufi
     @extend %font_size_18
     font-weight: $five_hundred
-    letter-spacing: .5px
 
 .chart_container
     border-radius: 16px
@@ -105,11 +102,9 @@
 @media only screen and (max-width: 500px)
     .resource_chart_indicator,
     .resource_chart_indicator_ar
-        font-size: 15px $important
+        font-size: 13px $important
     .resource_container
         @include container_padding_smScreen
-
     .resource_subtitle,
     .resource_subtitle_ar
-        text-align: center
-        @include font_size_18
+        font-size: 16px $important

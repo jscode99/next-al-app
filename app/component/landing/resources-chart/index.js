@@ -1424,7 +1424,7 @@ export default function ResourceChart({
                               : style.resource_chart_indicator_ar
                           } text-capitalize px-2 m-0`}
                         >
-                          {t("total Approved")} :{" "}
+                          {t("total approved")} :{" "}
                           <span>{`$${
                             activeData === "yearly"
                               ? new Intl.NumberFormat().format(totalYearly)
@@ -1452,13 +1452,15 @@ export default function ResourceChart({
                               ? style.resource_chart_indicator
                               : style.resource_chart_indicator_ar
                           } text-capitalize m-0`}
+                          dir="rtl" 
                         >
-                          <span>{`$${
+                          {t("total Amount")}{" "}: 
+                          {" "}<span>{`${
                             activeData === "aqsa"
                               ? new Intl.NumberFormat().format(totalAqsa)
                               : ""
-                          }`}</span>{" "}
-                          : {t("total Amount")}
+                          }$`}</span>
+                          
                           {/* {router.locale === "ar" ? <span>$</span>:''} */}
                         </p>
                         {/* </Col> */}
@@ -1478,13 +1480,14 @@ export default function ResourceChart({
                               ? style.resource_chart_indicator
                               : style.resource_chart_indicator_ar
                           } text-capitalize px-2 m-0`}
+                          dir="rtl" 
                         >
-                          <span>{`$${
+                          {t("total disbursed")}{" "} :
+                          {" "}<span>{`${
                             activeData === "arab"
                               ? new Intl.NumberFormat().format(totalArDisbursed)
                               : ""
-                          }`}</span>{" "}
-                          : {t("total disbursement")}
+                          }$`}</span>
                           {/* {router.locale === "ar" ? <span>$</span>:''} */}
                         </p>
                         <p
@@ -1493,13 +1496,15 @@ export default function ResourceChart({
                               ? style.resource_chart_indicator
                               : style.resource_chart_indicator_ar
                           } text-capitalize px-2 m-0`}
+                          dir="rtl"
                         >
-                          <span>{`$${
+                          
+                        {t("total approved")}{" "} :
+                          {" "}<span>{`${
                             activeData === "arab"
                               ? new Intl.NumberFormat().format(totalArab)
                               : ""
-                          }`}</span>{" "}
-                          : {t("total granted")}
+                          }$`}</span>
                           {/* {router.locale === "ar" ? <span>$</span>:''} */}
                         </p>
                         {/* </Col> */}
@@ -1519,13 +1524,15 @@ export default function ResourceChart({
                               ? style.resource_chart_indicator
                               : style.resource_chart_indicator_ar
                           } text-capitalize px-2 m-0`}
+                          dir="rtl"
                         >
-                          <span>{`$${
+                          
+                          {t("total disbursed")}{" "}:
+                          {" "}<span>{`${
                             activeData === "yearly"
                               ? new Intl.NumberFormat().format(totalYrDisbursed)
                               : ""
-                          }`}</span>{" "}
-                          :{t("total disbursed")}
+                          }$`}</span>
                           {/* {router.locale === "ar" ? <span>$</span>:''} */}
                         </p>
                         {/* </Col> */}
@@ -1536,13 +1543,15 @@ export default function ResourceChart({
                               ? style.resource_chart_indicator
                               : style.resource_chart_indicator_ar
                           } text-capitalize px-2 m-0`}
+                          dir="rtl"
                         >
-                          <span>{`$${
+                          
+                          {t("total approved")}{" "}: 
+                          {" "}<span>{`${
                             activeData === "yearly"
                               ? new Intl.NumberFormat().format(totalYearly)
                               : ""
-                          }`}</span>{" "}
-                          : {t("total Approved")}
+                          }$`}</span>
                           {/* {router.locale === "ar" ? <span>$</span>:''} */}
                         </p>
                         {/* </Col> */}

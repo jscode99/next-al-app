@@ -221,6 +221,11 @@ export default function ProjectFundChart({ finalChartData, reserve }) {
 
   useEffect(() => {
     setTimeout(() => {
+      if (router.locale === "ar") {
+        document.getElementById("table").scrollLeft = 150000;
+        document.getElementById("tableS").scrollLeft = 150000;
+      }
+
       let apexChart =
         document.getElementsByClassName(
           "apexcharts-xaxis"
@@ -332,7 +337,7 @@ export default function ProjectFundChart({ finalChartData, reserve }) {
               className={`${style.chart_container} shadow bg-white overflow-hidden`}
             >
               <LegendSection legendData={legendData} />
-              <div className={`${style.horz_scroll}`}>
+              <div id="table" className={`${style.horz_scroll}`}>
                 {showChart &&
                   Object.keys(option).length > 0 &&
                   chartSeriesData.length > 0 && (
@@ -407,7 +412,7 @@ export default function ProjectFundChart({ finalChartData, reserve }) {
             <div
               className={`${style.chart_container} shadow bg-white overflow-hidden`}
             >
-              <div className={`${style.horz_scroll}`}>
+              <div id="tableS" className={`${style.horz_scroll}`}>
                 <LegendSection legendData={legendData} />
                 {showChart &&
                   Object.keys(option).length > 0 &&

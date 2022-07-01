@@ -65,7 +65,11 @@ export default function ProposalSection({ data }) {
                 } text-justify`}
                 dir={router.locale === "ar" ? "rtl" : ""}
               >
-                {data && data.length > 0 && data.description}
+                {data &&
+                  Object.keys(data).length > 0 &&
+                  data.description &&
+                  data.description.length > 0 &&
+                  data.description}
               </p>
             </div>
           </div>

@@ -13,6 +13,9 @@ export default function CommonTable({ columnData, data, pagination, scroll }) {
 
   const [column, setColumn] = useState(null);
   const [tableData, setTableData] = useState(null);
+
+ 
+
   useEffect(() => {
     let columns = columnData.map(cData => {
       return {
@@ -35,7 +38,7 @@ export default function CommonTable({ columnData, data, pagination, scroll }) {
 
     setColumn(columns);
     setTableData(data);
-  }, [data]);
+  }, [data,columnData]);
 
   //OnChange Function
   function onChange(pagination, filters, sorter, extra) {

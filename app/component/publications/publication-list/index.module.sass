@@ -4,7 +4,6 @@
     height: 100px
     box-shadow: 1px 1px 18px #0000001F
     border-radius: 10px
-    letter-spacing: 0.5px
 
 .publication_list_title
     font-size: 20px
@@ -57,7 +56,6 @@
     color: $primary_color
     font-size: 16px $important
     font-weight: $five_hundred
-    // letter-spacing: 0.5px
     &:hover,
     &:focus
         background-color: #12328E4D
@@ -72,7 +70,7 @@
         @include container_padding_tabScreen
     .publication_list_button,
     .publication_list_button_ar
-        width: 150px
+        width: 150px $important
     .publication_list_label,
     .publication_list_label_ar
         @include font_size_14
@@ -85,7 +83,7 @@
         @include container_padding_smScreen
     .publication_list_button,
     .publication_list_button_ar
-        width: 55px
+        width: 55px $important
     .publication_list_title,
     .publication_list_title_ar
-        font-size: 12px
+        font-size: 12px $important

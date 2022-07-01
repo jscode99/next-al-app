@@ -13,6 +13,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
   const { t } = useTranslation("common");
 
   const [arabContribution, setArabContribution] = useState([]);
+
   const columns = [
     {
       title: (
@@ -124,7 +125,7 @@ export default function ContributionsArabFunds({ arabContributions }) {
         </h3>
         <div className={`w-100 d-flex justify-content-center`}>
           <div
-            className={`${style.contribution_table_container} shadow overflow-hidden w-75`}
+            className={`${style.contribution_table_container} shadow overflow-hidden`}
           >
             {router.locale === "en" ? (
               <CommonTable

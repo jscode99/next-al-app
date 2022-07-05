@@ -139,6 +139,22 @@
         p
             @include font_size_14
 
+@media only screen and ( max-width: 820px)
+    .container
+        @include container_padding_smScreen
+        background-color: $white_color
+        
+    .app_header_container
+        position: relative
+
+    .language_text,
+    .language_dd_icon
+        color: #000 $important
+
+    .app_header_language_section,
+    .app_header_nav_container
+        @include container_padding_smScreen
+
 @media only screen and (max-width: 768px)
     .container
         @include container_padding_smScreen

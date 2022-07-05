@@ -81,7 +81,7 @@
   cursor: $auto $important
 
 .footer_list_address
-  letter-spacing: 0.5px
+  // letter-spacing: 0.5px
 
 .rights_reserved
   background-color: #213053
@@ -121,6 +121,29 @@
     @include container_padding_lapScreen
     &> div
       width: 90%
+
+@media only screen and (max-width: 820px)
+  .navigation_container
+    @include container_padding_tabScreen
+    height: $auto
+    &> div
+      width: 100%
+
+  .footer_list_header,
+  .footer_list_header_ar
+    @include font_size_18
+    opacity: 1 $important
+
+  .footer_list,
+  .footer_list_ar
+    &> li
+      font-size: 13px
+      margin-bottom: 6px
+      opacity: .7
+      &> p
+        font-size: 13px
+        margin-bottom: 6px $important
+        opacity: .7
 
 @media only screen and (max-width: 768px)
   .navigation_container

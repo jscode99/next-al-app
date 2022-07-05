@@ -7,6 +7,9 @@
 .container
     padding-top: 135px
 
+.term_title
+    font-size: 22px $important
+
 .card
     h3
         font-size: 20px
@@ -26,3 +29,16 @@
     display: flex
     justify-content: center
     font-weight: bold
+
+@media only screen and (max-width: 768px)
+    .container
+        padding-top: 15px $important
+    .term_title
+        font-size: 20px $important
+
+@media only screen and (max-width: 500px)
+    .container
+        padding-top: 15px $important
+    .term_title
+        font-size: 18px $important
+

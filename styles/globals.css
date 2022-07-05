@@ -157,3 +157,7 @@ a {
 .ant-collapse-header-text{
   width: 100%;
 }
+
+.ant-drawer-title{
+  font-family: 'Noto Kufi Arabic', sans-serif;
+}

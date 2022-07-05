@@ -90,6 +90,15 @@
     .resource_container
         @include container_padding_lapScreen
 
+@media only screen and (max-width: 820px)
+    .resource_container
+        @include container_padding_tabScreen
+
+    .resource_subtitle,
+    .resource_subtitle_ar
+        text-align: center
+        @include font_size_22
+
 @media only screen and (max-width: 768px)
     .resource_container
         @include container_padding_tabScreen

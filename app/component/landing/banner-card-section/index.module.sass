@@ -108,6 +108,18 @@
     .banner_card_section
         @include container_padding_lapScreen
 
+@media only screen and (max-width: 820px)
+    .container
+        bottom: 0px
+        position: relative $important
+
+    .banner_card_section
+        @include container_padding_tabScreen
+
+    .inner_container
+        width: 90%    
+
+
 @media only screen and (max-width: 768px)
     .container
         bottom: 0px

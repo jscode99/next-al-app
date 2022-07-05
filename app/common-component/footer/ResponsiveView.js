@@ -79,6 +79,10 @@ export default function ResponsiveView({ view, logo }) {
           <div
             style={{ cursor: "pointer" }}
             onClick={() => {
+              setAppContext({
+                ...appContext,
+                fLinkClick: true,
+              });
               router.push("/");
             }}
           >

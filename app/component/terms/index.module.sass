@@ -4,6 +4,9 @@
     height: auto
     margin: 10px 17%
 
+.term_title
+    font-size: 22px $important
+
 .container
     padding-top: 135px
 
@@ -27,7 +30,15 @@
     justify-content: center
     font-weight: bold
 
+@media only screen and (max-width: 768px)
+    .container
+        padding-top: 15px $important
+    .term_title
+        font-size: 20px $important
+
 @media only screen and (max-width: 500px)
     .container
-        padding-top: 50px
+        padding-top: 15px
+    .term_title
+        font-size: 18px $important
         

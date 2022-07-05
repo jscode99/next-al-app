@@ -21,23 +21,28 @@ export default function Sitemap({ projectTitle }) {
         <div>
           <div className="my-3">
             <p
-              className={`${styles.SiteMapAtag} text-capitalize`}
+              className={`${
+                router.locale === "en"
+                  ? styles.SiteMapIntial
+                  : styles.SiteMapIntial_ar
+              } text-capitalize`}
               style={{ textDecoration: "none" }}
               onClick={() => {
                 router.push("/");
               }}
             >
-              {t("front page of islamic development bank")}
+              {t("front page of Al Aqsa Fund Website")}
             </p>
           </div>
         </div>
-        <div className={` d-flex align-items-center m-2`}>
+        <div className={` d-flex align-items-center my-3`}>
           <div className={`${styles.departmentHomeRouteDot} `}>
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
             <p
-              className={`${styles.SiteMapAtag}`}
+              className={`${styles.SiteMapAtag} m-0`}
+              style={{ fontWeight: "600" }}
               onClick={() => {
                 router.push("/");
               }}
@@ -47,26 +52,28 @@ export default function Sitemap({ projectTitle }) {
           </div>
         </div>
         <div>
-          <div className={` d-flex align-items-center m-2`}>
+          <div className={` d-flex align-items-center my-3`}>
             <div className={`${styles.departmentHomeRouteDot} `}>
               <i className="fa fa-circle px-2"></i>
             </div>
             <div className={`${styles.SiteMapMainHead}`}>
               <p
-                className={`${styles.SiteMapAtag}`}
+                className={`${styles.SiteMapAtag} m-0`}
                 onClick={() => {
                   router.push("/about");
                 }}
+                style={{ fontWeight: "600" }}
               >
                 {t("about")}
               </p>
             </div>
           </div>
-          <div className={`${styles.departmentHomeRouteDot} mx-4 d-flex`}>
-            <i className="fa fa-circle-o p-1"></i>
+          <div className={`${styles.departmentHomeRouteDot} mx-4 my-3 d-flex`}>
+            <i className="fa fa-circle-o p-2"></i>
             <span>
               <p
-                className={`${styles.SiteMapAtag}`}
+                className={`${styles.SiteMapAtag} m-0`}
+                style={{ fontSize: "15px" }}
                 onClick={() => {
                   router.push("/about/governance-structure");
                 }}
@@ -75,11 +82,12 @@ export default function Sitemap({ projectTitle }) {
               </p>
             </span>
           </div>
-          <div className={`${styles.departmentHomeRouteDot} mx-4 d-flex`}>
-            <i className="fa fa-circle-o p-1"></i>
+          <div className={`${styles.departmentHomeRouteDot} mx-4 my-3 d-flex`}>
+            <i className="fa fa-circle-o p-2"></i>
             <span>
               <p
-                className={`${styles.SiteMapAtag}`}
+                className={`${styles.SiteMapAtag} m-0`}
+                style={{ fontSize: "15px" }}
                 onClick={() => {
                   router.push("/about/members");
                 }}
@@ -88,11 +96,12 @@ export default function Sitemap({ projectTitle }) {
               </p>
             </span>
           </div>
-          <div className={`${styles.departmentHomeRouteDot} mx-4 d-flex`}>
-            <i className="fa fa-circle-o p-1"></i>
+          <div className={`${styles.departmentHomeRouteDot} mx-4 my-3 d-flex`}>
+            <i className="fa fa-circle-o p-2"></i>
             <span>
               <p
-                className={`${styles.SiteMapAtag}`}
+                className={`${styles.SiteMapAtag} m-0`}
+                style={{ fontSize: "15px" }}
                 onClick={() => {
                   router.push("/about/approval-process-and-selection-criteria");
                 }}
@@ -102,29 +111,31 @@ export default function Sitemap({ projectTitle }) {
             </span>
           </div>
         </div>
-        <div className={` d-flex align-items-center m-2`}>
+        <div className={` d-flex align-items-center my-3`}>
           <div className={`${styles.departmentHomeRouteDot} `}>
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
             <p
-              className={`${styles.SiteMapAtag}`}
+              className={`${styles.SiteMapAtag} m-0`}
               onClick={() => {
                 router.push("/contributions");
               }}
+              style={{ fontWeight: "600" }}
             >
               {t("contributions")}
             </p>
           </div>
         </div>
         <div>
-          <div className={` d-flex align-items-center m-2`}>
+          <div className={` d-flex align-items-center my-3`}>
             <div className={`${styles.departmentHomeRouteDot} `}>
               <i className="fa fa-circle px-2"></i>
             </div>
             <div className={`${styles.SiteMapMainHead}`}>
               <p
-                className={`${styles.SiteMapAtag}`}
+                className={`${styles.SiteMapAtag} m-0`}
+                style={{ fontWeight: "600" }}
                 onClick={() => {
                   router.push("/projects");
                 }}
@@ -138,12 +149,13 @@ export default function Sitemap({ projectTitle }) {
             projectTitle.map((data, index) => (
               <div
                 key={index}
-                className={`${styles.departmentHomeRouteDot} mx-4 d-flex`}
+                className={`${styles.departmentHomeRouteDot} mx-4 my-3 d-flex`}
               >
-                <i className="fa fa-circle-o p-1"></i>
+                <i className="fa fa-circle-o p-2"></i>
                 <span>
                   <p
-                    className={`${styles.SiteMapAtag}`}
+                    className={`${styles.SiteMapAtag} m-0`}
+                    style={{ fontSize: "15px" }}
                     onClick={() => {
                       router.push({
                         pathname: `/projects/${mapTitleToRoutePath(
@@ -159,13 +171,14 @@ export default function Sitemap({ projectTitle }) {
               </div>
             ))}
         </div>
-        <div className={` d-flex align-items-center m-2`}>
+        <div className={` d-flex align-items-center my-3`}>
           <div className={`${styles.departmentHomeRouteDot} `}>
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
             <p
-              className={`${styles.SiteMapAtag}`}
+              className={`${styles.SiteMapAtag} m-0`}
+              style={{ fontWeight: "600" }}
               onClick={() => {
                 router.push("/success-stories");
               }}
@@ -174,13 +187,14 @@ export default function Sitemap({ projectTitle }) {
             </p>
           </div>
         </div>
-        <div className={` d-flex align-items-center m-2`}>
+        <div className={` d-flex align-items-center my-3`}>
           <div className={`${styles.departmentHomeRouteDot} `}>
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
             <p
-              className={`${styles.SiteMapAtag}`}
+              className={`${styles.SiteMapAtag} m-0`}
+              style={{ fontWeight: "600" }}
               onClick={() => {
                 router.push("/publications");
               }}
@@ -189,13 +203,14 @@ export default function Sitemap({ projectTitle }) {
             </p>
           </div>
         </div>
-        <div className={` d-flex align-items-center m-2 mb-4`}>
+        <div className={` d-flex align-items-center my-3 mb-4`}>
           <div className={`${styles.departmentHomeRouteDot} `}>
             <i className="fa fa-circle px-2"></i>
           </div>
           <div className={`${styles.SiteMapMainHead}`}>
             <p
-              className={`${styles.SiteMapAtag}`}
+              className={`${styles.SiteMapAtag} m-0`}
+              style={{ fontWeight: "600" }}
               onClick={() => {
                 router.push("/contact");
               }}

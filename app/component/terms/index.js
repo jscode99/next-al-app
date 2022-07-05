@@ -6,7 +6,7 @@ export default function Policy() {
     <>
       <div className={style.card}>
         <div className={style.container}>
-          <h2 className={`d-flex justify-content-center m-2 fw-bold`}>
+          <h2 className={`${style.term_title} d-flex justify-content-center m-2 fw-bold`}>
             Terms &amp; Conditions
           </h2>
           {/* <h3>Terms and Conditions of Use</h3> */}

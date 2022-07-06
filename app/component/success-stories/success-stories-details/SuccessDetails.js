@@ -20,6 +20,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
   const router = useRouter();
   const base_url = process.env.BASE_URL;
   // console.log("Media---->", media);
+  console.log("Story Props-->", storiesProps);
   useEffect(() => {
     if (
       successMedia &&
@@ -57,343 +58,362 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
 
   return (
     <>
-      <div className={`${styles.bg}`}>
-        <div className={`${styles.stories_card_container}`}>
-          <Row className={`px-5 pt-4`}>
-            {router.locale === "en" ? (
-              <>
-                <Col xs={24} sm={24} md={24} lg={10} xl={12}>
-                  <Row className={`my-4`}>
-                    <Col
-                      span={7}
-                      className={`${styles.stories_amount_heading}`}
-                    >
-                      Total Approved
-                    </Col>
-                    <Col
-                      span={1}
-                      className={`${styles.stories_amount_heading}`}
-                    >
-                      {`:`}
-                    </Col>
-                    <Col span={16} className={`${styles.stories_amount}`}>
-                      ${storiesProps.TotalApproved}
-                    </Col>
-                  </Row>
-                  <Row className={`mb-4`}>
-                    <Col
-                      span={7}
-                      className={`${styles.stories_amount_heading}`}
-                    >
-                      Source of Fund
-                    </Col>
-                    <Col
-                      span={1}
-                      className={`${styles.stories_amount_heading}`}
-                    >
-                      {`:`}
-                    </Col>
-                    <Col span={16} className={`${styles.stories_amount}`}>
-                      {storiesProps.FundSource}
-                    </Col>
-                  </Row>
-                  <Row className={`mb-2`}>
-                    <Col
-                      span={24}
-                      className={`${styles.stories_amount_heading}`}
-                    >
-                      Overview
-                    </Col>
-                  </Row>
-                  <p className={`${styles.stories_details_des} text-justify`}>
-                    {storiesProps.Overview}
-                  </p>
-                  {/* : <p className={`${styles.stories_details_des} pr-4`}>
+      {storiesProps && Object.keys(storiesProps).length > 0 && (
+        <div className={`${styles.bg}`}>
+          <div className={`${styles.stories_card_container}`}>
+            <Row className={`px-5 pt-4`}>
+              {router.locale === "en" ? (
+                <>
+                  <Col xs={24} sm={24} md={24} lg={10} xl={12}>
+                    <Row className={`my-4`}>
+                      <Col
+                        span={7}
+                        className={`${styles.stories_amount_heading}`}
+                      >
+                        Total Approved
+                      </Col>
+                      <Col
+                        span={1}
+                        className={`${styles.stories_amount_heading}`}
+                      >
+                        {`:`}
+                      </Col>
+                      <Col span={16} className={`${styles.stories_amount}`}>
+                        $
+                        {storiesProps.TotalApproved.length > 0
+                          ? storiesProps.TotalApproved
+                          : ``}
+                      </Col>
+                    </Row>
+                    <Row className={`mb-4`}>
+                      <Col
+                        span={7}
+                        className={`${styles.stories_amount_heading}`}
+                      >
+                        Source of Fund
+                      </Col>
+                      <Col
+                        span={1}
+                        className={`${styles.stories_amount_heading}`}
+                      >
+                        {`:`}
+                      </Col>
+                      <Col span={16} className={`${styles.stories_amount}`}>
+                        {storiesProps.FundSource.length > 0
+                          ? storiesProps.FundSource
+                          : ``}
+                      </Col>
+                    </Row>
+                    <Row className={`mb-2`}>
+                      <Col
+                        span={24}
+                        className={`${styles.stories_amount_heading}`}
+                      >
+                        Overview
+                      </Col>
+                    </Row>
+                    <p className={`${styles.stories_details_des} text-justify me-3`}>
+                      {storiesProps.Overview.length > 0
+                        ? storiesProps.Overview
+                        : ``}
+                    </p>
+                    {/* : <p className={`${styles.stories_details_des} pr-4`}>
                     {storiesProps.Overview}
                   </p> */}
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={24}
-                  lg={14}
-                  xl={12}
-                  className="d-flex flex-column justify-content-center align-items-center"
-                >
-                  <div
-                    className={`${styles.stories_details_image_box} mb-3 ps-3`}
-                  >
-                    <AppSlider
-                      showIndicators={false}
-                      autoPlay={true}
-                      setAutoPlay={() => {}}
-                      stopOnHover={false}
-                    >
-                      {media &&
-                        media.length > 0 &&
-                        media[0].multimedia.map((imageData) => (
-                          <>
-                            {!isImage(imageData) && (
-                              <div
-                                className={`d-flex position-absolute h-100 justify-content-center align-items-center`}
-                                style={{
-                                  zIndex: 100,
-                                  width: "500px",
-                                  fontSize: "85px",
-                                }}
-                              >
-                                <i className="far fa-play-circle text-white"></i>
-                              </div>
-                            )}
-                            <Image
-                              src={
-                                isImage(imageData)
-                                  ? base_url + imageData
-                                  : base_url + imageData.videoPreview[0].url
-                              }
-                              alt="ssc"
-                              width="500"
-                              height="418"
-                              className={`${styles.stories_details_image}`}
-                            />
-                          </>
-                        ))}
-                    </AppSlider>
-                  </div>
-                  <div
-                    className={`${styles.thumbnail_container} ${
-                      media && media[0].multimedia.length > 3 && `w-100`
-                    } overflow-hidden`}
+                  </Col>
+                  <Col
+                    xs={24}
+                    sm={24}
+                    md={24}
+                    lg={14}
+                    xl={12}
+                    className="d-flex flex-column justify-content-center align-items-center"
                   >
                     <div
-                      className={`d-flex overflow-auto justify-content-center`}
+                      className={`${styles.stories_details_image_box} mb-3 ps-3`}
                     >
-                      <div className={`d-flex`}>
+                      <AppSlider
+                        showIndicators={false}
+                        autoPlay={true}
+                        setAutoPlay={() => {}}
+                        stopOnHover={false}
+                      >
                         {media &&
                           media.length > 0 &&
                           media[0].multimedia.map((imageData) => (
                             <>
-                              <div
-                                className={`mx-3 ${styles.image_cont} position-relative`}
-                                onClick={() => setGalleryView(true)}
-                              >
-                                {!isImage(imageData) && (
-                                  <div
-                                    className={`d-flex position-absolute  justify-content-center align-items-center`}
-                                    style={{
-                                      zIndex: 100,
-                                      width: "100px",
-                                      height: "85px",
-                                      fontSize: "25px",
-                                    }}
-                                  >
-                                    <i className="far fa-play-circle text-white"></i>
-                                  </div>
-                                )}
+                              {!isImage(imageData) && (
                                 <div
-                                  className={`position-absolute`}
+                                  className={`d-flex position-absolute h-100 justify-content-center align-items-center`}
                                   style={{
-                                    width: "100px",
+                                    zIndex: 100,
+                                    width: "500px",
+                                    fontSize: "85px",
                                   }}
                                 >
-                                  <Image
-                                    src={
-                                      isImage(imageData)
-                                        ? base_url + imageData
-                                        : base_url +
-                                          imageData.videoPreview[0].url
-                                    }
-                                    alt="ssc"
-                                    width="100"
-                                    height="80"
-                                  />
+                                  <i className="far fa-play-circle text-white"></i>
                                 </div>
-                              </div>
+                              )}
+                              <Image
+                                src={
+                                  isImage(imageData)
+                                    ? base_url + imageData
+                                    : base_url + imageData.videoPreview[0].url
+                                }
+                                alt="ssc"
+                                width="500"
+                                height="418"
+                                className={`${styles.stories_details_image}`}
+                              />
                             </>
                           ))}
+                      </AppSlider>
+                    </div>
+                    <div
+                      className={`${styles.thumbnail_container} ${
+                        media && media[0].multimedia.length > 3 && `w-100`
+                      } overflow-hidden`}
+                    >
+                      <div
+                        className={`d-flex overflow-auto justify-content-center`}
+                      >
+                        <div className={`d-flex`}>
+                          {media &&
+                            media.length > 0 &&
+                            media[0].multimedia.map((imageData) => (
+                              <>
+                                <div
+                                  className={`mx-3 ${styles.image_cont} position-relative`}
+                                  onClick={() => setGalleryView(true)}
+                                >
+                                  {!isImage(imageData) && (
+                                    <div
+                                      className={`d-flex position-absolute  justify-content-center align-items-center`}
+                                      style={{
+                                        zIndex: 100,
+                                        width: "100px",
+                                        height: "85px",
+                                        fontSize: "25px",
+                                      }}
+                                    >
+                                      <i className="far fa-play-circle text-white"></i>
+                                    </div>
+                                  )}
+                                  <div
+                                    className={`position-absolute`}
+                                    style={{
+                                      width: "100px",
+                                    }}
+                                  >
+                                    <Image
+                                      src={
+                                        isImage(imageData)
+                                          ? base_url + imageData
+                                          : base_url +
+                                            imageData.videoPreview[0].url
+                                      }
+                                      alt="ssc"
+                                      width="100"
+                                      height="80"
+                                    />
+                                  </div>
+                                </div>
+                              </>
+                            ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Col>
-              </>
-            ) : (
-              <>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={24}
-                  lg={14}
-                  xl={12}
-                  className="d-flex flex-column justify-content-center align-items-center"
-                >
-                  <div
-                    className={`${styles.stories_details_image_box} mb-3 pe-3`}
-                  >
-                    <AppSlider
-                      showIndicators={false}
-                      autoPlay={true}
-                      setAutoPlay={() => {}}
-                      stopOnHover={false}
-                    >
-                      {media &&
-                        media.length > 0 &&
-                        media[0].multimedia.map((imageData) => (
-                          <>
-                            {!isImage(imageData) && (
-                              <div
-                                className={`d-flex position-absolute h-100 justify-content-center align-items-center`}
-                                style={{
-                                  zIndex: 100,
-                                  width: "500px",
-                                  fontSize: "85px",
-                                }}
-                              >
-                                <i className="far fa-play-circle text-white"></i>
-                              </div>
-                            )}
-                            <Image
-                              src={
-                                isImage(imageData)
-                                  ? base_url + imageData
-                                  : base_url + imageData.videoPreview[0].url
-                              }
-                              alt="ssc"
-                              width="500"
-                              height="418"
-                              className={`${styles.stories_details_image}`}
-                            />
-                          </>
-                        ))}
-                    </AppSlider>
-                  </div>
-                  <div
-                    className={`${styles.thumbnail_container} w-100 overflow-hidden`}
+                  </Col>
+                </>
+              ) : (
+                <>
+                  <Col
+                    xs={24}
+                    sm={24}
+                    md={24}
+                    lg={14}
+                    xl={12}
+                    className="d-flex flex-column justify-content-center align-items-center"
                   >
                     <div
-                      className={`d-flex overflow-auto justify-content-center`}
+                      className={`${styles.stories_details_image_box} mb-3 pe-3`}
                     >
-                      <div className={`d-flex`}>
+                      <AppSlider
+                        showIndicators={false}
+                        autoPlay={true}
+                        setAutoPlay={() => {}}
+                        stopOnHover={false}
+                      >
                         {media &&
                           media.length > 0 &&
                           media[0].multimedia.map((imageData) => (
                             <>
-                              <div
-                                className={`mx-3 ${styles.image_cont} position-relative`}
-                                onClick={() => setGalleryView(true)}
-                              >
-                                {!isImage(imageData) && (
-                                  <div
-                                    className={`d-flex position-absolute  justify-content-center align-items-center`}
-                                    style={{
-                                      zIndex: 100,
-                                      width: "100px",
-                                      height: "85px",
-                                      fontSize: "25px",
-                                    }}
-                                  >
-                                    <i className="far fa-play-circle text-white"></i>
-                                  </div>
-                                )}
+                              {!isImage(imageData) && (
                                 <div
-                                  className={`position-absolute`}
+                                  className={`d-flex position-absolute h-100 justify-content-center align-items-center`}
                                   style={{
-                                    width: "100px",
+                                    zIndex: 100,
+                                    width: "500px",
+                                    fontSize: "85px",
                                   }}
                                 >
-                                  <Image
-                                    src={
-                                      isImage(imageData)
-                                        ? base_url + imageData
-                                        : base_url +
-                                          imageData.videoPreview[0].url
-                                    }
-                                    alt="ssc"
-                                    width="100"
-                                    height="80"
-                                  />
+                                  <i className="far fa-play-circle text-white"></i>
                                 </div>
-                              </div>
+                              )}
+                              <Image
+                                src={
+                                  isImage(imageData)
+                                    ? base_url + imageData
+                                    : base_url + imageData.videoPreview[0].url
+                                }
+                                alt="ssc"
+                                width="500"
+                                height="418"
+                                className={`${styles.stories_details_image}`}
+                              />
                             </>
                           ))}
+                      </AppSlider>
+                    </div>
+                    <div
+                      className={`${styles.thumbnail_container} w-100 overflow-hidden`}
+                    >
+                      <div
+                        className={`d-flex overflow-auto justify-content-center`}
+                      >
+                        <div className={`d-flex`}>
+                          {media &&
+                            media.length > 0 &&
+                            media[0].multimedia.map((imageData) => (
+                              <>
+                                <div
+                                  className={`mx-3 ${styles.image_cont} position-relative`}
+                                  onClick={() => setGalleryView(true)}
+                                >
+                                  {!isImage(imageData) && (
+                                    <div
+                                      className={`d-flex position-absolute  justify-content-center align-items-center`}
+                                      style={{
+                                        zIndex: 100,
+                                        width: "100px",
+                                        height: "85px",
+                                        fontSize: "25px",
+                                      }}
+                                    >
+                                      <i className="far fa-play-circle text-white"></i>
+                                    </div>
+                                  )}
+                                  <div
+                                    className={`position-absolute`}
+                                    style={{
+                                      width: "100px",
+                                    }}
+                                  >
+                                    <Image
+                                      src={
+                                        isImage(imageData)
+                                          ? base_url + imageData
+                                          : base_url +
+                                            imageData.videoPreview[0].url
+                                      }
+                                      alt="ssc"
+                                      width="100"
+                                      height="80"
+                                    />
+                                  </div>
+                                </div>
+                              </>
+                            ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Col>
-                <Col xs={24} sm={24} md={24} lg={10} xl={12}>
-                  <Row className={`pt-5 my-3`}>
-                    <Col
-                      span={16}
-                      className={`${styles.stories_amount} text-end`}
+                  </Col>
+                  <Col xs={24} sm={24} md={24} lg={10} xl={12}>
+                    <Row className={`pt-5 my-3`}>
+                      <Col
+                        span={16}
+                        className={`${styles.stories_amount} text-end`}
+                      >
+                        $
+                        {storiesProps.TotalApproved.length > 0
+                          ? storiesProps.TotalApproved
+                          : ``}
+                      </Col>
+                      <Col
+                        span={1}
+                        className={`${styles.stories_amount_heading_ar} ps-2`}
+                      >
+                        {`:`}
+                      </Col>
+                      <Col
+                        span={7}
+                        className={`${styles.stories_amount_heading_ar} text-end`}
+                      >
+                        {t("total approved")}
+                      </Col>
+                    </Row>
+                    <Row className={`mb-4`}>
+                      <Col
+                        span={16}
+                        className={`${styles.stories_amount_heading_ar} text-end`}
+                        style={{ color: "black" }}
+                      >
+                        {storiesProps.FundSource.length > 0
+                          ? storiesProps.FundSource
+                          : ``}
+                      </Col>
+                      <Col
+                        span={1}
+                        className={`${styles.stories_amount_heading_ar} ps-2`}
+                      >
+                        {`:`}
+                      </Col>
+                      <Col
+                        span={7}
+                        className={`${styles.stories_amount_heading_ar} text-end`}
+                      >
+                        {t("source of funds")}
+                      </Col>
+                    </Row>
+                    <Row className={`mb-2`}>
+                      <Col
+                        span={24}
+                        className={`${styles.stories_amount_heading_ar} text-end`}
+                      >
+                        {t("overview")}
+                      </Col>
+                    </Row>
+                    <p
+                      className={`${styles.stories_details_des_ar} text-justify ms-3`}
+                      dir="rtl"
                     >
-                      ${storiesProps.TotalApproved}
-                    </Col>
-                    <Col
-                      span={1}
-                      className={`${styles.stories_amount_heading_ar} ps-2`}
-                    >
-                      {`:`}
-                    </Col>
-                    <Col
-                      span={7}
-                      className={`${styles.stories_amount_heading_ar} text-end`}
-                    >
-                      {t("total approved")}
-                    </Col>
-                  </Row>
-                  <Row className={`mb-4`}>
-                    <Col
-                      span={16}
-                      className={`${styles.stories_amount_heading_ar} text-end`}
-                      style={{color:"black"}}
-                    >
-                      {storiesProps.FundSource}
-                    </Col>
-                    <Col
-                      span={1}
-                      className={`${styles.stories_amount_heading_ar} ps-2`}
-                    >
-                      {`:`}
-                    </Col>
-                    <Col
-                      span={7}
-                      className={`${styles.stories_amount_heading_ar} text-end`}
-                    >
-                      {t("source of funds")}
-                    </Col>
-                  </Row>
-                  <Row className={`mb-2`}>
-                    <Col
-                      span={24}
-                      className={`${styles.stories_amount_heading_ar} text-end`}
-                    >
-                      {t("overview")}
-                    </Col>
-                  </Row>
-                  <p
-                    className={`${styles.stories_details_des_ar} text-justify pr-4`}
-                    dir="rtl"
-                  >
-                    {storiesProps.Overview}
-                  </p>
-                </Col>
-              </>
-            )}
-          </Row>
-          <Row>
-            <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-              <p
-                className={`${styles.stories_details_des_ar} px-5 mt-5 text-justify`}
-                dir={router.locale === "ar" ? `rtl` : ``}
-              >
-                {storiesProps.Description}
-              </p>
-              <p className={`${styles.endStar} mt-5 mb-4`}>
-                ****************************************
-              </p>
-            </Col>
-          </Row>
+                      {storiesProps.Overview.length > 0
+                        ? storiesProps.Overview
+                        : ``}
+                    </p>
+                  </Col>
+                </>
+              )}
+            </Row>
+            <Row>
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <p
+                  className={`${styles.stories_details_des_ar} px-5 mt-5 text-justify`}
+                  dir={router.locale === "ar" ? `rtl` : ``}
+                >
+                  {storiesProps.Description.length > 0
+                    ? storiesProps.Description
+                    : ``}
+                </p>
+                <p className={`${styles.endStar} mt-5 mb-4`}>
+                  ****************************************
+                </p>
+              </Col>
+            </Row>
+          </div>
         </div>
-      </div>
+      )}
+
       {galleryView && (
         <Modal
           centered

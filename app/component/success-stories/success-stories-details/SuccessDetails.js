@@ -19,7 +19,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
   const { t } = useTranslation("common");
   const router = useRouter();
   const base_url = process.env.BASE_URL;
-  console.log("Media---->", media);
+  // console.log("Media---->", media);
   useEffect(() => {
     if (
       successMedia &&
@@ -31,9 +31,9 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
       let media = successMedia.filter(
         (value) => value.successID.toString() === storiesProps.id.toString()
       );
-      console.log("Media", media);
+      // console.log("Media", media);
       let medias = media.map((value) => {
-        console.log("Value", value);
+        // console.log("Value", value);
         return {
           multimedia: new Array(...value.multimedia).map(
             (data, index) => data.url
@@ -488,7 +488,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
               style={{ top: 0, fontSize: "20px" }}
               onClick={() => {
                 setViewUrl(null);
-                console.log("hello");
+                // console.log("hello");
               }}
             >
               <i className="fas fa-times text-white"></i>

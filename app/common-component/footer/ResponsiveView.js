@@ -16,7 +16,7 @@ export default function ResponsiveView({ view, logo }) {
   const router = useRouter();
   const { t } = useTranslation("common");
   let { appContext, setAppContext } = useContext(AppContext);
-  console.log("footer");
+  // console.log("footer");
   const [fLinks, setFooterLink] = useState([
     "about",
     "projects",

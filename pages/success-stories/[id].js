@@ -52,7 +52,7 @@ export default function StoriesDetails({
     }
   }, [stories, successStoriesAR, path, context]);
 
-  console.log("test story details------------------", storiesData);
+  // console.log("test story details------------------", storiesData);
 
   const { t } = useTranslation("common");
   return (

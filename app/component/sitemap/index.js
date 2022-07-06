@@ -5,7 +5,7 @@ import styles from "./index.module.sass";
 import { mapTitleToRoutePath } from "../../services/projectTitle";
 
 export default function Sitemap({ projectTitle }) {
-  console.log("Title project title---->", projectTitle);
+  // console.log("Title project title---->", projectTitle);
   const { t } = useTranslation("common");
   const router = useRouter();
   return (

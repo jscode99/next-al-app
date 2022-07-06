@@ -6,7 +6,7 @@ import { Row, Col } from "antd";
 import style from "./index.module.sass";
 
 export default function ProposalSection({ data }) {
-  console.log("=====+++++", data);
+  // console.log("=====+++++", data);
   const { t } = useTranslation("common");
   const router = useRouter();
   return (

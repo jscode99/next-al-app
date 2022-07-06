@@ -21,8 +21,8 @@ export default function Project({
   reserve,
   reserverAr,
 }) {
-  console.log("projectData", projectData);
-  console.log("projectDataAr", projectDataAr);
+  // console.log("projectData", projectData);
+  // console.log("projectDataAr", projectDataAr);
   const { t } = useTranslation("common");
 
   return (

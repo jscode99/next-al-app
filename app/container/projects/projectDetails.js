@@ -18,7 +18,7 @@ export default function ProjectDetailsContainer({
   reserverAr,
 }) {
   const router = useRouter();
-  console.log("reserve---->", reserve);
+  // console.log("reserve---->", reserve);
   return (
     <Layout
       heroImage={bannerImage}

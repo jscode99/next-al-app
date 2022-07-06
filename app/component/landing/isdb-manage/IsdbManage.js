@@ -5,7 +5,7 @@ import IsdbManageCard from "./IsdbManageCard";
 import style from "./index.module.sass";
 
 export default function IsdbManage({ isdbManage, isdbManageAr }) {
-  console.log("isdbManage", isdbManage);
+  // console.log("isdbManage", isdbManage);
   const router = useRouter();
   const { t } = useTranslation("common");
 

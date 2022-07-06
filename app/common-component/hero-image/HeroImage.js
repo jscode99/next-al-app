@@ -5,7 +5,7 @@ export default function HeroImage({ image, pageName }) {
   const [imageData, setImageData] = useState(null);
 
   useEffect(() => {
-    console.log(image, pageName);
+    // console.log(image, pageName);
     if (image && image.length > 0 && pageName) {
       
       let bannerImage = image.find(

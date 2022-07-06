@@ -6,7 +6,7 @@ import convertToInternationalCurrencySystem from "../../../services/internationa
 import style from "./index.module.sass";
 
 export default function MapSvg({ finalChartData }) {
-  console.log("----->>>>>", finalChartData);
+  // console.log("----->>>>>", finalChartData);
   const { t } = useTranslation("common");
   let router = useRouter();
   const [countryName, setCountryName] = useState(null);

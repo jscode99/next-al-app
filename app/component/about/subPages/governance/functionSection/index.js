@@ -11,7 +11,7 @@ import AppCollapsible from "../../../../../common-component/app-collapsible";
 import style from "./index.module.sass";
 
 export default function FunctionSection({ data }) {
-  console.log("data", data);
+  // console.log("data", data);
   let router = useRouter();
   const { t } = useTranslation("common");
   const [listData, setListData] = useState(null);

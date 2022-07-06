@@ -11,8 +11,8 @@ import convertToInternationalCurrencySystem from "../../../services/internationa
 import style from "./index.module.sass";
 
 export default function ProjectRouteCard({ finalChartData, reserve }) {
-  console.log("finalChartData---->", finalChartData);
-  console.log("Reserve---->", reserve);
+  // console.log("finalChartData---->", finalChartData);
+  // console.log("Reserve---->", reserve);
 
   const router = useRouter();
   const base_url = process.env.BASE_URL;
@@ -22,7 +22,7 @@ export default function ProjectRouteCard({ finalChartData, reserve }) {
   useEffect(() => {
     let totalAmount = 0;
     let projectDataNew = [];
-    console.log("Project Data Arrray", projectDataNew);
+    // console.log("Project Data Arrray", projectDataNew);
 
     if (
       finalChartData &&
@@ -43,17 +43,17 @@ export default function ProjectRouteCard({ finalChartData, reserve }) {
                 finalChartData[index].totalApprovedAmount +
                 parseInt(reserve[item].Amount),
             });
-            console.log(
-              "Testing--->",
-              finalChartData[index].totalApprovedAmount
-            );
+            // console.log(
+            //   "Testing--->",
+            //   finalChartData[index].totalApprovedAmount
+            // );
           }
         }
       }
       setProjectData(projectDataNew);
     }
     // setTotalApprovedAmount(totalAmount);
-    console.log("TotalAmount---->", totalAmount);
+    // console.log("TotalAmount---->", totalAmount);
   }, [finalChartData, reserve]);
 
   return (

@@ -31,7 +31,7 @@ export default function ProjectDetails({
   reserverAr,
 }) {
   const { t } = useTranslation("common");
-  console.log("test--->", reserve);
+  // console.log("test--->", reserve);
   return (
     <>
       <Helmet>

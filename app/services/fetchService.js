@@ -2,7 +2,7 @@
 import { CONST } from "../services/constants";
 
 export const fetchService = async (url, method, body) => {
-  console.log("URL", url);
+  // console.log("URL", url);
   let responseJson;
   let response;
   switch (method) {

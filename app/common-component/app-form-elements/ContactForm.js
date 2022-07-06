@@ -39,7 +39,7 @@ const UseContactForm = (
       }));
     });
     if (Object.values(errorObject).filter(err => err === false).length === 0) {
-      console.log("Submitted - Values", inputs);
+      // console.log("Submitted - Values", inputs);
       // Loader start
       context.setAppContext({ ...context.appContext, loader: true });
       // Url

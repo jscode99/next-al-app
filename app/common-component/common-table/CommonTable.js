@@ -6,8 +6,8 @@ import { Row, Table } from "antd";
 import style from "./index.module.sass";
 
 export default function CommonTable({ columnData, data, pagination, scroll }) {
-  console.log("columnData", columnData);
-  console.log("data", data);
+  // console.log("columnData", columnData);
+  // console.log("data", data);
 
   let router = useRouter();
 
@@ -42,7 +42,7 @@ export default function CommonTable({ columnData, data, pagination, scroll }) {
 
   //OnChange Function
   function onChange(pagination, filters, sorter, extra) {
-    console.log("params", pagination, filters, sorter, extra);
+    // console.log("params", pagination, filters, sorter, extra);
   }
   return (
     <div

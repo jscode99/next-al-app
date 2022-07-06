@@ -12,7 +12,7 @@ import MissionSection from "./missionSection";
 export default function About({ staticSite, staticSiteAr, flag, flagAr }) {
   const { t } = useTranslation("common");
   const router = useRouter();
-  console.log("staticSite", staticSite);
+  // console.log("staticSite", staticSite);
   const cardData = [
     {
       title: t("governance structure"),

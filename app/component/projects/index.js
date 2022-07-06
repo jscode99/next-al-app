@@ -18,7 +18,7 @@ export default function Projects({
 }) {
   const router = useRouter();
 
-  console.log("INNER", reserve);
+  // console.log("INNER", reserve);
   const [finalChartData, setFinalChartData] = useState([]);
   const { t } = useTranslation("common");
 
@@ -45,7 +45,7 @@ export default function Projects({
     },
   ];
 
-  console.log("CardData--->", cardData);
+  // console.log("CardData--->", cardData);
 
   useEffect(() => {
     let chartData = {};

@@ -8,10 +8,10 @@ import style from "./index.module.sass";
 export default function ShareHolder({ flagData }) {
   const { t } = useTranslation("common");
   const router = useRouter();
-  console.log(
-    "FlagDat",
-    flagData.sort((a, b) => a.Country.localeCompare(b.Country, ["ar"]))
-  );
+  // console.log(
+  //   "FlagDat",
+  //   flagData.sort((a, b) => a.Country.localeCompare(b.Country, ["ar"]))
+  // );
 
   useEffect(() => {
     if (router.locale === "ar")

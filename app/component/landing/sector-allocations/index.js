@@ -26,10 +26,10 @@ export default function SectorAllocations({
     threshold: 1,
   });
 
-  console.log(
-    "========>",
-    new Array(...sectorData).sort((a, b) => a.percentage - b.percentage)
-  );
+  // console.log(
+  //   "========>",
+  //   new Array(...sectorData).sort((a, b) => a.percentage - b.percentage)
+  // );
 
   useEffect(() => {
     let chartData = {};

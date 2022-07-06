@@ -24,7 +24,7 @@ export default function Contributions({
     let beirutSirteSummitTotal = 0;
     let deadSeaSummitTotal = 0;
     overallContributions.forEach((value, index) => {
-      console.log("Testing Value--->", value);
+      // console.log("Testing Value--->", value);
       if (!Number.isNaN(parseInt(value.CairoSummitContribution)))
         cairoSummitTotal += parseInt(
           value.CairoSummitContribution.split(",").join("")

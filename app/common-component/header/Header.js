@@ -177,7 +177,7 @@ export default function AppHeader({ pageName, projectTitle }) {
       ))}
     </Menu>
   );
-  console.log(router, router.locale, "router.locale", router.locale);
+  // console.log(router, router.locale, "router.locale", router.locale);
   return (
     <Header
       className={`${style.app_header_container} w-100 p-0 top-0 ${

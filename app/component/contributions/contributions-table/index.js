@@ -11,7 +11,7 @@ import style from "./index.module.sass";
 
 export default function ContributionsTable({ tData, setSummitAmount }) {
   const [countryContribution, setCountryContribution] = useState([]);
-  console.log("overallArContributions", countryContribution);
+  // console.log("overallArContributions", countryContribution);
 
   let router = useRouter();
   const { t } = useTranslation("common");
@@ -255,7 +255,7 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
             : value.DeadSeaSummitContribution
         )
       );
-      console.log("beirut", beirut);
+      // console.log("beirut", beirut);
       // console.log(
       //   "total",
       //   beirut &&
@@ -319,11 +319,11 @@ export default function ContributionsTable({ tData, setSummitAmount }) {
           typeof a.totalPayed === "string" &&
           typeof b.totalPayed === "string"
         ) {
-          console.log(
-            "Testing TotalPayed",
-            parseInt(a.totalPayed.split("$").join("").split(",").join("")),
-            b.totalPayed
-          );
+          // console.log(
+          //   "Testing TotalPayed",
+          //   parseInt(a.totalPayed.split("$").join("").split(",").join("")),
+          //   b.totalPayed
+          // );
           if (
             parseFloat(a.totalPayed.split("$").join("").split(",").join("")) <
             parseFloat(b.totalPayed.split("$").join("").split(",").join(""))

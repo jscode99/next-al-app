@@ -7,28 +7,28 @@ import { Row, Col } from "antd";
 import style from "./index.module.sass";
 export default function ProposalCard({ data }) {
   const [cardData, setCardData] = useState(null);
-  console.log("CardData======>", cardData);
+  // console.log("CardData======>", cardData);
 
   const getProperty = (priority) => {
     // console.log("priority", typeof priority);
     switch (priority) {
       case "1":
-        console.log(priority);
+        // console.log(priority);
         return style.bg_theme_sky_blue_color;
       case "2":
-        console.log(priority);
+        // console.log(priority);
         return style.bg_secondary_color;
       case "3":
-        console.log(priority);
+        // console.log(priority);
         return style.bg_theme_dark_green_color;
       case "4":
-        console.log(priority);
+        // console.log(priority);
         return style.bg_theme_golden_color;
       case "5":
-        console.log(priority);
+        // console.log(priority);
         return style.bg_theme_lite_blue_color;
       case "6":
-        console.log(priority);
+        // console.log(priority);
         return style.bg_primary_color;
     }
   };

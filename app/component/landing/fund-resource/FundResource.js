@@ -7,7 +7,7 @@ import style from "./index.module.sass";
 
 export default function FundResource({ data }) {
   const [fundData, setFundData] = useState([]);
-  console.log("Fund Data----->", fundData);
+  // console.log("Fund Data----->", fundData);
 
   const router = useRouter();
   //Translation lib

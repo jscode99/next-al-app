@@ -1,7 +1,7 @@
 import Chart from "react-google-charts";
 
 export default function PieChart({ totalAmountData, totalApproved, color }) {
-  console.log("hi");
+  // console.log("hi");
   return (
     <>
       <Chart

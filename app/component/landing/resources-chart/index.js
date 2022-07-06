@@ -690,7 +690,7 @@ export default function ResourceChart({
       text: t("approved"),
     },
   ];
-  console.log("=====>", aqsaResource, aqsaOption, xDataAl, totalAqsa);
+  // console.log("=====>", aqsaResource, aqsaOption, xDataAl, totalAqsa);
   return (
     <div className={`${style.resource_bg} py-3`}>
       <div className={`${style.resource_container}`}>

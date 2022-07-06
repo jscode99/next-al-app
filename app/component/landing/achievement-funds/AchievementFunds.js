@@ -54,7 +54,7 @@ export default function AchievementFunds({ data }) {
 
   useEffect(() => {
     let achievement = data.sort((x, y) => x.priority - y.priority);
-    console.log("achievement", achievement);
+    // console.log("achievement", achievement);
     let cardData = achievement.map((data) => {
       return {
         title: data.title,

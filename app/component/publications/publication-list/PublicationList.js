@@ -11,7 +11,7 @@ import { paginationService } from "../../../services/commonService";
 import style from "./index.module.sass";
 
 export default function PublicationList({ listData, listSize, pageNumber }) {
-  console.log("listData", listData);
+  // console.log("listData", listData);
   let router = useRouter();
   const { t } = useTranslation("common");
   const [paginatedListData, setPaginatedListData] = useState([]);

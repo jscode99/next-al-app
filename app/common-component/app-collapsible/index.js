@@ -9,7 +9,7 @@ const { Panel } = Collapse;
 
 export default function AppCollapsible({ keys, data }) {
   const [bulletColor, setBulletColor] = useState("");
-  console.log("KEYYYY", keys);
+  // console.log("KEYYYY", keys);
   let router = useRouter();
 
   useEffect(() => {

@@ -85,24 +85,26 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       {listData && listData.Title ? (
-                        <a
-                          href={listData.Document[0].url}
-                          download
-                          target="_blank"
-                          rel="noreferrer"
+                        <Button
+                          type="text"
+                          shape="round"
+                          className={`${
+                            router.locale === "en"
+                              ? style.publication_list_button
+                              : style.publication_list_button_ar
+                          }`}
                         >
-                          <Button
-                            type="text"
-                            shape="round"
-                            className={`${
-                              router.locale === "en"
-                                ? style.publication_list_button
-                                : style.publication_list_button_ar
-                            }`}
+                          <a
+                            href={
+                              process.env.BASE_URL + listData.Document[0].url
+                            }
+                            target="_blank"
+                            rel="noreferrer"
+                            download
                           >
                             Download
-                          </Button>
-                        </a>
+                          </a>
+                        </Button>
                       ) : (
                         <Skeleton.Button active />
                       )}
@@ -113,24 +115,26 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       {listData && listData.Title ? (
-                        <a
-                          href={listData.Document[0].url}
-                          download
-                          target="_blank"
-                          rel="noreferrer"
+                        <Button
+                          type="text"
+                          shape="round"
+                          className={`${
+                            router.locale === "en"
+                              ? style.publication_list_button
+                              : style.publication_list_button_ar
+                          }`}
                         >
-                          <Button
-                            type="text"
-                            shape="round"
-                            className={`${
-                              router.locale === "en"
-                                ? style.publication_list_button
-                                : style.publication_list_button_ar
-                            }`}
+                          <a
+                            href={
+                              process.env.BASE_URL + listData.Document[0].url
+                            }
+                            target="_blank"
+                            rel="noreferrer"
+                            download
                           >
                             <i className="fas fa-download"></i>
-                          </Button>
-                        </a>
+                          </a>
+                        </Button>
                       ) : (
                         <Skeleton.Button active />
                       )}
@@ -162,24 +166,26 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       {listData && listData.Title ? (
-                        <a
-                          href={listData.Document[0].url}
-                          download
-                          target="_blank"
-                          rel="noreferrer"
+                        <Button
+                          type="text"
+                          shape="round"
+                          className={`${
+                            router.locale === "en"
+                              ? style.publication_list_button
+                              : style.publication_list_button_ar
+                          } text-capitalize`}
                         >
-                          <Button
-                            type="text"
-                            shape="round"
-                            className={`${
-                              router.locale === "en"
-                                ? style.publication_list_button
-                                : style.publication_list_button_ar
-                            } text-capitalize`}
+                          <a
+                            href={
+                              process.env.BASE_URL + listData.Document[0].url
+                            }
+                            download
+                            target="_blank"
+                            rel="noreferrer"
                           >
                             {t("download")}
-                          </Button>
-                        </a>
+                          </a>
+                        </Button>
                       ) : (
                         <Skeleton.Button active />
                       )}
@@ -190,24 +196,24 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                       className={`d-flex justify-content-center align-items-center h-100 flex-column`}
                     >
                       {listData && listData.Title ? (
-                        <a
-                          href={listData.Document[0].url}
-                          download
-                          target="_blank"
-                          rel="noreferrer"
+                        <Button
+                          type="text"
+                          shape="round"
+                          className={`${
+                            router.locale === "en"
+                              ? style.publication_list_button
+                              : style.publication_list_button_ar
+                          }`}
                         >
-                          <Button
-                            type="text"
-                            shape="round"
-                            className={`${
-                              router.locale === "en"
-                                ? style.publication_list_button
-                                : style.publication_list_button_ar
-                            }`}
+                          <a
+                            href={listData.Document[0].url}
+                            download
+                            target="_blank"
+                            rel="noreferrer"
                           >
                             <i className="fas fa-download"></i>
-                          </Button>
-                        </a>
+                          </a>
+                        </Button>
                       ) : (
                         <Skeleton.Button active />
                       )}

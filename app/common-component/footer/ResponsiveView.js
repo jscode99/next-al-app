@@ -128,7 +128,7 @@ export default function ResponsiveView({ view, logo }) {
                     Tel: +966 (12) 636 1264
                   </li>
                   <li className={`${style.footer_list_cursor_auto}`}>
-                    Fax: +966 (12) 6366871
+                    Fax: +966 (12) 636 6871
                   </li>
                 </ul>
               </Col>
@@ -320,74 +320,74 @@ export default function ResponsiveView({ view, logo }) {
                 style={{ paddingRight: "45x", paddingLeft: "2px" }}
               >
                 <div className="d-flex justify-content-center">
-                <ul
-                  className={`${style.footer_list_ar} text-end text-capitalize`}
-                >
-                  <li
-                    className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto} `}
+                  <ul
+                    className={`${style.footer_list_ar} text-end text-capitalize`}
                   >
-                    {t("quick links")}
-                  </li>
-                  <li>
-                    <p
-                      className={`mb-0`}
-                      onClick={() => {
-                        router.push("/about");
-                      }}
-                      // href={"/about"}
+                    <li
+                      className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto} `}
                     >
-                      {t("about")}
-                    </p>
-                  </li>
-                  <li>
-                    <p
-                      className={`mb-0`}
-                      onClick={() => {
-                        router.push("/projects");
-                      }}
-                      // href={"/projects"}
-                    >
-                      {t("projects")}
-                    </p>
-                  </li>
-                  <li>
-                    <p
-                      className={`mb-0`}
-                      onClick={() => {
-                        router.push("/success-stories");
-                      }}
-                      // href={"/success-stories"}
-                    >
-                      {t("success stories")}
-                    </p>
-                  </li>
-                  <li>
-                    <p
-                      className={`mb-0`}
-                      onClick={() => {
-                        router.push("/publications");
-                      }}
-                      // href={"/publications"}
-                    >
-                      {t("publications")}
-                    </p>
-                  </li>
-                  <li>
-                    <p
-                      className={`mb-0`}
-                      onClick={() => {
-                        router.push("/contact");
-                      }}
-                      // href={"/contact"}
-                    >
-                      {t("contact")}
-                    </p>
-                  </li>
-                </ul>
+                      {t("quick links")}
+                    </li>
+                    <li>
+                      <p
+                        className={`mb-0`}
+                        onClick={() => {
+                          router.push("/about");
+                        }}
+                        // href={"/about"}
+                      >
+                        {t("about")}
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        className={`mb-0`}
+                        onClick={() => {
+                          router.push("/projects");
+                        }}
+                        // href={"/projects"}
+                      >
+                        {t("projects")}
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        className={`mb-0`}
+                        onClick={() => {
+                          router.push("/success-stories");
+                        }}
+                        // href={"/success-stories"}
+                      >
+                        {t("success stories")}
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        className={`mb-0`}
+                        onClick={() => {
+                          router.push("/publications");
+                        }}
+                        // href={"/publications"}
+                      >
+                        {t("publications")}
+                      </p>
+                    </li>
+                    <li>
+                      <p
+                        className={`mb-0`}
+                        onClick={() => {
+                          router.push("/contact");
+                        }}
+                        // href={"/contact"}
+                      >
+                        {t("contact")}
+                      </p>
+                    </li>
+                  </ul>
                 </div>
               </Col>
               <Col xs={0} sm={0} md={6} lg={7} xl={7}>
-                <ul className={`${style.footer_list_ar} text-end`}>
+                <ul className={`${style.footer_list_ar}`}>
                   <li
                     className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto} `}
                   >
@@ -405,10 +405,10 @@ export default function ResponsiveView({ view, logo }) {
                     <br />
                   </li>
                   <li className={`${style.footer_list_cursor_auto} `}>
-                    +التليفون: 636 1400 (12) 966
+                    التليفون: 636 1400 (12) 966+
                   </li>
                   <li className={`${style.footer_list_cursor_auto}`}>
-                    +الفاكس: 636 6871 (12) 966
+                    الفاكس: 636 6871 (12) 966+
                   </li>
                 </ul>
               </Col>
@@ -441,7 +441,7 @@ export default function ResponsiveView({ view, logo }) {
             </Row>
             <Row>
               <Col xs={24} sm={24} md={0} lg={0} xl={0}>
-                <ul className={`${style.footer_list_ar} text-center`}>
+                <ul className={`${style.footer_list_ar}`}>
                   <li
                     className={`${style.footer_list_header_ar} ${style.footer_list_cursor_auto} `}
                   >
@@ -459,10 +459,10 @@ export default function ResponsiveView({ view, logo }) {
                     <br />
                   </li>
                   <li className={`${style.footer_list_cursor_auto} `}>
-                    +التليفون: 636 1400 (12) 966
+                    التليفون: 636 1400 (12) 966+
                   </li>
                   <li className={`${style.footer_list_cursor_auto}`}>
-                    +الفاكس: 636 6871 (12) 966
+                   الفاكس: 636 6871 (12) 966+
                   </li>
                 </ul>
               </Col>

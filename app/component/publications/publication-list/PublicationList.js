@@ -206,7 +206,9 @@ export default function PublicationList({ listData, listSize, pageNumber }) {
                           }`}
                         >
                           <a
-                            href={listData.Document[0].url}
+                            href={
+                              process.env.BASE_URL + listData.Document[0].url
+                            }
                             download
                             target="_blank"
                             rel="noreferrer"

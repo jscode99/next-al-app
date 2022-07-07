@@ -80,7 +80,8 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                       </Col>
                       <Col span={16} className={`${styles.stories_amount}`}>
                         $
-                        {storiesProps.TotalApproved.length > 0
+                        {storiesProps.TotalApproved &&
+                        storiesProps.TotalApproved.length > 0
                           ? storiesProps.TotalApproved
                           : ``}
                       </Col>
@@ -99,7 +100,8 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                         {`:`}
                       </Col>
                       <Col span={16} className={`${styles.stories_amount}`}>
-                        {storiesProps.FundSource.length > 0
+                        {storiesProps.FundSource &&
+                        storiesProps.FundSource.length > 0
                           ? storiesProps.FundSource
                           : ``}
                       </Col>
@@ -112,8 +114,10 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                         Overview
                       </Col>
                     </Row>
-                    <p className={`${styles.stories_details_des} text-justify me-3`}>
-                      {storiesProps.Overview.length > 0
+                    <p
+                      className={`${styles.stories_details_des} text-justify me-3`}
+                    >
+                      {storiesProps.Overview && storiesProps.Overview.length > 0
                         ? storiesProps.Overview
                         : ``}
                     </p>
@@ -401,7 +405,8 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                   className={`${styles.stories_details_des_ar} px-5 mt-5 text-justify`}
                   dir={router.locale === "ar" ? `rtl` : ``}
                 >
-                  {storiesProps.Description.length > 0
+                  {storiesProps.Description &&
+                  storiesProps.Description.length > 0
                     ? storiesProps.Description
                     : ``}
                 </p>

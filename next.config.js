@@ -8,9 +8,8 @@ const { i18n } = require("./i18n");
 module.exports = {
   i18n,
   env: {
-    // DOMAIN: "al-aqsa-testing.vercel.app",
     BASE_URL: "https://alaqsafund-api.isdb.org",
-    // "https://z24eee497-ze87c794b-gtw.qovery.io" /* "https://z966c6ddc-z1680a652-gtw.qovery.io" */,
+    FLOW_CONTACT_URL:"https://prod-29.westeurope.logic.azure.com:443/workflows/8db9c3b85c7c464ea6367cb5803d0961/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=yLQJQRq-uIvVk40mPEp_CV6pUcmJB_EgGjI4wBy30tI",
     PATH: {
       STATIC_SITE: "/static-stites",
       ISDB_MANAGES: "/isdb-manages",

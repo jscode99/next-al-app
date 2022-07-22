@@ -20,7 +20,7 @@ export default function HeroImage({ image, pageName }) {
     <>
       {imageData && (
         <Image
-          src={process.env.BASE_URL + imageData.Image[0].url}
+          src={process.env.BASE_URL + imageData.Image.url}
           layout="responsive"
           width={imageData.Width}
           height={imageData.Height}

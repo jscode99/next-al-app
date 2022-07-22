@@ -19,8 +19,8 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
   const { t } = useTranslation("common");
   const router = useRouter();
   const base_url = process.env.BASE_URL;
-  // console.log("Media---->", media);
-  console.log("Story Props-->", storiesProps);
+  console.log("Media---->", media);
+  // console.log("Story Props-->", storiesProps);
   useEffect(() => {
     if (
       successMedia &&
@@ -30,19 +30,46 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
       Object.keys(storiesProps).length > 0
     ) {
       let media = successMedia.filter(
-        (value) => value.successID.toString() === storiesProps.id.toString()
+        (value) =>
+          value.successID.toString() === storiesProps.sharepointId.toString()
       );
-      // console.log("Media", media);
+      const multi = [];
+      const previewImage = [];
+      media.map((data) => {
+        multi.push(...data.multimedia);
+        if (
+          data &&
+          data.videoPreview &&
+          data.videoPreview.length > 0 &&
+          data &&
+          data.videoLink &&
+          data.videoLink.length > 0
+        )
+          previewImage.push({
+            url:
+              data &&
+              data.videoPreview &&
+              data.videoPreview.length > 0 &&
+              data.videoPreview[0].url,
+            link:
+              data &&
+              data.videoLink &&
+              data.videoLink.length > 0 &&
+              data.videoLink,
+          });
+      });
       let medias = media.map((value) => {
-        // console.log("Value", value);
         return {
-          multimedia: new Array(...value.multimedia).map(
-            (data, index) => data.url
-          ),
+          multimedia:
+            multi && multi.length > 0
+              ? new Array(...multi).map((data) => data.url)
+              : [],
           successID: value.successID,
           videoPreview:
-            value.videoPreview.length > 0
-              ? new Array(value.videoPreview).map((data, index) => data.url)
+            previewImage && previewImage.length > 0
+              ? new Array(...previewImage).map((data) => {
+                  return { url: data.url, link: data.link };
+                })
               : null,
         };
       });
@@ -182,6 +209,44 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                         className={`d-flex overflow-auto justify-content-center`}
                       >
                         <div className={`d-flex`}>
+                          {/* Video */}
+                          {media &&
+                            media.length > 0 &&
+                            media[0].videoPreview.map((imageData) => (
+                              <>
+                                <div
+                                  className={`mx-3 ${styles.image_cont} position-relative`}
+                                  onClick={() => setGalleryView(true)}
+                                >
+                                  <div
+                                    className={`d-flex position-absolute  justify-content-center align-items-center`}
+                                    style={{
+                                      zIndex: 100,
+                                      width: "100px",
+                                      height: "85px",
+                                      fontSize: "25px",
+                                    }}
+                                  >
+                                    <i className="far fa-play-circle text-white"></i>
+                                  </div>
+
+                                  <div
+                                    className={`position-absolute`}
+                                    style={{
+                                      width: "100px",
+                                    }}
+                                  >
+                                    <Image
+                                      src={base_url + imageData.url}
+                                      alt="ssc"
+                                      width="100"
+                                      height="80"
+                                    />
+                                  </div>
+                                </div>
+                              </>
+                            ))}
+                          {/* Image */}
                           {media &&
                             media.length > 0 &&
                             media[0].multimedia.map((imageData) => (
@@ -286,6 +351,43 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                         className={`d-flex overflow-auto justify-content-center`}
                       >
                         <div className={`d-flex`}>
+                          {/* Video */}
+                          {media &&
+                            media.length > 0 &&
+                            media[0].videoPreview.map((imageData) => (
+                              <>
+                                <div
+                                  className={`mx-3 ${styles.image_cont} position-relative`}
+                                  onClick={() => setGalleryView(true)}
+                                >
+                                  <div
+                                    className={`d-flex position-absolute  justify-content-center align-items-center`}
+                                    style={{
+                                      zIndex: 100,
+                                      width: "100px",
+                                      height: "85px",
+                                      fontSize: "25px",
+                                    }}
+                                  >
+                                    <i className="far fa-play-circle text-white"></i>
+                                  </div>
+
+                                  <div
+                                    className={`position-absolute`}
+                                    style={{
+                                      width: "100px",
+                                    }}
+                                  >
+                                    <Image
+                                      src={base_url + imageData.url}
+                                      alt="ssc"
+                                      width="100"
+                                      height="80"
+                                    />
+                                  </div>
+                                </div>
+                              </>
+                            ))}
                           {media &&
                             media.length > 0 &&
                             media[0].multimedia.map((imageData) => (
@@ -442,6 +544,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
               ></i>
             </div>
             <Row gutter={[8, 8]} className="w-100">
+              {/* Image */}
               {media &&
                 media.length > 0 &&
                 media[0].multimedia.map((imageData, index) => (
@@ -476,6 +579,45 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                                 ? base_url + imageData
                                 : base_url + imageData.videoPreview[0].url
                             }
+                            alt="ssc"
+                            width="100%"
+                            height="100%"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+                ))}
+              {/* Video */}
+              {media &&
+                media.length > 0 &&
+                media[0].videoPreview.map((imageData, index) => (
+                  <Col xs={24} sm={24} md={12} lg={8} xl={8} key={index}>
+                    <div
+                      className={`overflow-hidden`}
+                      onClick={() => setViewUrl(imageData.link)}
+                    >
+                      <div
+                        className={`overflow-hidden ${styles.gallery_image_container} position-relative`}
+                      >
+                        <div
+                          className={`d-flex position-absolute  justify-content-center align-items-center ${styles.modal_video_playIcon}`}
+                          style={{
+                            zIndex: 100,
+                            width: "100%",
+                            height: "100%",
+                            fontSize: "75px",
+                          }}
+                        >
+                          <i className="far fa-play-circle text-white"></i>
+                        </div>
+
+                        <div
+                          className={`position-absolute overflow-hidden d-flex justify-content-center align-items-center w-100 h-100`}
+                        >
+                          <img
+                            className={`${styles.modal_image}`}
+                            src={base_url + imageData.url}
                             alt="ssc"
                             width="100%"
                             height="100%"

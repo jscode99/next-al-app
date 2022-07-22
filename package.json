@@ -17,6 +17,7 @@
     "flatted": "^3.2.5",
     "fs": "0.0.1-security",
     "google-map-react": "^2.1.10",
+    "https": "^1.0.0",
     "is-image": "^3.0.0",
     "next": "^11.0.1",
     "next-i18next": "^8.5.5",

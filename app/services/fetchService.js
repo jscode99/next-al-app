@@ -1,27 +1,51 @@
 //Constant
 import { CONST } from "../services/constants";
 
-export const fetchService = async (url, method, body) => {
-  // console.log("URL", url);
+import https from 'https'
+
+export const fetchService = async (url, method, body, webhook = false) => {
   let responseJson;
   let response;
-  switch (method) {
-    case CONST.API_METHOD.POST:
-      responseJson = await fetch(url, {
-        method: method,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-      response = await responseJson.json();
+  if (webhook) {
+    responseJson = await fetch(url, {
+      method: method,
+      agent: new https.Agent({
+        rejectUnauthorized: false,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    response = await responseJson;
 
-      return response;
+    return response;
+  } else {
+    switch (method) {
+      case CONST.API_METHOD.POST:
+        responseJson = await fetch(url, {
+          method: method,
+          agent: new https.Agent({
+            rejectUnauthorized: false,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        });
+        response = await responseJson.json();
 
-    case CONST.API_METHOD.GET:
-      responseJson = await fetch(url);
-      response = await responseJson.json();
+        return response;
 
-      return response;
+      case CONST.API_METHOD.GET:
+        responseJson = await fetch(url, {
+          agent: new https.Agent({
+            rejectUnauthorized: false,
+          }),
+        });
+        response = await responseJson.json();
+
+        return response;
+    }
   }
 };

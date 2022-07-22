@@ -11,7 +11,7 @@ export default function IsdbManageCard({ data }) {
         className={`mt-3 mb-2 d-flex justify-content-center align-items-center`}
       >
         <Image
-          src={process.env.BASE_URL + data.logo[0].url}
+          src={process.env.BASE_URL + data.logo.url}
           alt={`Organization Logo`}
           height="90px"
           width="95px"

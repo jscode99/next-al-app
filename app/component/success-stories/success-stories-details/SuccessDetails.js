@@ -171,6 +171,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                       >
                         {media &&
                           media.length > 0 &&
+                          media[0].multimedia &&
                           media[0].multimedia.map((imageData) => (
                             <>
                               {!isImage(imageData) && (
@@ -212,6 +213,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                           {/* Video */}
                           {media &&
                             media.length > 0 &&
+                            media[0].videoPreview &&
                             media[0].videoPreview.map((imageData) => (
                               <>
                                 <div
@@ -249,6 +251,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                           {/* Image */}
                           {media &&
                             media.length > 0 &&
+                            media[0].multimedia &&
                             media[0].multimedia.map((imageData) => (
                               <>
                                 <div
@@ -354,6 +357,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                           {/* Video */}
                           {media &&
                             media.length > 0 &&
+                            media[0].videoPreview &&
                             media[0].videoPreview.map((imageData) => (
                               <>
                                 <div
@@ -388,8 +392,10 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
                                 </div>
                               </>
                             ))}
+                          {/* multimedia */}
                           {media &&
                             media.length > 0 &&
+                            media[0].multimedia &&
                             media[0].multimedia.map((imageData) => (
                               <>
                                 <div
@@ -547,6 +553,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
               {/* Image */}
               {media &&
                 media.length > 0 &&
+                media[0].multimedia &&
                 media[0].multimedia.map((imageData, index) => (
                   <Col xs={24} sm={24} md={12} lg={8} xl={8} key={index}>
                     <div
@@ -591,6 +598,7 @@ export default function SuccessStoriesDetails({ successMedia, storiesProps }) {
               {/* Video */}
               {media &&
                 media.length > 0 &&
+                media[0].videoPreview &&
                 media[0].videoPreview.map((imageData, index) => (
                   <Col xs={24} sm={24} md={12} lg={8} xl={8} key={index}>
                     <div
